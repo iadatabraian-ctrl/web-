@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260913a">
+<link rel="stylesheet" href="styles.css?v=20260913b">
 </head>
 <body>
 
@@ -35,8 +35,9 @@
 </header>
 
 <!-- ================= HERO ================= -->
+<div class="hero-track" id="heroTrack">
 <section class="hero crossmarks">
-  <img class="hero-bg-img" src="assets/img/hero-nucleo.png" alt="El núcleo de la marca: una esfera con circuitos grabados y brillo cian, junto a una laptop flotante mostrando un panel de software, iluminados por un haz de luz en un estudio oscuro" fetchpriority="high">
+  <canvas class="hero-bg-canvas" id="heroCanvas" role="img" aria-label="El núcleo de la marca: una esfera con circuitos grabados y brillo cian, junto a una laptop flotante mostrando un panel de software, con la cámara recorriendo distintos ángulos a medida que se hace scroll"></canvas>
   <div class="hero-scrim" aria-hidden="true"></div>
 
   <div class="hero-hud hero-hud-tr" aria-hidden="true">
@@ -80,6 +81,7 @@
     <span>AI enabled</span><span>Scalable</span><span>Secure</span>
   </div>
 </section>
+</div>
 
 <!-- ================= DIAGNÓSTICO ================= -->
 <section class="section diagnostico" id="diagnostico">
@@ -252,6 +254,6 @@
   </div>
 </footer>
 
-<script defer src="main.js?v=20260912b"></script>
+<script defer src="main.js?v=20260913a"></script>
 </body>
 </html>

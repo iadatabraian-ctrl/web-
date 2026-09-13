@@ -222,15 +222,21 @@ h1,h2,h3,h4{
 /* ============================================================
    HERO
    ============================================================ */
-.hero{
+.hero-track{
   position:relative;
-  min-height:min(85dvh, 780px);
+  height:calc(min(85dvh, 780px) + 130vh);
+}
+.hero{
+  position:sticky; top:0;
+  height:min(85dvh, 780px);
   display:flex; align-items:center;
   overflow:hidden;
+  background-image:url("assets/img/hero-nucleo.png");
+  background-size:cover; background-position:right center;
 }
-.hero-bg-img{
+.hero-bg-canvas{
   position:absolute; inset:0; z-index:0;
-  width:100%; height:100%; object-fit:cover; object-position:right center;
+  width:100%; height:100%; display:block;
 }
 .hero-scrim{
   position:absolute; inset:0; z-index:1;
@@ -317,10 +323,14 @@ h1,h2,h3,h4{
   .hero-scrim{ background:linear-gradient(0deg, rgba(20,22,27,.96) 0%, rgba(20,22,27,.86) 38%, rgba(20,22,27,.3) 70%, transparent 100%); }
   .hero-text{ max-width:none; }
   .hero-hud, .hero-callout, .hero-tags{ display:none; }
+  .hero-track{ height:auto; }
+  .hero{ position:relative; }
 }
 
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
+  .hero-track{ height:auto; }
+  .hero{ position:relative; }
 }
 
 /* ============================================================
