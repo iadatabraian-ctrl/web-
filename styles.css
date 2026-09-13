@@ -231,7 +231,7 @@ h1,h2,h3,h4{
    ============================================================ */
 .hero-track{
   position:relative;
-  height:calc(min(85dvh, 780px) + 130vh);
+  height:calc(min(85dvh, 780px) + 50vh);
 }
 .hero{
   position:sticky; top:0;
@@ -462,6 +462,28 @@ h1,h2,h3,h4{
 @media (max-width:820px){
   .proj-feat{ grid-template-columns:1fr; }
   .proj-row2{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   NOSOTROS
+   ============================================================ */
+.about-layout{ display:grid; grid-template-columns:1.3fr .7fr; gap:clamp(24px,4vw,56px); align-items:center; }
+.about-card{ border:1.5px solid var(--line-on-black); border-radius:var(--radius-card); padding:36px; text-align:center; }
+.about-mono{
+  display:flex; align-items:center; justify-content:center;
+  width:72px; height:72px; margin:0 auto 18px;
+  border:1.5px solid var(--accent); border-radius:50%;
+  font-family:var(--f-display); font-size:30px; color:var(--accent);
+}
+.about-role{ font-weight:600; margin-bottom:14px; }
+.about-tags{ display:flex; flex-direction:column; gap:8px; }
+.about-tags span{
+  font-family:var(--f-mono); font-size:12px; text-transform:uppercase; letter-spacing:.04em;
+  color:var(--ink-on-black-soft); border:1px solid var(--line-on-black); border-radius:var(--radius-pill); padding:6px 14px;
+}
+
+@media (max-width:820px){
+  .about-layout{ grid-template-columns:1fr; }
 }
 
 /* ============================================================
