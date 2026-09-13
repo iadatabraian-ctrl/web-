@@ -1,0 +1,11 @@
+# Archivos sin uso, movidos aquí para no perderlos pero fuera del sitio
+_sin-usar/
+
+# Herramientas locales de Claude Code / Higgsfield (no son parte del sitio)
+.agents/
+.claude/
+skills-lock.json
+
+# Basura de SO
+.DS_Store
+Thumbs.db
