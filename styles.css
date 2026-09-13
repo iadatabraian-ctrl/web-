@@ -161,10 +161,14 @@ h1,h2,h3,h4{
    ============================================================ */
 .nav{
   position:sticky; top:0; z-index:80;
-  background:rgba(20,22,27,.72);
-  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line-on-black);
   padding-block:18px;
+}
+.nav::before{
+  content:"";
+  position:absolute; inset:0; z-index:-1;
+  background:rgba(20,22,27,.72);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
 }
 .nav-in{
   position:relative;
