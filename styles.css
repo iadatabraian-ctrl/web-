@@ -467,7 +467,7 @@ h1,h2,h3,h4{
   text-align:center;
   color:var(--ink-on-cream);
   margin-inline:var(--pad);
-  padding:clamp(56px,8vw,100px) clamp(24px,6vw,60px);
+  padding:clamp(56px,8vw,100px) clamp(24px,6vw,60px) clamp(16px,4vw,60px);
   background:var(--cream);
   border:1.5px solid var(--black);
 }
