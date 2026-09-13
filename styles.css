@@ -327,7 +327,7 @@ h1,h2,h3,h4{
 .hero-tag .tag-t{ font-family:var(--f-mono); color:var(--ink-on-black-soft); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; }
 
 @media (max-width:900px){
-  .hero-scrim{ background:linear-gradient(0deg, rgba(20,22,27,.96) 0%, rgba(20,22,27,.86) 38%, rgba(20,22,27,.3) 70%, transparent 100%); }
+  .hero-scrim{ background:linear-gradient(180deg, rgba(20,22,27,.97) 0%, rgba(20,22,27,.93) 45%, rgba(20,22,27,.6) 75%, rgba(20,22,27,.25) 100%); }
   .hero-text{ max-width:none; }
   .hero-hud, .hero-callout, .hero-tags{ display:none; }
   .hero-track{ height:auto; }
