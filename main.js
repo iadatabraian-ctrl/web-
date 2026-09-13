@@ -43,7 +43,7 @@
     const frames = [];
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
-      img.src = `assets/img/hero-frames/frame-${String(i).padStart(3, '0')}.jpg`;
+      img.src = `assets/img/hero-frames/frame-${String(i).padStart(3, '0')}.webp`;
       frames.push(img);
     }
     frames[0].addEventListener('load', () => draw(0));
