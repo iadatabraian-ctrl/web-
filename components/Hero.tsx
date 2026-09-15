@@ -19,18 +19,7 @@ const fadeUp = {
 export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-brand-black px-5 pb-6 pt-6 sm:px-8 sm:pb-16 sm:pt-16">
-      <div className="absolute inset-0 lg:hidden">
-        <Image
-          src="/img/hero/hero-photo-mobile.png"
-          alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-      </div>
-
-      <div className="relative mx-auto flex min-h-[90dvh] max-w-6xl flex-col justify-start lg:block lg:min-h-0">
+      <div className="relative mx-auto flex max-w-6xl flex-col justify-start lg:block">
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-8">
           <div>
             <motion.div
@@ -116,11 +105,28 @@ export function Hero() {
             </div>
 
             <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10% 0px" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="relative mx-auto mt-10 aspect-[4/3] w-full max-w-[260px] overflow-hidden rounded-t-2xl lg:hidden"
+            >
+              <Image
+                src="/img/hero/hero-photo-mobile.png"
+                alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
+                fill
+                className="object-cover"
+                sizes="260px"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent to-brand-black" />
+            </motion.div>
+
+            <motion.div
               initial="hidden"
               animate="show"
               variants={fadeUp}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
-              className="mt-12 flex flex-col items-center gap-2 lg:hidden"
+              className="mt-8 flex flex-col items-center gap-2 lg:hidden"
             >
               <span className="relative flex h-9 w-6 items-start justify-center rounded-full border-2 border-brand-accent/70 p-1.5">
                 <span className="h-1.5 w-1 animate-scroll-wheel rounded-full bg-brand-accent" />
