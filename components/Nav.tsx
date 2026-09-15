@@ -17,7 +17,7 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-line-on-black bg-brand-black/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:h-16 sm:px-8">
         <Link href="#inicio" className="flex items-center gap-2.5">
           <Image
             src="/img/logo.webp"
