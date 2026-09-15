@@ -32,11 +32,10 @@
     revealEls.forEach(el => io.observe(el));
   }
 
-  // ---- story stage: laptop hilo conductor de toda la página ----
-  const wide = window.matchMedia('(min-width: 901px)').matches;
+  // ---- story stage: laptop hilo conductor de toda la página (desktop y mobile) ----
   const storyStage = document.getElementById('storyStage');
 
-  if (storyStage && wide && !reduceMotion && window.gsap && window.ScrollTrigger) {
+  if (storyStage && !reduceMotion && window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
 
     const STAGE_HALF_W = 170;  // half of .story-stage's own 340px width
@@ -68,13 +67,24 @@
     // 3/4 hacia el otro lado, para que la laptop "mire" hacia el contenido
     // (a la izquierda) en vez de mirar hacia afuera.
     const tramoOrder = ['hero', 'diagnostico', 'software', 'proceso', 'cierre'];
-    const tramoPose = {
+    const tramoPoseDesktop = {
       hero: { xPct: 0.80, yPct: 0.85, scale: 2.3, rotation: 0, chassis: 'open' },
       diagnostico: { xPct: 0.76, yPct: 0.46, scale: 1.05, rotation: -4, chassis: 'openMirrored' },
       software: { xPct: 0.76, yPct: 0.44, scale: 1.55, rotation: 3, chassis: 'openMirrored' },
       proceso: { xPct: 0.76, yPct: 0.50, scale: 1.05, rotation: -3, chassis: 'openMirrored' },
       cierre: { xPct: 0.5, yPct: 0.07, scale: 0.4, rotation: 0, chassis: 'open' },
     };
+    // En mobile las tarjetas ocupan todo el ancho (no queda un costado libre como
+    // en desktop), así que la laptop se achica bastante y se mete en una esquina
+    // en vez de "vivir al lado" del texto — mismo mecanismo, distinta escala.
+    const tramoPoseMobile = {
+      hero: { xPct: 0.5, yPct: 0.80, scale: 0.85, rotation: 0, chassis: 'open' },
+      diagnostico: { xPct: 1, yPct: 1, scale: 0.16, rotation: -4, chassis: 'openMirrored' },
+      software: { xPct: 0.98, yPct: 0.98, scale: 0.32, rotation: 3, chassis: 'openMirrored' },
+      proceso: { xPct: 1, yPct: 1, scale: 0.16, rotation: -3, chassis: 'openMirrored' },
+      cierre: { xPct: 0.5, yPct: 0.05, scale: 0.16, rotation: 0, chassis: 'open' },
+    };
+    let tramoPose = window.matchMedia('(min-width: 901px)').matches ? tramoPoseDesktop : tramoPoseMobile;
 
     const screens = {
       closed: document.getElementById('laptopClosed'),
@@ -188,6 +198,7 @@
     // would leave `boundaries` stale until the next scroll — refresh + redraw once
     // those settle, using whatever scroll position the user is at by then.
     function remeasureAndRender() {
+      tramoPose = window.matchMedia('(min-width: 901px)').matches ? tramoPoseDesktop : tramoPoseMobile;
       ScrollTrigger.refresh();
       measureBoundaries();
       render(masterTrigger.progress);

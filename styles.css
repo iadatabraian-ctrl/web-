@@ -287,9 +287,52 @@ h1,h2,h3,h4{
 .hero-tag .tag-n{ font-family:var(--f-mono); color:var(--accent); font-size:12px; font-weight:700; }
 .hero-tag .tag-t{ font-family:var(--f-mono); color:var(--ink-on-black-soft); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; }
 
+/* ---------- mobile-only hero extras (badge pill, scroll hint, icon row) ---------- */
+.hero-badge{
+  display:none;
+  align-items:center; gap:8px;
+  white-space:nowrap;
+  font-family:var(--f-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--ink-on-black-soft);
+  border:1.5px solid var(--line-on-black); border-radius:var(--radius-pill);
+  padding:8px 16px;
+  margin-bottom:18px;
+}
+.hero-badge-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px var(--accent); flex:none; }
+
+.hero-scroll-hint{
+  display:none;
+  position:absolute; z-index:2; right:var(--pad); top:52%;
+  flex-direction:column; align-items:center; gap:10px;
+  font-family:var(--f-mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--ink-on-black-soft);
+}
+.hero-scroll-line{ width:1px; height:40px; background:var(--line-on-black); }
+.hero-scroll-txt{ writing-mode:vertical-rl; }
+.hero-scroll-arrow{ color:var(--accent); }
+
+.hero-tags-m{ display:none; }
+
 @media (max-width:900px){
   .hero-text{ max-width:none; }
   .hero-hud, .hero-tags{ display:none; }
+  .hero-badge, .hero-scroll-hint{ display:flex; }
+  .hero .btn-primary{ background:var(--accent); border-color:var(--accent); color:var(--black); }
+
+  .hero-tags-m{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:28px 16px;
+    position:relative; z-index:2;
+    padding-top:32px; margin-top:250px;
+    border-top:1.5px solid var(--line-on-black);
+  }
+  .hero-tag-m{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
+  .hero-tag-m-ic{
+    width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--accent);
+  }
+  .hero-tag-m-ic svg{ width:26px; height:26px; }
+  .hero-tag-m span:last-child{ font-size:13px; font-weight:600; color:var(--ink-on-black-soft); }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -390,9 +433,12 @@ h1,h2,h3,h4{
   opacity:0; pointer-events:none;
 }
 #anchorHero{ top:88%; right:14%; }
-#anchorDiagnostico{ bottom:1%; right:3%; }
+@media (max-width:900px){
+  #anchorHero{ top:52%; }
+}
+#anchorDiagnostico{ top:2%; right:3%; }
 #anchorSoftware{ top:1%; left:50%; }
-#anchorProceso{ bottom:1%; right:3%; }
+#anchorProceso{ top:2%; right:3%; }
 #anchorCierre{ top:-40px; left:50%; }
 
 .story-stage{
@@ -411,10 +457,6 @@ h1,h2,h3,h4{
   opacity:0;
 }
 #laptopOpen{ opacity:1; }
-
-@media (max-width:900px){
-  .story-stage{ display:none; }
-}
 
 @media (prefers-reduced-motion:reduce){
   .story-stage{ display:none; }
