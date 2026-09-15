@@ -46,7 +46,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260913b">
+<link rel="stylesheet" href="styles.css?v=20260914e">
 </head>
 <body>
 
@@ -62,7 +62,6 @@
       <a href="index.html" class="active">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
-      <a href="#proyectos">Proyectos</a>
       <a href="#nosotros">Nosotros</a>
     </nav>
     <a class="btn btn-primary" href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">Hablemos <span aria-hidden="true">→</span></a>
@@ -70,40 +69,27 @@
 </header>
 
 <!-- ================= HERO ================= -->
-<div class="hero-track" id="heroTrack">
 <section class="hero crossmarks">
-  <canvas class="hero-bg-canvas" id="heroCanvas" role="img" aria-label="El núcleo de la marca: una esfera con circuitos grabados y brillo cian, junto a una laptop flotante mostrando un panel de software, con la cámara recorriendo distintos ángulos a medida que se hace scroll"></canvas>
-  <div class="hero-scrim" aria-hidden="true"></div>
-
   <div class="hero-hud hero-hud-tr" aria-hidden="true">
     <span>Digital</span><span>infrastructure</span><span>/ 01</span>
   </div>
 
-  <div class="hero-callout hero-callout-stat" aria-hidden="true">
-    <span class="hc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V12"/><path d="M12 20V6"/><path d="M20 20v-5"/></svg></span>
-    <span class="hc-tx"><strong>+32%</strong>Eficiencia operativa</span>
-  </div>
-  <div class="hero-callout hero-callout-pill" aria-hidden="true">
-    <span class="hc-dot"></span>
-    <span class="hc-tx">Automatización<br>activa</span>
-  </div>
-
   <div class="hero-in">
     <div class="hero-text">
-      <p class="kicker kicker-hud">Software · Web · Automatización</p>
+      <p class="kicker kicker-hud">Desarrollador de soluciones digitales</p>
       <h1 class="hero-title reveal">
-        <span class="ht-row">Tu negocio</span>
-        <span class="ht-row">creció.</span>
-        <span class="ht-row ht-outline">Tu software</span>
-        <span class="ht-row ht-accent">no.</span>
+        <span class="ht-row">Sistemas digitales,</span>
+        <span class="ht-row ht-outline">construidos a medida</span>
+        <span class="ht-row ht-accent">de tu operación.</span>
       </h1>
-      <p class="hero-sub reveal" data-d="1">Creamos <strong>sistemas digitales</strong> a medida para que tu negocio trabaje mejor, elimine tareas manuales y pueda seguir creciendo.</p>
+      <p class="hero-sub reveal" data-d="1">Diseñamos e implementamos los <strong>sistemas</strong> que tu negocio necesita para dejar atrás las tareas manuales y seguir creciendo sin fricción.</p>
       <div class="hero-actions reveal" data-d="2">
         <a class="btn btn-primary" href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">Hablemos <span aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="#servicios">Ver servicios <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </div>
+  <span class="story-anchor" id="anchorHero" aria-hidden="true"></span>
 
   <div class="hero-tags reveal" data-d="3">
     <div class="hero-tag"><span class="tag-n">01</span><span class="tag-t">Software a medida</span></div>
@@ -111,37 +97,42 @@
     <div class="hero-tag"><span class="tag-n">03</span><span class="tag-t">IA &amp; agentes</span></div>
     <div class="hero-tag"><span class="tag-n">04</span><span class="tag-t">Desarrollo web</span></div>
   </div>
-
-  <div class="hero-hud hero-hud-br" aria-hidden="true">
-    <span>AI enabled</span><span>Scalable</span><span>Secure</span>
-  </div>
 </section>
-</div>
 
 <!-- ================= DIAGNÓSTICO ================= -->
 <section class="section diagnostico" id="diagnostico">
   <div class="wrap">
     <div class="diag-head">
-      <h2 class="reveal">Tu negocio cambió. Las herramientas que usás, no.</h2>
+      <h2 class="reveal reveal-title"><span class="rw" style="--i:0">Así</span> <span class="rw" style="--i:1">se</span> <span class="rw" style="--i:2">ve</span> <span class="rw" style="--i:3">una</span> <span class="rw" style="--i:4">operación</span> <span class="rw" style="--i:5">que</span> <span class="rw" style="--i:6">no</span> <span class="rw" style="--i:7">evolucionó</span> <span class="rw" style="--i:8">al</span> <span class="rw" style="--i:9">mismo</span> <span class="rw" style="--i:10">ritmo.</span></h2>
     </div>
-    <div class="diag-list">
-      <div class="diag-row reveal">
-        <span class="diag-n">01</span>
-        <span class="diag-t">Un sitio que no vende</span>
-        <p class="diag-d">Una página vieja o armada con plantillas no genera confianza ni convierte visitas en clientes.</p>
+    <div class="node-list">
+      <div class="node-card reveal">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><polyline points="9 13 12 16 15 12"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">01</span>
+          <h3 class="node-t">Un sitio que no vende</h3>
+          <p class="node-d">Una página vieja o armada con plantillas no genera confianza ni convierte visitas en clientes.</p>
+        </div>
       </div>
-      <div class="diag-row reveal" data-d="1">
-        <span class="diag-n">02</span>
-        <span class="diag-t">Procesos armados a mano</span>
-        <p class="diag-d">Planillas, papeles y WhatsApp sueltos en vez de un sistema que ordene la operación diaria.</p>
+      <div class="node-card reveal" data-d="1">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">02</span>
+          <h3 class="node-t">Procesos armados a mano</h3>
+          <p class="node-d">Planillas, papeles y WhatsApp sueltos en vez de un sistema que ordene la operación diaria.</p>
+        </div>
       </div>
-      <div class="diag-row reveal" data-d="2">
-        <span class="diag-n">03</span>
-        <span class="diag-t">Herramientas que no conversan entre sí</span>
-        <p class="diag-d">Cada área usa lo suyo y nadie tiene una vista completa de cómo va el negocio.</p>
+      <div class="node-card reveal" data-d="2">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="9" width="6" height="6" rx="1"/><rect x="15.5" y="9" width="6" height="6" rx="1"/><line x1="8.5" y1="12" x2="15.5" y2="12" stroke-dasharray="2.2 2.2"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">03</span>
+          <h3 class="node-t">Herramientas que no conversan entre sí</h3>
+          <p class="node-d">Cada área usa lo suyo y nadie tiene una vista completa de cómo va el negocio.</p>
+        </div>
       </div>
     </div>
   </div>
+  <span class="story-anchor" id="anchorDiagnostico" aria-hidden="true"></span>
 </section>
 
 <!-- ================= SERVICIOS ================= -->
@@ -151,88 +142,95 @@
       <p class="kicker">En qué trabajamos</p>
       <h2 class="reveal">Software a medida, primero</h2>
     </div>
-    <div class="svc-layout">
-      <article class="svc-feat crossmarks reveal">
-        <img src="assets/img/svc-software.webp" alt="Manos programando en una laptop con un panel de software en tonos cian sobre fondo oscuro" loading="lazy">
-        <div class="svc-feat-content">
-          <span class="svc-num">01</span>
-          <h3 class="svc-t">Software a medida</h3>
-          <p class="svc-d">Sistemas, paneles y herramientas internas diseñados para la forma real en que opera tu negocio.</p>
+    <div class="node-list">
+      <div class="node-card reveal">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">01 · Software a medida</span>
+          <h3 class="node-t">Software a medida</h3>
+          <p class="node-d">Sistemas, paneles y herramientas internas diseñados para la forma real en que opera tu negocio.</p>
         </div>
-      </article>
-      <div class="svc-list">
-        <div class="svc-row reveal" data-d="1">
-          <span class="svc-tag">02 · Páginas web</span>
-          <h3 class="svc-t">Páginas web</h3>
-          <p class="svc-d">Sitios rápidos y claros, con el diseño y la performance que tu marca necesita para convertir.</p>
+      </div>
+      <div class="node-card reveal" data-d="1">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">02 · Páginas web</span>
+          <h3 class="node-t">Páginas web</h3>
+          <p class="node-d">Sitios rápidos y claros, con el diseño y la performance que tu marca necesita para convertir.</p>
         </div>
-        <div class="svc-row reveal" data-d="2">
-          <span class="svc-tag">03 · También ofrecemos</span>
-          <h3 class="svc-t">Automatización y agentes de WhatsApp/Instagram</h3>
-          <p class="svc-d">Automatización de procesos y agentes con IA como complemento, cuando tu negocio lo necesita.</p>
+      </div>
+      <div class="node-card reveal" data-d="2">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 4 14 11 14 10 22 20 10 13 10 13 2"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">03 · También ofrecemos</span>
+          <h3 class="node-t">Automatización y agentes de WhatsApp/Instagram</h3>
+          <p class="node-d">Automatización de procesos y agentes con IA como complemento, cuando tu negocio lo necesita.</p>
         </div>
       </div>
     </div>
   </div>
+  <span class="story-anchor" id="anchorSoftware" aria-hidden="true"></span>
 </section>
 
 <!-- ================= PROCESO ================= -->
 <section class="section proceso" id="proceso">
   <div class="wrap">
     <div class="proc-head">
-      <h2 class="reveal">De la idea a la solución funcionando</h2>
+      <h2 class="reveal reveal-title"><span class="rw" style="--i:0">De</span> <span class="rw" style="--i:1">la</span> <span class="rw" style="--i:2">idea</span> <span class="rw" style="--i:3">a</span> <span class="rw" style="--i:4">la</span> <span class="rw" style="--i:5">solución</span> <span class="rw" style="--i:6">funcionando</span></h2>
     </div>
-    <div class="proc-row">
-      <article class="proc-step reveal">
-        <p class="proc-n">01</p>
-        <h3 class="proc-t">Contanos tu negocio</h3>
-        <p class="proc-p">Cómo opera hoy y qué te está frenando.</p>
-      </article>
-      <article class="proc-step reveal" data-d="1">
-        <p class="proc-n">02</p>
-        <h3 class="proc-t">Proponemos una solución</h3>
-        <p class="proc-p">Alcance claro, sin letra chica.</p>
-      </article>
-      <article class="proc-step reveal" data-d="2">
-        <p class="proc-n">03</p>
-        <h3 class="proc-t">Construimos</h3>
-        <p class="proc-p">Desarrollamos el software o el sitio.</p>
-      </article>
-      <article class="proc-step reveal" data-d="3">
-        <p class="proc-n">04</p>
-        <h3 class="proc-t">Acompañamos</h3>
-        <p class="proc-p">Ajustes y soporte una vez en marcha.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PROYECTOS ================= -->
-<section class="section" id="proyectos">
-  <div class="wrap">
-    <div class="proj-head">
-      <p class="kicker">Ejemplos de lo que podemos construir</p>
-      <h2 class="reveal">Proyectos</h2>
-    </div>
-    <div class="proj-feat crossmarks reveal">
-      <img src="assets/img/proj-riofit.png" alt="Panel de gestión para gimnasios: socios activos, pagos del mes, clases y asistencia semanal" loading="lazy">
-      <div>
-        <p class="proj-tag">Software a medida</p>
-        <h3 class="proj-t">Sistema de gestión para gimnasios</h3>
-        <p class="proj-d">Panel para socios, pagos, clases y automatizaciones básicas, todo en un mismo lugar.</p>
+    <div class="node-list">
+      <div class="node-card reveal">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5 L20 5 L20 15 L9 15 L5 19 L5 15 L4 15 Z"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">01</span>
+          <h3 class="node-t">Contanos tu negocio</h3>
+          <p class="node-d">Cómo opera hoy y qué te está frenando.</p>
+        </div>
+      </div>
+      <div class="node-card reveal" data-d="1">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">02</span>
+          <h3 class="node-t">Propongo una solución</h3>
+          <p class="node-d">Alcance claro, sin letra chica.</p>
+        </div>
+      </div>
+      <div class="node-card reveal" data-d="2">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">03</span>
+          <h3 class="node-t">Construyo</h3>
+          <p class="node-d">Desarrollo el software o el sitio.</p>
+        </div>
+      </div>
+      <div class="node-card reveal" data-d="3">
+        <span class="node-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L19 6 L19 12 C19 17 16 20 12 21 C8 20 5 17 5 12 L5 6 Z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg></span>
+        <div class="node-body">
+          <span class="node-n">04</span>
+          <h3 class="node-t">Acompaño</h3>
+          <p class="node-d">Ajustes y soporte una vez en marcha.</p>
+        </div>
       </div>
     </div>
-    <div class="proj-row2">
-      <article class="proj-card reveal">
-        <img src="assets/img/proj-web-institucional.png" alt="Sitio web institucional desarrollado por El Núcleo Digital, mostrado en el navegador" loading="lazy">
-        <h3>Sitio web institucional</h3>
-        <p>Landing de alto rendimiento para un negocio local.</p>
-      </article>
-      <article class="proj-card reveal" data-d="1">
-        <img src="assets/img/proj-automatizacion.png" alt="Automatización de pedidos: chat de WhatsApp integrado al sistema interno de pedidos" loading="lazy">
-        <h3>Automatización de pedidos</h3>
-        <p>Integración entre WhatsApp y el sistema interno de un comercio.</p>
-      </article>
+  </div>
+  <span class="story-anchor" id="anchorProceso" aria-hidden="true"></span>
+</section>
+
+<div class="story-stage" id="storyStage" aria-hidden="true">
+  <img class="story-screen" id="laptopClosed" src="assets/img/laptop/laptop-closed.webp" alt="">
+  <img class="story-screen" id="laptopOpen" src="assets/img/laptop/laptop-open.webp" alt="">
+  <img class="story-screen" id="laptopOpenMirrored" src="assets/img/laptop/laptop-open-mirrored.webp" alt="">
+  <img class="story-screen" id="screenWeb" src="assets/img/laptop/screen-web.webp" alt="">
+  <img class="story-screen" id="screenNodos" src="assets/img/laptop/screen-nodos.webp" alt="">
+  <img class="story-screen" id="screenChat" src="assets/img/laptop/screen-chat.webp" alt="">
+</div>
+
+<!-- ================= ACCESO DIRECTO ================= -->
+<section class="section" id="directo">
+  <div class="wrap">
+    <div class="direct-panel crossmarks reveal">
+      <p class="kicker">Cómo trabajamos</p>
+      <p class="direct-text">Cuando trabajás con El Núcleo Digital hablás directo con quien programa, diseña y resuelve tu proyecto, sin pasar por vendedores ni intermediarios. Cada proyecto se cotiza a medida, según lo que tu negocio necesita realmente.</p>
     </div>
   </div>
 </section>
@@ -265,6 +263,8 @@
       <h2>¿Tenés una idea o un problema para resolver?</h2>
       <p class="lead">Contanos qué necesita tu negocio. Vemos juntos si conviene un sistema a medida, un sitio web o algo más simple.</p>
       <a class="btn btn-primary" href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">Hablemos <span aria-hidden="true">→</span></a>
+      <p class="cta-note">Cotizamos según el alcance de cada proyecto: no vendemos paquetes cerrados.</p>
+      <span class="story-anchor" id="anchorCierre" aria-hidden="true"></span>
     </div>
   </div>
 </section>
@@ -296,7 +296,6 @@
         <li><a href="index.html">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#proceso">Proceso</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
       </ul>
     </div>
@@ -315,6 +314,8 @@
   </div>
 </footer>
 
-<script defer src="main.js?v=20260913a"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="main.js?v=20260914e"></script>
 </body>
 </html>
