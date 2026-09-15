@@ -109,16 +109,17 @@ export function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10% 0px" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative mx-auto mt-10 aspect-[4/3] w-full max-w-[260px] overflow-hidden rounded-t-2xl lg:hidden"
+              className="mt-16 flex justify-end lg:hidden"
             >
-              <Image
-                src="/img/hero/hero-photo-mobile.png"
-                alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
-                fill
-                className="object-cover"
-                sizes="260px"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent to-brand-black" />
+              <div className="relative aspect-[940/1672] w-[68%]">
+                <Image
+                  src="/img/hero/hero-photo-mobile.png"
+                  alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
+                  fill
+                  className="object-contain object-bottom"
+                  sizes="68vw"
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -126,7 +127,7 @@ export function Hero() {
               animate="show"
               variants={fadeUp}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
-              className="mt-8 flex flex-col items-center gap-2 lg:hidden"
+              className="mt-10 flex flex-col items-center gap-2 lg:hidden"
             >
               <span className="relative flex h-9 w-6 items-start justify-center rounded-full border-2 border-brand-accent/70 p-1.5">
                 <span className="h-1.5 w-1 animate-scroll-wheel rounded-full bg-brand-accent" />
