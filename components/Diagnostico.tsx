@@ -39,8 +39,23 @@ export function Diagnostico() {
     <section id="diagnostico" className="relative bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:items-start lg:gap-16">
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <FadeIn className="relative mx-auto aspect-[4/3] w-full max-w-[200px] sm:max-w-xs lg:max-w-md">
+          <FadeIn className="lg:col-start-2 lg:row-start-1">
+            <div className="flex items-center gap-3">
+              <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
+                NUESTRO PROCESO
+              </span>
+              <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
+            </div>
+
+            <h2 className="mt-4 font-display text-[9vw] leading-[0.98] tracking-tight sm:text-5xl md:text-6xl">
+              <span className="block text-brand-cream">Así se ve una operación</span>
+              <span className="block text-brand-cream">que no evolucionó</span>
+              <span className="block text-brand-accent">al mismo ritmo.</span>
+            </h2>
+          </FadeIn>
+
+          <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-24 lg:self-start">
+            <FadeIn delay={0.1} className="relative mx-auto aspect-[4/3] w-full max-w-[200px] sm:max-w-xs lg:max-w-md">
               <div
                 aria-hidden
                 className="absolute inset-0 -z-10"
@@ -69,22 +84,9 @@ export function Diagnostico() {
             </FadeIn>
           </div>
 
-          <div>
-            <FadeIn>
-              <div className="flex items-center gap-3">
-                <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
-                  NUESTRO PROCESO
-                </span>
-                <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
-              </div>
-
-              <h2 className="mt-4 font-display text-[9vw] leading-[0.98] tracking-tight sm:text-5xl md:text-6xl">
-                <span className="block text-brand-cream">Así se ve una operación</span>
-                <span className="block text-brand-cream">que no evolucionó</span>
-                <span className="block text-brand-accent">al mismo ritmo.</span>
-              </h2>
-
-              <p className="mt-6 max-w-md font-body text-base leading-relaxed text-brand-ink-on-black-soft">
+          <div className="lg:col-start-2 lg:row-start-2">
+            <FadeIn delay={0.15}>
+              <p className="max-w-md font-body text-base leading-relaxed text-brand-ink-on-black-soft">
                 Cada negocio tiene su propia forma de trabajar. Pero cuando los
                 procesos no acompañan el crecimiento, el costo se siente en el
                 día a día.
