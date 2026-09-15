@@ -30,7 +30,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative mx-auto flex max-sm:min-h-[calc(100dvh-6.5rem)] max-w-6xl flex-col justify-start lg:block">
+      <div className="relative mx-auto flex min-h-[90dvh] max-w-6xl flex-col justify-start lg:block lg:min-h-0">
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-8">
           <div>
             <motion.div
@@ -108,12 +108,28 @@ export function Hero() {
               </a>
             </motion.div>
 
-            <div className="mt-6 flex items-center gap-2 sm:mt-6 lg:flex hidden">
+            <div className="mt-6 hidden items-center gap-2 lg:flex">
               <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
                 EXPLORAR
               </span>
               <ArrowDown className="h-3 w-3 text-brand-ink-on-black-soft" />
             </div>
+
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
+              className="mt-12 flex flex-col items-center gap-2 lg:hidden"
+            >
+              <span className="relative flex h-9 w-6 items-start justify-center rounded-full border-2 border-brand-accent/70 p-1.5">
+                <span className="h-1.5 w-1 animate-scroll-wheel rounded-full bg-brand-accent" />
+              </span>
+              <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
+                SEGUÍ DESCUBRIENDO
+              </span>
+              <ArrowDown className="h-3.5 w-3.5 text-brand-accent" />
+            </motion.div>
           </div>
 
           <div className="relative hidden aspect-[4/3] w-full lg:block">
@@ -133,7 +149,7 @@ export function Hero() {
           animate="show"
           variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-          className="mt-auto grid grid-cols-4 gap-2 pt-4 sm:mt-16 sm:pt-0 sm:gap-6"
+          className="mt-auto hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:gap-6 sm:pt-0"
         >
           {ICONS.map(({ icon: Icon, label }) => (
             <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">

@@ -201,6 +201,23 @@
     -webkit-text-stroke: 1.5px var(--brand-cream);
     text-stroke: 1.5px var(--brand-cream);
   }
+  /* indicador "seguí descubriendo" del hero: puntito que baja dentro del mouse */
+  @keyframes scroll-wheel {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+  }
+  .animate-scroll-wheel {
+    animation: scroll-wheel 1.6s ease-in-out infinite;
+  }
   /* splash screen: trazo progresivo del círculo + destello del texto */
   @keyframes splash-draw {
     from {
