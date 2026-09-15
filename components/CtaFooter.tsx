@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, Camera, Mail } from "lucide-react";
+import { ContactForm } from "@/components/ContactForm";
 
 const NAV_LINKS = [
   { href: "#inicio", label: "Inicio" },
@@ -41,6 +42,10 @@ export function CtaFooter() {
             Cotizamos según el alcance de cada proyecto: no vendemos paquetes
             cerrados.
           </p>
+
+          <div className="mx-auto mt-10 h-px w-full max-w-md bg-brand-line-on-black" />
+
+          <ContactForm />
         </div>
       </section>
 
