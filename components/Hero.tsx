@@ -39,20 +39,20 @@ export function Hero() {
               <span className="h-px flex-1 bg-brand-line-on-black" />
             </div>
 
-            <h1 className="mt-4 font-display text-[9vw] leading-[1.05] tracking-tight sm:mt-4 sm:text-6xl sm:leading-[0.98] lg:text-[4.6rem]">
+            <h1 className="mt-5 font-display text-[9vw] leading-[1.25] tracking-tight sm:mt-4 sm:text-6xl sm:leading-[0.98] lg:text-[4.6rem]">
               <span className="block text-brand-cream">Sistemas digitales,</span>
               <span className="block text-hero-outline">Construidos a medida</span>
               <span className="block text-brand-accent">de tu operación.</span>
             </h1>
 
-            <p className="mt-4 max-w-xl font-body text-[13px] leading-relaxed text-brand-ink-on-black-soft sm:mt-6 sm:text-lg">
+            <p className="mt-6 max-w-xl font-body text-[13px] leading-loose text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed">
               Diseñamos e implementamos los{" "}
               <strong className="font-semibold text-brand-cream">sistemas</strong>{" "}
               que tu negocio necesita para dejar atrás las tareas manuales y
               seguir creciendo sin fricción.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
+            <div className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
               <a
                 href="#hablemos"
                 className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition-opacity hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
