@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description: "Software a medida y páginas web hechos para tu negocio.",
     images: ["/img/og-image.jpg"],
   },
-  icons: { icon: "/img/logo-on-light.webp" },
+  icons: { icon: "/favicon.ico" },
   other: { "theme-color": "#14161b" },
 };
 

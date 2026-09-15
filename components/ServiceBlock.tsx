@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function ServiceBlock({
   eyebrow,
@@ -16,14 +17,18 @@ export function ServiceBlock({
   image: string;
   alt: string;
 }) {
+  const screenRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: screenRef,
+    offset: ["start 0.95", "start 0.4"],
+  });
+
+  const rotateX = useTransform(scrollYProgress, [0, 1], [22, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.88, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col items-center text-center"
-    >
+    <div className="flex flex-col items-center text-center">
       <span className="font-mono text-xs tracking-[0.15em] text-brand-accent">
         {eyebrow}
       </span>
@@ -34,7 +39,11 @@ export function ServiceBlock({
         {description}
       </p>
 
-      <div className="relative mt-10 aspect-[4/3] w-full max-w-lg sm:mt-12">
+      <div
+        ref={screenRef}
+        className="relative mt-12 aspect-[4/3] w-full max-w-4xl sm:mt-16"
+        style={{ perspective: "1400px" }}
+      >
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
@@ -44,14 +53,19 @@ export function ServiceBlock({
             filter: "blur(24px)",
           }}
         />
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          className="object-contain"
-          sizes="(min-width: 640px) 32rem, 90vw"
-        />
+        <motion.div
+          style={{ rotateX, scale, opacity, transformStyle: "preserve-3d" }}
+          className="relative h-full w-full"
+        >
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            className="object-contain"
+            sizes="(min-width: 640px) 56rem, 95vw"
+          />
+        </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 }
