@@ -60,8 +60,8 @@ export function Diagnostico() {
                 <circle cx="380" cy="130" r="2.5" fill="var(--brand-accent)" />
               </svg>
               <Image
-                src="/img/diagnostico/notebook-problem-2.png"
-                alt="Cuaderno con anotaciones manuscritas y una calculadora, representando procesos manuales sin digitalizar"
+                src="/img/diagnostico/notebook-excel-web.png"
+                alt="Laptop con una planilla desordenada y un sitio web anticuado en pantalla, junto a un cuaderno con anotaciones manuscritas"
                 fill
                 className="object-contain"
                 sizes="(min-width: 1024px) 28rem, (min-width: 640px) 20rem, 200px"
