@@ -201,6 +201,31 @@
     -webkit-text-stroke: 1.5px var(--brand-cream);
     text-stroke: 1.5px var(--brand-cream);
   }
+  /* splash screen: trazo progresivo del círculo + destello del texto */
+  @keyframes splash-draw {
+    from {
+      stroke-dashoffset: var(--dash);
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes splash-shine {
+    0% {
+      opacity: 0;
+      background-position: 100% 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      background-position: -100% 0;
+    }
+  }
   /* grano sutil de marca, no forma parte del experimento de animación descartado */
   body::after {
     content: "";

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Archivo, JetBrains_Mono } from "next/font/google";
+import { SplashScreen } from "@/components/SplashScreen";
 import "./globals.css";
 
 const anton = Anton({
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <SplashScreen />
         {children}
       </body>
     </html>
