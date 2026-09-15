@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ArrowDown, Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
 const ICONS = [
@@ -7,6 +10,11 @@ const ICONS = [
   { icon: BrainCircuit, label: "IA & Agentes" },
   { icon: Globe, label: "Desarrollo web" },
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0 },
+};
 
 export function Hero() {
   return (
@@ -25,12 +33,18 @@ export function Hero() {
       <div className="relative mx-auto flex min-h-[calc(100dvh-6.5rem)] max-w-6xl flex-col justify-start lg:block lg:min-h-0">
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-8">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-accent/50 px-3 py-1.5 sm:gap-2.5 sm:px-4 sm:py-2">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-flex items-center gap-2 rounded-full border border-brand-accent/50 px-3 py-1.5 sm:gap-2.5 sm:px-4 sm:py-2"
+            >
               <span className="h-1.5 w-1.5 rounded-full bg-brand-accent" />
               <span className="font-body text-[10px] font-semibold tracking-[0.15em] text-brand-cream sm:text-xs">
                 SOLUCIONES DIGITALES
               </span>
-            </div>
+            </motion.div>
 
             <div className="mt-7 hidden items-center gap-3 lg:flex">
               <span className="font-body text-xs font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
@@ -40,34 +54,59 @@ export function Hero() {
             </div>
 
             <h1 className="mt-5 font-display text-[9vw] leading-[1.25] tracking-tight sm:mt-4 sm:text-6xl sm:leading-[0.98] lg:text-[4.6rem]">
-              <span className="block text-brand-cream">Sistemas digitales,</span>
-              <span className="block text-hero-outline">Construidos a medida</span>
-              <span className="block text-brand-accent">de tu operación.</span>
+              {[
+                { text: "Sistemas digitales,", className: "text-brand-cream" },
+                { text: "Construidos a medida", className: "text-hero-outline" },
+                { text: "de tu operación.", className: "text-brand-accent" },
+              ].map(({ text, className }, i) => (
+                <motion.span
+                  key={text}
+                  initial="hidden"
+                  animate="show"
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.1 + i * 0.1 }}
+                  className={`block ${className}`}
+                >
+                  {text}
+                </motion.span>
+              ))}
             </h1>
 
-            <p className="mt-6 max-w-xl font-body text-[13px] leading-loose text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed">
+            <motion.p
+              initial="hidden"
+              animate="show"
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+              className="mt-6 max-w-xl font-body text-[13px] leading-loose text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed"
+            >
               Diseñamos e implementamos los{" "}
               <strong className="font-semibold text-brand-cream">sistemas</strong>{" "}
               que tu negocio necesita para dejar atrás las tareas manuales y
               seguir creciendo sin fricción.
-            </p>
+            </motion.p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
+              className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4"
+            >
               <a
                 href="#hablemos"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition-opacity hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition hover:scale-105 hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
               >
                 Hablemos
                 <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.5} />
               </a>
               <a
                 href="#servicios"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-cream/40 px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition-colors hover:border-brand-cream sm:px-7 sm:py-3.5 sm:text-sm"
+                className="inline-flex items-center gap-2 rounded-full border border-brand-cream/40 px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition hover:scale-105 hover:border-brand-cream sm:px-7 sm:py-3.5 sm:text-sm"
               >
                 Ver servicios
                 <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.5} />
               </a>
-            </div>
+            </motion.div>
 
             <div className="mt-6 flex items-center gap-2 sm:mt-6 lg:flex hidden">
               <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
@@ -89,7 +128,13 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-auto grid grid-cols-4 gap-2 pt-8 sm:mt-16 sm:pt-0 sm:gap-6">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={fadeUp}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
+          className="mt-auto grid grid-cols-4 gap-2 pt-8 sm:mt-16 sm:pt-0 sm:gap-6"
+        >
           {ICONS.map(({ icon: Icon, label }) => (
             <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">
               <Icon className="h-5 w-5 text-brand-accent sm:h-6 sm:w-6" strokeWidth={1.75} />
@@ -98,7 +143,7 @@ export function Hero() {
               </span>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

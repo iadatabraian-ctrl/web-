@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   AppWindow,
@@ -8,6 +10,9 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { StepItem } from "@/components/StepItem";
+import { AnimatedBadge } from "@/components/AnimatedBadge";
+import { FadeIn } from "@/components/FadeIn";
 
 const ITEMS = [
   {
@@ -43,7 +48,7 @@ export function Diagnostico() {
     <section id="diagnostico" className="relative bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-10">
-          <div>
+          <FadeIn>
             <div className="flex items-center gap-3">
               <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
                 NUESTRO PROCESO
@@ -66,9 +71,9 @@ export function Diagnostico() {
               Acá te mostramos cómo ayudamos a transformar esa realidad con
               soluciones digitales a medida.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-md">
+          <FadeIn delay={0.15} className="relative mx-auto aspect-[4/3] w-full max-w-md">
             <div
               aria-hidden
               className="absolute inset-0 -z-10"
@@ -94,50 +99,26 @@ export function Diagnostico() {
               className="object-contain"
               sizes="(min-width: 1024px) 32rem, 90vw"
             />
-            {BADGES.map(({ icon: Icon, label, className }) => (
-              <div
-                key={label}
-                className={`absolute flex items-center gap-2 rounded-full border border-brand-accent/30 bg-brand-black/80 px-3.5 py-2 shadow-lg shadow-black/30 backdrop-blur ${className}`}
-              >
-                <Icon className="h-4 w-4 text-brand-accent" strokeWidth={2} />
-                <span className="whitespace-nowrap font-body text-xs font-medium text-brand-cream">
-                  {label}
-                </span>
-              </div>
+            {BADGES.map(({ icon, label, className }, i) => (
+              <AnimatedBadge key={label} icon={icon} label={label} className={className} index={i} />
             ))}
-          </div>
+          </FadeIn>
         </div>
 
         <div className="mt-20 sm:mt-28">
-          {ITEMS.map(({ icon: Icon, title, desc }, i) => (
-            <div key={title} className="flex gap-6">
-              <div className="flex flex-col items-center">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-brand-accent/60">
-                  <Icon className="h-6 w-6 text-brand-accent" strokeWidth={1.75} />
-                </div>
-                {i < ITEMS.length - 1 && (
-                  <span className="mt-2 w-px flex-1 bg-brand-line-on-black" />
-                )}
-              </div>
-              <div className={i < ITEMS.length - 1 ? "flex-1 pb-10" : "flex-1"}>
-                <span className="font-mono text-sm text-brand-accent">
-                  0{i + 1}
-                </span>
-                <h3 className="mt-1 font-display text-2xl text-brand-cream sm:text-3xl">
-                  {title}
-                </h3>
-                <p className="mt-2 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-base">
-                  {desc}
-                </p>
-                {i < ITEMS.length - 1 && (
-                  <hr className="mt-8 max-w-xl border-brand-line-on-black" />
-                )}
-              </div>
-            </div>
+          {ITEMS.map(({ icon, title, desc }, i) => (
+            <StepItem
+              key={title}
+              icon={icon}
+              index={i}
+              title={title}
+              desc={desc}
+              isLast={i === ITEMS.length - 1}
+            />
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-brand-line-on-black pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <FadeIn className="mt-16 flex flex-col gap-4 border-t border-brand-line-on-black pt-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <ArrowRight className="h-4 w-4 text-brand-accent" />
             <span className="font-body text-xs font-semibold tracking-[0.15em] text-brand-cream">
@@ -149,7 +130,7 @@ export function Diagnostico() {
             <br />
             PARA TU NEGOCIO
           </span>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

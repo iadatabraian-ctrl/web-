@@ -1,4 +1,7 @@
+"use client";
+
 import { MessageSquare, FileText, Layers, ShieldCheck } from "lucide-react";
+import { StepItem } from "@/components/StepItem";
 
 const STEPS = [
   {
@@ -39,31 +42,15 @@ export function Proceso() {
         </h2>
 
         <div className="mt-16 sm:mt-20">
-          {STEPS.map(({ icon: Icon, title, desc }, i) => (
-            <div key={title} className="flex gap-6">
-              <div className="flex flex-col items-center">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-brand-accent/60">
-                  <Icon className="h-6 w-6 text-brand-accent" strokeWidth={1.75} />
-                </div>
-                {i < STEPS.length - 1 && (
-                  <span className="mt-2 w-px flex-1 bg-brand-line-on-black" />
-                )}
-              </div>
-              <div className={i < STEPS.length - 1 ? "flex-1 pb-10" : "flex-1"}>
-                <span className="font-mono text-sm text-brand-accent">
-                  0{i + 1}
-                </span>
-                <h3 className="mt-1 font-display text-2xl text-brand-cream sm:text-3xl">
-                  {title}
-                </h3>
-                <p className="mt-2 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-base">
-                  {desc}
-                </p>
-                {i < STEPS.length - 1 && (
-                  <hr className="mt-8 max-w-xl border-brand-line-on-black" />
-                )}
-              </div>
-            </div>
+          {STEPS.map(({ icon, title, desc }, i) => (
+            <StepItem
+              key={title}
+              icon={icon}
+              index={i}
+              title={title}
+              desc={desc}
+              isLast={i === STEPS.length - 1}
+            />
           ))}
         </div>
       </div>

@@ -1,9 +1,11 @@
+import { FadeIn } from "@/components/FadeIn";
+
 export function Nosotros() {
   return (
     <section id="nosotros" className="bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
-          <div>
+          <FadeIn>
             <p className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
               QUIÉN ESTÁ DETRÁS
             </p>
@@ -16,9 +18,9 @@ export function Nosotros() {
               la que uso para pensar cada sistema no solo desde el código,
               sino desde cómo funciona un negocio en el día a día.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="rounded-2xl border border-brand-line-on-black p-8">
+          <FadeIn delay={0.15} className="rounded-2xl border border-brand-line-on-black p-8">
             <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-brand-accent/60 font-display text-2xl text-brand-accent">
               B
             </span>
@@ -33,7 +35,7 @@ export function Nosotros() {
                 Gestión &amp; estrategia
               </span>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

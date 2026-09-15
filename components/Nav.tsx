@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -14,10 +14,28 @@ const LINKS = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-line-on-black bg-brand-black/90 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:h-16 sm:px-8">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b bg-brand-black/90 backdrop-blur transition-all duration-300",
+        scrolled ? "border-brand-line-on-black bg-brand-black/95" : "border-transparent",
+      )}
+    >
+      <div
+        className={cn(
+          "mx-auto flex max-w-6xl items-center justify-between px-5 transition-[height] duration-300 sm:px-8",
+          scrolled ? "h-12 sm:h-14" : "h-14 sm:h-16",
+        )}
+      >
         <Link href="#inicio" className="flex items-center gap-2.5">
           <Image
             src="/img/logo.webp"
