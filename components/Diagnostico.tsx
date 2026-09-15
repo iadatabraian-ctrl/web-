@@ -6,12 +6,9 @@ import {
   ClipboardList,
   Unlink,
   TrendingUp,
-  UserRound,
-  CheckCircle2,
   ArrowRight,
 } from "lucide-react";
 import { StepItem } from "@/components/StepItem";
-import { AnimatedBadge } from "@/components/AnimatedBadge";
 import { FadeIn } from "@/components/FadeIn";
 
 const ITEMS = [
@@ -35,12 +32,6 @@ const ITEMS = [
     title: "Decisiones sin datos reales",
     desc: "Sin información clara, todo se maneja por intuición y se pierden oportunidades de crecimiento.",
   },
-];
-
-const BADGES = [
-  { icon: UserRound, label: "Nuevos socios", className: "left-0 top-6 sm:-left-4" },
-  { icon: CheckCircle2, label: "Pagos al día", className: "right-0 top-1/3 sm:-right-6" },
-  { icon: UserRound, label: "Clases completadas", className: "bottom-8 right-4 sm:right-0" },
 ];
 
 export function Diagnostico() {
@@ -93,15 +84,12 @@ export function Diagnostico() {
               <circle cx="380" cy="130" r="2.5" fill="var(--brand-accent)" />
             </svg>
             <Image
-              src="/img/laptop/laptop-open.webp"
-              alt="Panel de control a medida para gestionar un negocio"
+              src="/img/diagnostico/notebook-problem-2.png"
+              alt="Cuaderno con anotaciones manuscritas y una calculadora, representando procesos manuales sin digitalizar"
               fill
               className="object-contain"
               sizes="(min-width: 1024px) 32rem, 90vw"
             />
-            {BADGES.map(({ icon, label, className }, i) => (
-              <AnimatedBadge key={label} icon={icon} label={label} className={className} index={i} />
-            ))}
           </FadeIn>
         </div>
 
