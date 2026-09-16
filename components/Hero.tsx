@@ -17,42 +17,10 @@ const fadeUp = {
   show: { opacity: 1, y: 0 },
 };
 
-function AnimatedChars({
-  text,
-  baseDelay = 0,
-  stagger = 0.018,
-  className,
-  start,
-}: {
-  text: string;
-  baseDelay?: number;
-  stagger?: number;
-  className?: string;
-  start: boolean;
-}) {
-  return (
-    <>
-      {[...text].map((char, i) =>
-        char === " " ? (
-          <span key={i} className={className}>
-            {" "}
-          </span>
-        ) : (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 6 }}
-            animate={start ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
-            transition={{ duration: 0.3, delay: baseDelay + i * stagger, ease: [0.16, 1, 0.3, 1] }}
-            className={className}
-            style={{ display: "inline-block" }}
-          >
-            {char}
-          </motion.span>
-        ),
-      )}
-    </>
-  );
-}
+const lineUp = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0 },
+};
 
 export function Hero() {
   const [start, setStart] = useState(false);
@@ -94,16 +62,22 @@ export function Hero() {
           >
             <span className="h-1.5 w-1.5 rounded-full bg-brand-accent" />
             <span className="font-body text-[10px] font-semibold tracking-[0.15em] text-brand-cream sm:text-xs">
-              <AnimatedChars text="SOLUCIONES DIGITALES" start={start} />
+              SOLUCIONES DIGITALES
             </span>
           </motion.div>
 
-          <div className="mt-7 hidden items-center gap-3 lg:flex">
+          <motion.div
+            initial="hidden"
+            animate={start ? "show" : "hidden"}
+            variants={lineUp}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            className="mt-7 hidden items-center gap-3 lg:flex"
+          >
             <span className="font-body text-xs font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
-              <AnimatedChars text="DESARROLLADOR DE SOLUCIONES DIGITALES" baseDelay={0.3} stagger={0.012} start={start} />
+              DESARROLLADOR DE SOLUCIONES DIGITALES
             </span>
             <span className="h-px flex-1 bg-brand-line-on-black" />
-          </div>
+          </motion.div>
 
           <h1 className="mt-8 font-display text-[9vw] leading-[1.25] tracking-tight sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
             {[
@@ -111,9 +85,16 @@ export function Hero() {
               { text: "Construidos a medida", className: "text-hero-outline" },
               { text: "de tu operación.", className: "text-brand-accent" },
             ].map(({ text, className }, i) => (
-              <span key={text} className="block">
-                <AnimatedChars text={text} baseDelay={0.15 + i * 0.22} stagger={0.02} className={className} start={start} />
-              </span>
+              <motion.span
+                key={text}
+                initial="hidden"
+                animate={start ? "show" : "hidden"}
+                variants={lineUp}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.1 + i * 0.1 }}
+                className={`block ${className}`}
+              >
+                {text}
+              </motion.span>
             ))}
           </h1>
 
