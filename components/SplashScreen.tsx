@@ -3,15 +3,19 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
-const BLADE_COUNT = 6;
-const BLADE_PATH = "M50 50 C58 42 60 25 50 4 C40 25 42 42 50 50 Z";
+const ICON_CONVERGE_S = 0.85;
+const FLASH_DELAY_S = 0.78;
+const LOGO_POP_DELAY_S = 0.8;
+const TEXT_DELAY_S = 1.7;
 
-const BLADES_CLOSE_S = 0.44;
-const FLASH_DELAY_S = 0.5;
-const REVEAL_DELAY_S = 0.55;
-const LOGO_SETTLE_S = 1.05;
-const TEXT_DELAY_S = 1.3;
+const ICONS = [
+  { Icon: Code2, x: 0, y: -46 },
+  { Icon: Globe, x: 46, y: 0 },
+  { Icon: BrainCircuit, x: 0, y: 46 },
+  { Icon: Settings2, x: -46, y: 0 },
+];
 
 const TEXT = "El Núcleo Digital";
 const LETTER_STAGGER = 0.03;
@@ -50,7 +54,7 @@ export function SplashScreen() {
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}
           >
             <div className="relative h-24 w-24 sm:h-28 sm:w-28">
-              {/* flash de revelado, tipo obturador de cámara */}
+              {/* flash cuando los componentes convergen en el núcleo */}
               <div
                 aria-hidden
                 className="absolute inset-[-120%] rounded-full"
@@ -62,34 +66,39 @@ export function SplashScreen() {
                 }}
               />
 
-              {/* pétalos tipo iris/obturador, cierran y se abren para revelar el logo */}
-              <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
-                {Array.from({ length: BLADE_COUNT }).map((_, i) => (
-                  <g key={i} transform={`rotate(${(360 / BLADE_COUNT) * i} 50 50)`}>
-                    <motion.path
-                      d={BLADE_PATH}
-                      fill="var(--brand-accent)"
-                      style={{ transformOrigin: "50px 50px" }}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: [0, 1, 1, 0], opacity: [0, 0.95, 0.95, 0] }}
-                      transition={{
-                        duration: 0.85,
-                        delay: i * 0.02,
-                        times: [0, BLADES_CLOSE_S / 0.85, REVEAL_DELAY_S / 0.85, 1],
-                        ease: [0.65, 0, 0.35, 1],
-                      }}
-                    />
-                  </g>
-                ))}
-              </svg>
+              {/* componentes tecnológicos que convergen hacia el núcleo */}
+              {ICONS.map(({ Icon, x, y }, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute left-1/2 top-1/2 -ml-[10px] -mt-[10px] text-brand-accent"
+                  initial={{ opacity: 0, scale: 0.4, x: x * 1.6, y: y * 1.6 }}
+                  animate={{
+                    opacity: [0, 1, 1, 0],
+                    scale: [0.4, 1, 1, 0.3],
+                    x: [x * 1.6, x, x * 0.15, 0],
+                    y: [y * 1.6, y, y * 0.15, 0],
+                  }}
+                  transition={{
+                    duration: ICON_CONVERGE_S,
+                    delay: i * 0.05,
+                    times: [0, 0.45, 0.75, 1],
+                    ease: [0.65, 0, 0.35, 1],
+                  }}
+                  style={{ filter: "drop-shadow(0 0 6px var(--brand-accent))" }}
+                >
+                  <Icon size={20} strokeWidth={1.75} />
+                </motion.div>
+              ))}
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.7 }}
+                initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
-                  duration: LOGO_SETTLE_S - REVEAL_DELAY_S,
-                  delay: REVEAL_DELAY_S,
-                  ease: [0.16, 1, 0.3, 1],
+                  delay: LOGO_POP_DELAY_S,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 15,
+                  mass: 0.7,
                 }}
                 className="absolute inset-[20%]"
               >
