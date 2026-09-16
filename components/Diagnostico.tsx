@@ -38,7 +38,7 @@ export function Diagnostico() {
   return (
     <section id="diagnostico" className="relative bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:items-start lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start lg:gap-16">
           <FadeIn className="lg:col-start-2 lg:row-start-1">
             <div className="flex items-center gap-3">
               <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
@@ -55,7 +55,7 @@ export function Diagnostico() {
           </FadeIn>
 
           <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-24 lg:self-start">
-            <FadeIn delay={0.1} className="relative mx-auto aspect-[4/3] w-full max-w-[200px] sm:max-w-xs lg:max-w-md">
+            <FadeIn delay={0.1} className="relative mx-auto aspect-[4/3] w-full max-w-sm sm:max-w-lg lg:max-w-none">
               <div
                 aria-hidden
                 className="absolute inset-0 -z-10"
@@ -79,7 +79,7 @@ export function Diagnostico() {
                 alt="Laptop con una planilla desordenada y un sitio web anticuado en pantalla, junto a un cuaderno con anotaciones manuscritas"
                 fill
                 className="object-contain"
-                sizes="(min-width: 1024px) 28rem, (min-width: 640px) 20rem, 200px"
+                sizes="(min-width: 1024px) 36rem, (min-width: 640px) 32rem, 24rem"
               />
             </FadeIn>
           </div>

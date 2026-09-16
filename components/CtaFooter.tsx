@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
-import { WhatsAppIcon, InstagramIcon } from "@/components/BrandIcons";
+import { ArrowRight } from "lucide-react";
+import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
 
@@ -88,7 +88,7 @@ export function CtaFooter() {
                 aria-label="Email"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
               >
-                <Mail className="h-4 w-4" strokeWidth={1.75} />
+                <GmailIcon className="h-4 w-4" />
               </a>
             </div>
           </div>

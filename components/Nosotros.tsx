@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Mail } from "lucide-react";
-import { WhatsAppIcon, InstagramIcon } from "@/components/BrandIcons";
+import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { FadeIn } from "@/components/FadeIn";
 
 export function Nosotros() {
@@ -75,7 +74,7 @@ export function Nosotros() {
                 aria-label="Email"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
               >
-                <Mail className="h-4 w-4" strokeWidth={1.75} />
+                <GmailIcon className="h-4 w-4" />
               </a>
             </div>
           </FadeIn>

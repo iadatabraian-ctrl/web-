@@ -46,11 +46,7 @@ export function Servicios() {
           <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
         </div>
 
-        <h2 className="mt-4 max-w-2xl font-display text-[9vw] leading-[0.98] tracking-tight text-brand-cream sm:text-5xl md:text-6xl">
-          Cuatro formas de resolverlo.
-        </h2>
-
-        <div className="mt-20 flex flex-col gap-24 sm:mt-28 sm:gap-32">
+        <div className="mt-10 flex flex-col gap-24 sm:mt-14 sm:gap-32">
           {SERVICES.map((service) => (
             <ServiceBlock key={service.title} {...service} />
           ))}
