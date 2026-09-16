@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   AppWindow,
   ClipboardList,
@@ -34,6 +36,57 @@ const ITEMS = [
   },
 ];
 
+function DiagnosticoImage() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.9", "start 0.4"],
+  });
+
+  const rotateX = useTransform(scrollYProgress, [0, 1], [35, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.75, 1], [0.75, 1.03, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative mx-auto aspect-[4/3] w-full max-w-[260px] sm:max-w-sm lg:max-w-md"
+      style={{ perspective: "1200px" }}
+    >
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(circle at 55% 55%, rgba(0,229,255,.24) 0%, transparent 45%)",
+          filter: "blur(28px)",
+        }}
+      />
+      <svg
+        aria-hidden
+        viewBox="0 0 400 300"
+        className="absolute inset-0 -z-10 h-full w-full opacity-40"
+      >
+        <ellipse cx="200" cy="170" rx="185" ry="55" fill="none" stroke="var(--brand-accent)" strokeWidth="1" transform="rotate(-8 200 170)" />
+        <circle cx="20" cy="190" r="2" fill="var(--brand-accent)" />
+        <circle cx="380" cy="130" r="2.5" fill="var(--brand-accent)" />
+      </svg>
+      <motion.div
+        style={{ rotateX, scale, opacity, transformStyle: "preserve-3d" }}
+        className="relative h-full w-full"
+      >
+        <Image
+          src="/img/diagnostico/notebook-excel-web.png"
+          alt="Laptop con una planilla desordenada y un sitio web anticuado en pantalla, junto a un cuaderno con anotaciones manuscritas"
+          fill
+          className="object-contain"
+          sizes="(min-width: 1024px) 36rem, (min-width: 640px) 32rem, 24rem"
+        />
+      </motion.div>
+    </div>
+  );
+}
+
 export function Diagnostico() {
   return (
     <section id="diagnostico" className="relative bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
@@ -55,33 +108,7 @@ export function Diagnostico() {
           </FadeIn>
 
           <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-24 lg:self-start">
-            <FadeIn delay={0.1} className="relative mx-auto aspect-[4/3] w-full max-w-[260px] sm:max-w-sm lg:max-w-md">
-              <div
-                aria-hidden
-                className="absolute inset-0 -z-10"
-                style={{
-                  background:
-                    "radial-gradient(circle at 55% 55%, rgba(0,229,255,.24) 0%, transparent 45%)",
-                  filter: "blur(28px)",
-                }}
-              />
-              <svg
-                aria-hidden
-                viewBox="0 0 400 300"
-                className="absolute inset-0 -z-10 h-full w-full opacity-40"
-              >
-                <ellipse cx="200" cy="170" rx="185" ry="55" fill="none" stroke="var(--brand-accent)" strokeWidth="1" transform="rotate(-8 200 170)" />
-                <circle cx="20" cy="190" r="2" fill="var(--brand-accent)" />
-                <circle cx="380" cy="130" r="2.5" fill="var(--brand-accent)" />
-              </svg>
-              <Image
-                src="/img/diagnostico/notebook-excel-web.png"
-                alt="Laptop con una planilla desordenada y un sitio web anticuado en pantalla, junto a un cuaderno con anotaciones manuscritas"
-                fill
-                className="object-contain"
-                sizes="(min-width: 1024px) 36rem, (min-width: 640px) 32rem, 24rem"
-              />
-            </FadeIn>
+            <DiagnosticoImage />
           </div>
 
           <div className="lg:col-start-2 lg:row-start-2">

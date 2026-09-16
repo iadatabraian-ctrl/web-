@@ -19,7 +19,15 @@ const fadeUp = {
 export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-brand-black px-5 pb-6 pt-6 sm:px-8 sm:pb-16 sm:pt-16">
-      <div className="absolute inset-0">
+      <motion.div
+        initial={{ opacity: 0, scale: 1.08 }}
+        animate={{ opacity: 1, scale: [1.08, 1.14, 1.08] }}
+        transition={{
+          opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+          scale: { duration: 20, ease: "easeInOut", repeat: Infinity },
+        }}
+        className="absolute inset-0"
+      >
         <Image
           src="/img/hero/hero-photo-mobile.png"
           alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
@@ -28,7 +36,7 @@ export function Hero() {
           className="object-cover object-[center_78%] lg:object-[center_68%]"
           sizes="100vw"
         />
-      </div>
+      </motion.div>
 
       <div className="relative mx-auto flex min-h-[95dvh] max-w-6xl flex-col justify-start lg:min-h-[88vh]">
         <div className="max-w-4xl">
