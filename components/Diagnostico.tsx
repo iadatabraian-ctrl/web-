@@ -55,7 +55,7 @@ export function Diagnostico() {
           </FadeIn>
 
           <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-24 lg:self-start">
-            <FadeIn delay={0.1} className="relative mx-auto aspect-[4/3] w-full max-w-sm sm:max-w-lg lg:max-w-none">
+            <FadeIn delay={0.1} className="relative mx-auto aspect-[4/3] w-full max-w-[260px] sm:max-w-sm lg:max-w-md">
               <div
                 aria-hidden
                 className="absolute inset-0 -z-10"
