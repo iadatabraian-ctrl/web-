@@ -19,7 +19,18 @@ const fadeUp = {
 export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-brand-black px-5 pb-6 pt-6 sm:px-8 sm:pb-16 sm:pt-16">
-      <div className="relative mx-auto flex max-w-6xl flex-col justify-start lg:block">
+      <div className="absolute inset-0 lg:hidden">
+        <Image
+          src="/img/hero/hero-photo-mobile.png"
+          alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
+
+      <div className="relative mx-auto flex min-h-[95dvh] max-w-6xl flex-col justify-start lg:block lg:min-h-0">
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-8">
           <div>
             <motion.div
@@ -103,24 +114,6 @@ export function Hero() {
               </span>
               <ArrowDown className="h-3 w-3 text-brand-ink-on-black-soft" />
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-16 flex justify-end lg:hidden"
-            >
-              <div className="relative aspect-[940/1672] w-[68%]">
-                <Image
-                  src="/img/hero/hero-photo-mobile.png"
-                  alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
-                  fill
-                  className="object-contain object-bottom"
-                  sizes="68vw"
-                />
-              </div>
-            </motion.div>
 
             <motion.div
               initial="hidden"
