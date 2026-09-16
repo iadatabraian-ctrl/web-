@@ -94,17 +94,17 @@ export function Hero() {
             >
               <a
                 href="#hablemos"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition hover:scale-105 hover:opacity-90 sm:px-7 sm:py-3.5 sm:text-sm"
+                className="inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-4 py-2 font-body text-[11px] font-bold uppercase tracking-wide text-brand-black transition hover:scale-105 hover:opacity-90 sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
               >
                 Hablemos
-                <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.5} />
+                <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" strokeWidth={2.5} />
               </a>
               <a
                 href="#servicios"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-cream/40 px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition hover:scale-105 hover:border-brand-cream sm:px-7 sm:py-3.5 sm:text-sm"
+                className="inline-flex items-center gap-1.5 rounded-full border border-brand-cream/40 px-4 py-2 font-body text-[11px] font-bold uppercase tracking-wide text-brand-cream transition hover:scale-105 hover:border-brand-cream sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
               >
                 Ver servicios
-                <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.5} />
+                <ArrowUpRight className="h-3 w-3 sm:h-4 sm:w-4" strokeWidth={2.5} />
               </a>
             </motion.div>
 
@@ -114,22 +114,6 @@ export function Hero() {
               </span>
               <ArrowDown className="h-3 w-3 text-brand-ink-on-black-soft" />
             </div>
-
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
-              className="mt-10 flex flex-col items-center gap-2 lg:hidden"
-            >
-              <span className="relative flex h-9 w-6 items-start justify-center rounded-full border-2 border-brand-accent/70 p-1.5">
-                <span className="h-1.5 w-1 animate-scroll-wheel rounded-full bg-brand-accent" />
-              </span>
-              <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
-                SEGUÍ DESCUBRIENDO
-              </span>
-              <ArrowDown className="h-3.5 w-3.5 text-brand-accent" />
-            </motion.div>
           </div>
 
           <div className="relative hidden aspect-[4/3] w-full lg:block">
@@ -148,8 +132,24 @@ export function Hero() {
           initial="hidden"
           animate="show"
           variants={fadeUp}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
+          className="mt-auto flex flex-col items-center gap-2 pb-2 sm:hidden"
+        >
+          <span className="relative flex h-9 w-6 items-start justify-center rounded-full border-2 border-brand-accent/70 p-1.5">
+            <span className="h-1.5 w-1 animate-scroll-wheel rounded-full bg-brand-accent" />
+          </span>
+          <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
+            SEGUÍ DESCUBRIENDO
+          </span>
+          <ArrowDown className="h-3.5 w-3.5 text-brand-accent" />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-          className="mt-auto hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:gap-6 sm:pt-0"
+          className="hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:gap-6 sm:pt-0"
         >
           {ICONS.map(({ icon: Icon, label }) => (
             <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">
