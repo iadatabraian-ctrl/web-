@@ -91,10 +91,6 @@ export function Diagnostico() {
                 procesos no acompañan el crecimiento, el costo se siente en el
                 día a día.
               </p>
-              <p className="mt-4 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-black-soft/70">
-                Acá te mostramos cómo ayudamos a transformar esa realidad con
-                soluciones digitales a medida.
-              </p>
             </FadeIn>
 
             <div className="mt-10 sm:mt-14">
@@ -113,18 +109,22 @@ export function Diagnostico() {
           </div>
         </div>
 
-        <FadeIn className="mt-16 flex flex-col gap-4 border-t border-brand-line-on-black pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <ArrowRight className="h-4 w-4 text-brand-accent" />
-            <span className="font-body text-xs font-semibold tracking-[0.15em] text-brand-cream">
-              LA SOLUCIÓN ESTÁ EN LA DIGITALIZACIÓN
-            </span>
+        <FadeIn
+          className="crossmarks mt-16 border border-brand-accent/40 px-6 py-9 text-center sm:px-10 sm:py-10"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 0%, rgba(0,229,255,.1) 0%, transparent 65%)",
+          }}
+        >
+          <div className="mx-auto flex max-w-lg flex-col items-center gap-3">
+            <ArrowRight className="h-5 w-5 text-brand-accent" />
+            <p className="font-body text-base font-bold uppercase tracking-[0.12em] text-brand-accent sm:text-xl">
+              La solución está en la digitalización
+            </p>
+            <p className="font-body text-xs uppercase leading-relaxed tracking-[0.15em] text-brand-ink-on-black-soft">
+              Sistemas a medida para tu negocio
+            </p>
           </div>
-          <span className="font-body text-xs leading-relaxed tracking-[0.1em] text-brand-ink-on-black-soft sm:text-right">
-            SISTEMAS A MEDIDA
-            <br />
-            PARA TU NEGOCIO
-          </span>
         </FadeIn>
       </div>
     </section>

@@ -41,7 +41,7 @@ export function Proceso() {
           De la idea a la solución funcionando.
         </h2>
 
-        <div className="mt-16 sm:mt-20">
+        <div className="mt-10 sm:mt-14">
           {STEPS.map(({ icon, title, desc }, i) => (
             <StepItem
               key={title}
@@ -50,6 +50,7 @@ export function Proceso() {
               title={title}
               desc={desc}
               isLast={i === STEPS.length - 1}
+              variant="compact"
             />
           ))}
         </div>
