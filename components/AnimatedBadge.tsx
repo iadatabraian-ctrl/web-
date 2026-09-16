@@ -25,10 +25,10 @@ export function AnimatedBadge({
       <motion.div
         animate={{ y: [0, -6, 0] }}
         transition={{ duration: 3 + index * 0.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
-        className="flex max-w-[130px] items-center gap-1.5 rounded-2xl border border-brand-accent/30 bg-brand-black/85 px-2.5 py-1.5 shadow-lg shadow-black/30 backdrop-blur sm:max-w-[190px] sm:gap-2 sm:px-3.5 sm:py-2.5"
+        className="flex max-w-[92px] items-center gap-1 rounded-xl border border-brand-accent/30 bg-brand-black/85 px-2 py-1 shadow-lg shadow-black/30 backdrop-blur sm:max-w-[135px] sm:gap-1.5 sm:px-2.5 sm:py-1.5"
       >
-        <Icon className="h-3.5 w-3.5 shrink-0 text-brand-accent sm:h-4 sm:w-4" strokeWidth={2} />
-        <span className="font-body text-[10px] font-medium leading-snug text-brand-cream sm:text-xs">
+        <Icon className="h-3 w-3 shrink-0 text-brand-accent sm:h-3.5 sm:w-3.5" strokeWidth={2} />
+        <span className="font-body text-[9px] font-medium leading-snug text-brand-cream sm:text-[11px]">
           {label}
         </span>
       </motion.div>
