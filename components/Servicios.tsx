@@ -27,7 +27,7 @@ const SERVICES = [
     alt: "Laptop mostrando un panel interno a medida",
     badges: [
       { icon: Layers, label: "Todo en un solo lugar" },
-      { icon: CircleCheck, label: "Menos errores manuales" },
+      { icon: CircleCheck, label: "Sin errores manuales" },
       { icon: BarChart3, label: "Decisiones con datos reales" },
     ],
   },
@@ -39,7 +39,7 @@ const SERVICES = [
     image: "/img/laptop/laptop-front-web.png",
     alt: "Laptop mostrando un sitio web",
     badges: [
-      { icon: Globe, label: "Presencia digital a la altura de tu negocio" },
+      { icon: Globe, label: "Presencia a tu altura" },
       { icon: Sparkles, label: "Diseño exclusivo, sin plantillas" },
       { icon: MessageSquare, label: "Construida para generar contactos" },
     ],
@@ -52,8 +52,8 @@ const SERVICES = [
     image: "/img/laptop/laptop-front-automation.png",
     alt: "Laptop mostrando un flujo de automatización",
     badges: [
-      { icon: Workflow, label: "Procesos sin intervención manual" },
-      { icon: ShieldCheck, label: "Cero margen de error humano" },
+      { icon: Workflow, label: "Cero intervención manual" },
+      { icon: ShieldCheck, label: "Cero margen de error" },
       { icon: Clock, label: "Tiempo operativo, no administrativo" },
     ],
   },
@@ -65,9 +65,9 @@ const SERVICES = [
     image: "/img/laptop/laptop-front-agents.png",
     alt: "Laptop mostrando un agente de IA conversacional",
     badges: [
-      { icon: Bot, label: "Atención con criterio de negocio, no un chatbot genérico" },
-      { icon: Filter, label: "Filtra y califica antes de llegar a vos" },
-      { icon: InfinityIcon, label: "Disponibilidad total sin ampliar tu equipo" },
+      { icon: Bot, label: "Criterio de negocio real" },
+      { icon: Filter, label: "Filtra y califica leads" },
+      { icon: InfinityIcon, label: "Disponibilidad sin ampliar equipo" },
     ],
   },
 ];

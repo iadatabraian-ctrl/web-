@@ -7,9 +7,9 @@ import type { LucideIcon } from "lucide-react";
 import { AnimatedBadge } from "@/components/AnimatedBadge";
 
 const BADGE_POSITIONS = [
-  "top-[4%] left-[0%] sm:left-[4%]",
-  "top-[42%] right-[-2%] sm:right-[2%]",
-  "bottom-[6%] left-[14%] sm:left-[20%]",
+  "top-[16%] -left-[2%] sm:left-[0%]",
+  "top-[48%] -right-[4%] sm:-right-[1%]",
+  "bottom-[2%] left-[8%] sm:left-[12%]",
 ];
 
 export function ServiceBlock({
