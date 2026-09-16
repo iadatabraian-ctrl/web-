@@ -5,10 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
-const ICON_CONVERGE_S = 0.85;
-const FLASH_DELAY_S = 0.78;
-const LOGO_POP_DELAY_S = 0.8;
-const TEXT_DELAY_S = 1.7;
+const ICON_CONVERGE_S = 1.35;
+const FLASH_DELAY_S = 1.22;
+const LOGO_POP_DELAY_S = 1.25;
+const TEXT_DELAY_S = 2.35;
 
 const ICONS = [
   { Icon: Code2, x: 0, y: -46 },
@@ -96,9 +96,9 @@ export function SplashScreen() {
                 transition={{
                   delay: LOGO_POP_DELAY_S,
                   type: "spring",
-                  stiffness: 300,
-                  damping: 15,
-                  mass: 0.7,
+                  stiffness: 190,
+                  damping: 13,
+                  mass: 0.9,
                 }}
                 className="absolute inset-[20%]"
               >
