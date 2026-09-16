@@ -2,6 +2,7 @@
 
 import { MessageSquare, FileText, Layers, ShieldCheck } from "lucide-react";
 import { StepItem } from "@/components/StepItem";
+import { SectionGlow } from "@/components/SectionGlow";
 
 const STEPS = [
   {
@@ -28,7 +29,8 @@ const STEPS = [
 
 export function Proceso() {
   return (
-    <section id="proceso" className="relative bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="proceso" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+      <SectionGlow position="top-left" />
       <div className="mx-auto max-w-6xl">
         <div className="flex items-center gap-3">
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
@@ -37,7 +39,7 @@ export function Proceso() {
           <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
         </div>
 
-        <h2 className="mt-4 max-w-2xl font-display text-[9vw] leading-[1.1] tracking-tight text-brand-cream sm:text-5xl md:text-6xl">
+        <h2 className="mt-4 max-w-2xl font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
           De la idea a la solución funcionando.
         </h2>
 

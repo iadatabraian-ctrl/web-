@@ -79,7 +79,7 @@ export function Hero() {
             <span className="h-px flex-1 bg-brand-line-on-black" />
           </motion.div>
 
-          <h1 className="mt-8 font-display text-[9vw] leading-[1.25] tracking-tight sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
+          <h1 className="mt-8 font-display text-[9vw] leading-[1.25] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
             {[
               { text: "Sistemas digitales,", className: "text-brand-cream" },
               { text: "Construidos a medida", className: "text-hero-outline" },

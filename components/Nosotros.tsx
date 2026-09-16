@@ -1,17 +1,19 @@
 import Image from "next/image";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { FadeIn } from "@/components/FadeIn";
+import { SectionGlow } from "@/components/SectionGlow";
 
 export function Nosotros() {
   return (
-    <section id="nosotros" className="bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="nosotros" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+      <SectionGlow position="center" />
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
           <FadeIn>
             <p className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
               QUIÉN ESTÁ DETRÁS
             </p>
-            <h2 className="mt-4 font-display text-5xl leading-[1.1] text-brand-cream sm:text-6xl">
+            <h2 className="mt-4 font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
               Nosotros
             </h2>
             <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-brand-ink-on-black-soft sm:text-lg">

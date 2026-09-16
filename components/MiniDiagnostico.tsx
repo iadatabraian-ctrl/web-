@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { StepItem } from "@/components/StepItem";
 import { ITEMS as PROBLEMS } from "@/components/Diagnostico";
 import { FadeIn } from "@/components/FadeIn";
+import { SectionGlow } from "@/components/SectionGlow";
 
 const RESULTS: Record<string, { service: string; reason: string }> = {
   "Un sitio que no vende": {
@@ -59,13 +60,14 @@ export function MiniDiagnostico() {
   }
 
   return (
-    <section id="diagnostico-rapido" className="bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="diagnostico-rapido" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+      <SectionGlow position="bottom-right" />
       <div className="mx-auto max-w-2xl">
         <FadeIn className="text-center">
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
             MINI DIAGNÓSTICO
           </span>
-          <h2 className="mt-4 font-display text-4xl leading-[1.1] text-brand-cream sm:text-5xl">
+          <h2 className="mt-4 font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
             ¿Qué está frenando tu negocio hoy?
           </h2>
           <p className="mx-auto mt-4 max-w-md font-body text-sm text-brand-ink-on-black-soft sm:text-base">

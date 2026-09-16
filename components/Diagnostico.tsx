@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { StepItem } from "@/components/StepItem";
 import { FadeIn } from "@/components/FadeIn";
+import { SectionGlow } from "@/components/SectionGlow";
 
 export const ITEMS = [
   {
@@ -89,7 +90,8 @@ function DiagnosticoImage() {
 
 export function Diagnostico() {
   return (
-    <section id="diagnostico" className="relative bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="diagnostico" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+      <SectionGlow position="top-right" />
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start lg:gap-16">
           <FadeIn className="lg:col-start-2 lg:row-start-1">
@@ -100,7 +102,7 @@ export function Diagnostico() {
               <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
             </div>
 
-            <h2 className="mt-4 font-display text-[9vw] leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
+            <h2 className="mt-4 font-display text-[9vw] leading-[1.1] sm:text-5xl md:text-6xl">
               <span className="block text-brand-cream">Así se ve una operación</span>
               <span className="block text-brand-cream">que no evolucionó</span>
               <span className="block text-brand-accent">al mismo ritmo.</span>
