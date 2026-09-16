@@ -1,26 +1,27 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
-const CIRCLE_R = 42;
-const CIRCUMFERENCE = 2 * Math.PI * CIRCLE_R;
+const BLADE_COUNT = 6;
+const BLADE_PATH = "M50 50 C58 42 60 25 50 4 C40 25 42 42 50 50 Z";
 
-const LOGO_DRAW_MS = 1500;
-const LOGO_FADE_DELAY = 1250;
-const LOGO_FADE_MS = 400;
-const TEXT_DELAY = (LOGO_FADE_DELAY + LOGO_FADE_MS) / 1000;
-const TEXT_DRAW_S = 0.9;
-const SHINE_DELAY = TEXT_DELAY + TEXT_DRAW_S + 0.1;
-const PULSE_DELAY = SHINE_DELAY + 0.55;
-const HOLD_MS = (PULSE_DELAY + 0.5) * 1000;
+const BLADES_CLOSE_S = 0.44;
+const FLASH_DELAY_S = 0.5;
+const REVEAL_DELAY_S = 0.55;
+const LOGO_SETTLE_S = 1.05;
+const TEXT_DELAY_S = 1.3;
 
-const dashStyle = {
-  "--dash": CIRCUMFERENCE,
-  strokeDashoffset: CIRCUMFERENCE,
-  animation: `splash-draw ${LOGO_DRAW_MS}ms cubic-bezier(0.65,0,0.35,1) forwards`,
-} as CSSProperties;
+const TEXT = "El Núcleo Digital";
+const LETTER_STAGGER = 0.03;
+const LETTER_DUR = 0.35;
+const TEXT_END_S =
+  TEXT_DELAY_S + (TEXT.length - 1) * LETTER_STAGGER + LETTER_DUR;
+
+const SHINE_DELAY_S = TEXT_END_S + 0.12;
+const PULSE_DELAY_S = SHINE_DELAY_S + 0.7 + 0.1;
+const HOLD_MS = (PULSE_DELAY_S + 0.75) * 1000;
 
 export function SplashScreen() {
   const [visible, setVisible] = useState(true);
@@ -42,62 +43,55 @@ export function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-brand-black"
+          className="fixed inset-0 z-[1000] flex flex-col items-center justify-center overflow-hidden bg-brand-black"
         >
           <div
             className="flex flex-col items-center"
-            style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY}s 1` }}
+            style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}
           >
-            <div className="relative h-20 w-20 sm:h-24 sm:w-24">
+            <div className="relative h-24 w-24 sm:h-28 sm:w-28">
+              {/* flash de revelado, tipo obturador de cámara */}
               <div
-                className="absolute inset-0"
-                style={{ animation: `splash-orbit 9s linear ${LOGO_DRAW_MS}ms infinite` }}
-              >
-                <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full -rotate-90">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r={CIRCLE_R}
-                    fill="none"
-                    stroke="var(--brand-accent)"
-                    strokeWidth="7"
-                    strokeLinecap="round"
-                    strokeDasharray={CIRCUMFERENCE}
-                    opacity={0.35}
-                    style={{ ...dashStyle, filter: "blur(5px)" }}
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r={CIRCLE_R}
-                    fill="none"
-                    stroke="var(--brand-accent)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeDasharray={CIRCUMFERENCE}
-                    style={dashStyle}
-                  />
-                  <circle
-                    cx="50"
-                    cy={50 - CIRCLE_R}
-                    r="4"
-                    fill="var(--brand-accent)"
-                    style={{
-                      opacity: 0,
-                      animation: `splash-marker-in 0.3s ease-out ${LOGO_DRAW_MS}ms forwards`,
-                    }}
-                  />
-                </svg>
-              </div>
+                aria-hidden
+                className="absolute inset-[-120%] rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(234,247,249,0.95) 0%, rgba(0,229,255,0.5) 35%, transparent 70%)",
+                  opacity: 0,
+                  animation: `splash-flash 0.35s ease-out ${FLASH_DELAY_S}s forwards`,
+                }}
+              />
+
+              {/* pétalos tipo iris/obturador, cierran y se abren para revelar el logo */}
+              <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
+                {Array.from({ length: BLADE_COUNT }).map((_, i) => (
+                  <g key={i} transform={`rotate(${(360 / BLADE_COUNT) * i} 50 50)`}>
+                    <motion.path
+                      d={BLADE_PATH}
+                      fill="var(--brand-accent)"
+                      style={{ transformOrigin: "50px 50px" }}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: [0, 1, 1, 0], opacity: [0, 0.95, 0.95, 0] }}
+                      transition={{
+                        duration: 0.85,
+                        delay: i * 0.02,
+                        times: [0, BLADES_CLOSE_S / 0.85, REVEAL_DELAY_S / 0.85, 1],
+                        ease: [0.65, 0, 0.35, 1],
+                      }}
+                    />
+                  </g>
+                ))}
+              </svg>
+
               <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
+                initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
-                  duration: LOGO_FADE_MS / 1000,
-                  delay: LOGO_FADE_DELAY / 1000,
+                  duration: LOGO_SETTLE_S - REVEAL_DELAY_S,
+                  delay: REVEAL_DELAY_S,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="absolute inset-[16%]"
+                className="absolute inset-[20%]"
               >
                 <Image
                   src="/img/logo.webp"
@@ -109,15 +103,22 @@ export function SplashScreen() {
               </motion.div>
             </div>
 
-            <div className="relative mt-6">
-              <motion.h1
-                initial={{ clipPath: "inset(0 100% 0 0)" }}
-                animate={{ clipPath: "inset(0 0% 0 0)" }}
-                transition={{ duration: TEXT_DRAW_S, delay: TEXT_DELAY, ease: [0.65, 0, 0.35, 1] }}
-                className="font-display text-xl uppercase tracking-wide text-brand-cream sm:text-2xl"
-              >
-                El Núcleo Digital
-              </motion.h1>
+            <div className="relative mt-6 flex" style={{ whiteSpace: "pre" }}>
+              {[...TEXT].map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: LETTER_DUR,
+                    delay: TEXT_DELAY_S + i * LETTER_STAGGER,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="font-display text-xl uppercase tracking-wide text-brand-cream sm:text-2xl"
+                >
+                  {char}
+                </motion.span>
+              ))}
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-clip-text font-display text-xl uppercase tracking-wide text-transparent opacity-0 sm:text-2xl"
@@ -126,10 +127,10 @@ export function SplashScreen() {
                     "linear-gradient(100deg, transparent 30%, rgba(0,229,255,0.9) 50%, transparent 70%)",
                   backgroundSize: "300% 100%",
                   backgroundPosition: "100% 0",
-                  animation: `splash-shine 0.7s ease-out ${SHINE_DELAY}s forwards`,
+                  animation: `splash-shine 0.7s ease-out ${SHINE_DELAY_S}s forwards`,
                 }}
               >
-                El Núcleo Digital
+                {TEXT}
               </span>
             </div>
           </div>
