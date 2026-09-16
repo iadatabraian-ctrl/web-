@@ -61,7 +61,7 @@ const jsonLd = {
     addressLocality: "Salto",
     addressCountry: "UY",
   },
-  sameAs: ["https://instagram.com/elnucelodigital_"],
+  sameAs: ["https://instagram.com/elnucleodigital_"],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

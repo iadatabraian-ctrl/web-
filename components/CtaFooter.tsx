@@ -75,7 +75,7 @@ export function CtaFooter() {
                 <WhatsAppIcon className="h-4 w-4" />
               </a>
               <a
-                href="https://instagram.com/elnucelodigital_"
+                href="https://instagram.com/elnucleodigital_"
                 target="_blank"
                 rel="noopener"
                 aria-label="Instagram"
