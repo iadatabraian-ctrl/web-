@@ -50,6 +50,20 @@ export function ContactForm() {
       </div>
 
       <div>
+        <label htmlFor="rubro" className="sr-only">
+          Rubro o tipo de negocio
+        </label>
+        <input
+          id="rubro"
+          name="rubro"
+          type="text"
+          required
+          placeholder="Rubro o tipo de negocio"
+          className={inputClass}
+        />
+      </div>
+
+      <div>
         <label htmlFor="mensaje" className="sr-only">
           Contanos qué necesita tu negocio
         </label>
