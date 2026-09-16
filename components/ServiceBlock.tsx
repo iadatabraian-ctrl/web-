@@ -3,6 +3,14 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
+import { AnimatedBadge } from "@/components/AnimatedBadge";
+
+const BADGE_POSITIONS = [
+  "top-[4%] left-[0%] sm:left-[4%]",
+  "top-[42%] right-[-2%] sm:right-[2%]",
+  "bottom-[6%] left-[14%] sm:left-[20%]",
+];
 
 export function ServiceBlock({
   eyebrow,
@@ -10,12 +18,14 @@ export function ServiceBlock({
   description,
   image,
   alt,
+  badges,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   image: string;
   alt: string;
+  badges?: { icon: LucideIcon; label: string }[];
 }) {
   const screenRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -88,6 +98,16 @@ export function ServiceBlock({
             }}
           />
         </motion.div>
+
+        {badges?.map((badge, i) => (
+          <AnimatedBadge
+            key={badge.label}
+            icon={badge.icon}
+            label={badge.label}
+            index={i}
+            className={BADGE_POSITIONS[i % BADGE_POSITIONS.length]}
+          />
+        ))}
       </div>
     </div>
   );
