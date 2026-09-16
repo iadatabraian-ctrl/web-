@@ -5,6 +5,7 @@ import { Servicios } from "@/components/Servicios";
 import { Proceso } from "@/components/Proceso";
 import { AccesoDirecto } from "@/components/AccesoDirecto";
 import { Nosotros } from "@/components/Nosotros";
+import { MiniDiagnostico } from "@/components/MiniDiagnostico";
 import { CtaFooter } from "@/components/CtaFooter";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <Proceso />
         <AccesoDirecto />
         <Nosotros />
+        <MiniDiagnostico />
       </main>
       <CtaFooter />
     </>

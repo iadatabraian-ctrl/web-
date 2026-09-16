@@ -13,7 +13,7 @@ import {
 import { StepItem } from "@/components/StepItem";
 import { FadeIn } from "@/components/FadeIn";
 
-const ITEMS = [
+export const ITEMS = [
   {
     icon: AppWindow,
     title: "Un sitio que no vende",
