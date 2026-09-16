@@ -6,9 +6,10 @@ import Image from "next/image";
 import { Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
 const ICON_CONVERGE_S = 1.75;
-const FLASH_DELAY_S = 1.6;
-const LOGO_POP_DELAY_S = 1.65;
-const TEXT_DELAY_S = 2.0;
+const ICON_LAST_DELAY_S = 0.15;
+const FLASH_DELAY_S = ICON_CONVERGE_S + ICON_LAST_DELAY_S;
+const LOGO_POP_DELAY_S = FLASH_DELAY_S + 0.05;
+const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.35;
 
 const ICONS = [
   { Icon: Code2, x: 0, y: -46 },
@@ -103,7 +104,7 @@ export function SplashScreen() {
                   damping: 13,
                   mass: 0.9,
                 }}
-                className="absolute inset-[20%]"
+                className="absolute inset-[8%]"
               >
                 <Image
                   src="/img/logo.webp"

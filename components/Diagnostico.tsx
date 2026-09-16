@@ -63,15 +63,6 @@ function DiagnosticoImage() {
           filter: "blur(28px)",
         }}
       />
-      <svg
-        aria-hidden
-        viewBox="0 0 400 300"
-        className="absolute inset-0 -z-10 h-full w-full opacity-40"
-      >
-        <ellipse cx="200" cy="170" rx="185" ry="55" fill="none" stroke="var(--brand-accent)" strokeWidth="1" transform="rotate(-8 200 170)" />
-        <circle cx="20" cy="190" r="2" fill="var(--brand-accent)" />
-        <circle cx="380" cy="130" r="2.5" fill="var(--brand-accent)" />
-      </svg>
       <motion.div
         style={{ rotateX, scale, opacity, transformStyle: "preserve-3d" }}
         className="relative h-full w-full"
