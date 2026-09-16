@@ -100,7 +100,7 @@ export function Diagnostico() {
               <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
             </div>
 
-            <h2 className="mt-4 font-display text-[9vw] leading-[0.98] tracking-tight sm:text-5xl md:text-6xl">
+            <h2 className="mt-4 font-display text-[9vw] leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
               <span className="block text-brand-cream">Así se ve una operación</span>
               <span className="block text-brand-cream">que no evolucionó</span>
               <span className="block text-brand-accent">al mismo ritmo.</span>

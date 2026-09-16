@@ -11,7 +11,7 @@ export function Nosotros() {
             <p className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
               QUIÉN ESTÁ DETRÁS
             </p>
-            <h2 className="mt-4 font-display text-5xl leading-[0.98] text-brand-cream sm:text-6xl">
+            <h2 className="mt-4 font-display text-5xl leading-[1.1] text-brand-cream sm:text-6xl">
               Nosotros
             </h2>
             <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-brand-ink-on-black-soft sm:text-lg">

@@ -163,7 +163,7 @@
   h3,
   h4 {
     @apply font-display font-normal uppercase tracking-normal;
-    line-height: 0.98;
+    line-height: 1.1;
   }
   /* marcas de esquina tipo plano técnico, sobre paneles destacados */
   .crossmarks {

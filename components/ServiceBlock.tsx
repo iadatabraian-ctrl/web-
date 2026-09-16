@@ -44,7 +44,7 @@ export function ServiceBlock({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
-        className="mt-2 max-w-lg font-display text-3xl leading-[0.98] text-brand-cream sm:text-4xl"
+        className="mt-2 max-w-lg font-display text-3xl leading-[1.1] text-brand-cream sm:text-4xl"
       >
         {title}
       </motion.h3>
