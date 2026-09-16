@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ArrowDown, Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
@@ -21,11 +22,13 @@ function AnimatedChars({
   baseDelay = 0,
   stagger = 0.018,
   className,
+  start,
 }: {
   text: string;
   baseDelay?: number;
   stagger?: number;
   className?: string;
+  start: boolean;
 }) {
   return (
     <>
@@ -38,7 +41,7 @@ function AnimatedChars({
           <motion.span
             key={i}
             initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={start ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
             transition={{ duration: 0.3, delay: baseDelay + i * stagger, ease: [0.16, 1, 0.3, 1] }}
             className={className}
             style={{ display: "inline-block" }}
@@ -52,6 +55,14 @@ function AnimatedChars({
 }
 
 export function Hero() {
+  const [start, setStart] = useState(false);
+
+  useEffect(() => {
+    const onSplashDone = () => setStart(true);
+    window.addEventListener("splash-done", onSplashDone);
+    return () => window.removeEventListener("splash-done", onSplashDone);
+  }, []);
+
   return (
     <section id="inicio" className="relative overflow-hidden bg-brand-black px-5 pb-6 pt-6 sm:px-8 sm:pb-16 sm:pt-16">
       <motion.div
@@ -77,19 +88,19 @@ export function Hero() {
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: start ? 1 : 0 }}
             transition={{ duration: 0.3 }}
             className="inline-flex items-center gap-2 rounded-full border border-brand-accent/50 px-3 py-1.5 sm:gap-2.5 sm:px-4 sm:py-2"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-brand-accent" />
             <span className="font-body text-[10px] font-semibold tracking-[0.15em] text-brand-cream sm:text-xs">
-              <AnimatedChars text="SOLUCIONES DIGITALES" />
+              <AnimatedChars text="SOLUCIONES DIGITALES" start={start} />
             </span>
           </motion.div>
 
           <div className="mt-7 hidden items-center gap-3 lg:flex">
             <span className="font-body text-xs font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
-              <AnimatedChars text="DESARROLLADOR DE SOLUCIONES DIGITALES" baseDelay={0.3} stagger={0.012} />
+              <AnimatedChars text="DESARROLLADOR DE SOLUCIONES DIGITALES" baseDelay={0.3} stagger={0.012} start={start} />
             </span>
             <span className="h-px flex-1 bg-brand-line-on-black" />
           </div>
@@ -101,14 +112,14 @@ export function Hero() {
               { text: "de tu operación.", className: "text-brand-accent" },
             ].map(({ text, className }, i) => (
               <span key={text} className="block">
-                <AnimatedChars text={text} baseDelay={0.15 + i * 0.22} stagger={0.02} className={className} />
+                <AnimatedChars text={text} baseDelay={0.15 + i * 0.22} stagger={0.02} className={className} start={start} />
               </span>
             ))}
           </h1>
 
           <motion.p
             initial="hidden"
-            animate="show"
+            animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
             className="mt-8 max-w-xl font-body text-[13px] leading-loose text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed"
@@ -121,7 +132,7 @@ export function Hero() {
 
           <motion.div
             initial="hidden"
-            animate="show"
+            animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
             className="mt-9 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4"
@@ -152,7 +163,7 @@ export function Hero() {
 
         <motion.div
           initial="hidden"
-          animate="show"
+          animate={start ? "show" : "hidden"}
           variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
           className="mt-auto flex flex-col items-center gap-2 pb-2 sm:hidden"
@@ -168,7 +179,7 @@ export function Hero() {
 
         <motion.div
           initial="hidden"
-          animate="show"
+          animate={start ? "show" : "hidden"}
           variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
           className="hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:max-w-2xl sm:gap-6 sm:pt-0"

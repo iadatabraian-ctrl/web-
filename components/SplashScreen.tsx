@@ -32,7 +32,10 @@ export function SplashScreen() {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const timer = setTimeout(() => setVisible(false), HOLD_MS);
+    const timer = setTimeout(() => {
+      setVisible(false);
+      window.dispatchEvent(new Event("splash-done"));
+    }, HOLD_MS);
     return () => clearTimeout(timer);
   }, []);
 
