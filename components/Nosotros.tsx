@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { MessageCircle, Camera, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { WhatsAppIcon, InstagramIcon } from "@/components/BrandIcons";
 import { FadeIn } from "@/components/FadeIn";
 
 export function Nosotros() {
@@ -23,19 +24,26 @@ export function Nosotros() {
           </FadeIn>
 
           <FadeIn delay={0.15} className="rounded-2xl border border-brand-line-on-black p-8">
-            <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-brand-accent/60">
-              <Image
-                src="/img/team/braian.jpg"
-                alt="Braian, fundador de El Núcleo Digital"
-                fill
-                className="object-cover"
-                sizes="64px"
-              />
+            <div className="flex items-center gap-4">
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-brand-accent/60">
+                <Image
+                  src="/img/team/braian.jpg"
+                  alt="Braian, fundador de El Núcleo Digital"
+                  fill
+                  className="object-cover"
+                  sizes="64px"
+                />
+              </div>
+              <div>
+                <p className="font-body text-base font-semibold text-brand-cream">
+                  Braian
+                </p>
+                <p className="font-body text-xs tracking-[0.1em] text-brand-ink-on-black-soft">
+                  FUNDADOR
+                </p>
+              </div>
             </div>
-            <p className="mt-5 font-body text-base font-semibold text-brand-cream">
-              Braian · Fundador
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-wrap gap-2">
               <span className="rounded-full border border-brand-line-on-black px-3.5 py-1.5 font-body text-xs text-brand-ink-on-black-soft">
                 Desarrollo de software
               </span>
@@ -43,7 +51,7 @@ export function Nosotros() {
                 Criterio técnico
               </span>
             </div>
-            <div className="mt-5 flex items-center gap-3 border-t border-brand-line-on-black pt-5">
+            <div className="mt-6 flex items-center gap-3 border-t border-brand-line-on-black pt-6">
               <a
                 href="https://wa.me/59898648853"
                 target="_blank"
@@ -51,7 +59,7 @@ export function Nosotros() {
                 aria-label="WhatsApp"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
               >
-                <MessageCircle className="h-4 w-4" strokeWidth={1.75} />
+                <WhatsAppIcon className="h-4 w-4" />
               </a>
               <a
                 href="https://instagram.com/elnucelodigital_"
@@ -60,7 +68,7 @@ export function Nosotros() {
                 aria-label="Instagram"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
               >
-                <Camera className="h-4 w-4" strokeWidth={1.75} />
+                <InstagramIcon className="h-4 w-4" />
               </a>
               <a
                 href="mailto:elnucleodigital1@gmail.com"

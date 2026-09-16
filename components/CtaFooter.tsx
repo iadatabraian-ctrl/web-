@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MessageCircle, Camera, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import { WhatsAppIcon, InstagramIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
 
@@ -71,7 +72,7 @@ export function CtaFooter() {
                 aria-label="WhatsApp"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
               >
-                <MessageCircle className="h-4 w-4" strokeWidth={1.75} />
+                <WhatsAppIcon className="h-4 w-4" />
               </a>
               <a
                 href="https://instagram.com/elnucelodigital_"
@@ -80,7 +81,7 @@ export function CtaFooter() {
                 aria-label="Instagram"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
               >
-                <Camera className="h-4 w-4" strokeWidth={1.75} />
+                <InstagramIcon className="h-4 w-4" />
               </a>
               <a
                 href="mailto:elnucleodigital1@gmail.com"
