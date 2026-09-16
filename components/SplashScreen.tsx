@@ -5,10 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
-const ICON_CONVERGE_S = 1.35;
-const FLASH_DELAY_S = 1.22;
-const LOGO_POP_DELAY_S = 1.25;
-const TEXT_DELAY_S = 2.35;
+const ICON_CONVERGE_S = 1.75;
+const FLASH_DELAY_S = 1.6;
+const LOGO_POP_DELAY_S = 1.65;
+const TEXT_DELAY_S = 2.0;
 
 const ICONS = [
   { Icon: Code2, x: 0, y: -46 },
