@@ -16,7 +16,7 @@ export function SectionGlow({
       aria-hidden
       className={`pointer-events-none absolute -z-10 h-[30rem] w-[30rem] rounded-full opacity-[0.28] blur-[80px] sm:h-[40rem] sm:w-[40rem] ${POSITIONS[position]}`}
       style={{
-        background: "radial-gradient(circle, var(--brand-accent) 0%, transparent 70%)",
+        background: "radial-gradient(circle, var(--brand-cream) 0%, transparent 70%)",
       }}
     />
   );
