@@ -80,7 +80,7 @@ function DiagnosticoImage() {
           src="/img/diagnostico/notebook-excel-web.png"
           alt="Laptop con una planilla desordenada y un sitio web anticuado en pantalla, junto a un cuaderno con anotaciones manuscritas"
           fill
-          className="object-contain"
+          className="object-contain grayscale"
           sizes="(min-width: 1024px) 36rem, (min-width: 640px) 32rem, 24rem"
         />
       </motion.div>

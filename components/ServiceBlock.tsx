@@ -82,6 +82,10 @@ export function ServiceBlock({
             fill
             className="object-contain"
             sizes="(min-width: 640px) 64rem, 95vw"
+            style={{
+              filter:
+                "drop-shadow(0 0 24px rgba(0,229,255,0.35)) drop-shadow(0 0 60px rgba(0,229,255,0.2))",
+            }}
           />
         </motion.div>
       </div>
