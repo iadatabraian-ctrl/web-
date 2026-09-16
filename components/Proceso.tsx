@@ -6,22 +6,22 @@ import { StepItem } from "@/components/StepItem";
 const STEPS = [
   {
     icon: MessageSquare,
-    title: "Contanos tu negocio",
-    desc: "Cómo opera hoy y qué te está frenando.",
+    title: "Relevamiento del negocio",
+    desc: "Análisis de cómo opera hoy y qué lo está frenando.",
   },
   {
     icon: FileText,
-    title: "Propongo una solución",
+    title: "Propuesta de solución",
     desc: "Alcance claro, sin letra chica.",
   },
   {
     icon: Layers,
-    title: "Construyo",
-    desc: "Desarrollo el software o el sitio.",
+    title: "Desarrollo",
+    desc: "Construcción del software o el sitio.",
   },
   {
     icon: ShieldCheck,
-    title: "Acompaño",
+    title: "Acompañamiento",
     desc: "Ajustes y soporte una vez en marcha.",
   },
 ];

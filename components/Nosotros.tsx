@@ -13,10 +13,10 @@ export function Nosotros() {
               Nosotros
             </h2>
             <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-brand-ink-on-black-soft sm:text-lg">
-              Braian, desarrollador de soluciones digitales con formación en
-              gestión humana y administración de empresas. Esa combinación es
-              la que uso para pensar cada sistema no solo desde el código,
-              sino desde cómo funciona un negocio en el día a día.
+              Braian, desarrollador de soluciones digitales. Cada proyecto
+              parte de entender el problema de fondo del negocio, con
+              criterio real para adaptar el desarrollo a lo que busca cada
+              cliente.
             </p>
           </FadeIn>
 
@@ -32,7 +32,7 @@ export function Nosotros() {
                 Desarrollo de software
               </span>
               <span className="rounded-full border border-brand-line-on-black px-3.5 py-1.5 font-body text-xs text-brand-ink-on-black-soft">
-                Gestión &amp; estrategia
+                Criterio técnico
               </span>
             </div>
           </FadeIn>
