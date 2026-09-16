@@ -23,7 +23,7 @@ const SERVICE_LINKS = [
 export function CtaFooter() {
   return (
     <>
-      <section className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+      <section id="hablemos" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
         <SectionGlow position="center" />
         <FadeIn className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
