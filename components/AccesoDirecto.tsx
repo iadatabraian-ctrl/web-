@@ -3,7 +3,7 @@ import { SectionGlow } from "@/components/SectionGlow";
 
 export function AccesoDirecto() {
   return (
-    <section id="directo" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="directo" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
       <SectionGlow position="bottom-right" />
       <div className="mx-auto max-w-6xl">
         <FadeIn

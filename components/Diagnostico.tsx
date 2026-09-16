@@ -81,7 +81,7 @@ function DiagnosticoImage() {
 
 export function Diagnostico() {
   return (
-    <section id="diagnostico" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="diagnostico" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
       <SectionGlow position="top-right" />
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start lg:gap-16">

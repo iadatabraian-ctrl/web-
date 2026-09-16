@@ -74,7 +74,7 @@ const SERVICES = [
 
 export function Servicios() {
   return (
-    <section id="servicios" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="servicios" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
       <SectionGlow position="bottom-left" />
       <div className="mx-auto max-w-6xl">
         <div className="flex items-center gap-3">

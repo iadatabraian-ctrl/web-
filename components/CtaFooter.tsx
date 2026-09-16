@@ -23,7 +23,7 @@ const SERVICE_LINKS = [
 export function CtaFooter() {
   return (
     <>
-      <section id="hablemos" className="relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+      <section id="hablemos" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
         <SectionGlow position="center" />
         <FadeIn className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
@@ -53,7 +53,7 @@ export function CtaFooter() {
         </FadeIn>
       </section>
 
-      <footer className="border-t border-brand-line-on-black bg-brand-black px-5 pt-16 sm:px-8">
+      <footer className="border-t border-brand-line-on-black px-5 pt-16 sm:px-8">
         <div className="mx-auto grid max-w-6xl gap-12 pb-14 sm:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link href="#inicio" className="flex items-center gap-2.5">

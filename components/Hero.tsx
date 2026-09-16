@@ -32,7 +32,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="relative overflow-hidden bg-brand-black px-5 pb-6 pt-6 sm:px-8 sm:pb-16 sm:pt-16">
+    <section id="inicio" className="relative overflow-hidden px-5 pb-6 pt-6 sm:px-8 sm:pb-16 sm:pt-16">
       <motion.div
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: [1.08, 1.14, 1.08] }}
