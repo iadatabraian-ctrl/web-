@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { MessageCircle, Camera, Mail } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 
 export function Nosotros() {
@@ -21,9 +23,15 @@ export function Nosotros() {
           </FadeIn>
 
           <FadeIn delay={0.15} className="rounded-2xl border border-brand-line-on-black p-8">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-brand-accent/60 font-display text-2xl text-brand-accent">
-              B
-            </span>
+            <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-brand-accent/60">
+              <Image
+                src="/img/team/braian.jpg"
+                alt="Braian, fundador de El Núcleo Digital"
+                fill
+                className="object-cover"
+                sizes="64px"
+              />
+            </div>
             <p className="mt-5 font-body text-base font-semibold text-brand-cream">
               Braian · Fundador
             </p>
@@ -34,6 +42,33 @@ export function Nosotros() {
               <span className="rounded-full border border-brand-line-on-black px-3.5 py-1.5 font-body text-xs text-brand-ink-on-black-soft">
                 Criterio técnico
               </span>
+            </div>
+            <div className="mt-5 flex items-center gap-3 border-t border-brand-line-on-black pt-5">
+              <a
+                href="https://wa.me/59898648853"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
+              >
+                <MessageCircle className="h-4 w-4" strokeWidth={1.75} />
+              </a>
+              <a
+                href="https://instagram.com/elnucelodigital_"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
+              >
+                <Camera className="h-4 w-4" strokeWidth={1.75} />
+              </a>
+              <a
+                href="mailto:elnucleodigital1@gmail.com"
+                aria-label="Email"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
+              >
+                <Mail className="h-4 w-4" strokeWidth={1.75} />
+              </a>
             </div>
           </FadeIn>
         </div>
