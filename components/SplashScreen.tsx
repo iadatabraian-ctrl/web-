@@ -12,9 +12,10 @@ const ICONS = [Code2, Globe, BrainCircuit, Settings2];
 const ICON_SEQUENCE_END_S = (ICONS.length - 1) * ICON_SLOT_S + ICON_BLINK_S;
 // colchón explícito para que el flash nunca se solape con el último ícono
 const FLASH_DELAY_S = ICON_SEQUENCE_END_S + 0.2;
-const LOGO_POP_DELAY_S = FLASH_DELAY_S + 0.05;
-const LOGO_SHINE_DELAY_S = LOGO_POP_DELAY_S + 0.4;
-const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.5;
+// el logo arranca a crecer en el mismo instante que estalla el flash, no después
+const LOGO_POP_DELAY_S = FLASH_DELAY_S;
+const LOGO_SHINE_DELAY_S = LOGO_POP_DELAY_S + 0.38;
+const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.42;
 
 const TEXT = "El Núcleo Digital";
 const LETTER_STAGGER = 0.03;
@@ -133,11 +134,28 @@ export function SplashScreen() {
                 initial={{ opacity: 0, scale: 0.3, rotateY: -55, rotateX: 16 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0, rotateX: 0 }}
                 transition={{
-                  delay: LOGO_POP_DELAY_S,
-                  type: "spring",
-                  stiffness: 170,
-                  damping: 15,
-                  mass: 0.9,
+                  opacity: { delay: LOGO_POP_DELAY_S, duration: 0.28, ease: "easeOut" },
+                  scale: {
+                    delay: LOGO_POP_DELAY_S,
+                    type: "spring",
+                    stiffness: 230,
+                    damping: 16,
+                    mass: 0.7,
+                  },
+                  rotateY: {
+                    delay: LOGO_POP_DELAY_S,
+                    type: "spring",
+                    stiffness: 230,
+                    damping: 16,
+                    mass: 0.7,
+                  },
+                  rotateX: {
+                    delay: LOGO_POP_DELAY_S,
+                    type: "spring",
+                    stiffness: 230,
+                    damping: 16,
+                    mass: 0.7,
+                  },
                 }}
                 className="absolute inset-[8%]"
                 style={{ transformStyle: "preserve-3d" }}
