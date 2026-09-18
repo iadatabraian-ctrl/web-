@@ -206,11 +206,9 @@
       0 100%, 0 100%,
       100% 100%, 100% 100%;
   }
-  /* línea "hueca" del H1 del Hero: relleno transparente, solo contorno */
+  /* línea media del H1 del Hero: lavanda sólida, entre el crema y el turquesa */
   .text-hero-outline {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--brand-cream);
-    text-stroke: 1.5px var(--brand-cream);
+    color: #bfc8e4;
   }
   /* indicador "seguí descubriendo" del hero: puntito que baja dentro del mouse */
   @keyframes scroll-wheel {
