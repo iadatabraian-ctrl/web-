@@ -13,7 +13,8 @@ const ICON_SEQUENCE_END_S = (ICONS.length - 1) * ICON_SLOT_S + ICON_BLINK_S;
 // colchón explícito para que el flash nunca se solape con el último ícono
 const FLASH_DELAY_S = ICON_SEQUENCE_END_S + 0.2;
 const LOGO_POP_DELAY_S = FLASH_DELAY_S + 0.05;
-const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.35;
+const LOGO_SHINE_DELAY_S = LOGO_POP_DELAY_S + 0.4;
+const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.5;
 
 const TEXT = "El Núcleo Digital";
 const LETTER_STAGGER = 0.03;
@@ -54,7 +55,7 @@ export function SplashScreen() {
             className="flex flex-col items-center"
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}
           >
-            <div className="relative h-24 w-24 sm:h-28 sm:w-28">
+            <div className="relative h-24 w-24 sm:h-28 sm:w-28" style={{ perspective: 700 }}>
               {/* flash de remate al terminar el parpadeo de los íconos */}
               <div
                 aria-hidden
@@ -65,6 +66,24 @@ export function SplashScreen() {
                   opacity: 0,
                   animation: `splash-flash 0.35s ease-out ${FLASH_DELAY_S}s forwards`,
                 }}
+              />
+
+              {/* onda expansiva que se abre paso hacia el resto de la pantalla */}
+              <motion.div
+                aria-hidden
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-accent/50"
+                style={{ width: "58vmin", height: "58vmin" }}
+                initial={{ opacity: 0, scale: 0.15 }}
+                animate={{ opacity: [0, 0.55, 0], scale: [0.15, 1, 1.3] }}
+                transition={{ duration: 0.9, delay: FLASH_DELAY_S, ease: "easeOut" }}
+              />
+              <motion.div
+                aria-hidden
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-accent/25"
+                style={{ width: "88vmin", height: "88vmin" }}
+                initial={{ opacity: 0, scale: 0.1 }}
+                animate={{ opacity: [0, 0.35, 0], scale: [0.1, 1, 1.2] }}
+                transition={{ duration: 1.1, delay: FLASH_DELAY_S + 0.06, ease: "easeOut" }}
               />
 
               {/* componentes tecnológicos: chispazo uno a la vez en el núcleo */}
@@ -111,16 +130,17 @@ export function SplashScreen() {
               })}
 
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.3, rotateY: -55, rotateX: 16 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0, rotateX: 0 }}
                 transition={{
                   delay: LOGO_POP_DELAY_S,
                   type: "spring",
-                  stiffness: 190,
-                  damping: 13,
+                  stiffness: 170,
+                  damping: 15,
                   mass: 0.9,
                 }}
                 className="absolute inset-[8%]"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
                   src="/img/logo.webp"
@@ -128,6 +148,27 @@ export function SplashScreen() {
                   fill
                   priority
                   className="object-contain"
+                />
+                {/* barrido de luz recortado a la forma real del logo */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    WebkitMaskImage: "url(/img/logo.webp)",
+                    WebkitMaskSize: "contain",
+                    WebkitMaskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskImage: "url(/img/logo.webp)",
+                    maskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    backgroundImage:
+                      "linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.95) 50%, transparent 65%)",
+                    backgroundSize: "260% 100%",
+                    backgroundPosition: "140% 0",
+                    opacity: 0,
+                    animation: `splash-logo-shine 0.7s ease-out ${LOGO_SHINE_DELAY_S}s forwards`,
+                  }}
                 />
               </motion.div>
             </div>

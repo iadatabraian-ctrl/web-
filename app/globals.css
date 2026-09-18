@@ -270,6 +270,22 @@
       background-position: -100% 0;
     }
   }
+  @keyframes splash-logo-shine {
+    0% {
+      opacity: 0;
+      background-position: 140% 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 0;
+      background-position: -60% 0;
+    }
+  }
   /* grano sutil de marca, no forma parte del experimento de animación descartado */
   body::after {
     content: "";
