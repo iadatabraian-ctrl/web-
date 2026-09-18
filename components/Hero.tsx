@@ -37,7 +37,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-x-0 bottom-0 top-3 sm:top-4"
+        className="absolute inset-0"
       >
         <Image
           src="/img/hero/hero-photo-mobile.png"
