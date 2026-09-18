@@ -5,18 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
-const ICON_CONVERGE_S = 1.75;
-const ICON_LAST_DELAY_S = 0.15;
-const FLASH_DELAY_S = ICON_CONVERGE_S + ICON_LAST_DELAY_S;
+const ICON_BLINK_S = 0.4;
+const ICONS = [Code2, Globe, BrainCircuit, Settings2];
+const ICON_SEQUENCE_S = ICON_BLINK_S * ICONS.length;
+const FLASH_DELAY_S = ICON_SEQUENCE_S + 0.1;
 const LOGO_POP_DELAY_S = FLASH_DELAY_S + 0.05;
 const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.35;
-
-const ICONS = [
-  { Icon: Code2, x: 0, y: -46 },
-  { Icon: Globe, x: 46, y: 0 },
-  { Icon: BrainCircuit, x: 0, y: 46 },
-  { Icon: Settings2, x: -46, y: 0 },
-];
 
 const TEXT = "El Núcleo Digital";
 const LETTER_STAGGER = 0.03;
@@ -58,7 +52,7 @@ export function SplashScreen() {
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}
           >
             <div className="relative h-24 w-24 sm:h-28 sm:w-28">
-              {/* flash cuando los componentes convergen en el núcleo */}
+              {/* flash de remate al terminar el parpadeo de los íconos */}
               <div
                 aria-hidden
                 className="absolute inset-[-120%] rounded-full"
@@ -70,22 +64,17 @@ export function SplashScreen() {
                 }}
               />
 
-              {/* componentes tecnológicos que convergen hacia el núcleo */}
-              {ICONS.map(({ Icon, x, y }, i) => (
+              {/* componentes tecnológicos que parpadean uno a la vez en el núcleo */}
+              {ICONS.map((Icon, i) => (
                 <motion.div
                   key={i}
                   className="absolute left-1/2 top-1/2 -ml-[10px] -mt-[10px] text-brand-accent"
-                  initial={{ opacity: 0, scale: 0.4, x: x * 1.6, y: y * 1.6 }}
-                  animate={{
-                    opacity: [0, 1, 1, 0],
-                    scale: [0.4, 1, 1, 0.3],
-                    x: [x * 1.6, x, x * 0.15, 0],
-                    y: [y * 1.6, y, y * 0.15, 0],
-                  }}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: [0, 1, 1, 0], scale: [0.5, 1, 1, 0.6] }}
                   transition={{
-                    duration: ICON_CONVERGE_S,
-                    delay: i * 0.05,
-                    times: [0, 0.45, 0.75, 1],
+                    duration: ICON_BLINK_S,
+                    delay: i * ICON_BLINK_S,
+                    times: [0, 0.35, 0.65, 1],
                     ease: [0.65, 0, 0.35, 1],
                   }}
                   style={{ filter: "drop-shadow(0 0 6px var(--brand-accent))" }}
