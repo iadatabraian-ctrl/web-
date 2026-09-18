@@ -27,8 +27,10 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b bg-brand-black/90 backdrop-blur transition-all duration-300",
-        scrolled ? "border-brand-line-on-black bg-brand-black/95" : "border-transparent",
+        "sticky top-0 z-50 bg-brand-black/90 backdrop-blur transition-all duration-300",
+        scrolled
+          ? "bg-brand-black/95 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.65)]"
+          : "shadow-[0_10px_28px_-18px_rgba(0,0,0,0.45)]",
       )}
     >
       <div

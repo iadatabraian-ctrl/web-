@@ -40,7 +40,7 @@ export function Hero() {
           opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
           scale: { duration: 20, ease: "easeInOut", repeat: Infinity },
         }}
-        className="absolute inset-0"
+        className="absolute inset-x-0 bottom-0 top-3 sm:top-4"
       >
         <Image
           src="/img/hero/hero-photo-mobile.png"
