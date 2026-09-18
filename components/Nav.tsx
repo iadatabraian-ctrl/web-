@@ -25,7 +25,7 @@ export function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 transition-all duration-300">
+    <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300">
       <div
         className={cn(
           "mx-auto flex max-w-6xl items-center justify-between px-5 transition-[height] duration-300 sm:px-8",

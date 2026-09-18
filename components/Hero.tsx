@@ -32,7 +32,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="relative overflow-hidden px-5 pb-6 pt-6 sm:px-8 sm:pb-16 sm:pt-16">
+    <section id="inicio" className="relative overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-16 sm:pt-32">
       <motion.div
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: [1.08, 1.14, 1.08] }}
@@ -82,7 +82,7 @@ export function Hero() {
           <h1 className="mt-8 font-display text-[9vw] leading-[1.25] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
             {[
               { text: "Sistemas digitales,", className: "text-brand-cream" },
-              { text: "Construidos a medida", className: "text-hero-outline" },
+              { text: "Construidos a medida", className: "font-body font-light text-white" },
               { text: "de tu operación.", className: "text-brand-accent" },
             ].map(({ text, className }, i) => (
               <motion.span

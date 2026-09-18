@@ -206,10 +206,6 @@
       0 100%, 0 100%,
       100% 100%, 100% 100%;
   }
-  /* línea media del H1 del Hero: lavanda sólida, entre el crema y el turquesa */
-  .text-hero-outline {
-    color: #bfc8e4;
-  }
   /* indicador "seguí descubriendo" del hero: puntito que baja dentro del mouse */
   @keyframes scroll-wheel {
     0% {
