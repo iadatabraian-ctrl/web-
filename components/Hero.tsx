@@ -32,7 +32,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="relative overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-16 sm:pt-32">
+    <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-16 sm:pt-32 lg:min-h-[88vh]">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -50,7 +50,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--brand-black-deep)] to-transparent sm:h-56" />
       </motion.div>
 
-      <div className="relative mx-auto flex min-h-[95svh] max-w-6xl flex-col justify-start lg:min-h-[88vh]">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-start">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -77,10 +77,14 @@ export function Hero() {
             <span className="h-px flex-1 bg-brand-line-on-black" />
           </motion.div>
 
-          <h1 className="mt-8 font-display text-[9vw] leading-[1.25] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
+          <h1 className="mt-5 font-display text-[8vw] leading-[1.15] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
             {[
               { text: "Sistemas digitales,", className: "text-brand-cream" },
-              { text: "Construidos a medida", className: "font-body font-light text-white" },
+              {
+                text: "Construidos a medida",
+                className:
+                  "font-body text-[6vw] font-light tracking-tight text-white sm:text-6xl sm:tracking-normal xl:text-[4.6rem]",
+              },
               { text: "de tu operación.", className: "text-brand-accent" },
             ].map(({ text, className }, i) => (
               <motion.span
@@ -101,7 +105,7 @@ export function Hero() {
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-            className="mt-8 max-w-xl font-body text-[13px] leading-loose text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed"
+            className="mt-5 max-w-xl font-body text-[13px] leading-normal text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed"
           >
             Diseñamos e implementamos los{" "}
             <strong className="font-semibold text-brand-cream">sistemas</strong>{" "}
@@ -114,7 +118,7 @@ export function Hero() {
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-            className="mt-9 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4"
+            className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4"
           >
             <a
               href="#hablemos"
@@ -144,7 +148,7 @@ export function Hero() {
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-            className="mt-8 flex gap-3 sm:mt-10 lg:hidden"
+            className="mt-5 flex gap-3 sm:mt-10 lg:hidden"
           >
             <span className="w-px bg-brand-accent" />
             <div className="flex flex-col justify-center gap-1.5">
