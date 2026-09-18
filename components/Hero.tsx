@@ -34,12 +34,9 @@ export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-16 sm:pt-32">
       <motion.div
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: 1, scale: [1.08, 1.14, 1.08] }}
-        transition={{
-          opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
-          scale: { duration: 20, ease: "easeInOut", repeat: Infinity },
-        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-x-0 bottom-0 top-3 sm:top-4"
       >
         <Image
@@ -50,9 +47,10 @@ export function Hero() {
           className="object-cover object-[center_78%] lg:object-[center_68%]"
           sizes="100vw"
         />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--brand-black-deep)] to-transparent sm:h-56" />
       </motion.div>
 
-      <div className="relative mx-auto flex min-h-[95dvh] max-w-6xl flex-col justify-start lg:min-h-[88vh]">
+      <div className="relative mx-auto flex min-h-[95svh] max-w-6xl flex-col justify-start lg:min-h-[88vh]">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0 }}
