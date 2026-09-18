@@ -1,12 +1,10 @@
 import Image from "next/image";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { FadeIn } from "@/components/FadeIn";
-import { SectionGlow } from "@/components/SectionGlow";
 
 export function Nosotros() {
   return (
     <section id="nosotros" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
-      <SectionGlow position="center" />
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
           <FadeIn>

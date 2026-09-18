@@ -15,7 +15,6 @@ import {
   Infinity as InfinityIcon,
 } from "lucide-react";
 import { ServiceBlock } from "@/components/ServiceBlock";
-import { SectionGlow } from "@/components/SectionGlow";
 
 const SERVICES = [
   {
@@ -75,7 +74,6 @@ const SERVICES = [
 export function Servicios() {
   return (
     <section id="servicios" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
-      <SectionGlow position="bottom-left" />
       <div className="mx-auto max-w-6xl">
         <div className="flex items-center gap-3">
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">

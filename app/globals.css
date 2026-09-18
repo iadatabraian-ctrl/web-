@@ -6,20 +6,26 @@
 
 /* ---------- El Núcleo Digital — paleta de marca (ver PRODUCT.md) ----------
    Fija, no depende de light/dark del sistema: el sitio alterna carbón/crema
-   por sección, no por preferencia de color del visitante. */
+   por sección, no por preferencia de color del visitante.
+   Paleta cálida (no gris frío): los negros y el crema llevan un dejo cálido
+   en vez de la tinta azulada anterior. El turquesa sigue siendo el acento
+   de marca en la UI; --brand-glow-warm es un segundo tono SOLO para el
+   fondo ambiental (no se usa en texto ni componentes), a propósito, para
+   no diluir la disciplina de la paleta. */
 :root {
-  --brand-black: #14161b;
-  --brand-black-deep: #0d0e12;
-  --brand-black-soft: #1c1f27;
-  --brand-cream: #eaf7f9;
-  --brand-cream-2: #d3eef2;
+  --brand-black: #1a1712;
+  --brand-black-deep: #100e0b;
+  --brand-black-soft: #241f18;
+  --brand-cream: #f6f1e7;
+  --brand-cream-2: #e4dcc9;
   --brand-accent: #00e5ff;
   --brand-accent-ink: #007a91;
-  --brand-ink-on-black-soft: #93a6ad;
-  --brand-ink-on-cream: #14161b;
-  --brand-ink-on-cream-soft: #4a5c62;
-  --brand-line-on-black: rgba(234, 247, 249, 0.16);
-  --brand-line-on-cream: rgba(20, 22, 27, 0.14);
+  --brand-glow-warm: #ff9d52;
+  --brand-ink-on-black-soft: #a89e8f;
+  --brand-ink-on-cream: #1a1712;
+  --brand-ink-on-cream-soft: #5c5142;
+  --brand-line-on-black: rgba(246, 241, 231, 0.14);
+  --brand-line-on-cream: rgba(26, 23, 18, 0.14);
 }
 
 @theme inline {
@@ -28,6 +34,7 @@
   --color-brand-cream-2: var(--brand-cream-2);
   --color-brand-accent: var(--brand-accent);
   --color-brand-accent-ink: var(--brand-accent-ink);
+  --color-brand-glow-warm: var(--brand-glow-warm);
   --color-brand-ink-on-black-soft: var(--brand-ink-on-black-soft);
   --color-brand-ink-on-cream: var(--brand-ink-on-cream);
   --color-brand-ink-on-cream-soft: var(--brand-ink-on-cream-soft);
@@ -155,17 +162,8 @@
   body {
     @apply text-brand-cream;
     position: relative;
-    background-image: linear-gradient(
-      180deg,
-      var(--brand-black-deep) 0%,
-      var(--brand-black) 12%,
-      var(--brand-black-soft) 28%,
-      var(--brand-black) 42%,
-      var(--brand-black-deep) 58%,
-      var(--brand-black-soft) 74%,
-      var(--brand-black) 88%,
-      var(--brand-black-deep) 100%
-    );
+    /* base plana: la variación de luz la da AmbientBackground, no bandas de degradé */
+    background-color: var(--brand-black-deep);
   }
   html {
     @apply font-sans;

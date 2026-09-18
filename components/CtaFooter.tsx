@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
-import { SectionGlow } from "@/components/SectionGlow";
 
 const NAV_LINKS = [
   { href: "#inicio", label: "Inicio" },
@@ -24,7 +23,6 @@ export function CtaFooter() {
   return (
     <>
       <section id="hablemos" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
-        <SectionGlow position="center" />
         <FadeIn className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
             ¿Tenés una idea o un problema para resolver?

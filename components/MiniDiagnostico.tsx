@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { StepItem } from "@/components/StepItem";
 import { ITEMS as PROBLEMS } from "@/components/Diagnostico";
 import { FadeIn } from "@/components/FadeIn";
-import { SectionGlow } from "@/components/SectionGlow";
 
 const RESULTS: Record<string, { service: string; reason: string }> = {
   "Un sitio que no vende": {
@@ -61,7 +60,6 @@ export function MiniDiagnostico() {
 
   return (
     <section id="diagnostico-rapido" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
-      <SectionGlow position="bottom-right" />
       <div className="mx-auto max-w-2xl">
         <FadeIn className="text-center">
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
