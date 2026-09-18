@@ -5,10 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
-const ICON_BLINK_S = 0.4;
+const ICON_BLINK_S = 0.38;
+const ICON_SLOT_S = 0.5;
 const ICONS = [Code2, Globe, BrainCircuit, Settings2];
-const ICON_SEQUENCE_S = ICON_BLINK_S * ICONS.length;
-const FLASH_DELAY_S = ICON_SEQUENCE_S + 0.1;
+// cada ícono termina de parpadear bien antes de que arranque el siguiente slot
+const ICON_SEQUENCE_END_S = (ICONS.length - 1) * ICON_SLOT_S + ICON_BLINK_S;
+// colchón explícito para que el flash nunca se solape con el último ícono
+const FLASH_DELAY_S = ICON_SEQUENCE_END_S + 0.2;
 const LOGO_POP_DELAY_S = FLASH_DELAY_S + 0.05;
 const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.35;
 
@@ -64,24 +67,48 @@ export function SplashScreen() {
                 }}
               />
 
-              {/* componentes tecnológicos que parpadean uno a la vez en el núcleo */}
-              {ICONS.map((Icon, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute left-1/2 top-1/2 -ml-[10px] -mt-[10px] text-brand-accent"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: [0, 1, 1, 0], scale: [0.5, 1, 1, 0.6] }}
-                  transition={{
-                    duration: ICON_BLINK_S,
-                    delay: i * ICON_BLINK_S,
-                    times: [0, 0.35, 0.65, 1],
-                    ease: [0.65, 0, 0.35, 1],
-                  }}
-                  style={{ filter: "drop-shadow(0 0 6px var(--brand-accent))" }}
-                >
-                  <Icon size={20} strokeWidth={1.75} />
-                </motion.div>
-              ))}
+              {/* componentes tecnológicos: chispazo uno a la vez en el núcleo */}
+              {ICONS.map((Icon, i) => {
+                const delay = i * ICON_SLOT_S;
+                return (
+                  <div
+                    key={i}
+                    className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+                  >
+                    {/* anillo de pulso que se expande detrás del ícono */}
+                    <motion.span
+                      aria-hidden
+                      className="absolute inset-0 rounded-full border border-brand-accent/70"
+                      initial={{ opacity: 0, scale: 0.3 }}
+                      animate={{ opacity: [0, 0.65, 0], scale: [0.3, 1, 1.7] }}
+                      transition={{
+                        duration: ICON_BLINK_S,
+                        delay,
+                        times: [0, 0.4, 1],
+                        ease: "easeOut",
+                      }}
+                    />
+                    <motion.div
+                      className="text-brand-accent"
+                      initial={{ opacity: 0, scale: 0.3, rotate: -18 }}
+                      animate={{
+                        opacity: [0, 1, 0.2, 1, 0],
+                        scale: [0.3, 1.2, 0.95, 1.05, 0.55],
+                        rotate: [-18, 6, -2, 1, 0],
+                      }}
+                      transition={{
+                        duration: ICON_BLINK_S,
+                        delay,
+                        times: [0, 0.28, 0.45, 0.62, 1],
+                        ease: [0.65, 0, 0.35, 1],
+                      }}
+                      style={{ filter: "drop-shadow(0 0 8px var(--brand-accent))" }}
+                    >
+                      <Icon size={22} strokeWidth={1.75} />
+                    </motion.div>
+                  </div>
+                );
+              })}
 
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
