@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     description: "Software a medida y páginas web hechos para tu negocio.",
     images: ["/img/og-image.jpg"],
   },
-  other: { "theme-color": "#100e0b" },
+  other: { "theme-color": "#050403" },
 };
 
 const jsonLd = {

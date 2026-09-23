@@ -12,7 +12,7 @@
    Solo colores planos: sin degradados ni brillos difusos. */
 :root {
   --brand-black: #1a1712;
-  --brand-black-deep: #100e0b;
+  --brand-black-deep: #050403;
   --brand-black-soft: #241f18;
   --brand-cream: #f6f1e7;
   --brand-cream-2: #e4dcc9;
@@ -27,6 +27,7 @@
 
 @theme inline {
   --color-brand-black: var(--brand-black);
+  --color-brand-black-deep: var(--brand-black-deep);
   --color-brand-cream: var(--brand-cream);
   --color-brand-cream-2: var(--brand-cream-2);
   --color-brand-accent: var(--brand-accent);

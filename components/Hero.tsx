@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, ArrowUpRight, ArrowDown, Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
 const ICONS = [
@@ -162,7 +163,7 @@ export function Hero() {
           animate={start ? "show" : "hidden"}
           variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-          className="hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:max-w-2xl sm:gap-6 sm:pt-0"
+          className="hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:max-w-2xl sm:gap-6 sm:pt-0 lg:hidden"
         >
           {ICONS.map(({ icon: Icon, label }) => (
             <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">
@@ -173,7 +174,25 @@ export function Hero() {
             </div>
           ))}
         </motion.div>
+
       </div>
+
+      <motion.div
+        initial="hidden"
+        animate={start ? "show" : "hidden"}
+        variants={fadeUp}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
+        className="pointer-events-none absolute inset-y-16 right-0 hidden w-[34%] lg:block xl:w-[30%]"
+      >
+        <Image
+          src="/img/hero/hero-laptop.png"
+          alt="Laptop con el sistema /deploy en producción"
+          fill
+          className="object-contain object-bottom"
+          sizes="34vw"
+          priority
+        />
+      </motion.div>
     </section>
   );
 }

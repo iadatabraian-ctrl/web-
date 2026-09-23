@@ -85,7 +85,7 @@ export function Nav() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-brand-line-on-black bg-brand-black/95 px-5 pb-5 pt-3 backdrop-blur sm:hidden">
+        <nav className="flex flex-col gap-1 border-t border-brand-line-on-black bg-brand-black-deep/95 px-5 pb-5 pt-3 backdrop-blur sm:hidden">
           {LINKS.map((link) => (
             <a
               key={link.href}
