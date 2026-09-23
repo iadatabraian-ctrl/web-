@@ -146,6 +146,22 @@ export function Hero() {
           initial="hidden"
           animate={start ? "show" : "hidden"}
           variants={fadeUp}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+          className="relative mt-4 min-h-0 flex-1 sm:hidden"
+        >
+          <Image
+            src="/img/hero/hero-laptop.png"
+            alt="Laptop con el sistema /deploy en producción"
+            fill
+            className="object-contain"
+            sizes="90vw"
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          animate={start ? "show" : "hidden"}
+          variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
           className="mt-auto flex flex-col items-center gap-2 pb-2 sm:hidden"
         >
