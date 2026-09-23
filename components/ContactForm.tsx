@@ -16,7 +16,7 @@ export function ContactForm() {
       onSubmit={() => setIsSubmitting(true)}
       className="mx-auto mt-10 flex max-w-md flex-col gap-4 text-left"
     >
-      <input type="hidden" name="_subject" value="Nueva consulta — El Núcleo Digital" />
+      <input type="hidden" name="_subject" value="Nueva consulta — Deploy" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value="https://elnucleodigital.com/?enviado=1" />

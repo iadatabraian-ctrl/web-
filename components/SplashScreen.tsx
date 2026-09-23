@@ -17,7 +17,7 @@ const LOGO_POP_DELAY_S = FLASH_DELAY_S;
 const LOGO_SHINE_DELAY_S = LOGO_POP_DELAY_S + 0.38;
 const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.42;
 
-const TEXT = "El Núcleo Digital";
+const TEXT = "Deploy";
 const LETTER_STAGGER = 0.03;
 const LETTER_DUR = 0.35;
 const TEXT_END_S =
@@ -63,7 +63,7 @@ export function SplashScreen() {
                 className="absolute inset-[-120%] rounded-full"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(234,247,249,0.95) 0%, rgba(0,229,255,0.5) 35%, transparent 70%)",
+                    "radial-gradient(circle, rgba(234,247,249,0.95) 0%, rgba(255,92,26,0.5) 35%, transparent 70%)",
                   opacity: 0,
                   animation: `splash-flash 0.35s ease-out ${FLASH_DELAY_S}s forwards`,
                 }}
@@ -162,7 +162,7 @@ export function SplashScreen() {
               >
                 <Image
                   src="/img/logo.webp"
-                  alt="El Núcleo Digital"
+                  alt="Deploy"
                   fill
                   priority
                   className="object-contain"
@@ -212,7 +212,7 @@ export function SplashScreen() {
                 className="pointer-events-none absolute inset-0 bg-clip-text font-display text-xl uppercase tracking-wide text-transparent opacity-0 sm:text-2xl"
                 style={{
                   backgroundImage:
-                    "linear-gradient(100deg, transparent 30%, rgba(0,229,255,0.9) 50%, transparent 70%)",
+                    "linear-gradient(100deg, transparent 30%, rgba(255,92,26,0.9) 50%, transparent 70%)",
                   backgroundSize: "300% 100%",
                   backgroundPosition: "100% 0",
                   animation: `splash-shine 0.7s ease-out ${SHINE_DELAY_S}s forwards`,

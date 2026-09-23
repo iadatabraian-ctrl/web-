@@ -12,7 +12,7 @@ export function AccesoDirecto() {
             CÓMO TRABAJAMOS
           </p>
           <p className="mt-6 font-body text-lg leading-relaxed text-brand-cream sm:text-xl">
-            Cuando trabajás con El Núcleo Digital hablás directo con quien
+            Cuando trabajás con Deploy hablás directo con quien
             programa, diseña y resuelve tu proyecto, sin pasar por vendedores
             ni intermediarios. Cada proyecto se cotiza a medida, según lo que
             tu negocio necesita realmente.

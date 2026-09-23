@@ -55,7 +55,7 @@ export function CtaFooter() {
         <div className="mx-auto grid max-w-6xl gap-12 pb-14 sm:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link href="#inicio" className="flex items-center gap-2.5">
-              <Image src="/img/logo.webp" alt="El Núcleo Digital" width={28} height={28} />
+              <Image src="/img/logo.webp" alt="Deploy" width={28} height={28} />
               <span className="font-display text-sm tracking-wide text-brand-cream">
                 EL NÚCLEO DIGITAL
               </span>
@@ -131,7 +131,7 @@ export function CtaFooter() {
         </div>
 
         <div className="mx-auto flex max-w-6xl flex-col gap-2 border-t border-brand-line-on-black py-6 font-body text-xs text-brand-ink-on-black-soft sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 El Núcleo Digital</span>
+          <span>© 2026 Deploy</span>
           <span>Salto, Uruguay</span>
         </div>
       </footer>

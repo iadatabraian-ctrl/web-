@@ -21,22 +21,22 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://elnucleodigital.com"),
-  title: "El Núcleo Digital · Software a medida y páginas web",
+  title: "Deploy · Software a medida y páginas web",
   description:
     "Diseñamos y desarrollamos software a medida y páginas web para tu negocio. También automatización de procesos y agentes de WhatsApp e Instagram cuando los necesitás.",
   alternates: { canonical: "https://elnucleodigital.com/" },
   openGraph: {
     type: "website",
-    siteName: "El Núcleo Digital",
+    siteName: "Deploy",
     url: "https://elnucleodigital.com/",
     locale: "es_UY",
-    title: "El Núcleo Digital",
+    title: "Deploy",
     description: "Software a medida y páginas web hechos para tu negocio.",
     images: [{ url: "/img/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "El Núcleo Digital",
+    title: "Deploy",
     description: "Software a medida y páginas web hechos para tu negocio.",
     images: ["/img/og-image.jpg"],
   },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "El Núcleo Digital",
+  name: "Deploy",
   url: "https://elnucleodigital.com/",
   logo: "https://elnucleodigital.com/img/logo.webp",
   image: "https://elnucleodigital.com/img/og-image.jpg",

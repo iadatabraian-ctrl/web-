@@ -78,7 +78,7 @@ export function ServiceBlock({
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(circle at 50% 55%, rgba(0,229,255,.22) 0%, transparent 50%)",
+              "radial-gradient(circle at 50% 55%, rgba(255,92,26,.22) 0%, transparent 50%)",
             filter: "blur(24px)",
           }}
         />
@@ -94,7 +94,7 @@ export function ServiceBlock({
             sizes="(min-width: 640px) 64rem, 95vw"
             style={{
               filter:
-                "drop-shadow(0 0 24px rgba(0,229,255,0.35)) drop-shadow(0 0 60px rgba(0,229,255,0.2))",
+                "drop-shadow(0 0 24px rgba(255,92,26,0.35)) drop-shadow(0 0 60px rgba(255,92,26,0.2))",
             }}
           />
         </motion.div>

@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "El Núcleo Digital",
-    short_name: "El Núcleo Digital",
+    name: "Deploy",
+    short_name: "Deploy",
     description:
       "Software a medida y páginas web para tu negocio. Automatización y agentes de IA como complemento.",
     start_url: "/",

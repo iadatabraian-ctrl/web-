@@ -27,7 +27,7 @@ export function Nosotros() {
               <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-brand-accent/60">
                 <Image
                   src="/img/team/braian.jpg"
-                  alt="Braian, fundador de El Núcleo Digital"
+                  alt="Braian, fundador de Deploy"
                   fill
                   className="object-cover"
                   sizes="64px"

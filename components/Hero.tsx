@@ -79,13 +79,8 @@ export function Hero() {
 
           <h1 className="mt-5 font-display text-[8vw] leading-[1.15] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
             {[
-              { text: "Sistemas digitales,", className: "text-brand-cream" },
-              {
-                text: "Construidos a medida",
-                className:
-                  "font-body text-[6vw] font-light tracking-tight text-white sm:text-6xl sm:tracking-normal xl:text-[4.6rem]",
-              },
-              { text: "de tu operación.", className: "text-brand-accent" },
+              { text: "Tu idea,", className: "text-brand-cream" },
+              { text: "en producción.", className: "text-brand-accent" },
             ].map(({ text, className }, i) => (
               <motion.span
                 key={text}

@@ -58,7 +58,7 @@ function DiagnosticoImage() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(circle at 55% 55%, rgba(0,229,255,.24) 0%, transparent 45%)",
+            "radial-gradient(circle at 55% 55%, rgba(255,92,26,.24) 0%, transparent 45%)",
           filter: "blur(28px)",
         }}
       />
@@ -131,7 +131,7 @@ export function Diagnostico() {
           className="crossmarks mt-16 border border-brand-accent/40 px-6 py-9 text-center sm:px-10 sm:py-10"
           style={{
             background:
-              "radial-gradient(circle at 50% 0%, rgba(0,229,255,.1) 0%, transparent 65%)",
+              "radial-gradient(circle at 50% 0%, rgba(255,92,26,.1) 0%, transparent 65%)",
           }}
         >
           <div className="mx-auto flex max-w-lg flex-col items-center gap-3">

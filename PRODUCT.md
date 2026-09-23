@@ -16,7 +16,7 @@ PyMEs y negocios locales sin equipo técnico propio, que necesitan software a me
 
 ## Product Purpose
 
-El Núcleo Digital es una agencia de desarrollo unipersonal (Braian, fundador) que construye software a medida, páginas web, y automatización/agentes de IA para negocios. Éxito = que el visitante entienda la oferta y escriba ("Hablemos") para cotizar un proyecto a medida.
+Deploy es una agencia de desarrollo unipersonal (Braian, fundador) que construye software a medida, páginas web, y automatización/agentes de IA para negocios. Éxito = que el visitante entienda la oferta y escriba ("Hablemos") para cotizar un proyecto a medida.
 
 ## Positioning
 
@@ -34,7 +34,7 @@ El flujo de trabajo con un cliente (ya reflejado en la sección "Proceso" del si
 
 ## Brand Commitments
 
-- Nombre: El Núcleo Digital. Fundador: Braian, desarrollador con formación en gestión humana y administración de empresas además de código — esa combinación es parte de su propuesta de valor ("pensar cada sistema no solo desde el código, sino desde cómo funciona un negocio").
+- Nombre: Deploy. Fundador: Braian, desarrollador con formación en gestión humana y administración de empresas además de código — esa combinación es parte de su propuesta de valor ("pensar cada sistema no solo desde el código, sino desde cómo funciona un negocio").
 - Identidad visual heredada (ver `_legacy-static/styles.css`): sistema editorial "darkroom" — carbón casi negro (`#14161b`) y "cyan white" crema (`#eaf7f9`) como los dos fondos base, cian eléctrico (`#00e5ff`) como único acento (solo texto/tags, nunca fondo interactivo), tipografía display condensada tipo Anton/Archivo Black en mayúsculas, cuerpo en Archivo, mono JetBrains Mono para detalles técnicos. Regla de marca: cero degradados de color, cero sombras difusas, radios nunca por debajo de 12px. (Un experimento reciente rompió esta regla con un fondo en degradado animado por scroll — se descarta junto con el resto de la animación vieja, no es parte de la identidad a preservar.)
 
 ## Evidence on Hand

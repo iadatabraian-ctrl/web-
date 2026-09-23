@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -32,16 +31,10 @@ export function Nav() {
           scrolled ? "h-12 sm:h-14" : "h-14 sm:h-16",
         )}
       >
-        <Link href="#inicio" className="flex items-center gap-2.5">
-          <Image
-            src="/img/logo.webp"
-            alt="El Núcleo Digital"
-            width={28}
-            height={28}
-            priority
-          />
-          <span className="font-display text-[13px] tracking-wide text-brand-cream sm:text-sm">
-            EL NÚCLEO DIGITAL
+        <Link href="#inicio" aria-label="Deploy" className="flex items-center">
+          <span className="font-display text-[13px] tracking-wide sm:text-sm">
+            <span className="text-brand-accent">/</span>
+            <span className="text-white">deploy</span>
           </span>
         </Link>
 

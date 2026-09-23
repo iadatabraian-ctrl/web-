@@ -4,11 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ---------- El Núcleo Digital — paleta de marca (ver PRODUCT.md) ----------
+/* ---------- Deploy — paleta de marca (ver PRODUCT.md) ----------
    Fija, no depende de light/dark del sistema: el sitio alterna carbón/crema
    por sección, no por preferencia de color del visitante.
    Paleta cálida (no gris frío): los negros y el crema llevan un dejo cálido
-   en vez de la tinta azulada anterior. El turquesa sigue siendo el acento
+   en vez de la tinta azulada anterior. El naranja es el acento
    de marca en la UI; --brand-glow-warm es un segundo tono SOLO para el
    fondo ambiental (no se usa en texto ni componentes), a propósito, para
    no diluir la disciplina de la paleta. */
@@ -18,8 +18,8 @@
   --brand-black-soft: #241f18;
   --brand-cream: #f6f1e7;
   --brand-cream-2: #e4dcc9;
-  --brand-accent: #00e5ff;
-  --brand-accent-ink: #007a91;
+  --brand-accent: #FF5C1A;
+  --brand-accent-ink: #B8400F;
   --brand-glow-warm: #ff9d52;
   --brand-ink-on-black-soft: #a89e8f;
   --brand-ink-on-cream: #1a1712;
