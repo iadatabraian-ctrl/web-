@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ArrowDown, Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
 
@@ -33,23 +32,6 @@ export function Hero() {
 
   return (
     <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-16 sm:pt-32 lg:min-h-[88vh]">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/img/hero/hero-photo-mobile.png"
-          alt="Persona trabajando de espaldas frente a una laptop, iluminación turquesa"
-          fill
-          priority
-          className="object-cover object-[center_78%] lg:object-[center_68%]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--brand-black-deep)] to-transparent sm:h-56" />
-      </motion.div>
-
       <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-start">
         <div className="max-w-4xl">
           <motion.div

@@ -54,11 +54,8 @@ export function CtaFooter() {
       <footer className="border-t border-brand-line-on-black px-5 pt-16 sm:px-8">
         <div className="mx-auto grid max-w-6xl gap-12 pb-14 sm:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Link href="#inicio" className="flex items-center gap-2.5">
-              <Image src="/img/logo.webp" alt="Deploy" width={28} height={28} />
-              <span className="font-display text-sm tracking-wide text-brand-cream">
-                EL NÚCLEO DIGITAL
-              </span>
+            <Link href="#inicio" className="inline-flex">
+              <Image src="/img/deploy-logo.png" alt="Deploy" width={102} height={28} />
             </Link>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
               Software a medida y páginas web para tu negocio. Automatización
