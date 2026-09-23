@@ -15,16 +15,7 @@ const FLASH_DELAY_S = ICON_SEQUENCE_END_S + 0.2;
 // el logo arranca a crecer en el mismo instante que estalla el flash, no después
 const LOGO_POP_DELAY_S = FLASH_DELAY_S;
 const LOGO_SHINE_DELAY_S = LOGO_POP_DELAY_S + 0.38;
-const TEXT_DELAY_S = LOGO_POP_DELAY_S + 0.42;
-
-const TEXT = "Deploy";
-const LETTER_STAGGER = 0.03;
-const LETTER_DUR = 0.35;
-const TEXT_END_S =
-  TEXT_DELAY_S + (TEXT.length - 1) * LETTER_STAGGER + LETTER_DUR;
-
-const SHINE_DELAY_S = TEXT_END_S + 0.12;
-const PULSE_DELAY_S = SHINE_DELAY_S + 0.7 + 0.1;
+const PULSE_DELAY_S = LOGO_SHINE_DELAY_S + 0.7 + 0.1;
 const HOLD_MS = (PULSE_DELAY_S + 0.75) * 1000;
 
 export function SplashScreen() {
@@ -56,11 +47,11 @@ export function SplashScreen() {
             className="flex flex-col items-center"
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}
           >
-            <div className="relative h-24 w-24 sm:h-28 sm:w-28" style={{ perspective: 700 }}>
+            <div className="relative aspect-[280/77] w-56 sm:w-72" style={{ perspective: 700 }}>
               {/* flash de remate al terminar el parpadeo de los íconos */}
               <div
                 aria-hidden
-                className="absolute inset-[-120%] rounded-full"
+                className="absolute left-1/2 top-1/2 h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 rounded-full"
                 style={{
                   background:
                     "radial-gradient(circle, rgba(234,247,249,0.95) 0%, rgba(255,92,26,0.5) 35%, transparent 70%)",
@@ -157,11 +148,11 @@ export function SplashScreen() {
                     mass: 0.7,
                   },
                 }}
-                className="absolute inset-[8%]"
+                className="absolute inset-0"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
-                  src="/img/logo.webp"
+                  src="/img/deploy-logo.png"
                   alt="Deploy"
                   fill
                   priority
@@ -172,11 +163,11 @@ export function SplashScreen() {
                   aria-hidden
                   className="pointer-events-none absolute inset-0"
                   style={{
-                    WebkitMaskImage: "url(/img/logo.webp)",
+                    WebkitMaskImage: "url(/img/deploy-logo.png)",
                     WebkitMaskSize: "contain",
                     WebkitMaskRepeat: "no-repeat",
                     WebkitMaskPosition: "center",
-                    maskImage: "url(/img/logo.webp)",
+                    maskImage: "url(/img/deploy-logo.png)",
                     maskSize: "contain",
                     maskRepeat: "no-repeat",
                     maskPosition: "center",
@@ -189,37 +180,6 @@ export function SplashScreen() {
                   }}
                 />
               </motion.div>
-            </div>
-
-            <div className="relative mt-6 flex" style={{ whiteSpace: "pre" }}>
-              {[...TEXT].map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: LETTER_DUR,
-                    delay: TEXT_DELAY_S + i * LETTER_STAGGER,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="font-display text-xl uppercase tracking-wide text-brand-cream sm:text-2xl"
-                >
-                  {char}
-                </motion.span>
-              ))}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-clip-text font-display text-xl uppercase tracking-wide text-transparent opacity-0 sm:text-2xl"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(100deg, transparent 30%, rgba(255,92,26,0.9) 50%, transparent 70%)",
-                  backgroundSize: "300% 100%",
-                  backgroundPosition: "100% 0",
-                  animation: `splash-shine 0.7s ease-out ${SHINE_DELAY_S}s forwards`,
-                }}
-              >
-                {TEXT}
-              </span>
             </div>
           </div>
         </motion.div>

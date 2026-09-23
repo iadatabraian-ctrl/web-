@@ -11,7 +11,7 @@ export function ContactForm() {
 
   return (
     <form
-      action="https://formsubmit.co/elnucleodigital1@gmail.com"
+      action="https://formsubmit.co/deploy.uy@gmail.com"
       method="POST"
       onSubmit={() => setIsSubmitting(true)}
       className="mx-auto mt-10 flex max-w-md flex-col gap-4 text-left"

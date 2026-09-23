@@ -246,22 +246,6 @@
       transform: scale(1.06);
     }
   }
-  @keyframes splash-shine {
-    0% {
-      opacity: 0;
-      background-position: 100% 0;
-    }
-    15% {
-      opacity: 1;
-    }
-    85% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      background-position: -100% 0;
-    }
-  }
   @keyframes splash-logo-shine {
     0% {
       opacity: 0;

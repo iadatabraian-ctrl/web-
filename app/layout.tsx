@@ -48,11 +48,11 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Deploy",
   url: "https://elnucleodigital.com/",
-  logo: "https://elnucleodigital.com/img/logo.webp",
+  logo: "https://elnucleodigital.com/img/deploy-logo.png",
   image: "https://elnucleodigital.com/img/og-image.jpg",
   description:
     "Software a medida y páginas web para tu negocio. Automatización de procesos y agentes de WhatsApp e Instagram como complemento.",
-  email: "elnucleodigital1@gmail.com",
+  email: "deploy.uy@gmail.com",
   telephone: "+59898648853",
   areaServed: "UY",
   address: {
@@ -60,7 +60,7 @@ const jsonLd = {
     addressLocality: "Salto",
     addressCountry: "UY",
   },
-  sameAs: ["https://instagram.com/elnucleodigital_"],
+  sameAs: ["https://instagram.com/deploy.uy"],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

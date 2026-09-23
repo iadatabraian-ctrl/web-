@@ -72,7 +72,7 @@ export function CtaFooter() {
                 <WhatsAppIcon className="h-4 w-4" />
               </a>
               <a
-                href="https://instagram.com/elnucleodigital_"
+                href="https://instagram.com/deploy.uy"
                 target="_blank"
                 rel="noopener"
                 aria-label="Instagram"
@@ -81,7 +81,7 @@ export function CtaFooter() {
                 <InstagramIcon className="h-4 w-4" />
               </a>
               <a
-                href="mailto:elnucleodigital1@gmail.com"
+                href="mailto:deploy.uy@gmail.com"
                 aria-label="Email"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
               >
