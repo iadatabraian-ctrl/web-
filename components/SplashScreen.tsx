@@ -47,7 +47,7 @@ export function SplashScreen() {
             className="flex flex-col items-center"
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}
           >
-            <div className="relative aspect-[280/77] w-56 sm:w-72" style={{ perspective: 700 }}>
+            <div className="relative aspect-[694/187] w-56 sm:w-72" style={{ perspective: 700 }}>
               {/* flash de remate al terminar el parpadeo de los íconos */}
               <div
                 aria-hidden

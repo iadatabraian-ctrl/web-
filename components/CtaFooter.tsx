@@ -55,7 +55,7 @@ export function CtaFooter() {
         <div className="mx-auto grid max-w-6xl gap-12 pb-14 sm:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link href="#inicio" className="inline-flex">
-              <Image src="/img/deploy-logo.png" alt="Deploy" width={102} height={28} />
+              <Image src="/img/deploy-logo.png" alt="Deploy" width={104} height={28} />
             </Link>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
               Software a medida y páginas web para tu negocio. Automatización
