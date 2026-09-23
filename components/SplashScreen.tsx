@@ -14,8 +14,7 @@ const ICON_SEQUENCE_END_S = (ICONS.length - 1) * ICON_SLOT_S + ICON_BLINK_S;
 const FLASH_DELAY_S = ICON_SEQUENCE_END_S + 0.2;
 // el logo arranca a crecer en el mismo instante que estalla el flash, no después
 const LOGO_POP_DELAY_S = FLASH_DELAY_S;
-const LOGO_SHINE_DELAY_S = LOGO_POP_DELAY_S + 0.38;
-const PULSE_DELAY_S = LOGO_SHINE_DELAY_S + 0.7 + 0.1;
+const PULSE_DELAY_S = LOGO_POP_DELAY_S + 1.18;
 const HOLD_MS = (PULSE_DELAY_S + 0.75) * 1000;
 
 export function SplashScreen() {
@@ -48,18 +47,6 @@ export function SplashScreen() {
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}
           >
             <div className="relative aspect-[694/187] w-56 sm:w-72" style={{ perspective: 700 }}>
-              {/* flash de remate al terminar el parpadeo de los íconos */}
-              <div
-                aria-hidden
-                className="absolute left-1/2 top-1/2 h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(234,247,249,0.95) 0%, rgba(255,92,26,0.5) 35%, transparent 70%)",
-                  opacity: 0,
-                  animation: `splash-flash 0.35s ease-out ${FLASH_DELAY_S}s forwards`,
-                }}
-              />
-
               {/* onda expansiva que se abre paso hacia el resto de la pantalla */}
               <motion.div
                 aria-hidden
@@ -113,7 +100,6 @@ export function SplashScreen() {
                         times: [0, 0.28, 0.45, 0.62, 1],
                         ease: [0.65, 0, 0.35, 1],
                       }}
-                      style={{ filter: "drop-shadow(0 0 8px var(--brand-accent))" }}
                     >
                       <Icon size={22} strokeWidth={1.75} />
                     </motion.div>
@@ -157,27 +143,6 @@ export function SplashScreen() {
                   fill
                   priority
                   className="object-contain"
-                />
-                {/* barrido de luz recortado a la forma real del logo */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    WebkitMaskImage: "url(/img/deploy-logo.png)",
-                    WebkitMaskSize: "contain",
-                    WebkitMaskRepeat: "no-repeat",
-                    WebkitMaskPosition: "center",
-                    maskImage: "url(/img/deploy-logo.png)",
-                    maskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    maskPosition: "center",
-                    backgroundImage:
-                      "linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.95) 50%, transparent 65%)",
-                    backgroundSize: "260% 100%",
-                    backgroundPosition: "140% 0",
-                    opacity: 0,
-                    animation: `splash-logo-shine 0.7s ease-out ${LOGO_SHINE_DELAY_S}s forwards`,
-                  }}
                 />
               </motion.div>
             </div>

@@ -73,15 +73,6 @@ export function ServiceBlock({
         className="relative mt-12 aspect-[4/3] w-full max-w-5xl sm:mt-16"
         style={{ perspective: "1400px" }}
       >
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 55%, rgba(255,92,26,.22) 0%, transparent 50%)",
-            filter: "blur(24px)",
-          }}
-        />
         <motion.div
           style={{ rotateX, scale, opacity, y, transformStyle: "preserve-3d" }}
           className="relative h-full w-full"
@@ -92,10 +83,6 @@ export function ServiceBlock({
             fill
             className="object-contain"
             sizes="(min-width: 640px) 64rem, 95vw"
-            style={{
-              filter:
-                "drop-shadow(0 0 24px rgba(255,92,26,0.35)) drop-shadow(0 0 60px rgba(255,92,26,0.2))",
-            }}
           />
         </motion.div>
 

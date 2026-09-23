@@ -8,10 +8,8 @@
    Fija, no depende de light/dark del sistema: el sitio alterna carbón/crema
    por sección, no por preferencia de color del visitante.
    Paleta cálida (no gris frío): los negros y el crema llevan un dejo cálido
-   en vez de la tinta azulada anterior. El naranja es el acento
-   de marca en la UI; --brand-glow-warm es un segundo tono SOLO para el
-   fondo ambiental (no se usa en texto ni componentes), a propósito, para
-   no diluir la disciplina de la paleta. */
+   en vez de la tinta azulada anterior. El naranja es el único acento.
+   Solo colores planos: sin degradados ni brillos difusos. */
 :root {
   --brand-black: #1a1712;
   --brand-black-deep: #100e0b;
@@ -20,7 +18,6 @@
   --brand-cream-2: #e4dcc9;
   --brand-accent: #FF5C1A;
   --brand-accent-ink: #B8400F;
-  --brand-glow-warm: #ff9d52;
   --brand-ink-on-black-soft: #a89e8f;
   --brand-ink-on-cream: #1a1712;
   --brand-ink-on-cream-soft: #5c5142;
@@ -34,7 +31,6 @@
   --color-brand-cream-2: var(--brand-cream-2);
   --color-brand-accent: var(--brand-accent);
   --color-brand-accent-ink: var(--brand-accent-ink);
-  --color-brand-glow-warm: var(--brand-glow-warm);
   --color-brand-ink-on-black-soft: var(--brand-ink-on-black-soft);
   --color-brand-ink-on-cream: var(--brand-ink-on-cream);
   --color-brand-ink-on-cream-soft: var(--brand-ink-on-cream-soft);
@@ -162,7 +158,6 @@
   body {
     @apply text-brand-cream;
     position: relative;
-    /* base plana: la variación de luz la da AmbientBackground, no bandas de degradé */
     background-color: var(--brand-black-deep);
   }
   html {
@@ -223,20 +218,7 @@
   .animate-scroll-wheel {
     animation: scroll-wheel 1.6s ease-in-out infinite;
   }
-  /* splash screen: flash de revelado + pulso de confirmación + destello del texto */
-  @keyframes splash-flash {
-    0% {
-      opacity: 0;
-      transform: scale(0.4);
-    }
-    40% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: scale(1.3);
-    }
-  }
+  /* splash screen: pulso de confirmación */
   @keyframes splash-pulse {
     0%,
     100% {
@@ -244,22 +226,6 @@
     }
     50% {
       transform: scale(1.06);
-    }
-  }
-  @keyframes splash-logo-shine {
-    0% {
-      opacity: 0;
-      background-position: 140% 0;
-    }
-    25% {
-      opacity: 1;
-    }
-    70% {
-      opacity: 0.9;
-    }
-    100% {
-      opacity: 0;
-      background-position: -60% 0;
     }
   }
   /* grano sutil de marca, no forma parte del experimento de animación descartado */

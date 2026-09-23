@@ -53,15 +53,6 @@ function DiagnosticoImage() {
       className="relative mx-auto aspect-[4/3] w-full max-w-[260px] sm:max-w-sm lg:max-w-md"
       style={{ perspective: "1200px" }}
     >
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(circle at 55% 55%, rgba(255,92,26,.24) 0%, transparent 45%)",
-          filter: "blur(28px)",
-        }}
-      />
       <motion.div
         style={{ rotateX, scale, opacity, transformStyle: "preserve-3d" }}
         className="relative h-full w-full"
@@ -129,10 +120,6 @@ export function Diagnostico() {
 
         <FadeIn
           className="crossmarks mt-16 border border-brand-accent/40 px-6 py-9 text-center sm:px-10 sm:py-10"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 0%, rgba(255,92,26,.1) 0%, transparent 65%)",
-          }}
         >
           <div className="mx-auto flex max-w-lg flex-col items-center gap-3">
             <ArrowRight className="h-5 w-5 text-brand-accent" />
