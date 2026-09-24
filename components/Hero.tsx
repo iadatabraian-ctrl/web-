@@ -138,25 +138,6 @@ export function Hero() {
             <ArrowDown className="h-3 w-3 text-brand-ink-on-black-soft" />
           </div>
 
-          <motion.div
-            initial="hidden"
-            animate={start ? "show" : "hidden"}
-            variants={fadeUp}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-            className="mt-5 flex gap-3 sm:mt-10 lg:hidden"
-          >
-            <span className="w-px bg-brand-accent" />
-            <div className="flex flex-col justify-center gap-1.5">
-              {["IDEAS", "SISTEMAS", "RESULTADOS"].map((word) => (
-                <span
-                  key={word}
-                  className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft"
-                >
-                  {word}
-                </span>
-              ))}
-            </div>
-          </motion.div>
         </div>
 
         <motion.div
