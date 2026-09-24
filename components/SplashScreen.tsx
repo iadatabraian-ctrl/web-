@@ -64,6 +64,15 @@ export function SplashScreen() {
                 animate={{ opacity: [0, 0.35, 0], scale: [0.1, 1, 1.2] }}
                 transition={{ duration: 1.1, delay: FLASH_DELAY_S + 0.06, ease: "easeOut" }}
               />
+              {/* estallido sólido justo detrás del logo, el "flash" del reveal */}
+              <motion.div
+                aria-hidden
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent"
+                style={{ width: "34vmin", height: "34vmin" }}
+                initial={{ opacity: 0, scale: 0.2 }}
+                animate={{ opacity: [0, 0.85, 0], scale: [0.2, 1, 1.5] }}
+                transition={{ duration: 0.3, times: [0, 0.15, 1], ease: "linear", delay: FLASH_DELAY_S }}
+              />
 
               {/* componentes tecnológicos: chispazo uno a la vez en el núcleo */}
               {ICONS.map((Icon, i) => {
@@ -111,26 +120,26 @@ export function SplashScreen() {
                 initial={{ opacity: 0, scale: 0.3, rotateY: -55, rotateX: 16 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0, rotateX: 0 }}
                 transition={{
-                  opacity: { delay: LOGO_POP_DELAY_S, duration: 0.28, ease: "easeOut" },
+                  opacity: { delay: LOGO_POP_DELAY_S, duration: 0.24, ease: "easeOut" },
                   scale: {
                     delay: LOGO_POP_DELAY_S,
                     type: "spring",
-                    stiffness: 230,
-                    damping: 16,
+                    stiffness: 320,
+                    damping: 11,
                     mass: 0.7,
                   },
                   rotateY: {
                     delay: LOGO_POP_DELAY_S,
                     type: "spring",
-                    stiffness: 230,
-                    damping: 16,
+                    stiffness: 320,
+                    damping: 11,
                     mass: 0.7,
                   },
                   rotateX: {
                     delay: LOGO_POP_DELAY_S,
                     type: "spring",
-                    stiffness: 230,
-                    damping: 16,
+                    stiffness: 320,
+                    damping: 11,
                     mass: 0.7,
                   },
                 }}
@@ -147,6 +156,15 @@ export function SplashScreen() {
               </motion.div>
             </div>
           </div>
+
+          {/* flash de pantalla completa sincronizado con el estallido del logo */}
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-brand-cream"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.16, 0] }}
+            transition={{ duration: 0.32, times: [0, 0.2, 1], ease: "linear", delay: FLASH_DELAY_S }}
+          />
         </motion.div>
       )}
     </AnimatePresence>
