@@ -174,7 +174,7 @@ export function MiniDiagnostico() {
                                 <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
                                   SERVICIO RECOMENDADO
                                 </span>
-                                <p className="mt-1 font-display text-xl text-brand-accent sm:text-2xl">
+                                <p className="mt-1 font-display text-xl text-brand-cream sm:text-2xl">
                                   {result.service}
                                 </p>
                                 <p className="mt-2 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">

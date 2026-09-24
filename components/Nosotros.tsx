@@ -24,7 +24,7 @@ export function Nosotros() {
 
           <FadeIn delay={0.15} className="rounded-2xl border border-brand-line-on-black p-8">
             <div className="flex items-center gap-4">
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-brand-accent/60">
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-brand-cream/20">
                 <Image
                   src="/img/team/braian.jpg"
                   alt="Braian, fundador de Deploy"

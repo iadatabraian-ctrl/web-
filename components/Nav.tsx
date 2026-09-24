@@ -65,19 +65,19 @@ export function Nav() {
         >
           <span
             className={cn(
-              "h-[1.5px] w-[18px] bg-brand-accent transition-transform",
+              "h-[1.5px] w-[18px] bg-brand-cream transition-transform",
               open && "translate-y-[6.5px] rotate-45",
             )}
           />
           <span
             className={cn(
-              "h-[1.5px] w-[18px] bg-brand-accent transition-opacity",
+              "h-[1.5px] w-[18px] bg-brand-cream transition-opacity",
               open && "opacity-0",
             )}
           />
           <span
             className={cn(
-              "h-[1.5px] w-[18px] bg-brand-accent transition-transform",
+              "h-[1.5px] w-[18px] bg-brand-cream transition-transform",
               open && "-translate-y-[6.5px] -rotate-45",
             )}
           />

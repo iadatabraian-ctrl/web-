@@ -43,7 +43,7 @@ export function Diagnostico() {
           <h2 className="mt-4 font-display text-[9vw] leading-[1.1] sm:text-5xl md:text-6xl">
             <span className="block text-brand-cream">El negocio creció.</span>
             <span className="block text-brand-cream">El sistema no.</span>
-            <span className="block text-brand-accent">Y ahí empieza el problema.</span>
+            <span className="block text-brand-cream">Y ahí empieza el problema.</span>
           </h2>
         </FadeIn>
       </div>
@@ -74,16 +74,16 @@ export function Diagnostico() {
         </div>
 
         <FadeIn delay={0.2} className="mt-8">
-          <p className="font-display text-3xl leading-tight text-brand-cream sm:text-5xl">
+          <p className="font-display text-2xl leading-tight text-brand-cream sm:text-5xl">
             El problema no es crecer.
           </p>
-          <p className="font-display text-3xl leading-tight text-brand-cream sm:text-5xl">
-            Es seguir <span className="text-brand-accent">operando</span> como antes.
+          <p className="font-display text-2xl leading-tight text-brand-cream sm:text-5xl">
+            Es seguir operando como antes.
           </p>
         </FadeIn>
 
         <div className="mt-8 flex justify-center">
-          <ArrowDown className="h-5 w-5 text-brand-accent" />
+          <ArrowDown className="h-5 w-5 text-brand-ink-on-black-soft" />
         </div>
       </div>
     </section>

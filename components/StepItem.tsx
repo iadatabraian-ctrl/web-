@@ -21,8 +21,8 @@ export function StepItem({
   const content = (
     <>
       <div className="flex flex-col items-center">
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-brand-accent/60">
-          <Icon className="h-6 w-6 text-brand-accent" strokeWidth={1.75} />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-brand-cream/25 sm:h-16 sm:w-16">
+          <Icon className="h-5 w-5 text-brand-cream sm:h-6 sm:w-6" strokeWidth={1.75} />
         </div>
         {!isLast && (
           <motion.span
@@ -35,15 +35,15 @@ export function StepItem({
           />
         )}
       </div>
-      <div className={isLast ? "flex-1" : "flex-1 pb-10"}>
-        <span className="font-mono text-sm text-brand-accent">0{index + 1}</span>
-        <h3 className="mt-1 font-display text-2xl text-brand-cream sm:text-3xl">
+      <div className={isLast ? "flex-1" : "flex-1 pb-6 sm:pb-10"}>
+        <span className="font-mono text-xs text-brand-ink-on-black-soft sm:text-sm">0{index + 1}</span>
+        <h3 className="mt-1 font-display text-xl text-brand-cream sm:text-3xl">
           {title}
         </h3>
         <p className="mt-2 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-base">
           {desc}
         </p>
-        {!isLast && <hr className="mt-8 max-w-xl border-brand-line-on-black" />}
+        {!isLast && <hr className="mt-6 max-w-xl border-brand-line-on-black sm:mt-8" />}
       </div>
     </>
   );
@@ -55,7 +55,7 @@ export function StepItem({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.12 }}
-        className="flex gap-6"
+        className="flex gap-4 sm:gap-6"
       >
         {content}
       </motion.div>
@@ -71,8 +71,8 @@ export function StepItem({
     >
       {/* compact: icon + number + title on one line, mobile only */}
       <div className={`relative pl-[3.75rem] sm:hidden ${isLast ? "" : "pb-6"}`}>
-        <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand-accent/60">
-          <Icon className="h-4 w-4 text-brand-accent" strokeWidth={1.75} />
+        <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand-cream/25">
+          <Icon className="h-4 w-4 text-brand-cream" strokeWidth={1.75} />
         </div>
         {!isLast && (
           <motion.span
@@ -85,7 +85,7 @@ export function StepItem({
           />
         )}
         <h3 className="flex min-h-10 items-center gap-2 font-display text-lg leading-tight text-brand-cream">
-          <span className="font-mono text-xs text-brand-accent">0{index + 1}</span>
+          <span className="font-mono text-xs text-brand-ink-on-black-soft">0{index + 1}</span>
           {title}
         </h3>
         <p className="mt-1.5 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
