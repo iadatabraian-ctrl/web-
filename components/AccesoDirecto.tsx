@@ -11,7 +11,7 @@ export function AccesoDirecto() {
           <p className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
             CÓMO TRABAJAMOS
           </p>
-          <p className="mt-6 font-body text-lg leading-relaxed text-brand-cream sm:text-xl">
+          <p className="mt-6 font-body text-base leading-relaxed text-brand-cream sm:text-xl">
             Cuando trabajás con Deploy hablás directo con quien
             programa, diseña y resuelve tu proyecto, sin pasar por vendedores
             ni intermediarios. Cada proyecto se cotiza a medida, según lo que

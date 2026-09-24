@@ -37,7 +37,7 @@ export function Proceso() {
           <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
         </div>
 
-        <h2 className="mt-4 max-w-2xl font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
+        <h2 className="mt-4 max-w-2xl font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
           De la idea a la solución funcionando.
         </h2>
 

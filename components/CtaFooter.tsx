@@ -24,10 +24,10 @@ export function CtaFooter() {
     <>
       <section id="hablemos" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
         <FadeIn className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
             ¿Tenés una idea o un problema para resolver?
           </h2>
-          <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-brand-ink-on-black-soft sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-lg">
             Contanos qué necesita tu negocio. Vemos juntos si conviene un
             sistema a medida, un sitio web o algo más simple.
           </p>

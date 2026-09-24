@@ -40,7 +40,7 @@ export function Diagnostico() {
             <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
           </div>
 
-          <h2 className="mt-4 font-display text-[9vw] leading-[1.1] sm:text-5xl md:text-6xl">
+          <h2 className="mt-4 font-display text-3xl leading-[1.1] sm:text-5xl md:text-6xl">
             <span className="block text-brand-cream">El negocio creció.</span>
             <span className="block text-brand-cream">El sistema no.</span>
             <span className="block text-brand-cream">Y ahí empieza el problema.</span>

@@ -87,7 +87,7 @@ export function MiniDiagnostico() {
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
             MINI DIAGNÓSTICO
           </span>
-          <h2 className="mt-4 font-display text-[9vw] leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
+          <h2 className="mt-4 font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
             ¿Qué está frenando tu negocio hoy?
           </h2>
           <p className="mx-auto mt-4 max-w-md font-body text-sm text-brand-ink-on-black-soft sm:text-base">
