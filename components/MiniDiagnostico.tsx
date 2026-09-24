@@ -1,11 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, AppWindow, ClipboardList, Unlink, TrendingUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { StepItem } from "@/components/StepItem";
-import { ITEMS as PROBLEMS } from "@/components/Diagnostico";
 import { FadeIn } from "@/components/FadeIn";
+
+const PROBLEMS = [
+  {
+    icon: AppWindow,
+    title: "Un sitio que no vende",
+    desc: "Una página vieja o armada con plantillas no genera confianza ni convierte visitas en clientes.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Procesos armados a mano",
+    desc: "Planillas, papeles y WhatsApp sueltos en vez de un sistema que ordena la operación diaria.",
+  },
+  {
+    icon: Unlink,
+    title: "Herramientas que no conversan entre sí",
+    desc: "Cada área usa lo suyo y nadie tiene una vista completa de cómo va el negocio.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Decisiones sin datos reales",
+    desc: "Sin información clara, todo se maneja por intuición y se pierden oportunidades de crecimiento.",
+  },
+];
 
 const RESULTS: Record<string, { service: string; reason: string }> = {
   "Un sitio que no vende": {
