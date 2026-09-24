@@ -73,13 +73,13 @@ const SERVICES = [
 
 export function Servicios() {
   return (
-    <section id="servicios" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
+    <section id="servicios" className="relative overflow-hidden bg-brand-cream px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-center gap-3">
-          <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
+          <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-cream-soft sm:text-xs">
             EN QUÉ TRABAJAMOS
           </span>
-          <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
+          <span className="h-px flex-1 max-w-24 bg-brand-line-on-cream" />
         </div>
 
         <div className="mt-10 flex flex-col gap-24 sm:mt-14 sm:gap-32">

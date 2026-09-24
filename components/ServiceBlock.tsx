@@ -54,7 +54,7 @@ export function ServiceBlock({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
-        className="mt-2 max-w-lg font-display text-3xl leading-[1.1] text-brand-cream sm:text-4xl"
+        className="mt-2 max-w-lg font-display text-3xl leading-[1.1] text-brand-ink-on-cream sm:text-4xl"
       >
         {title}
       </motion.h3>
@@ -63,7 +63,7 @@ export function ServiceBlock({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.16 }}
-        className="mt-4 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-base"
+        className="mt-4 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:text-base"
       >
         {description}
       </motion.p>

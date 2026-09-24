@@ -27,6 +27,12 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300">
       <div
         className={cn(
+          "border-b border-transparent transition-[height,background-color,border-color] duration-300",
+          scrolled && "border-brand-line-on-black bg-brand-black-deep/85 backdrop-blur",
+        )}
+      >
+      <div
+        className={cn(
           "mx-auto flex max-w-6xl items-center justify-between px-5 transition-[height] duration-300 sm:px-8",
           scrolled ? "h-12 sm:h-14" : "h-14 sm:h-16",
         )}
@@ -82,6 +88,7 @@ export function Nav() {
             )}
           />
         </button>
+      </div>
       </div>
 
       {open && (
