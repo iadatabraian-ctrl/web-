@@ -33,6 +33,23 @@ export function Hero() {
 
   return (
     <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-16 sm:pt-32 lg:min-h-[88vh]">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0"
+      >
+        <Image
+          src="/img/hero/hero-laptop.png"
+          alt="Laptop con el sistema /deploy en producción"
+          fill
+          priority
+          className="object-contain object-[center_bottom] lg:object-[85%_bottom]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--brand-black-deep)] to-transparent sm:h-56" />
+      </motion.div>
+
       <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-start">
         <div className="max-w-4xl">
           <motion.div
@@ -146,22 +163,6 @@ export function Hero() {
           initial="hidden"
           animate={start ? "show" : "hidden"}
           variants={fadeUp}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-          className="relative mt-4 min-h-0 flex-1 sm:hidden"
-        >
-          <Image
-            src="/img/hero/hero-laptop.png"
-            alt="Laptop con el sistema /deploy en producción"
-            fill
-            className="object-contain"
-            sizes="90vw"
-          />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          animate={start ? "show" : "hidden"}
-          variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
           className="mt-auto flex flex-col items-center gap-2 pb-2 sm:hidden"
         >
@@ -179,7 +180,7 @@ export function Hero() {
           animate={start ? "show" : "hidden"}
           variants={fadeUp}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-          className="hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:max-w-2xl sm:gap-6 sm:pt-0 lg:hidden"
+          className="hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:max-w-2xl sm:gap-6 sm:pt-0"
         >
           {ICONS.map(({ icon: Icon, label }) => (
             <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">
@@ -190,25 +191,7 @@ export function Hero() {
             </div>
           ))}
         </motion.div>
-
       </div>
-
-      <motion.div
-        initial="hidden"
-        animate={start ? "show" : "hidden"}
-        variants={fadeUp}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-        className="pointer-events-none absolute inset-y-16 right-0 hidden w-[34%] lg:block xl:w-[30%]"
-      >
-        <Image
-          src="/img/hero/hero-laptop.png"
-          alt="Laptop con el sistema /deploy en producción"
-          fill
-          className="object-contain object-bottom"
-          sizes="34vw"
-          priority
-        />
-      </motion.div>
     </section>
   );
 }
