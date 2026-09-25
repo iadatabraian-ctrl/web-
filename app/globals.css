@@ -230,6 +230,36 @@
       transform: scale(1.06);
     }
   }
+  /* cuadrícula técnica de fondo con resplandor naranja, aparece con un fundido al cargar */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: grid-emerge 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    background-image:
+      radial-gradient(ellipse 60% 45% at 50% 0%, rgba(255, 92, 26, 0.18), transparent 70%),
+      linear-gradient(var(--brand-line-on-black) 1px, transparent 1px),
+      linear-gradient(90deg, var(--brand-line-on-black) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      44px 44px,
+      44px 44px;
+    mask-image: radial-gradient(ellipse 90% 65% at 50% 0%, black 35%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 65% at 50% 0%, black 35%, transparent 90%);
+  }
+  @keyframes grid-emerge {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
   /* grano sutil de marca, no forma parte del experimento de animación descartado */
   body::after {
     content: "";
