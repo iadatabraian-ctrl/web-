@@ -241,8 +241,8 @@
     opacity: 0;
     animation: grid-emerge 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
     background-image:
-      linear-gradient(rgba(255, 92, 26, 0.16) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 92, 26, 0.16) 1px, transparent 1px);
+      linear-gradient(rgba(255, 92, 26, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 92, 26, 0.07) 1px, transparent 1px);
     background-size: 44px 44px;
     mask-image: radial-gradient(circle at 50% 34%, transparent 0, transparent 9vmin, black 38vmin);
     -webkit-mask-image: radial-gradient(circle at 50% 34%, transparent 0, transparent 9vmin, black 38vmin);
