@@ -19,7 +19,7 @@ export function ContactForm() {
       <input type="hidden" name="_subject" value="Nueva consulta — Deploy" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://elnucleodigital.com/?enviado=1" />
+      <input type="hidden" name="_next" value="https://deployuy.com/?enviado=1" />
 
       <div>
         <label htmlFor="nombre" className="sr-only">

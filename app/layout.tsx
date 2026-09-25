@@ -20,15 +20,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://elnucleodigital.com"),
+  metadataBase: new URL("https://deployuy.com"),
   title: "Deploy · Software a medida y páginas web",
   description:
     "Diseñamos y desarrollamos software a medida y páginas web para tu negocio. También automatización de procesos y agentes de WhatsApp e Instagram cuando los necesitás.",
-  alternates: { canonical: "https://elnucleodigital.com/" },
+  alternates: { canonical: "https://deployuy.com/" },
   openGraph: {
     type: "website",
     siteName: "Deploy",
-    url: "https://elnucleodigital.com/",
+    url: "https://deployuy.com/",
     locale: "es_UY",
     title: "Deploy",
     description: "Software a medida y páginas web hechos para tu negocio.",
@@ -47,9 +47,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Deploy",
-  url: "https://elnucleodigital.com/",
-  logo: "https://elnucleodigital.com/img/deploy-logo.png",
-  image: "https://elnucleodigital.com/img/og-image.jpg",
+  url: "https://deployuy.com/",
+  logo: "https://deployuy.com/img/deploy-logo.png",
+  image: "https://deployuy.com/img/og-image.jpg",
   description:
     "Software a medida y páginas web para tu negocio. Automatización de procesos y agentes de WhatsApp e Instagram como complemento.",
   email: "deploy.uy@gmail.com",

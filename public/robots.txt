@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elnucleodigital.com/sitemap.xml
+Sitemap: https://deployuy.com/sitemap.xml
