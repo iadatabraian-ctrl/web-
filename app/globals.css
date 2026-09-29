@@ -230,36 +230,6 @@
       transform: scale(1.06);
     }
   }
-  /* cuadrícula técnica naranja sobre toda la landing (incluso sobre imágenes),
-     con un vórtice fijo a la pantalla donde el grid se desvanece */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 40;
-    pointer-events: none;
-    opacity: 0;
-    animation: grid-emerge 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-    background-image:
-      linear-gradient(rgba(255, 92, 26, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 92, 26, 0.07) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: radial-gradient(circle at 50% 34%, transparent 0, transparent 9vmin, black 38vmin);
-    -webkit-mask-image: radial-gradient(circle at 50% 34%, transparent 0, transparent 9vmin, black 38vmin);
-    /* recorta la franja del header fijo (Nav) para que su cuadrícula no se
-       superponga con la del canvas del hero u otras secciones debajo */
-    clip-path: inset(4rem 0 0 0);
-  }
-  @keyframes grid-emerge {
-    from {
-      opacity: 0;
-      transform: scale(0.97);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
   /* grano sutil de marca, no forma parte del experimento de animación descartado */
   body::after {
     content: "";
