@@ -246,6 +246,9 @@
     background-size: 44px 44px;
     mask-image: radial-gradient(circle at 50% 34%, transparent 0, transparent 9vmin, black 38vmin);
     -webkit-mask-image: radial-gradient(circle at 50% 34%, transparent 0, transparent 9vmin, black 38vmin);
+    /* recorta la franja del header fijo (Nav) para que su cuadrícula no se
+       superponga con la del canvas del hero u otras secciones debajo */
+    clip-path: inset(4rem 0 0 0);
   }
   @keyframes grid-emerge {
     from {
