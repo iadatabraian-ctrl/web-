@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ArrowRight, ArrowUpRight, ArrowDown, Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
+
+const HeroBackground = dynamic(() => import("./HeroBackground"), { ssr: false });
 
 const ICONS = [
   { icon: Code2, label: "Software a medida" },
@@ -24,6 +26,7 @@ const lineUp = {
 
 export function Hero() {
   const [start, setStart] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onSplashDone = () => setStart(true);
@@ -32,26 +35,11 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-16 sm:pt-32 lg:min-h-[88vh]">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/img/hero/hero-laptop.png"
-          alt="Laptop con el sistema /deploy en producción"
-          fill
-          priority
-          className="object-contain object-[center_bottom] lg:object-[85%_bottom]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--brand-black-deep)] to-transparent sm:h-56" />
-      </motion.div>
+    <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-10 sm:pt-32 min-[900px]:px-12">
+      <HeroBackground stageRef={stageRef} />
 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-start">
-        <div className="max-w-4xl">
+      <div className="relative z-[1] mx-auto flex w-full max-w-6xl flex-1 flex-col min-[900px]:grid min-[900px]:grid-cols-[minmax(360px,5fr)_7fr] min-[900px]:items-center min-[900px]:gap-6">
+        <div className="max-w-4xl min-[900px]:max-w-none">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: start ? 1 : 0 }}
@@ -100,7 +88,7 @@ export function Hero() {
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-            className="mt-5 max-w-xl font-body text-[13px] leading-normal text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed"
+            className="mt-5 max-w-xl font-body text-[13px] leading-normal text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed [@media(max-height:780px)]:mt-3"
           >
             Diseñamos e implementamos los{" "}
             <strong className="font-semibold text-brand-cream">sistemas</strong>{" "}
@@ -113,7 +101,7 @@ export function Hero() {
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-            className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4"
+            className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4 [@media(max-height:780px)]:mt-4"
           >
             <a
               href="#hablemos"
@@ -140,39 +128,48 @@ export function Hero() {
 
         </div>
 
-        <motion.div
-          initial="hidden"
-          animate={start ? "show" : "hidden"}
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
-          className="mt-auto flex flex-col items-center gap-2 pb-2 sm:hidden"
-        >
-          <span className="relative flex h-9 w-6 items-start justify-center rounded-full border-2 border-brand-accent/70 p-1.5">
-            <span className="h-1.5 w-1 animate-scroll-wheel rounded-full bg-brand-accent" />
-          </span>
-          <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
-            SEGUÍ DESCUBRIENDO
-          </span>
-          <ArrowDown className="h-3.5 w-3.5 text-brand-accent" />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          animate={start ? "show" : "hidden"}
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-          className="hidden grid-cols-4 gap-2 pt-4 sm:mt-16 sm:grid sm:max-w-2xl sm:gap-6 sm:pt-0"
-        >
-          {ICONS.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">
-              <Icon className="h-5 w-5 text-brand-accent sm:h-6 sm:w-6" strokeWidth={1.75} />
-              <span className="font-body text-[9px] leading-tight text-brand-cream sm:text-xs">
-                {label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+        {/* Escenario reservado para la red de pantallas del canvas: el JS mide este
+            rectángulo (getBoundingClientRect) y encuadra la escena dentro de él, para
+            que nunca se superponga con "seguí descubriendo" ni se corte en pantallas bajas. */}
+        <div
+          ref={stageRef}
+          aria-hidden="true"
+          className="mt-4 min-h-[280px] flex-1 min-[900px]:mt-0 min-[900px]:h-full min-[900px]:min-h-0 min-[900px]:self-stretch [@media(max-height:780px)]:min-h-[250px]"
+        />
       </div>
+
+      <motion.div
+        initial="hidden"
+        animate={start ? "show" : "hidden"}
+        variants={fadeUp}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
+        className="relative z-[1] mx-auto flex w-full max-w-6xl flex-col items-center gap-2 pb-2 sm:hidden"
+      >
+        <span className="relative flex h-9 w-6 items-start justify-center rounded-full border-2 border-brand-accent/70 p-1.5">
+          <span className="h-1.5 w-1 animate-scroll-wheel rounded-full bg-brand-accent" />
+        </span>
+        <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
+          SEGUÍ DESCUBRIENDO
+        </span>
+        <ArrowDown className="h-3.5 w-3.5 text-brand-accent" />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        animate={start ? "show" : "hidden"}
+        variants={fadeUp}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
+        className="relative z-[1] mx-auto hidden w-full max-w-6xl grid-cols-4 gap-2 pb-6 pt-4 sm:grid sm:max-w-2xl sm:gap-6 sm:pb-8 sm:pt-6"
+      >
+        {ICONS.map(({ icon: Icon, label }) => (
+          <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">
+            <Icon className="h-5 w-5 text-brand-accent sm:h-6 sm:w-6" strokeWidth={1.75} />
+            <span className="font-body text-[9px] leading-tight text-brand-cream sm:text-xs">
+              {label}
+            </span>
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 }
