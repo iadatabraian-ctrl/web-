@@ -96,7 +96,7 @@ export function Faq() {
         </div>
 
         <h2 className="mt-4 max-w-2xl font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
-          Lo que preguntan antes de arrancar.
+          ¿Qué querés saber antes de arrancar?
         </h2>
 
         <FadeIn className="mt-10 flex flex-col gap-2 sm:mt-14">
