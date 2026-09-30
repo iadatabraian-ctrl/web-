@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Archivo, JetBrains_Mono } from "next/font/google";
 import { SplashScreen } from "@/components/SplashScreen";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
 const anton = Anton({
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <SplashScreen />
         {children}
+        <WhatsAppFloat />
       </body>
     </html>
   );
