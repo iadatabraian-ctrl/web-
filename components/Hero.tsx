@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ArrowDown, Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
-
-const HeroBackground = dynamic(() => import("./HeroBackground"), { ssr: false });
 
 const ICONS = [
   { icon: Code2, label: "Software a medida" },
@@ -26,7 +23,6 @@ const lineUp = {
 
 export function Hero() {
   const [start, setStart] = useState(false);
-  const stageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onSplashDone = () => setStart(true);
@@ -36,10 +32,26 @@ export function Hero() {
 
   return (
     <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-10 sm:pt-32 min-[900px]:px-12">
-      <HeroBackground stageRef={stageRef} />
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-brand-black">
+        <video
+          className="absolute inset-0 h-full w-full object-cover min-[900px]:hidden"
+          src="/video/hero-bg.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(5,4,3,.72), rgba(5,4,3,.25) 46%, transparent 62%), radial-gradient(130% 100% at 50% 70%, transparent 45%, rgba(5,4,3,.8) 100%)",
+          }}
+        />
+      </div>
 
-      <div className="relative z-[1] mx-auto flex w-full max-w-6xl flex-1 flex-col min-[900px]:grid min-[900px]:grid-cols-[minmax(360px,5fr)_7fr] min-[900px]:items-center min-[900px]:gap-6">
-        <div className="max-w-4xl min-[900px]:max-w-none">
+      <div className="relative z-[1] mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center">
+        <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: start ? 1 : 0 }}
@@ -127,15 +139,6 @@ export function Hero() {
           </div>
 
         </div>
-
-        {/* Escenario reservado para la red de pantallas del canvas: el JS mide este
-            rectángulo (getBoundingClientRect) y encuadra la escena dentro de él, para
-            que nunca se superponga con "seguí descubriendo" ni se corte en pantallas bajas. */}
-        <div
-          ref={stageRef}
-          aria-hidden="true"
-          className="mt-4 min-h-[280px] flex-1 min-[900px]:mt-0 min-[900px]:h-full min-[900px]:min-h-0 min-[900px]:self-stretch [@media(max-height:780px)]:min-h-[250px]"
-        />
       </div>
 
       <motion.div
