@@ -99,25 +99,27 @@ export function Faq() {
           ¿Qué querés saber antes de arrancar?
         </h2>
 
-        <FadeIn className="mt-10 flex flex-col gap-2 sm:mt-14">
+        <FadeIn className="mt-10 border-t border-brand-line-on-black sm:mt-14">
           {ITEMS.map(({ q, a, list, note }, i) => {
             const isOpen = open === i;
             return (
-              <div
-                key={q}
-                className="rounded-2xl border border-brand-line-on-black transition-colors hover:border-brand-accent/30"
-              >
+              <div key={q} className="border-b border-brand-line-on-black">
                 <button
                   type="button"
                   aria-expanded={isOpen}
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
+                  className="flex w-full items-start justify-between gap-4 py-5 text-left sm:py-6"
                 >
-                  <span className="font-body text-sm font-semibold text-brand-cream sm:text-base">
-                    {q}
+                  <span>
+                    <span className="font-mono text-xs text-brand-accent">
+                      0{i + 1}
+                    </span>
+                    <span className="mt-1 block font-body text-sm font-semibold text-brand-cream sm:text-base">
+                      {q}
+                    </span>
                   </span>
                   <ChevronDown
-                    className={`h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    className={`mt-1 h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}
                   />
                 </button>
 
@@ -130,7 +132,7 @@ export function Faq() {
                       transition={{ duration: 0.25, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-5 pb-5 font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:px-6 sm:pb-6">
+                      <div className="max-w-xl pb-6 font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:pb-8">
                         {list ? (
                           <ul className="flex flex-col gap-2">
                             {list.map(({ k, v }) => (
