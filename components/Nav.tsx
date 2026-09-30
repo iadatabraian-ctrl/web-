@@ -10,6 +10,7 @@ const LINKS = [
   { href: "#proceso", label: "Proceso" },
   { href: "#nosotros", label: "Nosotros" },
   { href: "#diagnostico-rapido", label: "Diagnóstico" },
+  { href: "#preguntas", label: "Preguntas" },
 ];
 
 export function Nav() {
