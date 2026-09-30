@@ -15,10 +15,12 @@ export function Nosotros() {
               Nosotros
             </h2>
             <p className="mt-6 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-lg">
-              Braian, desarrollador de soluciones digitales. Cada proyecto
-              parte de entender el problema de fondo del negocio, con
-              criterio real para adaptar el desarrollo a lo que busca cada
-              cliente.
+              Braian González, desarrollador de soluciones digitales,
+              autodidacta. Cada proyecto parte de entender el problema de
+              fondo del negocio, con criterio real para adaptar el desarrollo
+              a lo que busca cada cliente. Este mismo sitio que estás viendo
+              es un ejemplo de lo que construyo: hecho a medida, de punta a
+              punta, sin plantillas.
             </p>
           </FadeIn>
 
@@ -35,7 +37,7 @@ export function Nosotros() {
               </div>
               <div>
                 <p className="font-body text-base font-semibold text-brand-cream">
-                  Braian
+                  Braian González
                 </p>
                 <p className="font-body text-xs tracking-[0.1em] text-brand-ink-on-black-soft">
                   FUNDADOR
@@ -48,6 +50,9 @@ export function Nosotros() {
               </span>
               <span className="rounded-full border border-brand-line-on-black px-3.5 py-1.5 font-body text-xs text-brand-ink-on-black-soft">
                 Criterio técnico
+              </span>
+              <span className="rounded-full border border-brand-line-on-black px-3.5 py-1.5 font-body text-xs text-brand-ink-on-black-soft">
+                Autodidacta
               </span>
             </div>
             <div className="mt-6 flex items-center gap-3 border-t border-brand-line-on-black pt-6">
