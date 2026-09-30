@@ -57,8 +57,8 @@ const SERVICES = [
     ],
   },
   {
-    eyebrow: "04 · AGENTES",
-    title: "Agentes",
+    eyebrow: "04 · AGENTES DE IA",
+    title: "Agentes de IA",
     description:
       "Agentes de IA que responden y atienden en WhatsApp e Instagram, cuando tu negocio lo necesita.",
     image: "/img/laptop/laptop-front-agents.png",

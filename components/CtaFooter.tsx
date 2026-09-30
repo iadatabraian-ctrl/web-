@@ -16,7 +16,7 @@ const SERVICE_LINKS = [
   "Software a medida",
   "Páginas web",
   "Automatizaciones",
-  "Agentes",
+  "Agentes de IA",
 ];
 
 export function CtaFooter() {
@@ -58,8 +58,8 @@ export function CtaFooter() {
               <Image src="/img/deploy-logo.png" alt="Deploy" width={104} height={28} />
             </Link>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
-              Software a medida y páginas web para tu negocio. Automatización
-              y agentes de IA como complemento.
+              Software a medida, páginas web, automatización de procesos y
+              agentes de IA para WhatsApp e Instagram.
             </p>
             <div className="mt-5 flex items-center gap-3">
               <a

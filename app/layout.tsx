@@ -22,23 +22,25 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deployuy.com"),
-  title: "Deploy · Software a medida y páginas web",
+  title: "Deploy · Software a medida, web y automatización en Uruguay",
   description:
-    "Diseñamos y desarrollamos software a medida y páginas web para tu negocio. También automatización de procesos y agentes de WhatsApp e Instagram cuando los necesitás.",
+    "Desarrollamos software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram. Soluciones digitales para negocios en Uruguay.",
   alternates: { canonical: "https://deployuy.com/" },
   openGraph: {
     type: "website",
     siteName: "Deploy",
     url: "https://deployuy.com/",
     locale: "es_UY",
-    title: "Deploy",
-    description: "Software a medida y páginas web hechos para tu negocio.",
+    title: "Deploy · Software a medida y automatización en Uruguay",
+    description:
+      "Software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram.",
     images: [{ url: "/img/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deploy",
-    description: "Software a medida y páginas web hechos para tu negocio.",
+    title: "Deploy · Software a medida y automatización en Uruguay",
+    description:
+      "Software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram.",
     images: ["/img/og-image.jpg"],
   },
   other: { "theme-color": "#050403" },
@@ -52,7 +54,7 @@ const jsonLd = {
   logo: "https://deployuy.com/img/deploy-logo.png",
   image: "https://deployuy.com/img/og-image.jpg",
   description:
-    "Software a medida y páginas web para tu negocio. Automatización de procesos y agentes de WhatsApp e Instagram como complemento.",
+    "Desarrollo de software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram, para negocios en Uruguay.",
   email: "deploy.uy@gmail.com",
   telephone: "+59898648853",
   areaServed: "UY",
@@ -62,6 +64,12 @@ const jsonLd = {
     addressCountry: "UY",
   },
   sameAs: ["https://instagram.com/deploy.uy"],
+  serviceType: [
+    "Desarrollo de software a medida",
+    "Diseño y desarrollo de páginas web",
+    "Automatización de procesos",
+    "Agentes de IA para WhatsApp e Instagram",
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
