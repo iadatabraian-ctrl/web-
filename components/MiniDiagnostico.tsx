@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ArrowRight, AppWindow, ClipboardList, Unlink, TrendingUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { StepItem } from "@/components/StepItem";
 import { FadeIn } from "@/components/FadeIn";
 
 const PROBLEMS = [
@@ -95,112 +94,127 @@ export function MiniDiagnostico() {
           </p>
         </FadeIn>
 
-        <div className="mt-10 flex flex-col gap-3 sm:mt-12">
-          {PROBLEMS.map(({ icon, title, desc }, i) => {
+        <div className="mt-10 sm:mt-12">
+          {PROBLEMS.map(({ icon: Icon, title, desc }, i) => {
             const isSelected = selected === i;
+            const isLast = i === PROBLEMS.length - 1;
             const result = RESULTS[title];
+            const showTail = isSelected || !isLast;
 
             return (
-              <div
-                key={title}
-                role="button"
-                tabIndex={0}
-                aria-pressed={isSelected}
-                onClick={() => selectProblem(i)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    selectProblem(i);
-                  }
-                }}
-                className={`cursor-pointer rounded-2xl border p-5 transition-colors sm:p-6 ${
-                  isSelected
-                    ? "border-brand-accent/60 bg-brand-accent/5"
-                    : "border-brand-line-on-black hover:border-brand-accent/30"
-                }`}
-              >
-                <StepItem
-                  icon={icon}
-                  index={i}
-                  title={title}
-                  desc={desc}
-                  isLast
-                  variant="compact"
-                />
-
-                <AnimatePresence initial={false}>
-                  {isSelected && result && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="mt-4 border-t border-brand-line-on-black pt-4">
-                        <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
-                          ¿CUÁNTAS HORAS POR SEMANA PERDÉS EN ESO?
-                        </span>
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {HOURS_OPTIONS.map((hours, hi) => (
-                            <button
-                              key={hours.label}
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setHoursIndex(hi);
-                              }}
-                              className={`rounded-full border px-4 py-2 font-body text-xs font-semibold tracking-wide transition ${
-                                hoursIndex === hi
-                                  ? "border-brand-accent bg-brand-accent/10 text-brand-accent"
-                                  : "border-brand-line-on-black text-brand-ink-on-black-soft hover:border-brand-accent/40"
-                              }`}
-                            >
-                              {hours.label}
-                            </button>
-                          ))}
-                        </div>
-
-                        <AnimatePresence initial={false}>
-                          {hoursIndex !== null && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.25, ease: "easeOut" }}
-                              className="overflow-hidden"
-                            >
-                              <div className="mt-4 border-t border-brand-line-on-black pt-4">
-                                <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
-                                  SERVICIO RECOMENDADO
-                                </span>
-                                <p className="mt-1 font-display text-xl text-brand-cream sm:text-2xl">
-                                  {result.service}
-                                </p>
-                                <p className="mt-2 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
-                                  {result.reason}
-                                </p>
-                                <p className="mt-3 font-body text-sm font-semibold text-brand-cream">
-                                  {monthlyEstimate(HOURS_OPTIONS[hoursIndex])}
-                                </p>
-                                <a
-                                  href={whatsappUrl(title, HOURS_OPTIONS[hoursIndex])}
-                                  target="_blank"
-                                  rel="noopener"
-                                  onClick={(e) => e.stopPropagation()}
-                                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-accent px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition hover:scale-105 hover:opacity-90 sm:w-auto"
-                                >
-                                  Hablemos de esto
-                                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-                                </a>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </motion.div>
+              <div key={title} className="flex gap-4 sm:gap-6">
+                <div className="flex flex-col items-center">
+                  <button
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => selectProblem(i)}
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 transition-colors sm:h-16 sm:w-16 ${
+                      isSelected
+                        ? "border-brand-accent"
+                        : "border-brand-cream/25 hover:border-brand-accent/50"
+                    }`}
+                  >
+                    <Icon
+                      className={`h-5 w-5 sm:h-6 sm:w-6 ${isSelected ? "text-brand-accent" : "text-brand-cream"}`}
+                      strokeWidth={1.75}
+                    />
+                  </button>
+                  {showTail && (
+                    <span className="mt-2 w-px flex-1 bg-brand-line-on-black" />
                   )}
-                </AnimatePresence>
+                </div>
+
+                <div className={showTail ? "flex-1 pb-8 sm:pb-10" : "flex-1"}>
+                  <button
+                    type="button"
+                    onClick={() => selectProblem(i)}
+                    className="w-full text-left"
+                  >
+                    <span className="font-mono text-xs text-brand-ink-on-black-soft sm:text-sm">
+                      0{i + 1}
+                    </span>
+                    <h3
+                      className={`mt-1 font-display text-xl sm:text-3xl ${isSelected ? "text-brand-accent" : "text-brand-cream"}`}
+                    >
+                      {title}
+                    </h3>
+                    <p className="mt-2 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-base">
+                      {desc}
+                    </p>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isSelected && result && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-5 max-w-xl border-l-2 border-brand-accent/40 pl-4 sm:pl-6">
+                          <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
+                            ¿CUÁNTAS HORAS POR SEMANA PERDÉS EN ESO?
+                          </span>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {HOURS_OPTIONS.map((hours, hi) => (
+                              <button
+                                key={hours.label}
+                                type="button"
+                                onClick={() => setHoursIndex(hi)}
+                                className={`rounded-full border px-4 py-2 font-body text-xs font-semibold tracking-wide transition ${
+                                  hoursIndex === hi
+                                    ? "border-brand-accent bg-brand-accent/10 text-brand-accent"
+                                    : "border-brand-line-on-black text-brand-ink-on-black-soft hover:border-brand-accent/40"
+                                }`}
+                              >
+                                {hours.label}
+                              </button>
+                            ))}
+                          </div>
+
+                          <AnimatePresence initial={false}>
+                            {hoursIndex !== null && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.25, ease: "easeOut" }}
+                                className="overflow-hidden"
+                              >
+                                <div className="mt-5">
+                                  <span className="font-body text-[10px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft">
+                                    SERVICIO RECOMENDADO
+                                  </span>
+                                  <p className="mt-1 font-display text-xl text-brand-cream sm:text-2xl">
+                                    {result.service}
+                                  </p>
+                                  <p className="mt-2 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
+                                    {result.reason}
+                                  </p>
+                                  <p className="mt-3 font-body text-sm font-semibold text-brand-cream">
+                                    {monthlyEstimate(HOURS_OPTIONS[hoursIndex])}
+                                  </p>
+                                  <a
+                                    href={whatsappUrl(title, HOURS_OPTIONS[hoursIndex])}
+                                    target="_blank"
+                                    rel="noopener"
+                                    className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-accent px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition hover:scale-105 hover:opacity-90 sm:w-auto"
+                                  >
+                                    Hablemos de esto
+                                    <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                                  </a>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {!isLast && <hr className="mt-6 max-w-xl border-brand-line-on-black sm:mt-8" />}
+                </div>
               </div>
             );
           })}
