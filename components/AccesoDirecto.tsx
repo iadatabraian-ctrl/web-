@@ -2,7 +2,7 @@ import { FadeIn } from "@/components/FadeIn";
 
 export function AccesoDirecto() {
   return (
-    <section id="directo" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
+    <section id="directo" className="relative overflow-hidden bg-brand-black-soft px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <FadeIn
           scale={0.95}

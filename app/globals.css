@@ -28,6 +28,7 @@
 @theme inline {
   --color-brand-black: var(--brand-black);
   --color-brand-black-deep: var(--brand-black-deep);
+  --color-brand-black-soft: var(--brand-black-soft);
   --color-brand-cream: var(--brand-cream);
   --color-brand-cream-2: var(--brand-cream-2);
   --color-brand-accent: var(--brand-accent);

@@ -81,7 +81,7 @@ export function MiniDiagnostico() {
   }
 
   return (
-    <section id="diagnostico-rapido" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
+    <section id="diagnostico-rapido" className="relative overflow-hidden bg-brand-black-soft px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-2xl">
         <FadeIn className="text-center">
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
