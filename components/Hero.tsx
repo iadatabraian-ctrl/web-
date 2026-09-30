@@ -34,7 +34,7 @@ export function Hero() {
     <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-10 sm:pt-32 min-[900px]:px-12">
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-brand-black">
         <video
-          className="absolute inset-0 h-full w-full origin-center scale-[1.35] translate-y-[14%] object-cover min-[900px]:hidden"
+          className="absolute inset-0 h-full w-full object-cover min-[900px]:hidden"
           src="/video/hero-bg.mp4"
           autoPlay
           muted
