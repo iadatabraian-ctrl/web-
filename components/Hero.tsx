@@ -50,7 +50,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-[1] mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center">
+      <div className="relative z-[1] mx-auto flex w-full max-w-6xl flex-1 flex-col justify-start min-[900px]:justify-center">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0 }}
