@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -15,6 +16,7 @@ const BADGE_POSITIONS = [
 
 export function ServiceBlock({
   eyebrow,
+  href,
   title,
   description,
   image,
@@ -24,6 +26,7 @@ export function ServiceBlock({
   example,
 }: {
   eyebrow: string;
+  href?: string;
   title: string;
   description: string;
   image: string;
@@ -73,6 +76,15 @@ export function ServiceBlock({
       >
         {description}
       </motion.p>
+
+      {href && (
+        <Link
+          href={href}
+          className="mt-4 font-body text-xs font-semibold uppercase tracking-wide text-brand-accent-ink transition-opacity hover:opacity-80"
+        >
+          Ver el servicio completo →
+        </Link>
+      )}
 
       {(includes || example) && (
         <div className="mt-4 w-full max-w-md">

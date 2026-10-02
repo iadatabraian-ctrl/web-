@@ -19,6 +19,7 @@ import { ServiceBlock } from "@/components/ServiceBlock";
 const SERVICES = [
   {
     eyebrow: "01 · SOFTWARE A MEDIDA",
+    href: "/software-a-medida",
     title: "Software a medida",
     description:
       "Sistemas, paneles y herramientas internas diseñados para la forma real en que opera tu negocio.",
@@ -40,6 +41,7 @@ const SERVICES = [
   },
   {
     eyebrow: "02 · PÁGINAS WEB",
+    href: "/paginas-web",
     title: "Páginas web",
     description:
       "Sitios rápidos y claros, con el diseño y la performance que tu marca necesita para convertir.",
@@ -61,6 +63,7 @@ const SERVICES = [
   },
   {
     eyebrow: "03 · AUTOMATIZACIONES",
+    href: "/automatizacion",
     title: "Automatizaciones",
     description:
       "Conectamos tus herramientas y automatizamos las tareas repetitivas para que tu equipo deje de hacerlas a mano.",
@@ -81,6 +84,7 @@ const SERVICES = [
   },
   {
     eyebrow: "04 · AGENTES DE IA",
+    href: "/agentes-whatsapp",
     title: "Agentes de IA",
     description:
       "Agentes de IA que responden y atienden en WhatsApp e Instagram, cuando tu negocio lo necesita.",

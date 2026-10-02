@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#proceso", label: "Proceso" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#diagnostico-rapido", label: "Diagnóstico" },
-  { href: "#preguntas", label: "Preguntas" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#proceso", label: "Proceso" },
+  { href: "/#nosotros", label: "Nosotros" },
+  { href: "/#diagnostico-rapido", label: "Diagnóstico" },
+  { href: "/#preguntas", label: "Preguntas" },
 ];
 
 export function Nav() {
@@ -38,7 +38,7 @@ export function Nav() {
           scrolled ? "h-12 sm:h-14" : "h-14 sm:h-16",
         )}
       >
-        <Link href="#inicio" aria-label="Deploy" className="flex items-center">
+        <Link href="/" aria-label="Deploy" className="flex items-center">
           <span className="font-display text-[13px] tracking-wide sm:text-sm">
             <span className="text-brand-accent">/</span>
             <span className="text-white">deploy</span>
@@ -56,7 +56,7 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="#hablemos"
+            href="/#hablemos"
             className="rounded-full bg-brand-accent px-5 py-2 font-body text-sm font-semibold text-brand-black transition-opacity hover:opacity-90"
           >
             Hablemos
@@ -105,7 +105,7 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="#hablemos"
+            href="/#hablemos"
             onClick={() => setOpen(false)}
             className="mt-2 rounded-full bg-brand-accent px-5 py-2.5 text-center font-body text-sm font-semibold text-brand-black"
           >

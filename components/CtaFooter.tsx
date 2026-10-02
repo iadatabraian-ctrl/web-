@@ -6,17 +6,17 @@ import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
 
 const NAV_LINKS = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#proceso", label: "Proceso" },
-  { href: "#nosotros", label: "Nosotros" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#proceso", label: "Proceso" },
+  { href: "/#nosotros", label: "Nosotros" },
 ];
 
 const SERVICE_LINKS = [
-  "Software a medida",
-  "Páginas web",
-  "Automatizaciones",
-  "Agentes de IA",
+  { href: "/software-a-medida", label: "Software a medida" },
+  { href: "/paginas-web", label: "Páginas web" },
+  { href: "/automatizacion", label: "Automatizaciones" },
+  { href: "/agentes-whatsapp", label: "Agentes de IA" },
 ];
 
 export function CtaFooter() {
@@ -54,7 +54,7 @@ export function CtaFooter() {
       <footer className="border-t border-brand-line-on-black px-5 pt-16 sm:px-8">
         <div className="mx-auto grid max-w-6xl gap-12 pb-14 sm:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Link href="#inicio" className="inline-flex">
+            <Link href="/" className="inline-flex">
               <Image src="/img/deploy-logo.png" alt="Deploy" width={104} height={28} />
             </Link>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
@@ -113,10 +113,10 @@ export function CtaFooter() {
               SERVICIOS
             </h4>
             <ul className="mt-4 flex flex-col gap-3">
-              {SERVICE_LINKS.map((label) => (
-                <li key={label}>
+              {SERVICE_LINKS.map(({ href, label }) => (
+                <li key={href}>
                   <a
-                    href="#servicios"
+                    href={href}
                     className="font-body text-sm text-brand-cream/80 transition-colors hover:text-brand-cream"
                   >
                     {label}
