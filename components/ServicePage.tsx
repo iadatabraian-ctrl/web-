@@ -84,14 +84,14 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             fill
             priority
             sizes="100vw"
-            className="-z-20 object-cover object-[48%_42%]"
+            className="-z-20 object-cover object-[50%_40%]"
           />
           <div
             aria-hidden="true"
             className="absolute inset-0 -z-10"
             style={{
               background:
-                "linear-gradient(to right, rgba(5,4,3,.94), rgba(5,4,3,.72) 45%, rgba(5,4,3,.25) 80%), linear-gradient(to bottom, transparent 70%, #050403)",
+                "linear-gradient(to right, rgba(5,4,3,.9), rgba(5,4,3,.6) 45%, rgba(5,4,3,.2) 80%), linear-gradient(to bottom, transparent 70%, #050403)",
             }}
           />
           <div className="mx-auto max-w-6xl">
