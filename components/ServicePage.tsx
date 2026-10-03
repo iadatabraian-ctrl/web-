@@ -84,7 +84,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             fill
             priority
             sizes="100vw"
-            className="-z-20 object-cover object-[70%_50%]"
+            className="-z-20 object-cover object-[48%_42%]"
           />
           <div
             aria-hidden="true"
