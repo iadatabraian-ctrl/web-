@@ -112,7 +112,7 @@ export function ShowcaseSoftware() {
                       alt={`Aplicación para socios: ${SOCIO[phone]}`}
                       fill
                       sizes="250px"
-                      className="object-cover object-top"
+                      className="object-contain object-top"
                     />
                   </motion.div>
                 </AnimatePresence>
