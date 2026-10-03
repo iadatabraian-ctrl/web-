@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { AnimatedBadge } from "@/components/AnimatedBadge";
 
@@ -22,8 +22,6 @@ export function ServiceBlock({
   image,
   alt,
   badges,
-  includes,
-  example,
 }: {
   eyebrow: string;
   href?: string;
@@ -32,10 +30,7 @@ export function ServiceBlock({
   image: string;
   alt: string;
   badges?: { icon: LucideIcon; label: string }[];
-  includes?: string[];
-  example?: string;
 }) {
-  const [open, setOpen] = useState(false);
   const screenRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: screenRef,
@@ -80,55 +75,11 @@ export function ServiceBlock({
       {href && (
         <Link
           href={href}
-          className="mt-4 font-body text-xs font-semibold uppercase tracking-wide text-brand-accent-ink transition-opacity hover:opacity-80"
+          className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-ink-on-cream/30 px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-ink-on-cream transition hover:border-brand-accent hover:text-brand-accent-ink"
         >
-          Ver el servicio completo →
+          Ver el servicio completo
+          <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
         </Link>
-      )}
-
-      {(includes || example) && (
-        <div className="mt-4 w-full max-w-md">
-          <button
-            type="button"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-wide text-brand-ink-on-cream-soft transition-colors hover:text-brand-accent"
-          >
-            {open ? "Ver menos" : "Qué incluye"}
-            <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
-          </button>
-
-          <AnimatePresence initial={false}>
-            {open && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="overflow-hidden text-left"
-              >
-                <div className="mt-3 rounded-2xl border border-brand-line-on-cream bg-brand-cream-2/40 p-4 sm:p-5">
-                  {includes && (
-                    <ul className="flex flex-col gap-1.5 font-body text-sm text-brand-ink-on-cream-soft">
-                      {includes.map((item) => (
-                        <li key={item} className="flex gap-2">
-                          <span className="text-brand-accent">·</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {example && (
-                    <p className="mt-3 font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">
-                      <span className="font-semibold text-brand-ink-on-cream">Por ejemplo: </span>
-                      {example}
-                    </p>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
       )}
 
       <div

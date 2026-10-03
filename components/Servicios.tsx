@@ -30,14 +30,6 @@ const SERVICES = [
       { icon: CircleCheck, label: "Sin errores manuales" },
       { icon: BarChart3, label: "Decisiones con datos reales" },
     ],
-    includes: [
-      "Relevamiento de tu proceso actual",
-      "Panel a medida con los datos que necesitás ver",
-      "Permisos por usuario",
-      "Integraciones con las herramientas que ya usás",
-    ],
-    example:
-      "Una inmobiliaria que hoy anota reservas de visitas en un cuaderno pasa a un panel donde ve el estado de cada propiedad en tiempo real.",
   },
   {
     eyebrow: "02 · PÁGINAS WEB",
@@ -52,14 +44,6 @@ const SERVICES = [
       { icon: Sparkles, label: "Diseño exclusivo, sin plantillas" },
       { icon: MessageSquare, label: "Construida para generar contactos" },
     ],
-    includes: [
-      "Diseño a medida, sin plantillas",
-      "Copy y estructura pensados para convertir",
-      "Optimización de velocidad y SEO on-page",
-      "Botón o formulario de contacto conectado a WhatsApp",
-    ],
-    example:
-      "Un local de indumentaria que hoy solo tiene Instagram pasa a tener un catálogo simple donde el cliente ve productos y precios antes de escribir.",
   },
   {
     eyebrow: "03 · AUTOMATIZACIONES",
@@ -74,13 +58,6 @@ const SERVICES = [
       { icon: ShieldCheck, label: "Cero margen de error" },
       { icon: Clock, label: "Tiempo operativo, no administrativo" },
     ],
-    includes: [
-      "Mapeo de las tareas repetitivas actuales",
-      "Conexión entre las herramientas que ya usás (planillas, WhatsApp, mail, sistemas de gestión)",
-      "Alertas automáticas cuando algo necesita atención",
-    ],
-    example:
-      "Un local que hoy pasa a mano cada pedido de una planilla a WhatsApp pasa a que el pedido llegue armado automáticamente, sin tipearlo dos veces.",
   },
   {
     eyebrow: "04 · AGENTES DE IA",
@@ -95,13 +72,6 @@ const SERVICES = [
       { icon: Filter, label: "Filtra y califica leads" },
       { icon: InfinityIcon, label: "Disponibilidad sin ampliar equipo" },
     ],
-    includes: [
-      "Agente conectado a WhatsApp o Instagram, entrenado con la información real de tu negocio",
-      "Filtro de consultas para que solo lleguen los leads que valen la pena",
-      "Traspaso a una persona cuando el caso lo requiere",
-    ],
-    example:
-      "Un negocio que hoy responde los mismos horarios y precios uno por uno en WhatsApp pasa a que el agente responda eso al instante y solo avise cuando alguien está listo para comprar.",
   },
 ];
 

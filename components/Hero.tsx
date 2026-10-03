@@ -1,15 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ArrowDown, Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
+import { HeroLaunch } from "@/components/HeroLaunch";
+import { ArrowRight, ArrowUpRight, ArrowDown } from "lucide-react";
 
-const ICONS = [
-  { icon: Code2, label: "Software a medida" },
-  { icon: Settings2, label: "Automatización" },
-  { icon: BrainCircuit, label: "IA & Agentes" },
-  { icon: Globe, label: "Desarrollo web" },
-];
+const SERVICES = ["Software a medida", "Páginas web", "Automatización", "Agentes de IA"];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 22 },
@@ -23,6 +19,8 @@ const lineUp = {
 
 export function Hero() {
   const [start, setStart] = useState(false);
+  const [live, setLive] = useState(false);
+  const onLive = useCallback(() => setLive(true), []);
 
   useEffect(() => {
     const onSplashDone = () => setStart(true);
@@ -32,26 +30,10 @@ export function Hero() {
 
   return (
     <section id="inicio" className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-6 pt-20 sm:px-8 sm:pb-10 sm:pt-32 min-[900px]:px-12">
-      <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-brand-black">
-        <video
-          className="absolute inset-0 h-full w-full object-cover min-[900px]:hidden"
-          src="/video/hero-bg.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(5,4,3,.72), rgba(5,4,3,.25) 46%, transparent 62%), radial-gradient(130% 100% at 50% 70%, transparent 45%, rgba(5,4,3,.8) 100%)",
-          }}
-        />
-      </div>
+      <HeroLaunch start={start} onLive={onLive} />
 
       <div className="relative z-[1] mx-auto flex w-full max-w-6xl flex-1 flex-col justify-start min-[900px]:justify-center">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl min-[900px]:max-w-[50%]">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: start ? 1 : 0 }}
@@ -80,7 +62,10 @@ export function Hero() {
           <h1 className="mt-5 font-display text-[8vw] leading-[1.15] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
             {[
               { text: "Tu idea,", className: "text-brand-cream" },
-              { text: "en producción.", className: "text-brand-accent" },
+              {
+                text: "en producción.",
+                className: `transition-colors duration-700 ${live ? "text-brand-accent" : "text-brand-cream/25"}`,
+              },
             ].map(({ text, className }, i) => (
               <motion.span
                 key={text}
@@ -139,6 +124,7 @@ export function Hero() {
           </div>
 
         </div>
+
       </div>
 
       <motion.div
@@ -162,15 +148,13 @@ export function Hero() {
         animate={start ? "show" : "hidden"}
         variants={fadeUp}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-        className="relative z-[1] mx-auto hidden w-full max-w-6xl grid-cols-4 gap-2 pb-6 pt-4 sm:grid sm:max-w-2xl sm:gap-6 sm:pb-8 sm:pt-6"
+        className="relative z-[1] mx-auto hidden w-full max-w-6xl flex-wrap items-center justify-start gap-3 pb-6 pt-4 sm:flex sm:pb-8 sm:pt-6"
       >
-        {ICONS.map(({ icon: Icon, label }) => (
-          <div key={label} className="flex flex-col items-center gap-2 text-center sm:gap-2.5">
-            <Icon className="h-5 w-5 text-brand-accent sm:h-6 sm:w-6" strokeWidth={1.75} />
-            <span className="font-body text-[9px] leading-tight text-brand-cream sm:text-xs">
-              {label}
-            </span>
-          </div>
+        {SERVICES.map((label, i) => (
+          <span key={label} className="flex items-center gap-3 font-mono text-[9px] tracking-[0.15em] text-brand-ink-on-black-soft sm:text-xs">
+            {i > 0 && <span className="text-brand-accent">/</span>}
+            {label.toUpperCase()}
+          </span>
         ))}
       </motion.div>
     </section>
