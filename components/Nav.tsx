@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -24,12 +25,55 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <header className={cn("fixed inset-x-0 top-0 transition-all duration-300", open ? "z-[60]" : "z-50")}>
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 flex flex-col justify-center gap-1 bg-brand-black-deep px-8 sm:hidden"
+          >
+            {LINKS.map((link, i) => (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.05 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                className="rounded-lg py-3 font-display text-2xl text-brand-cream transition-colors hover:text-brand-accent"
+              >
+                {link.label}
+              </motion.a>
+            ))}
+            <motion.a
+              href="/#hablemos"
+              onClick={() => setOpen(false)}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.05 + LINKS.length * 0.04, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-5 rounded-full bg-brand-accent px-5 py-3 text-center font-body text-sm font-semibold text-brand-black"
+            >
+              Hablemos
+            </motion.a>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+
       <div
         className={cn(
-          "border-b border-transparent transition-[height,background-color,border-color] duration-300",
-          scrolled && "border-brand-line-on-black bg-brand-black-deep/85 backdrop-blur",
+          "relative border-b border-transparent transition-[height,background-color,border-color] duration-300",
+          (scrolled || open) && "border-brand-line-on-black bg-brand-black-deep/85 backdrop-blur",
         )}
       >
       <div
@@ -91,28 +135,6 @@ export function Nav() {
         </button>
       </div>
       </div>
-
-      {open && (
-        <nav className="flex flex-col gap-1 border-t border-brand-line-on-black bg-brand-black-deep/95 px-5 pb-5 pt-3 backdrop-blur sm:hidden">
-          {LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-2 py-2.5 font-body text-sm text-brand-ink-on-black-soft transition-colors hover:text-brand-cream"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="/#hablemos"
-            onClick={() => setOpen(false)}
-            className="mt-2 rounded-full bg-brand-accent px-5 py-2.5 text-center font-body text-sm font-semibold text-brand-black"
-          >
-            Hablemos
-          </a>
-        </nav>
-      )}
     </header>
   );
 }
