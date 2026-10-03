@@ -33,7 +33,7 @@ export function Hero() {
       <HeroLaunch start={start} onLive={onLive} />
 
       <div className="relative z-[1] mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center">
-        <div className="max-w-4xl min-[900px]:max-w-[50%]">
+        <div className="mx-auto max-w-4xl text-center sm:mx-0 sm:text-left min-[900px]:max-w-[50%]">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: start ? 1 : 0 }}
@@ -85,7 +85,7 @@ export function Hero() {
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-            className="mt-4 max-w-xl font-body text-[13px] leading-normal text-brand-ink-on-black-soft sm:mt-6 sm:text-lg sm:leading-relaxed [@media(max-height:780px)]:mt-3"
+            className="mx-auto mt-4 max-w-xl font-body text-[13px] leading-normal text-brand-ink-on-black-soft sm:mx-0 sm:mt-6 sm:text-lg sm:leading-relaxed [@media(max-height:780px)]:mt-3"
           >
             Diseñamos e implementamos los{" "}
             <strong className="font-semibold text-brand-cream">sistemas</strong>{" "}
@@ -98,7 +98,7 @@ export function Hero() {
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-            className="mt-8 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4 [@media(max-height:780px)]:mt-4"
+            className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:justify-start sm:gap-4 [@media(max-height:780px)]:mt-4"
           >
             <a
               href="#hablemos"
