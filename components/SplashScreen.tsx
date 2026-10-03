@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Code2, Settings2, BrainCircuit, Globe } from "lucide-react";
@@ -18,20 +19,24 @@ const PULSE_DELAY_S = LOGO_POP_DELAY_S + 1.18;
 const HOLD_MS = (PULSE_DELAY_S + 0.75) * 1000;
 
 export function SplashScreen() {
-  const [visible, setVisible] = useState(true);
+  const isHome = usePathname() === "/";
+  const [visible, setVisible] = useState(isHome);
 
   useEffect(() => {
+    if (!isHome) return;
     document.body.style.overflow = "hidden";
     const timer = setTimeout(() => {
       setVisible(false);
       window.dispatchEvent(new Event("splash-done"));
     }, HOLD_MS);
     return () => clearTimeout(timer);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     if (!visible) document.body.style.overflow = "";
   }, [visible]);
+
+  if (!isHome) return null;
 
   return (
     <AnimatePresence>
