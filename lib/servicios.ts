@@ -6,6 +6,7 @@ export type ServicioSlug =
 
 export type Servicio = {
   slug: ServicioSlug;
+  visual: "software" | "web" | "automatizacion" | "agentes";
   nombre: string;
   eyebrow: string;
   metaTitle: string;
@@ -42,6 +43,7 @@ const PROCESO_BASE = [
 export const SERVICIOS: Servicio[] = [
   {
     slug: "software-a-medida",
+    visual: "software",
     nombre: "Software a medida",
     eyebrow: "SOFTWARE A MEDIDA",
     metaTitle: "Software a medida en Uruguay | Deploy · Salto",
@@ -121,6 +123,7 @@ export const SERVICIOS: Servicio[] = [
   },
   {
     slug: "paginas-web",
+    visual: "web",
     nombre: "Páginas web",
     eyebrow: "PÁGINAS WEB",
     metaTitle: "Diseño de páginas web en Uruguay | Deploy · Salto",
@@ -200,6 +203,7 @@ export const SERVICIOS: Servicio[] = [
   },
   {
     slug: "automatizacion",
+    visual: "automatizacion",
     nombre: "Automatización de procesos",
     eyebrow: "AUTOMATIZACIÓN",
     metaTitle: "Automatización de procesos para empresas en Uruguay | Deploy",
@@ -275,6 +279,7 @@ export const SERVICIOS: Servicio[] = [
   },
   {
     slug: "agentes-whatsapp",
+    visual: "agentes",
     nombre: "Agentes de IA para WhatsApp e Instagram",
     eyebrow: "AGENTES DE IA",
     metaTitle: "Agentes de IA para WhatsApp e Instagram en Uruguay | Deploy",
