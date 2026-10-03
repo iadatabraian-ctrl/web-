@@ -11,7 +11,7 @@ export function BrowserFrame({
 }) {
   return (
     <div
-      className={`overflow-hidden rounded-xl border border-white/10 bg-[#0d0c0a] shadow-2xl shadow-black/60 ${className}`}
+      className={`overflow-hidden rounded-lg border border-white/10 bg-[#0d0c0a] shadow-2xl shadow-black/60 ${className}`}
     >
       <div className="flex items-center gap-3 border-b border-white/10 bg-[#161411] px-3 py-2">
         <div className="flex gap-1.5">
