@@ -91,9 +91,9 @@ export function CtaFooter() {
           </div>
 
           <div>
-            <h4 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
+            <h3 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
               NAVEGACIÓN
-            </h4>
+            </h3>
             <ul className="mt-4 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -109,9 +109,9 @@ export function CtaFooter() {
           </div>
 
           <div>
-            <h4 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
+            <h3 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
               SERVICIOS
-            </h4>
+            </h3>
             <ul className="mt-4 flex flex-col gap-3">
               {SERVICE_LINKS.map(({ href, label }) => (
                 <li key={href}>

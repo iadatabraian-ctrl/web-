@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -48,6 +48,13 @@ function terminar() {
 export function SplashScreen() {
   const isHome = usePathname() === "/";
   const [visible, setVisible] = useState(isHome);
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  const saltar = useCallback(() => {
+    clearTimeout(timer.current);
+    setVisible(false);
+    terminar();
+  }, []);
 
   useEffect(() => {
     // Primera carga fuera de la home: no hay splash, el hero no debe esperar.
@@ -55,18 +62,23 @@ export function SplashScreen() {
       window.__splashDone = true;
       return;
     }
-    if (yaVisto()) {
-      // Ya oculto por CSS (data-splash-visto); solo se avisa al hero.
+    const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (yaVisto() || reducido) {
+      // Ya oculto por CSS (data-splash-visto): solo se avisa al hero.
       window.__splashDone = true;
       window.dispatchEvent(new Event("splash-done"));
       return;
     }
     document.body.style.overflow = "hidden";
-    const timer = setTimeout(() => {
-      setVisible(false);
-      terminar();
-    }, HOLD_MS);
-    return () => clearTimeout(timer);
+    timer.current = setTimeout(saltar, HOLD_MS);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") saltar();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      clearTimeout(timer.current);
+      window.removeEventListener("keydown", onKey);
+    };
     // Solo al montar: navegar luego a "/" no debe volver a bloquear el scroll.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -86,6 +98,16 @@ export function SplashScreen() {
           transition={{ duration: 0.4, ease: "easeInOut" }}
           data-splash className="fixed inset-0 z-[1000] flex flex-col items-center justify-center overflow-hidden bg-brand-black-deep"
         >
+          <motion.button
+            type="button"
+            onClick={saltar}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.3 }}
+            className="absolute right-4 top-4 z-10 rounded-full border border-brand-line-on-black px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.15em] text-brand-ink-on-black-soft transition-colors hover:text-brand-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent sm:right-8 sm:top-8"
+          >
+            Saltar
+          </motion.button>
           <div
             className="flex flex-col items-center"
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}

@@ -99,12 +99,12 @@ export function Nav() {
               {link.label}
             </a>
           ))}
-          <a
+          <Link
             href="/#hablemos"
             className="rounded-full bg-brand-accent px-5 py-2 font-body text-sm font-semibold text-brand-black transition-opacity hover:opacity-90"
           >
             Hablemos
-          </a>
+          </Link>
         </nav>
 
         <button

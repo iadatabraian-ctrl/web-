@@ -106,6 +106,7 @@ export function MiniDiagnostico() {
                 <div className="flex flex-col items-center">
                   <button
                     type="button"
+                    aria-label={title}
                     aria-pressed={isSelected}
                     onClick={() => selectProblem(i)}
                     className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 transition-colors sm:h-16 sm:w-16 ${

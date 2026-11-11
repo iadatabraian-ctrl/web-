@@ -92,7 +92,7 @@ const jsonLd = {
 };
 
 // Corre antes de pintar: si el splash ya se vio en esta sesión, lo oculta por CSS.
-const splashGuard = `try{if(sessionStorage.getItem("deploy-splash-visto")==="1")document.documentElement.setAttribute("data-splash-visto","")}catch(e){}`;
+const splashGuard = `try{if(sessionStorage.getItem("deploy-splash-visto")==="1"||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.setAttribute("data-splash-visto","")}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
