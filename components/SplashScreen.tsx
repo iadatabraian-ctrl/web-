@@ -18,19 +18,58 @@ const LOGO_POP_DELAY_S = FLASH_DELAY_S;
 const PULSE_DELAY_S = LOGO_POP_DELAY_S + 1.18;
 const HOLD_MS = (PULSE_DELAY_S + 0.75) * 1000;
 
+// El splash se muestra una sola vez por sesión de navegador: en las visitas
+// siguientes el hero arranca de inmediato. El layout marca <html data-splash-visto>
+// con un script previo al render para que no haya ni un fotograma de splash.
+export const SPLASH_KEY = "deploy-splash-visto";
+
+declare global {
+  interface Window {
+    __splashDone?: boolean;
+  }
+}
+
+function yaVisto() {
+  try {
+    return sessionStorage.getItem(SPLASH_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function terminar() {
+  window.__splashDone = true;
+  try {
+    sessionStorage.setItem(SPLASH_KEY, "1");
+  } catch {}
+  window.dispatchEvent(new Event("splash-done"));
+}
+
 export function SplashScreen() {
   const isHome = usePathname() === "/";
   const [visible, setVisible] = useState(isHome);
 
   useEffect(() => {
-    if (!isHome) return;
+    // Primera carga fuera de la home: no hay splash, el hero no debe esperar.
+    if (!visible) {
+      window.__splashDone = true;
+      return;
+    }
+    if (yaVisto()) {
+      // Ya oculto por CSS (data-splash-visto); solo se avisa al hero.
+      window.__splashDone = true;
+      window.dispatchEvent(new Event("splash-done"));
+      return;
+    }
     document.body.style.overflow = "hidden";
     const timer = setTimeout(() => {
       setVisible(false);
-      window.dispatchEvent(new Event("splash-done"));
+      terminar();
     }, HOLD_MS);
     return () => clearTimeout(timer);
-  }, [isHome]);
+    // Solo al montar: navegar luego a "/" no debe volver a bloquear el scroll.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!visible) document.body.style.overflow = "";
@@ -45,7 +84,7 @@ export function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="fixed inset-0 z-[1000] flex flex-col items-center justify-center overflow-hidden bg-brand-black-deep"
+          data-splash className="fixed inset-0 z-[1000] flex flex-col items-center justify-center overflow-hidden bg-brand-black-deep"
         >
           <div
             className="flex flex-col items-center"

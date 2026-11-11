@@ -24,6 +24,7 @@ export function Hero() {
 
   useEffect(() => {
     const onSplashDone = () => setStart(true);
+    if (window.__splashDone) onSplashDone();
     window.addEventListener("splash-done", onSplashDone);
     return () => window.removeEventListener("splash-done", onSplashDone);
   }, []);
@@ -41,9 +42,9 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-brand-accent/50 px-3 py-1.5 sm:gap-2.5 sm:px-4 sm:py-2"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-brand-accent" />
-            <span className="font-body text-[10px] font-semibold tracking-[0.15em] text-brand-cream sm:text-xs">
-              SOLUCIONES DIGITALES
-            </span>
+            <h1 className="text-balance font-body text-[10px] font-semibold uppercase tracking-[0.07em] text-brand-cream sm:text-xs sm:tracking-[0.15em]">
+              Software a medida y páginas web en Uruguay
+            </h1>
           </motion.div>
 
           <motion.div
@@ -59,7 +60,7 @@ export function Hero() {
             <span className="h-px flex-1 bg-brand-line-on-black" />
           </motion.div>
 
-          <h1 className="mt-6 font-display text-[8vw] leading-[1.15] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
+          <p className="mt-6 font-display text-[8vw] leading-[1.15] sm:mt-4 sm:text-6xl sm:leading-[0.98] xl:text-[4.6rem]">
             {[
               { text: "Tu idea,", className: "text-brand-cream" },
               {
@@ -78,7 +79,7 @@ export function Hero() {
                 {text}
               </motion.span>
             ))}
-          </h1>
+          </p>
 
           <motion.p
             initial="hidden"
