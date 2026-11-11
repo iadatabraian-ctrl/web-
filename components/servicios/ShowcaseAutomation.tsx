@@ -5,13 +5,19 @@ import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { GmailIcon, WhatsAppIcon } from "@/components/BrandIcons";
 
-function Node({ children, label, sub, accent = false }: { children: ReactNode; label: string; sub: string; accent?: boolean }) {
+function Node({ children, label, sub, accent = false, paper = false }: { children: ReactNode; label: string; sub: string; accent?: boolean; paper?: boolean }) {
   return (
     <div className="flex w-full flex-col items-center text-center sm:w-44">
       <div
-        className={`flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl border bg-[#0d0c0a] shadow-xl shadow-black/50 ${
-          accent ? "border-brand-accent/70" : "border-white/12"
-        }`}
+        className={
+          paper
+            ? `flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl border-2 border-[#1a1712] bg-[#fffdf8] ${
+                accent ? "shadow-[4px_4px_0_#ff5c1a]" : "shadow-[4px_4px_0_#1a1712]"
+              }`
+            : `flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl border bg-[#0d0c0a] shadow-xl shadow-black/50 ${
+                accent ? "border-brand-accent/70" : "border-white/12"
+              }`
+        }
       >
         {children}
       </div>
@@ -21,21 +27,21 @@ function Node({ children, label, sub, accent = false }: { children: ReactNode; l
   );
 }
 
-function Connector({ delay, reduce }: { delay: number; reduce: boolean | null }) {
+function Connector({ delay, reduce, paper = false }: { delay: number; reduce: boolean | null; paper?: boolean }) {
   const trans = { duration: 2.2, repeat: Infinity, ease: "linear" as const, delay, repeatDelay: 0.6 };
   return (
-    <div className="relative mx-auto h-14 w-px bg-white/15 sm:mt-[3rem] sm:h-px sm:w-full sm:flex-1">
+    <div className={`relative mx-auto h-14 w-px sm:mt-[3rem] sm:h-px sm:w-full sm:flex-1 ${paper ? "bg-[#1a1712]/35" : "bg-white/15"}`}>
       {!reduce && (
         <>
           <motion.span
             animate={{ top: ["0%", "100%"] }}
             transition={trans}
-            className="absolute left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent shadow-[0_0_10px_2px_rgba(255,92,26,0.6)] sm:hidden"
+            className={`absolute left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent sm:hidden ${paper ? "" : "shadow-[0_0_10px_2px_rgba(255,92,26,0.6)]"}`}
           />
           <motion.span
             animate={{ left: ["0%", "100%"] }}
             transition={trans}
-            className="absolute top-1/2 hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent shadow-[0_0_10px_2px_rgba(255,92,26,0.6)] sm:block"
+            className={`absolute top-1/2 hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent sm:block ${paper ? "" : "shadow-[0_0_10px_2px_rgba(255,92,26,0.6)]"}`}
           />
         </>
       )}
@@ -43,8 +49,55 @@ function Connector({ delay, reduce }: { delay: number; reduce: boolean | null })
   );
 }
 
-export function ShowcaseAutomation() {
+/* Flujo de 4 pasos, reutilizable fuera de la subpágina (tone "paper" para fondos crema). */
+export function AutomationFlow({
+  tone = "dark",
+  className = "",
+  immediate = false,
+}: {
+  tone?: "dark" | "paper";
+  className?: string;
+  immediate?: boolean;
+}) {
   const reduce = useReducedMotion();
+  const paper = tone === "paper";
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      {...(immediate
+        ? { animate: { opacity: 1, y: 0 } }
+        : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-10% 0px" } })}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className={`flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:gap-0 ${className}`}
+    >
+      <Node paper={paper} label="Llega un mensaje" sub="Un cliente hace un pedido por WhatsApp.">
+        <WhatsAppIcon className="h-11 w-11" />
+      </Node>
+      <Connector paper={paper} delay={0} reduce={reduce} />
+      <Node paper={paper} label="Se automatiza" sub="Se interpreta el pedido y se arma el registro." accent>
+        <span className="font-display text-4xl text-brand-cream">
+          <span className="text-brand-accent">/</span>
+        </span>
+      </Node>
+      <Connector paper={paper} delay={1.1} reduce={reduce} />
+      <Node paper={paper} label="Se carga en el sistema" sub="Queda ordenado en el panel de gestión.">
+        <Image
+          src="/img/demos/gimnasio/admin-dashboard.webp"
+          alt="Panel de gestión"
+          width={192}
+          height={120}
+          className="h-full w-full object-cover object-left-top"
+        />
+      </Node>
+      <Connector paper={paper} delay={2.2} reduce={reduce} />
+      <Node paper={paper} label="Se avisa al equipo" sub="Llega una notificación por correo.">
+        <GmailIcon className="h-11 w-11" />
+      </Node>
+    </motion.div>
+  );
+}
+
+export function ShowcaseAutomation() {
   return (
     <section className="relative overflow-hidden bg-brand-black-soft px-5 py-12 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
@@ -53,37 +106,7 @@ export function ShowcaseAutomation() {
           Un pedido que se carga solo, sin que nadie lo escriba dos veces.
         </h2>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10% 0px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 flex flex-col sm:mt-14 items-center gap-2 sm:flex-row sm:items-start sm:gap-0"
-        >
-          <Node label="Llega un mensaje" sub="Un cliente hace un pedido por WhatsApp.">
-            <WhatsAppIcon className="h-11 w-11" />
-          </Node>
-          <Connector delay={0} reduce={reduce} />
-          <Node label="Se automatiza" sub="Se interpreta el pedido y se arma el registro." accent>
-            <span className="font-display text-4xl text-brand-cream">
-              <span className="text-brand-accent">/</span>
-            </span>
-          </Node>
-          <Connector delay={1.1} reduce={reduce} />
-          <Node label="Se carga en el sistema" sub="Queda ordenado en el panel de gestión.">
-            <Image
-              src="/img/demos/gimnasio/admin-dashboard.webp"
-              alt="Panel de gestión"
-              width={192}
-              height={120}
-              className="h-full w-full object-cover object-left-top"
-            />
-          </Node>
-          <Connector delay={2.2} reduce={reduce} />
-          <Node label="Se avisa al equipo" sub="Llega una notificación por correo.">
-            <GmailIcon className="h-11 w-11" />
-          </Node>
-        </motion.div>
+        <AutomationFlow className="mt-8 sm:mt-14" />
       </div>
     </section>
   );

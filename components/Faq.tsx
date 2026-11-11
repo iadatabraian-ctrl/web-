@@ -82,7 +82,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="preguntas" className="tono-claro relative overflow-hidden bg-brand-black-soft px-5 py-20 sm:px-8 sm:py-28">
+    <section id="preguntas" className="tono-claro relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
