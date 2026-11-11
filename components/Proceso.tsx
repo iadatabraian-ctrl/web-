@@ -28,7 +28,7 @@ const STEPS = [
 
 export function Proceso() {
   return (
-    <section id="proceso" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
+    <section id="proceso" className="tono-claro relative overflow-hidden bg-brand-black-soft px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-center gap-3">
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
