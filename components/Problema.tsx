@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { AppWindow, ArrowRight, ClipboardList, TrendingUp, Unlink, type LucideIcon } from "lucide-react";
@@ -165,19 +165,29 @@ function Detalle({
 
 const INCLINACION = ["-rotate-1", "rotate-1", "rotate-[0.6deg]", "-rotate-[0.8deg]"];
 
+function suscribirAncho(cb: () => void) {
+  const mq = window.matchMedia("(min-width: 640px)");
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+}
+
 export function Problema() {
   const reduce = useReducedMotion();
-  const [sel, setSel] = useState(0);
+  // En pantallas anchas arranca con la primera nota abierta (el panel de la derecha no queda vacío);
+  // en celular arranca cerrado para no sumar ~700 px de entrada.
+  const ancha = useSyncExternalStore(suscribirAncho, () => window.matchMedia("(min-width: 640px)").matches, () => true);
+  const [eleccion, setEleccion] = useState<number | null | undefined>(undefined);
   const [horas, setHoras] = useState<number | null>(null);
-  const p = PROBLEMAS[sel];
+  const sel = eleccion === undefined ? (ancha ? 0 : null) : eleccion;
+  const p = sel === null ? null : PROBLEMAS[sel];
 
   function elegir(i: number) {
-    setSel(i);
+    setEleccion(sel === i && !ancha ? null : i);
     setHoras(null);
   }
 
   return (
-    <section id="diagnostico" className="relative overflow-hidden py-20 sm:py-28">
+    <section id="diagnostico" className="relative overflow-hidden py-14 sm:py-28">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <FadeIn>
           <div className="flex items-center gap-3">
@@ -241,7 +251,7 @@ export function Problema() {
                   <span className="mt-3 block font-display text-xl leading-tight">{title}</span>
                   <span className="mt-2 block font-body text-sm leading-snug text-[#5c5142]">{desc}</span>
                 </button>
-                {activa && (
+                {activa && p && (
                   <div className="mt-6 sm:hidden">
                     <Detalle p={p} horas={horas} setHoras={setHoras} reduce={!!reduce} />
                   </div>
@@ -253,6 +263,7 @@ export function Problema() {
 
           <div aria-live="polite" className="hidden min-w-0 sm:block lg:sticky lg:top-24">
             <AnimatePresence mode="wait" initial={false}>
+              {p && (
               <motion.div
                 key={sel}
                 initial={{ opacity: 0, y: reduce ? 0 : 12 }}
@@ -262,6 +273,7 @@ export function Problema() {
               >
                 <Detalle p={p} horas={horas} setHoras={setHoras} reduce={!!reduce} />
               </motion.div>
+              )}
             </AnimatePresence>
           </div>
         </div>

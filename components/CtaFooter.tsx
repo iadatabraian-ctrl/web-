@@ -22,7 +22,7 @@ const SERVICE_LINKS = [
 export function CtaFooter() {
   return (
     <>
-      <section id="hablemos" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
+      <section id="hablemos" className="relative overflow-hidden px-5 py-14 sm:px-8 sm:py-28">
         <FadeIn className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
             ¿Tenés una idea o un problema para resolver?

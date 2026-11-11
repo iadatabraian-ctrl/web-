@@ -78,16 +78,41 @@ const faqJsonLd = {
   })),
 };
 
+/* Las que más frenan la decisión. El plazo no va acá: ya se ve en las barras de "Paso a paso". */
+const IDX_DESTACADAS = [0, 2, 3];
+const DESTACADAS = IDX_DESTACADAS.map((i) => ITEMS[i]);
+const RESTO = ITEMS.filter((_, i) => !IDX_DESTACADAS.includes(i));
+
+function Respuesta({ a, list, note }: Item) {
+  return (
+    <>
+      {list ? (
+        <ul className="flex flex-col gap-2">
+          {list.map(({ k, v }) => (
+            <li key={k} className="flex flex-col">
+              <span className="font-semibold text-brand-cream">{k}</span>
+              <span>{v}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-base font-semibold text-brand-cream">{a}</p>
+      )}
+      {note && <p className={list ? "mt-4 text-xs" : "mt-2"}>{note}</p>}
+    </>
+  );
+}
+
 export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="preguntas" className="tono-claro relative overflow-hidden bg-brand-black px-5 py-20 sm:px-8 sm:py-28">
+    <section id="preguntas" className="tono-claro relative overflow-hidden bg-brand-black px-5 py-14 sm:px-8 sm:py-28">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-6xl">
         <div className="flex items-center gap-3">
           <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
             PREGUNTAS FRECUENTES
@@ -99,61 +124,76 @@ export function Faq() {
           ¿Qué querés saber antes de arrancar?
         </h2>
 
-        <FadeIn className="mt-10 border-t border-brand-line-on-black sm:mt-14">
-          {ITEMS.map(({ q, a, list, note }, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={q} className="border-b border-brand-line-on-black">
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-start justify-between gap-4 py-5 text-left sm:py-6"
-                >
-                  <span>
-                    <span className="font-mono text-xs text-brand-accent">
-                      0{i + 1}
-                    </span>
-                    <span className="mt-1 block font-body text-sm font-semibold text-brand-cream sm:text-base">
-                      {q}
-                    </span>
-                  </span>
-                  <ChevronDown
-                    className={`mt-1 h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="max-w-xl pb-6 font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:pb-8">
-                        {list ? (
-                          <ul className="flex flex-col gap-2">
-                            {list.map(({ k, v }) => (
-                              <li key={k} className="flex flex-col sm:flex-row sm:gap-2">
-                                <span className="font-semibold text-brand-cream">{k}:</span>
-                                <span>{v}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <p>{a}</p>
-                        )}
-                        {note && <p className={list ? "mt-3" : "mt-2"}>{note}</p>}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+        <FadeIn className="mt-10 grid gap-6 sm:mt-14 lg:grid-cols-3">
+          {DESTACADAS.map((item) => (
+            <article
+              key={item.q}
+              className="rounded-xl border-2 border-[#1a1712] bg-[#fffdf8] p-6 font-body text-sm leading-relaxed text-brand-ink-on-black-soft shadow-[5px_5px_0_#1a1712]"
+            >
+              <h3 className="mb-4 font-display text-xl leading-tight text-brand-cream">{item.q}</h3>
+              <Respuesta {...item} />
+            </article>
+          ))}
         </FadeIn>
+
+        <div className="mx-auto mt-14 max-w-3xl sm:mt-20">
+          <p className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
+            MÁS PREGUNTAS
+          </p>
+          <FadeIn className="mt-4 border-t border-brand-line-on-black">
+            {RESTO.map(({ q, a, list, note }, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={q} className="border-b border-brand-line-on-black">
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex w-full items-start justify-between gap-4 py-5 text-left sm:py-6"
+                  >
+                    <span>
+                      <span className="font-mono text-xs text-brand-accent">0{i + 1 + DESTACADAS.length}</span>
+                      <span className="mt-1 block font-body text-sm font-semibold text-brand-cream sm:text-base">
+                        {q}
+                      </span>
+                    </span>
+                    <ChevronDown
+                      className={`mt-1 h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="max-w-xl pb-6 font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:pb-8">
+                          {list ? (
+                            <ul className="flex flex-col gap-2">
+                              {list.map(({ k, v }) => (
+                                <li key={k} className="flex flex-col sm:flex-row sm:gap-2">
+                                  <span className="font-semibold text-brand-cream">{k}:</span>
+                                  <span>{v}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p>{a}</p>
+                          )}
+                          {note && <p className={list ? "mt-3" : "mt-2"}>{note}</p>}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </FadeIn>
+        </div>
       </div>
     </section>
   );
