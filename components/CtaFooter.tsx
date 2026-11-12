@@ -22,7 +22,7 @@ const SERVICE_LINKS = [
 export function CtaFooter() {
   return (
     <>
-      <section id="hablemos" className="relative overflow-hidden px-5 py-14 sm:px-8 sm:py-28">
+      <section id="hablemos" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
         <FadeIn className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
             ¿Tenés una idea o un problema para resolver?
@@ -91,9 +91,9 @@ export function CtaFooter() {
           </div>
 
           <div>
-            <h3 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
+            <h4 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
               NAVEGACIÓN
-            </h3>
+            </h4>
             <ul className="mt-4 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -109,9 +109,9 @@ export function CtaFooter() {
           </div>
 
           <div>
-            <h3 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
+            <h4 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
               SERVICIOS
-            </h3>
+            </h4>
             <ul className="mt-4 flex flex-col gap-3">
               {SERVICE_LINKS.map(({ href, label }) => (
                 <li key={href}>

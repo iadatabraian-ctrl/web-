@@ -46,68 +46,42 @@ export const metadata: Metadata = {
   other: { "theme-color": "#050403" },
 };
 
-const SITE = "https://deployuy.com";
-
-// Un solo grafo: el negocio y el sitio con @id, para que el schema `Service`
-// de cada página apunte acá en vez de repetir los datos. Sin `priceRange`:
-// Deploy cotiza por alcance y no publica rangos de precio (ver PRODUCT.md).
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": `${SITE}/#sitio`,
-      url: `${SITE}/`,
-      name: "Deploy",
-      inLanguage: "es-UY",
-      publisher: { "@id": `${SITE}/#negocio` },
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": `${SITE}/#negocio`,
-      name: "Deploy",
-      url: `${SITE}/`,
-      logo: `${SITE}/img/deploy-logo.png`,
-      image: `${SITE}/img/og-image.jpg`,
-      description:
-        "Desarrollo de software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram, para negocios en Uruguay.",
-      email: "deploy.uy@gmail.com",
-      telephone: "+59898648853",
-      areaServed: { "@type": "Country", name: "Uruguay" },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Salto",
-        addressCountry: "UY",
-      },
-      founder: { "@type": "Person", name: "Braian", jobTitle: "Desarrollador" },
-      sameAs: ["https://instagram.com/deploy.uy"],
-      serviceType: [
-        "Desarrollo de software a medida",
-        "Diseño y desarrollo de páginas web",
-        "Automatización de procesos",
-        "Agentes de IA para WhatsApp e Instagram",
-      ],
-    },
+  "@type": "ProfessionalService",
+  name: "Deploy",
+  url: "https://deployuy.com/",
+  logo: "https://deployuy.com/img/deploy-logo.png",
+  image: "https://deployuy.com/img/og-image.jpg",
+  description:
+    "Desarrollo de software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram, para negocios en Uruguay.",
+  email: "deploy.uy@gmail.com",
+  telephone: "+59898648853",
+  areaServed: "UY",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Salto",
+    addressCountry: "UY",
+  },
+  sameAs: ["https://instagram.com/deploy.uy"],
+  serviceType: [
+    "Desarrollo de software a medida",
+    "Diseño y desarrollo de páginas web",
+    "Automatización de procesos",
+    "Agentes de IA para WhatsApp e Instagram",
   ],
 };
-
-// Corre antes de pintar: si el splash ya se vio en esta sesión, lo oculta por CSS.
-const splashGuard = `try{if(sessionStorage.getItem("deploy-splash-visto")==="1"||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.setAttribute("data-splash-visto","")}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
       className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} antialiased`}
-      suppressHydrationWarning
     >
       <body>
-        <script dangerouslySetInnerHTML={{ __html: splashGuard }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <SplashScreen />
         {children}

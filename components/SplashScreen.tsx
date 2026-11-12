@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -18,70 +18,19 @@ const LOGO_POP_DELAY_S = FLASH_DELAY_S;
 const PULSE_DELAY_S = LOGO_POP_DELAY_S + 1.18;
 const HOLD_MS = (PULSE_DELAY_S + 0.75) * 1000;
 
-// El splash se muestra una sola vez por sesión de navegador: en las visitas
-// siguientes el hero arranca de inmediato. El layout marca <html data-splash-visto>
-// con un script previo al render para que no haya ni un fotograma de splash.
-export const SPLASH_KEY = "deploy-splash-visto";
-
-declare global {
-  interface Window {
-    __splashDone?: boolean;
-  }
-}
-
-function yaVisto() {
-  try {
-    return sessionStorage.getItem(SPLASH_KEY) === "1";
-  } catch {
-    return false;
-  }
-}
-
-function terminar() {
-  window.__splashDone = true;
-  try {
-    sessionStorage.setItem(SPLASH_KEY, "1");
-  } catch {}
-  window.dispatchEvent(new Event("splash-done"));
-}
-
 export function SplashScreen() {
   const isHome = usePathname() === "/";
   const [visible, setVisible] = useState(isHome);
-  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  const saltar = useCallback(() => {
-    clearTimeout(timer.current);
-    setVisible(false);
-    terminar();
-  }, []);
 
   useEffect(() => {
-    // Primera carga fuera de la home: no hay splash, el hero no debe esperar.
-    if (!visible) {
-      window.__splashDone = true;
-      return;
-    }
-    const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (yaVisto() || reducido) {
-      // Ya oculto por CSS (data-splash-visto): solo se avisa al hero.
-      window.__splashDone = true;
-      window.dispatchEvent(new Event("splash-done"));
-      return;
-    }
+    if (!isHome) return;
     document.body.style.overflow = "hidden";
-    timer.current = setTimeout(saltar, HOLD_MS);
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") saltar();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      clearTimeout(timer.current);
-      window.removeEventListener("keydown", onKey);
-    };
-    // Solo al montar: navegar luego a "/" no debe volver a bloquear el scroll.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const timer = setTimeout(() => {
+      setVisible(false);
+      window.dispatchEvent(new Event("splash-done"));
+    }, HOLD_MS);
+    return () => clearTimeout(timer);
+  }, [isHome]);
 
   useEffect(() => {
     if (!visible) document.body.style.overflow = "";
@@ -96,18 +45,8 @@ export function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          data-splash className="fixed inset-0 z-[1000] flex flex-col items-center justify-center overflow-hidden bg-brand-black-deep"
+          className="fixed inset-0 z-[1000] flex flex-col items-center justify-center overflow-hidden bg-brand-black-deep"
         >
-          <motion.button
-            type="button"
-            onClick={saltar}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.3 }}
-            className="absolute right-4 top-4 z-10 rounded-full border border-brand-line-on-black px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.15em] text-brand-ink-on-black-soft transition-colors hover:text-brand-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent sm:right-8 sm:top-8"
-          >
-            Saltar
-          </motion.button>
           <div
             className="flex flex-col items-center"
             style={{ animation: `splash-pulse 0.5s ease-in-out ${PULSE_DELAY_S}s 1` }}

@@ -243,28 +243,3 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 }
-/* Splash ya visto en esta sesión: ni un fotograma (ver script en layout.tsx). */
-html[data-splash-visto] [data-splash] {
-  display: none;
-}
-
-/* ---------- Tono claro (crema) ----------
-   Reasigna los tokens "sobre negro" a "sobre crema" dentro de una sección, así
-   los componentes existentes se adaptan sin tocar sus clases. El naranja vivo
-   queda para botones y detalles; el texto naranja usa la versión oscura para
-   mantener contraste sobre crema. Los botones naranja conservan texto oscuro. */
-.tono-claro {
-  --brand-black: #f6f1e7;
-  --brand-black-deep: #ede5d3;
-  --brand-black-soft: #fffdf8;
-  --brand-cream: #1a1712;
-  --brand-ink-on-black-soft: #5c5142;
-  --brand-line-on-black: rgba(26, 23, 18, 0.14);
-  color: var(--brand-cream);
-}
-.tono-claro .text-brand-accent {
-  color: var(--brand-accent-ink);
-}
-.tono-claro .bg-brand-accent {
-  color: #1a1712;
-}

@@ -1,38 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 /* Segundo del video en el que el cohete ya despegó: ahí se enciende "en producción." */
 const LIFTOFF_S = 2.8;
 
-type Modo = "wide" | "narrow" | "poster";
-
-const QUERIES = ["(min-width: 900px)", "(prefers-reduced-motion: reduce)"];
-
-function suscribir(cb: () => void) {
-  const mqs = QUERIES.map((q) => window.matchMedia(q));
-  mqs.forEach((m) => m.addEventListener("change", cb));
-  return () => mqs.forEach((m) => m.removeEventListener("change", cb));
-}
-
-/* Qué se descarga: solo el póster si el visitante pide menos movimiento o tiene
-   ahorro de datos / conexión 2G; si no, un único video (vertical en celular,
-   horizontal en laptop). En el servidor es null: el video no entra al HTML inicial. */
-function leerModo(): Modo {
-  if (window.matchMedia(QUERIES[1]).matches) return "poster";
-  const c = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-  if (c?.saveData || c?.effectiveType === "slow-2g" || c?.effectiveType === "2g") return "poster";
-  return window.matchMedia(QUERIES[0]).matches ? "wide" : "narrow";
-}
-
 export function HeroLaunch({ start, onLive }: { start: boolean; onLive: () => void }) {
   const ref = useRef<HTMLVideoElement>(null);
   const fired = useRef(false);
   const reduce = useReducedMotion();
-  const modo = useSyncExternalStore<Modo | null>(suscribir, leerModo, () => null);
-  const wide = modo === "wide";
+  // null hasta saber el ancho: así se descarga un solo video (vertical en celular, horizontal en laptop)
+  const [wide, setWide] = useState<boolean | null>(null);
   const [ended, setEnded] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 900px)");
+    setWide(mq.matches);
+  }, []);
 
   const fire = () => {
     if (fired.current) return;
@@ -41,9 +26,9 @@ export function HeroLaunch({ start, onLive }: { start: boolean; onLive: () => vo
   };
 
   useEffect(() => {
-    if (!start || modo === null) return;
+    if (!start || wide === null) return;
     const v = ref.current;
-    if (reduce || modo === "poster" || !v) {
+    if (reduce || !v) {
       fire();
       return;
     }
@@ -52,20 +37,14 @@ export function HeroLaunch({ start, onLive }: { start: boolean; onLive: () => vo
     v.play().catch(() => fire());
     return () => clearTimeout(fallback);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [start, modo, reduce]);
+  }, [start, wide, reduce]);
 
   const base = wide ? "/video/hero-launch-wide" : "/video/hero-launch";
   const poster = wide ? "/img/hero/hero-launch-wide-poster.jpg" : "/img/hero/hero-launch-poster.jpg";
 
   return (
     <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-brand-black-deep">
-      {modo === "poster" && (
-        <div
-          className="absolute inset-0 bg-cover bg-[50%_72%] min-[900px]:bg-center"
-          style={{ backgroundImage: `url(${poster})` }}
-        />
-      )}
-      {modo !== null && modo !== "poster" && (
+      {wide !== null && (
         <video
           key={base}
           ref={ref}

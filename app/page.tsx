@@ -1,9 +1,11 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { Problema } from "@/components/Problema";
+import { Diagnostico } from "@/components/Diagnostico";
 import { Servicios } from "@/components/Servicios";
 import { Proceso } from "@/components/Proceso";
-import { Fundador } from "@/components/Fundador";
+import { AccesoDirecto } from "@/components/AccesoDirecto";
+import { Nosotros } from "@/components/Nosotros";
+import { MiniDiagnostico } from "@/components/MiniDiagnostico";
 import { Faq } from "@/components/Faq";
 import { CtaFooter } from "@/components/CtaFooter";
 
@@ -14,10 +16,12 @@ export default function Home() {
       <div className="relative">
         <main>
           <Hero />
-          <Problema />
+          <Diagnostico />
           <Servicios />
           <Proceso />
-          <Fundador />
+          <AccesoDirecto />
+          <Nosotros />
+          <MiniDiagnostico />
           <Faq />
         </main>
         <CtaFooter />

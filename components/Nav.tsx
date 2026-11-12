@@ -10,7 +10,7 @@ const LINKS = [
   { href: "/#servicios", label: "Servicios" },
   { href: "/#proceso", label: "Proceso" },
   { href: "/#nosotros", label: "Nosotros" },
-  { href: "/#diagnostico", label: "Diagnóstico" },
+  { href: "/#diagnostico-rapido", label: "Diagnóstico" },
   { href: "/#preguntas", label: "Preguntas" },
 ];
 
@@ -99,12 +99,12 @@ export function Nav() {
               {link.label}
             </a>
           ))}
-          <Link
+          <a
             href="/#hablemos"
             className="rounded-full bg-brand-accent px-5 py-2 font-body text-sm font-semibold text-brand-black transition-opacity hover:opacity-90"
           >
             Hablemos
-          </Link>
+          </a>
         </nav>
 
         <button

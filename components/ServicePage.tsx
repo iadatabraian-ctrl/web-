@@ -35,7 +35,16 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         url,
         serviceType: s.nombre,
         areaServed: { "@type": "Country", name: "Uruguay" },
-        provider: { "@id": `${SITE}/#negocio` },
+        provider: {
+          "@type": "ProfessionalService",
+          name: "Deploy",
+          url: `${SITE}/`,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Salto",
+            addressCountry: "UY",
+          },
+        },
       },
       {
         "@type": "FAQPage",
