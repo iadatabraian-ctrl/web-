@@ -11,13 +11,31 @@ const CONTACTOS = [
   { href: "mailto:deploy.uy@gmail.com", label: "Email", icon: GmailIcon, externo: false },
 ];
 
-/* Reemplaza "Cómo trabajamos" (recuadro de texto) y "Nosotros". La propuesta es hablar
-   directo con quien programa: el foco es el texto y el contacto, con una foto chica. */
+/* Reemplaza "Cómo trabajamos" (recuadro de texto) y "Nosotros": la propuesta de valor
+   es hablar directo con quien programa, así que se muestra a la persona, no solo el texto. */
 export function Fundador() {
   return (
     <section id="nosotros" className="tono-claro relative overflow-hidden bg-brand-black-deep px-5 py-14 sm:px-8 sm:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-20">
-        <FadeIn>
+      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+        <FadeIn className="mx-auto w-full max-w-[16rem] sm:max-w-sm lg:max-w-none">
+          <div className="relative">
+            <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-[#1a1712] shadow-[8px_8px_0_#ff5c1a]">
+              <Image
+                src="/img/team/braian.jpg"
+                alt="Braian González, fundador de Deploy"
+                fill
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-5 left-4 rounded-lg border-2 border-[#1a1712] bg-[#fffdf8] px-4 py-2 shadow-[4px_4px_0_#1a1712] sm:left-6">
+              <p className="font-body text-sm font-semibold text-brand-cream">Braian González</p>
+              <p className="font-body text-[11px] tracking-[0.15em] text-brand-ink-on-black-soft">FUNDADOR</p>
+            </div>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.1}>
           <p className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
             QUIÉN ESTÁ DETRÁS
           </p>
@@ -34,41 +52,29 @@ export function Fundador() {
             mismo sitio que estás viendo es un ejemplo de lo que construyo: hecho a medida, de punta a punta, sin
             plantillas.
           </p>
-        </FadeIn>
 
-        <FadeIn delay={0.1} className="w-full max-w-md lg:max-w-none">
-          <div className="rounded-2xl border-2 border-[#1a1712] bg-[#fffdf8] p-6 shadow-[8px_8px_0_#ff5c1a] sm:p-8">
-            <div className="flex items-center gap-4">
-              <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-[#1a1712]">
-                <Image
-                  src="/img/team/braian.jpg"
-                  alt="Braian González, fundador de Deploy"
-                  fill
-                  sizes="64px"
-                  className="object-cover"
-                />
-              </span>
-              <div>
-                <p className="font-body text-base font-semibold text-brand-cream">Braian González</p>
-                <p className="font-body text-xs tracking-[0.15em] text-brand-ink-on-black-soft">FUNDADOR</p>
-              </div>
+          <div className="mt-8 flex max-w-xl items-start gap-3">
+            <span className="relative mt-1 h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-[#1a1712]">
+              <Image src="/img/team/braian.jpg" alt="" fill sizes="40px" className="object-cover" />
+            </span>
+            <div className="rounded-2xl rounded-tl-sm border-2 border-[#1a1712] bg-[#fffdf8] px-4 py-3 shadow-[4px_4px_0_#1a1712]">
+              <p className="font-body text-sm font-semibold text-brand-cream sm:text-base">
+                Contame qué necesita tu negocio y lo vemos.
+              </p>
             </div>
+          </div>
 
-            <p className="mt-6 rounded-2xl rounded-tl-sm border-2 border-[#1a1712] bg-[#f6f1e7] px-4 py-3 font-body text-sm font-semibold text-brand-cream shadow-[4px_4px_0_#1a1712] sm:text-base">
-              Contame qué necesita tu negocio y lo vemos.
-            </p>
-
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#1a1712] bg-brand-accent px-6 py-3 font-body text-sm font-bold uppercase tracking-wide shadow-[4px_4px_0_#1a1712] transition-transform hover:-translate-y-0.5 sm:w-auto"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-[#1a1712] bg-brand-accent px-6 py-3 font-body text-sm font-bold uppercase tracking-wide shadow-[4px_4px_0_#1a1712] transition-transform hover:-translate-y-0.5"
             >
               Escribime por WhatsApp
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </a>
-
-            <div className="mt-6 flex items-center gap-3 border-t-2 border-dashed border-[#1a1712]/25 pt-6">
+            <div className="flex items-center gap-3">
               {CONTACTOS.map(({ href, label, icon: Icon, externo }) => (
                 <a
                   key={label}
