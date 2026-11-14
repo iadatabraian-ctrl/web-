@@ -16,7 +16,7 @@ export type Servicio = {
   incluye: { t: string; d: string }[];
   cuandoConviene: string[];
   proceso: { t: string; d: string }[];
-  valores: { precio: string; plazo: string; nota: string };
+  valores: { precio: string; prefijo: string; cifra: string; detalle: string; plazo: string; nota: string };
   faq: { q: string; a: string }[];
   whatsappTexto: string;
 };
@@ -90,6 +90,9 @@ export const SERVICIOS: Servicio[] = [
     proceso: PROCESO_BASE,
     valores: {
       precio: "Desde USD 800–1.200, más USD 40–80 mensuales de mantenimiento",
+      prefijo: "Desde",
+      cifra: "USD 800–1.200",
+      detalle: "Más USD 40–80 por mes de mantenimiento",
       plazo: "20 a 30 días",
       nota: "El valor final depende del alcance. Cada proyecto se cotiza de forma individual, sin paquetes cerrados.",
     },
@@ -170,6 +173,9 @@ export const SERVICIOS: Servicio[] = [
     proceso: PROCESO_BASE,
     valores: {
       precio: "Desde $8.000 hasta $25.000 UYU, según complejidad",
+      prefijo: "Desde",
+      cifra: "$8.000 – $25.000 UYU",
+      detalle: "Según la complejidad",
       plazo: "7 a 20 días",
       nota: "El valor final depende del alcance. Cada proyecto se cotiza de forma individual, sin paquetes cerrados.",
     },
@@ -246,6 +252,9 @@ export const SERVICIOS: Servicio[] = [
     proceso: PROCESO_BASE,
     valores: {
       precio: "Desde $10.000 UYU",
+      prefijo: "Desde",
+      cifra: "$10.000 UYU",
+      detalle: "Según la cantidad y complejidad de los flujos",
       plazo: "10 a 15 días",
       nota: "El valor final depende de la cantidad y complejidad de los flujos. Cada proyecto se cotiza de forma individual.",
     },
@@ -326,6 +335,9 @@ export const SERVICIOS: Servicio[] = [
     proceso: PROCESO_BASE,
     valores: {
       precio: "Mensualidad desde $3.000 UYU",
+      prefijo: "Mensualidad desde",
+      cifra: "$3.000 UYU",
+      detalle: "Cubre el funcionamiento del agente",
       plazo: "10 a 15 días",
       nota: "La mensualidad cubre el funcionamiento del agente: API de WhatsApp Business, mantenimiento y el servicio de IA.",
     },

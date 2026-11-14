@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { CtaFooter } from "@/components/CtaFooter";
 import { FadeIn } from "@/components/FadeIn";
 import { Bar } from "@/components/Bar";
+import { CuandoConviene } from "@/components/servicios/CuandoConviene";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
@@ -64,7 +65,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
 
   const H2 =
     "origin-bottom-left -skew-x-[5deg] font-impact text-[2.1rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] [font-stretch:80%] sm:text-6xl";
-  const CARD = "rounded-[1.25rem] border p-5 sm:rounded-[1.75rem] sm:p-6";
+  const CARD = "rounded-[1.25rem] border p-3.5 sm:rounded-[1.75rem] sm:p-6";
 
   return (
     <>
@@ -130,18 +131,39 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Qué incluye</h2>
             </FadeIn>
-            <ul className="mt-7 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-              {s.incluye.map((item, i) => (
-                <li key={item.t}>
-                  <FadeIn delay={(i % 3) * 0.08} className={`${CARD} h-full border-transparent bg-brand-black text-brand-cream`}>
-                    <span className="font-impact text-4xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-5xl">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="mt-3 font-body text-sm font-semibold normal-case tracking-normal sm:mt-4 sm:text-base">{item.t}</h3>
-                    <p className="mt-2 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{item.d}</p>
-                  </FadeIn>
-                </li>
-              ))}
+            <ul className="mt-7 grid grid-cols-2 gap-2.5 sm:mt-12 sm:gap-4 lg:grid-cols-4">
+              {s.incluye.map((item, i) => {
+                const extras = Math.max(s.incluye.length - 5, 0);
+                const isExtra = i >= 5;
+                const lastOdd = i === s.incluye.length - 1 && i % 2 === 1;
+                const span = `${lastOdd ? "max-sm:col-span-2" : ""} ${isExtra ? (extras === 1 ? "lg:col-span-4" : extras === 2 ? "lg:col-span-2" : "") : ""}`;
+                if (i === 0) {
+                  return (
+                    <li key={item.t} className="col-span-2 lg:row-span-2">
+                      <FadeIn className="relative h-full min-h-[17rem] overflow-hidden sm:min-h-[22rem] rounded-[1.25rem] bg-brand-black text-brand-cream sm:rounded-[1.75rem]">
+                        <Image src={CARD_IMG[s.visual]} alt="" fill sizes="(min-width: 1024px) 45vw, 90vw" className="object-cover opacity-60" />
+                        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0d0b08] via-[#0d0b08]/50 to-transparent" />
+                        <div className="relative flex h-full flex-col justify-end p-5 sm:p-8">
+                          <span className="font-impact text-6xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-7xl">01</span>
+                          <h3 className="mt-3 font-body text-lg font-semibold normal-case tracking-normal sm:text-2xl">{item.t}</h3>
+                          <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-brand-cream/80 sm:text-base">{item.d}</p>
+                        </div>
+                      </FadeIn>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={item.t} className={span}>
+                    <FadeIn delay={(i % 4) * 0.08} className={`${CARD} h-full border-transparent bg-brand-black text-brand-cream`}>
+                      <span className="font-impact text-3xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-4xl">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="mt-3 font-body text-[13px] font-semibold normal-case leading-tight tracking-normal sm:mt-4 sm:text-base">{item.t}</h3>
+                      <p className="mt-1.5 font-body text-[11.5px] leading-snug text-brand-ink-on-black-soft sm:mt-2 sm:text-sm sm:leading-relaxed">{item.d}</p>
+                    </FadeIn>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </section>
@@ -152,16 +174,9 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Cuándo conviene</h2>
             </FadeIn>
-            <ul className="mt-7 flex flex-col gap-3 sm:mt-12">
-              {s.cuandoConviene.map((item, i) => (
-                <li key={item}>
-                  <FadeIn delay={i * 0.07} className="flex items-start gap-4 rounded-[1.25rem] border border-white/10 bg-brand-black px-5 py-4 font-body text-sm leading-relaxed sm:px-6 sm:py-5 sm:text-base">
-                    <span className="font-mono text-xs font-bold text-brand-accent">{String(i + 1).padStart(2, "0")}</span>
-                    {item}
-                  </FadeIn>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-8 sm:mt-14">
+              <CuandoConviene items={s.cuandoConviene} />
+            </div>
           </div>
         </section>
 
@@ -193,20 +208,40 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Valores y plazos</h2>
             </FadeIn>
-            <div className="mt-7 grid gap-3 sm:mt-12 sm:grid-cols-[1.5fr_1fr] sm:gap-4">
-              <FadeIn>
-                <div className={`${CARD} h-full border-brand-accent/50 bg-brand-black sm:p-8`}>
-                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Valor</p>
-                  <p className="mt-3 font-body text-lg font-semibold leading-snug sm:mt-4 sm:text-3xl">{s.valores.precio}</p>
+            <FadeIn className="mt-7 overflow-hidden rounded-[1.25rem] border border-white/10 bg-brand-black sm:mt-12 sm:rounded-[1.75rem]">
+              <div className="grid lg:grid-cols-[1.2fr_1fr]">
+                <div className="p-6 sm:p-10">
+                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">{s.valores.prefijo}</p>
+                  <p className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[2.6rem] font-black uppercase not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-7xl lg:text-[5.2rem]">
+                    {s.valores.cifra}
+                  </p>
+                  <p className="mt-3 font-body text-sm text-brand-ink-on-black-soft sm:text-lg">{s.valores.detalle}</p>
                 </div>
-              </FadeIn>
-              <FadeIn delay={0.1}>
-                <div className={`${CARD} h-full border-white/10 bg-brand-black sm:p-8`}>
+                <div className="border-t border-white/10 p-6 sm:p-10 lg:border-l lg:border-t-0">
                   <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Plazo</p>
-                  <p className="mt-3 font-body text-lg font-semibold leading-snug sm:mt-4 sm:text-3xl">{s.valores.plazo}</p>
+                  <p className="mt-2 font-impact text-4xl font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl">{s.valores.plazo}</p>
+                  {(() => {
+                    const m = s.valores.plazo.match(/(\d+)\s*a\s*(\d+)/);
+                    if (!m) return null;
+                    const [lo, hi] = [Number(m[1]), Number(m[2])];
+                    const max = 30;
+                    return (
+                      <div className="mt-6 sm:mt-8" aria-hidden="true">
+                        <div className="relative h-3 rounded-full bg-white/10">
+                          <span
+                            className="absolute inset-y-0 rounded-full bg-brand-accent"
+                            style={{ left: `${(lo / max) * 100}%`, width: `${((hi - lo) / max) * 100}%` }}
+                          />
+                        </div>
+                        <div className="mt-2 flex justify-between font-mono text-[10px] text-brand-ink-on-black-soft">
+                          <span>0</span><span>10</span><span>20</span><span>30 días</span>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
-              </FadeIn>
-            </div>
+              </div>
+            </FadeIn>
             <p className="mt-6 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{s.valores.nota}</p>
           </div>
         </section>
