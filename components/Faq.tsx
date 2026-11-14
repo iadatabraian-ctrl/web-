@@ -100,23 +100,23 @@ export function Faq() {
           <span className="block text-white/75">antes de arrancar?</span>
         </h2>
 
-        <FadeIn className="mt-10 flex flex-col gap-3 sm:mt-14">
+        <FadeIn className="mt-10 flex flex-col gap-2 sm:mt-14 sm:gap-3">
           {ITEMS.map(({ q, a, list, note }, i) => {
             const isOpen = open === i;
             return (
               <div
                 key={q}
-                className={`rounded-[1.25rem] border bg-brand-black transition-colors duration-300 ${isOpen ? "border-brand-accent/60" : "border-white/10"}`}
+                className={`rounded-[1.1rem] border bg-brand-black sm:rounded-[1.25rem] transition-colors duration-300 ${isOpen ? "border-brand-accent/60" : "border-white/10"}`}
               >
                 <button
                   type="button"
                   aria-expanded={isOpen}
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
+                  className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left sm:gap-4 sm:px-6 sm:py-5"
                 >
-                  <span className="flex items-center gap-4">
+                  <span className="flex items-center gap-3 sm:gap-4">
                     <span className="font-mono text-xs font-bold text-brand-accent">0{i + 1}</span>
-                    <span className="font-body text-sm font-semibold text-brand-cream sm:text-base">{q}</span>
+                    <span className="font-body text-[13px] font-semibold leading-snug text-brand-cream sm:text-base">{q}</span>
                   </span>
                   <ChevronDown
                     className={`h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}

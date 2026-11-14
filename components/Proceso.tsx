@@ -54,7 +54,7 @@ export function Proceso() {
           </motion.span>
         </h2>
 
-        <ol className="mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <ol className="mt-10 grid grid-cols-2 gap-2.5 sm:mt-16 sm:gap-4 lg:grid-cols-4">
           {STEPS.map((s, i) => (
             <motion.li
               key={s.title}
@@ -62,15 +62,15 @@ export function Proceso() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={view}
               transition={{ duration: 0.6, ease, delay: i * 0.1 }}
-              className="group flex min-h-[10.5rem] flex-col rounded-[1.75rem] border border-white/10 bg-brand-black p-5 transition-colors duration-300 hover:border-brand-accent/60 sm:min-h-[14rem] sm:p-6"
+              className="group flex min-h-[11.5rem] flex-col rounded-[1.25rem] border border-white/10 bg-brand-black p-3.5 sm:rounded-[1.75rem] sm:p-5 transition-colors duration-300 hover:border-brand-accent/60 sm:min-h-[14rem] sm:p-6"
             >
-              <span className="font-impact text-5xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-6xl">
+              <span className="font-impact text-4xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-6xl">
                 0{i + 1}
               </span>
-              <h3 className="origin-bottom-left -skew-x-[5deg] pt-8 font-impact text-[1.45rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-[1.65rem]">
+              <h3 className="origin-bottom-left -skew-x-[5deg] mt-auto pt-5 font-impact text-[1.05rem] font-black uppercase not-italic leading-[1.05] [font-stretch:80%] sm:text-[1.65rem]">
                 {s.title}
               </h3>
-              <p className="mt-2 font-body text-[13px] leading-snug text-brand-ink-on-black-soft sm:text-sm">{s.desc}</p>
+              <p className="mt-1.5 font-body text-[11.5px] leading-snug text-brand-ink-on-black-soft sm:text-sm">{s.desc}</p>
             </motion.li>
           ))}
         </ol>
