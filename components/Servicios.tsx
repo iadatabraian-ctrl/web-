@@ -77,13 +77,7 @@ export function Servicios() {
   return (
     <section
       id="servicios"
-      className="relative overflow-hidden bg-brand-cream px-5 pb-20 pt-[calc(2.5rem+4rem)] text-brand-ink-on-cream sm:px-8 sm:pb-28 sm:pt-[calc(8vw+5rem)] lg:px-[6vw]"
-      // corte diagonal arriba: separa esta sección clara del hero oscuro
-      style={{
-        clipPath: "polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%)",
-        marginTop: "calc(-1 * var(--cut))",
-        ["--cut" as string]: "clamp(2.5rem, 8vw, 7rem)",
-      }}
+      className="relative overflow-hidden bg-brand-cream px-5 pb-20 pt-16 text-brand-ink-on-cream sm:px-8 sm:pb-28 sm:pt-24 lg:px-[6vw]"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <Bar className="max-sm:hidden" style={{ right: "14vw", top: "20vw", width: "4vw", height: "30vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={1} />

@@ -38,8 +38,8 @@ export function Hero() {
           inicio y fin cortados y un degradé a lo ancho de la barra. Sin halos redondos. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Celular */}
-        <Bar className="lg:hidden" style={{ left: "80.4vw", top: 0, width: "10vw", height: "26vw", skew: 35, origin: "0 0", fill: "rgba(255,92,26,0.11)" }}  i={0} />
-        <Bar className="lg:hidden" style={{ right: 0, top: "31.5vw", width: "24vw", height: "43vw", skew: 42, origin: "100% 0", fill: "linear-gradient(to left, rgba(255,92,26,0.27), rgba(255,92,26,0.00))", edge: "right" }}  i={1} />
+        <Bar className="lg:hidden" style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={0} />
+        <Bar className="lg:hidden" style={{ right: "-3vw", top: "22vw", width: "0.5vw", height: "125vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.55)" }} i={1} />
         <Bar className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.48), rgba(255,92,26,0.00))", edge: "left", fadeTop: true }}  i={2} />
         {/* Laptop */}
         <Bar className="max-lg:hidden" style={{ left: "40.7vw", bottom: 0, width: "7.2vw", height: "15vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.43), rgba(255,92,26,0.40) 45%, rgba(255,92,26,0.10))" }}  i={3} />
@@ -49,7 +49,7 @@ export function Hero() {
       </div>
 
       {/* Titular gigante, detrás de la figura */}
-      <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.86] tracking-[-0.005em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.88]">
+      <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.8] tracking-[-0.03em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.82]">
         <motion.span
           initial="hidden"
           animate="show"
