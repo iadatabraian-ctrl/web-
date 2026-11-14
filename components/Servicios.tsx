@@ -183,7 +183,7 @@ export function Servicios() {
                       tabIndex={-1}
                       onClick={() => go(i)}
                       aria-label={`Ver ${s.title}`}
-                      className="absolute inset-0 z-10 cursor-pointer rounded-[1.75rem]"
+                      className="absolute inset-0 z-10 cursor-pointer rounded-[6px]"
                     />
                   )}
                 </motion.div>
@@ -197,7 +197,7 @@ export function Servicios() {
               type="button"
               onClick={() => go(active - 1)}
               aria-label="Servicio anterior"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
+              className="flex h-12 w-12 items-center justify-center rounded-[4px] border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
             >
               <ArrowLeft className="h-5 w-5" strokeWidth={2.25} />
             </button>
@@ -208,7 +208,7 @@ export function Servicios() {
               type="button"
               onClick={() => go(active + 1)}
               aria-label="Servicio siguiente"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
+              className="flex h-12 w-12 items-center justify-center rounded-[4px] border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
             >
               <ArrowRight className="h-5 w-5" strokeWidth={2.25} />
             </button>
@@ -245,18 +245,19 @@ function Card({
 }) {
   const img = CARD_IMAGES[service.kind];
   return (
-    <div className="overflow-hidden rounded-[1.75rem] bg-brand-black text-brand-cream shadow-[0_30px_60px_-30px_rgba(26,23,18,0.55)]">
+    <div className="overflow-hidden rounded-[6px] bg-brand-black text-brand-cream shadow-[0_24px_40px_-28px_rgba(26,23,18,0.6)]">
       <div className="relative aspect-[4/5] w-full bg-[#0b0a08]">
         {img ? (
           <Image src={img} alt={`Ilustración de ${service.title.toLowerCase()} con datos de ejemplo`} fill sizes="(min-width: 1024px) 28rem, 72vw" className="object-cover" />
         ) : (
           <Placeholder kind={service.kind} />
         )}
-        <span className={`absolute left-4 top-4 rounded-full px-2.5 py-1 font-mono text-xs font-bold ${img && !DARK_IMAGE.has(service.kind) ? "bg-brand-cream/90 text-brand-ink-on-cream" : "bg-brand-black/60 text-brand-cream"}`}>
+        <span className={`absolute left-4 top-4 rounded-[3px] px-2.5 py-1 font-mono text-xs font-bold ${img && !DARK_IMAGE.has(service.kind) ? "bg-brand-cream/90 text-brand-ink-on-cream" : "bg-brand-black/60 text-brand-cream"}`}>
           0{index + 1}
         </span>
       </div>
       <div className="min-h-[9.75rem] px-5 pb-6 pt-5 sm:min-h-[10.5rem] sm:px-6">
+        <span aria-hidden="true" className="mb-3 block h-[3px] w-10 -skew-x-[37deg] bg-brand-accent" />
         <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.65rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">
           {service.title}
         </h3>
