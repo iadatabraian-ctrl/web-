@@ -140,21 +140,21 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Cómo se trabaja (clara) */}
-        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
+        {/* Cómo se trabaja (oscura) */}
+        <section className="bg-[#0d0b08] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
               <h2 className={H2}>Cómo se trabaja</h2>
             </FadeIn>
             <ol className="relative mt-10 grid gap-8 sm:mt-16 lg:grid-cols-4 lg:gap-6">
-              <span aria-hidden="true" className="absolute bottom-2 left-[0.62rem] top-2 w-px bg-brand-ink-on-cream/25 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[0.62rem] lg:h-px lg:w-auto" />
+              <span aria-hidden="true" className="absolute bottom-2 left-[0.62rem] top-2 w-px bg-white/25 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[0.62rem] lg:h-px lg:w-auto" />
               {s.proceso.map((p, i) => (
                 <li key={p.t} className="relative pl-10 lg:pl-0 lg:pt-10">
-                  <span aria-hidden="true" className="absolute left-0 top-1.5 h-[1.3rem] w-[1.3rem] rounded-full bg-brand-accent ring-4 ring-brand-cream lg:top-0" />
+                  <span aria-hidden="true" className="absolute left-0 top-1.5 h-[1.3rem] w-[1.3rem] rounded-full bg-brand-accent ring-4 ring-[#0d0b08] lg:top-0" />
                   <FadeIn delay={i * 0.1}>
                     <span className="font-mono text-xs font-bold text-brand-accent">0{i + 1}</span>
                     <h3 className="mt-1 font-impact text-2xl font-extrabold uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">{p.t}</h3>
-                    <p className="mt-2 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">{p.d}</p>
+                    <p className="mt-2 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{p.d}</p>
                   </FadeIn>
                 </li>
               ))}
@@ -174,12 +174,12 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                   <div className="flex items-end justify-between gap-4 sm:gap-8">
                     <div>
                       <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Desde</p>
-                      <p className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[2.4rem] font-black uppercase not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.desde}</p>
+                      <p className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[1.9rem] font-black uppercase not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.desde}</p>
                     </div>
                     {s.valores.hasta && (
                       <div className="text-right">
                         <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Hasta</p>
-                        <p className="mt-2 origin-bottom-right -skew-x-[5deg] font-impact text-[2.4rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.hasta}</p>
+                        <p className="mt-2 origin-bottom-right -skew-x-[5deg] font-impact text-[1.9rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.hasta}</p>
                       </div>
                     )}
                   </div>
@@ -198,7 +198,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                 </div>
                 <div className="lg:border-l lg:border-brand-ink-on-cream/20 lg:pl-16">
                   <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Plazo</p>
-                  <p className="mt-2 font-impact text-4xl font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl">{s.valores.plazo}</p>
+                  <p className="mt-2 font-impact text-[1.7rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl">{s.valores.plazo}</p>
                   {(() => {
                     const m = s.valores.plazo.match(/(\d+)\s*a\s*(\d+)/);
                     if (!m) return null;
