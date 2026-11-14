@@ -252,7 +252,7 @@ function Card({
         ) : (
           <Placeholder kind={service.kind} />
         )}
-        <span className={`absolute left-5 top-5 font-mono text-xs font-bold ${img && !DARK_IMAGE.has(service.kind) ? "text-brand-ink-on-cream/60" : "text-brand-cream/70"}`}>
+        <span className={`absolute left-4 top-4 rounded-full px-2.5 py-1 font-mono text-xs font-bold ${img && !DARK_IMAGE.has(service.kind) ? "bg-brand-cream/90 text-brand-ink-on-cream" : "bg-brand-black/60 text-brand-cream"}`}>
           0{index + 1}
         </span>
       </div>
