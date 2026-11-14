@@ -39,7 +39,6 @@ export function Hero() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Celular */}
         <Bar className="lg:hidden" style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={0} />
-        <Bar className="lg:hidden" style={{ right: "-3vw", top: "22vw", width: "0.5vw", height: "125vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.55)" }} i={1} />
         <Bar className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.48), rgba(255,92,26,0.00))", edge: "left", fadeTop: true }}  i={2} />
         {/* Laptop */}
         <Bar className="max-lg:hidden" style={{ left: "40.7vw", bottom: 0, width: "7.2vw", height: "15vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.43), rgba(255,92,26,0.40) 45%, rgba(255,92,26,0.10))" }}  i={3} />

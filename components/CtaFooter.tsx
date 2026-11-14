@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
@@ -70,7 +70,7 @@ export function CtaFooter() {
         <div className="mx-auto grid max-w-6xl gap-12 pb-14 sm:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link href="/" className="inline-flex">
-              <Image src="/img/deploy-logo.png" alt="Deploy" width={104} height={28} />
+              <Logo />
             </Link>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
               Software a medida, páginas web, automatización de procesos y
