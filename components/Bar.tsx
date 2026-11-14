@@ -15,13 +15,15 @@ export type BarStyle = {
   fill: string;
   /** línea fina brillante en uno de los bordes */
   edge?: "left" | "right";
+  /** opacidad de la línea del borde (por defecto 0.88) */
+  edgeAlpha?: number;
   /** la barra se enciende hacia abajo */
   fadeTop?: boolean;
 };
 
 export function Bar({ className = "", style, i = 0 }: { className?: string; style: BarStyle; i?: number }) {
-  const { skew, origin, fill, edge, fadeTop, ...pos } = style;
-  const line = "1.5px solid rgba(255,92,26,0.88)";
+  const { skew, origin, fill, edge, edgeAlpha = 0.88, fadeTop, ...pos } = style;
+  const line = `1.5px solid rgba(255,92,26,${edgeAlpha})`;
   const mask = fadeTop ? "linear-gradient(to bottom, transparent 0%, #000 65%)" : undefined;
   return (
     <span
