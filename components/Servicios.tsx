@@ -262,7 +262,7 @@ function Card({
           href={service.href}
           tabIndex={active ? 0 : -1}
           onClick={onLinkClick}
-          className="mt-3 inline-flex w-fit sm:mt-auto items-center gap-2 self-start rounded-full bg-brand-accent px-3.5 py-2 font-body text-[10.5px] font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-white active:scale-[0.97] sm:text-xs"
+          className="mt-3 inline-flex w-fit sm:mt-auto items-center gap-2 self-start rounded-full bg-white px-3.5 py-2 font-body text-[10.5px] font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-brand-accent active:scale-[0.97] sm:text-xs"
         >
           Ver el servicio completo
           <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.75} />
