@@ -70,7 +70,7 @@ export const SERVICIOS: Servicio[] = [
       {
         t: "Integraciones",
         d: "El sistema se conecta con las herramientas que ya usás, para que un dato no se cargue dos veces.",
-        con: ["Google Sheets y Excel", "Facturación electrónica (DGI)", "Mercado Pago", "WhatsApp Business", "Correo", "Sistemas o bases de datos existentes"],
+        con: ["Google Sheets y Excel", "Mercado Pago", "WhatsApp Business", "Correo", "Sistemas o bases de datos existentes"],
       },
       {
         t: "Reportes e indicadores",
@@ -153,7 +153,7 @@ export const SERVICIOS: Servicio[] = [
       {
         t: "Tienda online (e-commerce)",
         d: "Catálogo de productos, carrito y compra online con los medios de pago que uses. Control de stock y de pedidos, con aviso cuando entra una venta. Se desarrolla a medida o sobre la plataforma que mejor convenga a tu caso.",
-        con: ["Mercado Pago", "Transferencia bancaria", "Envíos y couriers", "WhatsApp para pedidos", "Facturación electrónica (DGI)"],
+        con: ["Mercado Pago", "Transferencia bancaria", "Envíos y couriers", "WhatsApp para pedidos"],
       },
       {
         t: "Velocidad y SEO on-page",
@@ -245,11 +245,11 @@ export const SERVICIOS: Servicio[] = [
       {
         t: "Conexión entre herramientas",
         d: "Los sistemas que ya usás intercambian datos entre sí, sin copiar y pegar de uno a otro.",
-        con: ["Google Sheets y Excel", "Gmail y Outlook", "Formularios", "WhatsApp", "Mercado Pago", "Facturación electrónica (DGI)", "Calendario", "Tiendas online y CRM"],
+        con: ["Google Sheets y Excel", "Gmail y Outlook", "Formularios", "WhatsApp", "Mercado Pago", "Calendario", "Tiendas online y CRM"],
       },
       {
         t: "Flujos de trabajo",
-        d: "Avisos al equipo, carga de datos, seguimiento de clientes y generación de documentos (presupuestos, facturas, informes) con reglas que se definen con vos.",
+        d: "Avisos al equipo, carga de datos, seguimiento de clientes y generación de documentos (presupuestos, informes, recordatorios) con reglas que se definen con vos.",
       },
       {
         t: "Pruebas y validación",
