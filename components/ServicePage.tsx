@@ -11,13 +11,6 @@ import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
 
-const OTRO_DESC: Record<string, string> = {
-  "software-a-medida": "Sistemas, paneles y herramientas internas hechas a la medida de tu operación.",
-  "paginas-web": "Sitios y tiendas online diseñados desde cero, rápidos y pensados para el celular.",
-  automatizacion: "Conectamos las herramientas que ya usás para dejar de copiar y pegar a mano.",
-  "agentes-whatsapp": "Agentes que atienden WhatsApp e Instagram y pasan el caso a una persona cuando hace falta.",
-};
-
 const CARD_IMG = {
   software: "/img/servicios/card-software.webp",
   web: "/img/servicios/card-web.webp",
@@ -154,17 +147,15 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Cómo se trabaja</h2>
             </FadeIn>
-            <ol className="mt-8 sm:mt-14">
+            <ol className="relative mt-10 grid gap-8 sm:mt-16 lg:grid-cols-4 lg:gap-6">
+              <span aria-hidden="true" className="absolute bottom-2 left-[0.62rem] top-2 w-px bg-white/25 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[0.62rem] lg:h-px lg:w-auto" />
               {s.proceso.map((p, i) => (
-                <li key={p.t} className="border-t border-white/15 last:border-b">
-                  <FadeIn delay={i * 0.08}>
-                    <div className="grid items-center gap-x-8 gap-y-2 py-7 sm:py-10 md:grid-cols-[9rem_1fr_1fr] lg:grid-cols-[12rem_1fr_1fr]">
-                      <span aria-hidden="true" className="origin-bottom-left -skew-x-[5deg] font-impact text-[4.2rem] font-black not-italic leading-[0.85] text-brand-accent [font-stretch:80%] sm:text-[6rem] lg:text-[8rem]">
-                        0{i + 1}
-                      </span>
-                      <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[2rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-5xl">{p.t}</h3>
-                      <p className="max-w-md font-body text-base leading-relaxed text-brand-ink-on-black-soft sm:text-lg md:justify-self-end">{p.d}</p>
-                    </div>
+                <li key={p.t} className="relative pl-10 lg:pl-0 lg:pt-10">
+                  <span aria-hidden="true" className="absolute left-0 top-1.5 h-[1.3rem] w-[1.3rem] rounded-full bg-brand-accent ring-4 ring-[#0d0b08] lg:top-0" />
+                  <FadeIn delay={i * 0.1}>
+                    <span className="font-mono text-xs font-bold text-brand-accent">0{i + 1}</span>
+                    <h3 className="mt-1 font-impact text-2xl font-extrabold uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">{p.t}</h3>
+                    <p className="mt-2 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{p.d}</p>
                   </FadeIn>
                 </li>
               ))}
@@ -262,24 +253,17 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         </section>
 
         {/* Otros servicios (oscura) */}
-        <section className="bg-[#0d0b08] px-5 pb-14 pt-14 text-brand-cream sm:px-8 sm:pb-24 sm:pt-20 lg:px-[6vw]">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="origin-bottom-left -skew-x-[5deg] font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
-            <ul className="mt-6 sm:mt-10">
+        <section className="bg-[#0d0b08] px-5 py-12 text-brand-cream sm:px-8 sm:py-20">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
+            <ul className="mt-6 flex flex-wrap gap-3">
               {otros.map((o) => (
-                <li key={o.slug} className="border-t border-white/15 last:border-b">
-                  <Link href={`/${o.slug}`} className="group flex items-center justify-between gap-4 py-6 sm:py-9">
-                    <span className="min-w-0">
-                      <span className="block origin-bottom-left -skew-x-[5deg] font-impact text-[1.9rem] font-black uppercase not-italic leading-none [font-stretch:80%] transition-colors duration-200 group-hover:text-brand-accent sm:text-5xl">
-                        {o.nombre}
-                      </span>
-                      <span className="mt-2 block max-w-xl font-body text-sm leading-snug text-brand-ink-on-black-soft sm:text-base">
-                        {OTRO_DESC[o.slug]}
-                      </span>
-                    </span>
-                    <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/30 transition-[background-color,border-color,color,transform] duration-200 group-hover:-rotate-45 group-hover:border-brand-accent group-hover:bg-brand-accent group-hover:text-brand-black sm:h-14 sm:w-14">
-                      <ArrowRight className="h-5 w-5" strokeWidth={2.25} />
-                    </span>
+                <li key={o.slug}>
+                  <Link
+                    href={`/${o.slug}`}
+                    className="inline-flex rounded-full border border-white/20 px-5 py-2.5 font-body text-sm text-brand-cream transition-colors hover:border-brand-accent hover:text-brand-accent"
+                  >
+                    {o.nombre}
                   </Link>
                 </li>
               ))}
