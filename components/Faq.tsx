@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/FadeIn";
+import { Bar } from "@/components/Bar";
 
 type Item = {
   q: string;
@@ -82,44 +83,43 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="preguntas" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
+    <section
+      id="preguntas"
+      className="relative overflow-hidden bg-[#0d0b08] px-5 py-20 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="mx-auto max-w-3xl">
-        <div className="flex items-center gap-3">
-          <span className="font-body text-[11px] font-semibold tracking-[0.2em] text-brand-ink-on-black-soft sm:text-xs">
-            PREGUNTAS FRECUENTES
-          </span>
-          <span className="h-px flex-1 max-w-24 bg-brand-line-on-black" />
-        </div>
-
-        <h2 className="mt-4 max-w-2xl font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
-          ¿Qué querés saber antes de arrancar?
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Bar className="max-sm:hidden" style={{ left: "-4vw", top: "6vw", width: "9vw", height: "36vw", skew: 37, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.24), rgba(255,92,26,0))", edge: "left" }} i={1} />
+      </div>
+      <div className="relative mx-auto max-w-3xl">
+        <h2 className="origin-bottom -skew-x-[5deg] text-balance text-center font-impact text-[9vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[6.2vw] lg:text-[5rem]">
+          <span className="block text-white/95">¿Qué querés saber</span>
+          <span className="block text-white/75">antes de arrancar?</span>
         </h2>
 
-        <FadeIn className="mt-10 border-t border-brand-line-on-black sm:mt-14">
+        <FadeIn className="mt-10 flex flex-col gap-3 sm:mt-14">
           {ITEMS.map(({ q, a, list, note }, i) => {
             const isOpen = open === i;
             return (
-              <div key={q} className="border-b border-brand-line-on-black">
+              <div
+                key={q}
+                className={`rounded-[1.25rem] border bg-brand-black transition-colors duration-300 ${isOpen ? "border-brand-accent/60" : "border-white/10"}`}
+              >
                 <button
                   type="button"
                   aria-expanded={isOpen}
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-start justify-between gap-4 py-5 text-left sm:py-6"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
                 >
-                  <span>
-                    <span className="font-mono text-xs text-brand-accent">
-                      0{i + 1}
-                    </span>
-                    <span className="mt-1 block font-body text-sm font-semibold text-brand-cream sm:text-base">
-                      {q}
-                    </span>
+                  <span className="flex items-center gap-4">
+                    <span className="font-mono text-xs font-bold text-brand-accent">0{i + 1}</span>
+                    <span className="font-body text-sm font-semibold text-brand-cream sm:text-base">{q}</span>
                   </span>
                   <ChevronDown
-                    className={`mt-1 h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    className={`h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}
                   />
                 </button>
 
@@ -132,7 +132,7 @@ export function Faq() {
                       transition={{ duration: 0.25, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="max-w-xl pb-6 font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:pb-8">
+                      <div className="max-w-xl px-5 pb-5 font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:px-6 sm:pb-6 sm:pl-[4.25rem]">
                         {list ? (
                           <ul className="flex flex-col gap-2">
                             {list.map(({ k, v }) => (
