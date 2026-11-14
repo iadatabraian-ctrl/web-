@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
+import { Bar } from "@/components/Bar";
 
 const NAV_LINKS = [
   { href: "/#inicio", label: "Inicio" },
@@ -22,32 +23,39 @@ const SERVICE_LINKS = [
 export function CtaFooter() {
   return (
     <>
-      <section id="hablemos" className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28">
-        <FadeIn className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl leading-[1.1] text-brand-cream sm:text-5xl md:text-6xl">
-            ¿Tenés una idea o un problema para resolver?
+      <section
+        id="hablemos"
+        className="relative overflow-hidden bg-brand-cream px-5 py-20 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]"
+      >
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <Bar className="max-sm:hidden" style={{ right: "-4vw", top: 0, width: "9vw", height: "46vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.12)", edge: "right" }} i={0} />
+          <Bar style={{ left: "-6vw", bottom: 0, width: "10vw", height: "26vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.10)", edge: "left" }} i={1} />
+        </div>
+        <FadeIn className="relative mx-auto max-w-4xl text-center">
+          <h2 className="origin-bottom -skew-x-[5deg] text-balance font-impact text-[9.5vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[5.4vw] lg:text-[3.9rem]">
+            <span className="block">¿Tenés una idea o un</span>
+            <span className="block text-brand-ink-on-cream-soft">problema para resolver?</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-lg">
-            Contanos qué necesita tu negocio. Vemos juntos si conviene un
-            sistema a medida, un sitio web o algo más simple.
+          <p className="mx-auto mt-6 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:text-lg">
+            Contanos qué necesita tu negocio. Vemos juntos si conviene un sistema a medida, un sitio web o algo más
+            simple.
           </p>
           <a
             href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hacer%20una%20consulta"
             target="_blank"
             rel="noopener"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition hover:scale-105 hover:opacity-90"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition-[transform,opacity] duration-200 hover:opacity-90 active:scale-[0.97]"
           >
             Hablemos
             <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </a>
-          <p className="mt-5 font-body text-xs text-brand-ink-on-black-soft/70">
-            Cotizamos según el alcance de cada proyecto: no vendemos paquetes
-            cerrados.
+          <p className="mt-5 font-body text-xs text-brand-ink-on-cream-soft">
+            Cotizamos según el alcance de cada proyecto: no vendemos paquetes cerrados.
           </p>
 
-          <div className="mx-auto mt-10 h-px w-full max-w-md bg-brand-line-on-black" />
-
-          <ContactForm />
+          <div className="mx-auto mt-10 rounded-[1.75rem] bg-brand-black px-5 pb-8 pt-2 text-brand-cream sm:px-8">
+            <ContactForm />
+          </div>
         </FadeIn>
       </section>
 
