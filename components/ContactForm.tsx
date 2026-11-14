@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 const inputClass =
-  "w-full rounded-xl border border-brand-line-on-black bg-transparent px-4 py-3 font-body text-sm text-brand-cream placeholder:text-brand-ink-on-black-soft/70 outline-none transition-colors focus:border-brand-accent";
+  "w-full rounded-xl border border-brand-ink-on-cream/20 bg-white px-4 py-3 font-body text-sm text-brand-ink-on-cream placeholder:text-brand-ink-on-cream-soft/70 outline-none transition-colors focus:border-brand-accent";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,7 +14,7 @@ export function ContactForm() {
       action="https://formsubmit.co/deploy.uy@gmail.com"
       method="POST"
       onSubmit={() => setIsSubmitting(true)}
-      className="mx-auto mt-10 flex max-w-md flex-col gap-4 text-left"
+      className="mx-auto flex max-w-md flex-col gap-4 text-left"
     >
       <input type="hidden" name="_subject" value="Nueva consulta — Deploy" />
       <input type="hidden" name="_template" value="table" />

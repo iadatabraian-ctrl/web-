@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -5,6 +7,7 @@ import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons"
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
 import { Bar } from "@/components/Bar";
+import { motion } from "framer-motion";
 
 const NAV_LINKS = [
   { href: "/#inicio", label: "Inicio" },
@@ -53,9 +56,13 @@ export function CtaFooter() {
             Cotizamos según el alcance de cada proyecto: no vendemos paquetes cerrados.
           </p>
 
-          <div className="mx-auto mt-10 rounded-[1.75rem] bg-brand-black px-5 pb-8 pt-2 text-brand-cream sm:px-8">
+          <motion.div
+            animate={{ y: [0, -7, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="mx-auto mt-10 rounded-[1.75rem] border border-white/80 bg-[#fffdf9] px-5 py-8 text-brand-ink-on-cream shadow-[0_2px_4px_rgba(26,23,18,0.05),0_14px_28px_-8px_rgba(26,23,18,0.14),0_44px_70px_-24px_rgba(26,23,18,0.30)] sm:px-8 sm:py-10"
+          >
             <ContactForm />
-          </div>
+          </motion.div>
         </FadeIn>
       </section>
 
