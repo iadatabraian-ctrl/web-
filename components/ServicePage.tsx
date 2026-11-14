@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { CtaFooter } from "@/components/CtaFooter";
 import { FadeIn } from "@/components/FadeIn";
@@ -65,7 +65,6 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
 
   const H2 =
     "origin-bottom-left -skew-x-[5deg] font-impact text-[2.1rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] [font-stretch:80%] sm:text-6xl";
-  const CARD = "rounded-[1.25rem] border p-3.5 sm:rounded-[1.75rem] sm:p-6";
 
   return (
     <>
@@ -131,40 +130,21 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Qué incluye</h2>
             </FadeIn>
-            <ul className="mt-7 grid grid-cols-2 gap-2.5 sm:mt-12 sm:gap-4 lg:grid-cols-4">
-              {s.incluye.map((item, i) => {
-                const extras = Math.max(s.incluye.length - 5, 0);
-                const isExtra = i >= 5;
-                const lastOdd = i === s.incluye.length - 1 && i % 2 === 1;
-                const span = `${lastOdd ? "max-sm:col-span-2" : ""} ${isExtra ? (extras === 1 ? "lg:col-span-4" : extras === 2 ? "lg:col-span-2" : "") : ""}`;
-                if (i === 0) {
-                  return (
-                    <li key={item.t} className="col-span-2 lg:row-span-2">
-                      <FadeIn className="relative h-full min-h-[17rem] overflow-hidden sm:min-h-[22rem] rounded-[1.25rem] bg-brand-black text-brand-cream sm:rounded-[1.75rem]">
-                        <Image src={CARD_IMG[s.visual]} alt="" fill sizes="(min-width: 1024px) 45vw, 90vw" className="object-cover opacity-60" />
-                        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0d0b08] via-[#0d0b08]/50 to-transparent" />
-                        <div className="relative flex h-full flex-col justify-end p-5 sm:p-8">
-                          <span className="font-impact text-6xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-7xl">01</span>
-                          <h3 className="mt-3 font-body text-lg font-semibold normal-case tracking-normal sm:text-2xl">{item.t}</h3>
-                          <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-brand-cream/80 sm:text-base">{item.d}</p>
-                        </div>
-                      </FadeIn>
-                    </li>
-                  );
-                }
-                return (
-                  <li key={item.t} className={span}>
-                    <FadeIn delay={(i % 4) * 0.08} className={`${CARD} h-full border-transparent bg-brand-black text-brand-cream`}>
-                      <span className="font-impact text-3xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-4xl">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="mt-3 font-body text-[13px] font-semibold normal-case leading-tight tracking-normal sm:mt-4 sm:text-base">{item.t}</h3>
-                      <p className="mt-1.5 font-body text-[11.5px] leading-snug text-brand-ink-on-black-soft sm:mt-2 sm:text-sm sm:leading-relaxed">{item.d}</p>
-                    </FadeIn>
-                  </li>
-                );
-              })}
-            </ul>
+            <ol className="mt-8 grid gap-x-16 sm:mt-14 md:grid-cols-2">
+              {s.incluye.map((item, i) => (
+                <li key={item.t} className={`border-t border-brand-ink-on-cream/20 ${i % 2 === 1 ? "md:mt-16" : ""}`}>
+                  <FadeIn delay={(i % 2) * 0.1} className="flex gap-4 py-6 sm:gap-6 sm:py-8">
+                    <span className="font-impact text-5xl font-black not-italic leading-[0.85] text-brand-accent [font-stretch:80%] sm:text-7xl">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="font-impact text-xl font-extrabold uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">{item.t}</h3>
+                      <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:mt-3 sm:text-base">{item.d}</p>
+                    </div>
+                  </FadeIn>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -186,15 +166,15 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Cómo se trabaja</h2>
             </FadeIn>
-            <ol className="mt-7 grid grid-cols-2 gap-2.5 sm:mt-12 sm:gap-4 lg:grid-cols-4">
+            <ol className="relative mt-10 grid gap-8 sm:mt-16 lg:grid-cols-4 lg:gap-6">
+              <span aria-hidden="true" className="absolute bottom-2 left-[0.62rem] top-2 w-px bg-brand-ink-on-cream/25 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[0.62rem] lg:h-px lg:w-auto" />
               {s.proceso.map((p, i) => (
-                <li key={p.t}>
-                  <FadeIn delay={i * 0.1} className="h-full rounded-[1.25rem] border-transparent bg-brand-black p-3.5 text-brand-cream sm:rounded-[1.75rem] sm:p-6">
-                    <span className="font-impact text-4xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-5xl">
-                      {i + 1}
-                    </span>
-                    <h3 className="mt-4 font-body text-[13px] font-semibold normal-case leading-tight tracking-normal sm:mt-5 sm:text-base">{p.t}</h3>
-                    <p className="mt-1.5 font-body text-[11.5px] leading-snug text-brand-ink-on-black-soft sm:mt-2 sm:text-sm">{p.d}</p>
+                <li key={p.t} className="relative pl-10 lg:pl-0 lg:pt-10">
+                  <span aria-hidden="true" className="absolute left-0 top-1.5 h-[1.3rem] w-[1.3rem] rounded-full bg-brand-accent ring-4 ring-brand-cream lg:top-0" />
+                  <FadeIn delay={i * 0.1}>
+                    <span className="font-mono text-xs font-bold text-brand-accent">0{i + 1}</span>
+                    <h3 className="mt-1 font-impact text-2xl font-extrabold uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">{p.t}</h3>
+                    <p className="mt-2 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">{p.d}</p>
                   </FadeIn>
                 </li>
               ))}
@@ -208,16 +188,16 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Valores y plazos</h2>
             </FadeIn>
-            <FadeIn className="mt-7 overflow-hidden rounded-[1.25rem] border border-white/10 bg-brand-black sm:mt-12 sm:rounded-[1.75rem]">
-              <div className="grid lg:grid-cols-[1.2fr_1fr]">
-                <div className="p-6 sm:p-10">
+            <FadeIn className="mt-8 sm:mt-14">
+              <div className="grid gap-10 border-y border-white/15 py-8 sm:py-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+                <div>
                   <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">{s.valores.prefijo}</p>
                   <p className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[2.6rem] font-black uppercase not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-7xl lg:text-[5.2rem]">
                     {s.valores.cifra}
                   </p>
                   <p className="mt-3 font-body text-sm text-brand-ink-on-black-soft sm:text-lg">{s.valores.detalle}</p>
                 </div>
-                <div className="border-t border-white/10 p-6 sm:p-10 lg:border-l lg:border-t-0">
+                <div className="lg:border-l lg:border-white/15 lg:pl-16">
                   <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Plazo</p>
                   <p className="mt-2 font-impact text-4xl font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl">{s.valores.plazo}</p>
                   {(() => {
@@ -252,14 +232,14 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Preguntas frecuentes</h2>
             </FadeIn>
-            <div className="mt-7 flex flex-col gap-2 sm:mt-12 sm:gap-3">
+            <div className="mt-8 border-b border-brand-ink-on-cream/20 sm:mt-14">
               {s.faq.map((f) => (
-                <details key={f.q} className="group rounded-[1.1rem] bg-brand-black px-4 py-3.5 text-brand-cream open:border-brand-accent sm:rounded-[1.25rem] sm:px-6 sm:py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-body text-[13px] font-semibold sm:text-base">
+                <details key={f.q} className="group border-t border-brand-ink-on-cream/20 py-4 sm:py-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-impact text-lg font-extrabold uppercase not-italic leading-tight [font-stretch:80%] sm:text-2xl">
                     {f.q}
-                    <ChevronDown className="h-4 w-4 shrink-0 text-brand-accent transition-transform group-open:rotate-180" />
+                    <span aria-hidden="true" className="relative h-5 w-5 shrink-0 before:absolute before:left-0 before:right-0 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:bg-brand-accent after:absolute after:bottom-0 after:left-1/2 after:top-0 after:w-[2px] after:-translate-x-1/2 after:bg-brand-accent after:transition-transform group-open:after:scale-y-0" />
                   </summary>
-                  <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{f.a}</p>
+                  <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:text-base">{f.a}</p>
                 </details>
               ))}
             </div>
