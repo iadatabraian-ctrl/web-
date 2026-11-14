@@ -183,7 +183,7 @@ export function Servicios() {
                       tabIndex={-1}
                       onClick={() => go(i)}
                       aria-label={`Ver ${s.title}`}
-                      className="absolute inset-0 z-10 cursor-pointer rounded-[6px]"
+                      className="absolute inset-0 z-10 cursor-pointer rounded-[1.75rem]"
                     />
                   )}
                 </motion.div>
@@ -197,7 +197,7 @@ export function Servicios() {
               type="button"
               onClick={() => go(active - 1)}
               aria-label="Servicio anterior"
-              className="flex h-12 w-12 items-center justify-center rounded-[4px] border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
             >
               <ArrowLeft className="h-5 w-5" strokeWidth={2.25} />
             </button>
@@ -208,7 +208,7 @@ export function Servicios() {
               type="button"
               onClick={() => go(active + 1)}
               aria-label="Servicio siguiente"
-              className="flex h-12 w-12 items-center justify-center rounded-[4px] border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-brand-ink-on-cream/30 transition-[transform,background-color,color] duration-200 hover:bg-brand-ink-on-cream hover:text-brand-cream active:scale-[0.95]"
             >
               <ArrowRight className="h-5 w-5" strokeWidth={2.25} />
             </button>
@@ -241,14 +241,14 @@ function Card({
 }) {
   const img = CARD_IMAGES[service.kind];
   return (
-    <div className="overflow-hidden rounded-[6px] bg-brand-black text-brand-cream shadow-[0_24px_40px_-28px_rgba(26,23,18,0.6)]">
+    <div className="overflow-hidden rounded-[1.75rem] bg-brand-black text-brand-cream shadow-[0_24px_40px_-28px_rgba(26,23,18,0.6)]">
       <div className="relative aspect-[4/5] w-full bg-[#0b0a08]">
         {img ? (
           <Image src={img} alt={`Ilustración de ${service.title.toLowerCase()} con datos de ejemplo`} fill sizes="(min-width: 1024px) 28rem, 72vw" className="object-cover" />
         ) : (
           <Placeholder kind={service.kind} />
         )}
-        <span className={`absolute left-4 top-4 rounded-[3px] px-2.5 py-1 font-mono text-xs font-bold ${img && !DARK_IMAGE.has(service.kind) ? "bg-brand-cream/90 text-brand-ink-on-cream" : "bg-brand-black/60 text-brand-cream"}`}>
+        <span className={`absolute left-4 top-4 rounded-full px-2.5 py-1 font-mono text-xs font-bold ${img && !DARK_IMAGE.has(service.kind) ? "bg-brand-cream/90 text-brand-ink-on-cream" : "bg-brand-black/60 text-brand-cream"}`}>
           0{index + 1}
         </span>
       </div>
@@ -263,7 +263,7 @@ function Card({
           href={service.href}
           tabIndex={active ? 0 : -1}
           onClick={onLinkClick}
-          className="mt-3 inline-flex w-fit sm:mt-auto items-center gap-2 self-start rounded-[4px] bg-brand-accent px-3.5 py-2 font-body text-[10.5px] font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-white active:scale-[0.97] sm:text-xs"
+          className="mt-3 inline-flex w-fit sm:mt-auto items-center gap-2 self-start rounded-full bg-brand-accent px-3.5 py-2 font-body text-[10.5px] font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-white active:scale-[0.97] sm:text-xs"
         >
           Ver el servicio completo
           <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.75} />
