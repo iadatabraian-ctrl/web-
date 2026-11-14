@@ -11,7 +11,7 @@
    en vez de la tinta azulada anterior. El naranja es el único acento.
    Secciones CLARAS (crema): colores planos, sin degradados ni brillos.
    Secciones OSCURAS (carbón): se permite luz de ambiente NARANJA, como un despegue
-   (halos, estelas y bordes encendidos), definida abajo: `aura-ember`, `edge-ember`, etc. */
+   (barras diagonales y bordes encendidos), definida abajo: `edge-ember`, etc. */
 :root {
   --brand-black: #1a1712;
   --brand-black-deep: #050403;
@@ -241,14 +241,6 @@
    La luz es el naranja de Deploy: empuje de despegue sobre carbón cálido.
    Se usa de fondo y en detalles, nunca detrás de texto de lectura largo. */
 
-/* fondo carbón con halos naranja */
-@utility aura-ember {
-  background-color: var(--brand-black-deep);
-  background-image:
-    radial-gradient(55% 55% at 78% 42%, rgba(255, 92, 26, 0.26), transparent 70%),
-    radial-gradient(45% 40% at 6% 100%, rgba(255, 92, 26, 0.12), transparent 70%);
-}
-
 /* trama fina tipo plano técnico */
 @utility grid-hud {
   background-image:
@@ -257,13 +249,6 @@
   background-size: 56px 56px;
   mask-image: radial-gradient(70% 70% at 50% 40%, #000 25%, transparent 85%);
   -webkit-mask-image: radial-gradient(70% 70% at 50% 40%, #000 25%, transparent 85%);
-}
-
-/* estela diagonal: la barra "/" del logo hecha luz */
-@utility slash-beam {
-  background-image: linear-gradient(180deg, rgba(255, 92, 26, 0.55), rgba(255, 92, 26, 0.0) 85%);
-  transform: skewX(-20deg);
-  filter: blur(1px);
 }
 
 /* borde encendido */

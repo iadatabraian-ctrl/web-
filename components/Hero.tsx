@@ -7,7 +7,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 /* Hero oscuro (ver PRODUCT.md): titular gigante en blanco semitransparente, detrás de una
    figura recortada (public/img/hero/hero-recorte.webp, generada con IA, PNG con alfa) que lo
    tapa apenas en el final de la última línea para dar profundidad. El naranja queda en la luz
-   de la figura y de las estelas; los botones son blancos. Los tamaños van en vw para que el
+   de la figura y de las barras de fondo; los botones son blancos. Los tamaños van en vw para que el
    solapamiento sea parecido en cualquier ancho. */
 
 const fadeUp = {
@@ -17,17 +17,62 @@ const fadeUp = {
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+type BarStyle = {
+  left?: string;
+  right?: number | string;
+  top?: number | string;
+  bottom?: number | string;
+  width: string;
+  height: string;
+  /** inclinación en grados respecto de la vertical (la parte de arriba se corre a la derecha) */
+  skew: number;
+  origin: string;
+  fill: string;
+  /** línea fina brillante en uno de los bordes */
+  edge?: "left" | "right";
+  /** la barra se enciende hacia abajo */
+  fadeTop?: boolean;
+};
+
+function Bar({ className = "", style }: { className?: string; style: BarStyle }) {
+  const { skew, origin, fill, edge, fadeTop, ...pos } = style;
+  const line = "1.5px solid rgba(255,92,26,0.55)";
+  const mask = fadeTop ? "linear-gradient(to bottom, transparent 0%, #000 65%)" : undefined;
+  return (
+    <span
+      className={`absolute ${className}`}
+      style={{
+        ...pos,
+        background: fill,
+        transform: `skewX(-${skew}deg)`,
+        transformOrigin: origin,
+        borderLeft: edge === "left" ? line : undefined,
+        borderRight: edge === "right" ? line : undefined,
+        WebkitMaskImage: mask,
+        maskImage: mask,
+      }}
+    />
+  );
+}
+
 export function Hero() {
   return (
     <section
       id="inicio"
-      className="aura-ember relative min-h-[100svh] overflow-hidden px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
+      className="relative min-h-[100svh] overflow-hidden bg-brand-black-deep px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
     >
-      {/* Estelas diagonales de fondo: la barra "/" del logo hecha luz */}
+      {/* Barras de luz de fondo (medidas sobre las maquetas): paralelogramos con borde duro,
+          inicio y fin cortados y un degradé a lo ancho de la barra. Sin halos redondos. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <span className="slash-beam absolute -top-[10%] right-[20%] h-[140%] w-[7vw] opacity-20" />
-        <span className="slash-beam absolute -top-[10%] right-[6%] h-[140%] w-[1.2vw] opacity-30" />
-        <span className="slash-beam absolute -bottom-[30%] left-[-6%] h-[90%] w-[4vw] opacity-15 max-lg:hidden" />
+        {/* Celular */}
+        <Bar className="lg:hidden" style={{ left: "80.4vw", top: 0, width: "10vw", height: "26vw", skew: 35, origin: "0 0", fill: "rgba(255,92,26,0.07)" }} />
+        <Bar className="lg:hidden" style={{ right: 0, top: "31.5vw", width: "24vw", height: "43vw", skew: 42, origin: "100% 0", fill: "linear-gradient(to left, rgba(255,92,26,0.17), rgba(255,92,26,0))", edge: "right" }} />
+        <Bar className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.30), rgba(255,92,26,0))", edge: "left", fadeTop: true }} />
+        {/* Laptop */}
+        <Bar className="max-lg:hidden" style={{ left: "40.7vw", bottom: 0, width: "7.2vw", height: "15vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.27), rgba(255,92,26,0.25) 45%, rgba(255,92,26,0.06))" }} />
+        <Bar className="max-lg:hidden" style={{ left: "102.8vw", top: 0, width: "9vw", height: "18.7vw", skew: 38, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.19), rgba(255,92,26,0.02))", edge: "left" }} />
+        <Bar className="max-lg:hidden" style={{ left: "93.6vw", top: "18.7vw", width: "12vw", height: "35vw", skew: 38, origin: "0 0", fill: "rgba(255,92,26,0.07)" }} />
+        <Bar className="max-lg:hidden" style={{ left: "79.5vw", top: 0, width: "9vw", height: "28vw", skew: 36, origin: "0 0", fill: "rgba(255,92,26,0.06)" }} />
       </div>
 
       {/* Titular gigante, detrás de la figura */}

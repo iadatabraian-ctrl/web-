@@ -62,7 +62,7 @@ export function Nav() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.05 + LINKS.length * 0.04, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 rounded-full bg-brand-accent px-5 py-3 text-center font-body text-sm font-semibold text-brand-black"
+              className="mt-5 rounded-full bg-white px-5 py-3 text-center font-body text-sm font-semibold text-brand-black"
             >
               Hablemos
             </motion.a>
@@ -101,7 +101,7 @@ export function Nav() {
           ))}
           <a
             href="/#hablemos"
-            className="rounded-full bg-brand-accent px-5 py-2 font-body text-sm font-semibold text-brand-black transition-opacity hover:opacity-90"
+            className="rounded-full bg-white px-5 py-2 font-body text-sm font-semibold text-brand-black transition-colors hover:bg-white/85"
           >
             Hablemos
           </a>
