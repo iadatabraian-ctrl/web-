@@ -64,12 +64,13 @@ const waveEase = [0.65, 0, 0.35, 1] as const;
 export function Hero() {
   const reduce = useReducedMotion();
   const p = useMotionValue(0); // 0 = oscuro, 1 = claro
-  const pos = useTransform(p, (v) => `0% ${v * 100}%`);
+  // De -20% (la capa clara queda toda por debajo del hero) a 100% (la ola ya pasó por arriba).
+  const pos = useTransform(p, (v) => `0% ${-20 + v * 120}%`);
   const paused = useRef(false);
 
   // El menú se adapta cuando la ola ya pasó por arriba (ver globals.css).
   useMotionValueEvent(p, "change", (v) => {
-    document.documentElement.dataset.hero = v > 0.55 ? "light" : "dark";
+    document.documentElement.dataset.hero = v > 0.7 ? "light" : "dark";
   });
 
   useEffect(() => {
@@ -103,7 +104,7 @@ export function Hero() {
       id="inicio"
       onPointerEnter={() => (paused.current = true)}
       onPointerLeave={() => (paused.current = false)}
-      className={`relative min-h-[100svh] overflow-hidden bg-[#0d0b08] text-brand-cream ${PAD}`}
+      className={`relative isolate min-h-[100svh] overflow-hidden bg-[#0d0b08] text-brand-cream ${PAD}`}
     >
       <Scene tone="dark" />
       {!reduce && (
