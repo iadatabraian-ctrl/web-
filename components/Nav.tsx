@@ -33,7 +33,7 @@ export function Nav() {
   }, [open]);
 
   return (
-    <header className={cn("fixed inset-x-0 top-0 transition-all duration-300", open ? "z-[60]" : "z-50")}>
+    <header data-top={!scrolled && !open} className={cn("fixed inset-x-0 top-0 transition-all duration-300", open ? "z-[60]" : "z-50")}>
       <AnimatePresence>
         {open && (
           <motion.nav
@@ -91,14 +91,14 @@ export function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="font-body text-sm text-brand-ink-on-black-soft transition-colors hover:text-brand-cream"
+              className="nav-link font-body text-sm text-brand-ink-on-black-soft transition-colors hover:text-brand-cream"
             >
               {link.label}
             </a>
           ))}
           <a
             href="/#hablemos"
-            className="rounded-full bg-white px-5 py-2 font-body text-sm font-semibold text-brand-black transition-colors hover:bg-white/85"
+            className="nav-cta rounded-full bg-white px-5 py-2 font-body text-sm font-semibold text-brand-black transition-colors hover:bg-white/85"
           >
             Hablemos
           </a>
@@ -113,19 +113,19 @@ export function Nav() {
         >
           <span
             className={cn(
-              "h-[1.5px] w-[18px] bg-brand-cream transition-transform",
+              "nav-burger h-[1.5px] w-[18px] bg-brand-cream transition-transform",
               open && "translate-y-[6.5px] rotate-45",
             )}
           />
           <span
             className={cn(
-              "h-[1.5px] w-[18px] bg-brand-cream transition-opacity",
+              "nav-burger h-[1.5px] w-[18px] bg-brand-cream transition-opacity",
               open && "opacity-0",
             )}
           />
           <span
             className={cn(
-              "h-[1.5px] w-[18px] bg-brand-cream transition-transform",
+              "nav-burger h-[1.5px] w-[18px] bg-brand-cream transition-transform",
               open && "-translate-y-[6.5px] -rotate-45",
             )}
           />

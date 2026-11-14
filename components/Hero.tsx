@@ -1,11 +1,13 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Bar } from "@/components/Bar";
 
-/* Hero oscuro (ver PRODUCT.md): titular gigante en blanco semitransparente, detrás de una
+/* Hero (ver PRODUCT.md). Base oscura; una segunda copia clara (aria-hidden, sin clics) se revela con
+   una ola que sube y baja cada ~11 s. Con "reducir movimiento" queda fijo en oscuro. Hero oscuro: titular gigante en blanco semitransparente, detrás de una
    figura recortada (public/img/hero/hero-recorte.webp, generada con IA, PNG con alfa) que lo
    tapa apenas en el final de la última línea para dar profundidad. El naranja queda en la luz
    de la figura y de las barras de fondo; los botones son blancos. Los tamaños van en vw para que el
@@ -28,12 +30,110 @@ const fromBelow = {
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+const PAD = "px-5 pb-10 pt-24 sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28";
+
+const TONE = {
+  dark: {
+    h1a: "text-white/95",
+    h1b: "text-white/75",
+    img: "[filter:brightness(1.35)_contrast(0.92)]",
+    p: "text-brand-ink-on-black-soft",
+    strong: "text-brand-cream",
+    btn1: "bg-white text-brand-black hover:bg-white/85",
+    btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
+  },
+  light: {
+    h1a: "text-[#1a1712]",
+    h1b: "text-[#1a1712]/60",
+    img: "",
+    p: "text-[#5b5346]",
+    strong: "text-[#1a1712]",
+    btn1: "bg-[#0d0b08] text-[#f6f1e7] hover:bg-[#0d0b08]/85",
+    btn2: "border-[#1a1712]/35 text-[#1a1712] hover:border-[#1a1712]",
+  },
+} as const;
+
+// Máscara de la ola: borde ondulado e inclinado; se desplaza en vertical (300% del alto de la capa).
+const WAVE =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 300' preserveAspectRatio='none'%3E%3Cpath d='M0 138 C16 120 28 152 46 114 S82 94 100 64 V300 H0 Z'/%3E%3C/svg%3E\")";
+
+const HOLD_MS = 9000;
+const WAVE_S = 2;
+const waveEase = [0.65, 0, 0.35, 1] as const;
+
 export function Hero() {
+  const reduce = useReducedMotion();
+  const p = useMotionValue(0); // 0 = oscuro, 1 = claro
+  const pos = useTransform(p, (v) => `0% ${v * 100}%`);
+  const paused = useRef(false);
+
+  // El menú se adapta cuando la ola ya pasó por arriba (ver globals.css).
+  useMotionValueEvent(p, "change", (v) => {
+    document.documentElement.dataset.hero = v > 0.55 ? "light" : "dark";
+  });
+
+  useEffect(() => {
+    if (reduce) return;
+    let alive = true;
+    const hold = async (ms: number) => {
+      let t = 0;
+      while (alive && t < ms) {
+        await new Promise((r) => setTimeout(r, 200));
+        if (!paused.current) t += 200;
+      }
+    };
+    (async () => {
+      await hold(HOLD_MS - 2000);
+      while (alive) {
+        await animate(p, 1, { duration: WAVE_S, ease: waveEase });
+        await hold(HOLD_MS);
+        if (!alive) break;
+        await animate(p, 0, { duration: WAVE_S, ease: waveEase });
+        await hold(HOLD_MS);
+      }
+    })();
+    return () => {
+      alive = false;
+      delete document.documentElement.dataset.hero;
+    };
+  }, [reduce, p]);
+
   return (
     <section
       id="inicio"
-      className="relative min-h-[100svh] overflow-hidden bg-[#0d0b08] px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
+      onPointerEnter={() => (paused.current = true)}
+      onPointerLeave={() => (paused.current = false)}
+      className={`relative min-h-[100svh] overflow-hidden bg-[#0d0b08] text-brand-cream ${PAD}`}
     >
+      <Scene tone="dark" />
+      {!reduce && (
+        <motion.div
+          aria-hidden="true"
+          inert
+          className={`pointer-events-none absolute inset-0 z-[4] overflow-hidden bg-[#f6f1e7] text-[#1a1712] ${PAD}`}
+          style={{
+            WebkitMaskImage: WAVE,
+            maskImage: WAVE,
+            WebkitMaskSize: "100% 300%",
+            maskSize: "100% 300%",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskPosition: pos,
+            maskPosition: pos,
+          }}
+        >
+          <Scene tone="light" instant />
+        </motion.div>
+      )}
+    </section>
+  );
+}
+
+function Scene({ tone, instant = false }: { tone: "dark" | "light"; instant?: boolean }) {
+  const t = TONE[tone];
+  const ini = (v: string) => (instant ? false : v);
+  return (
+    <>
       {/* Barras de luz de fondo (medidas sobre las maquetas): paralelogramos con borde duro,
           inicio y fin cortados y un degradé a lo ancho de la barra. Sin halos redondos. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -50,20 +150,20 @@ export function Hero() {
       {/* Titular gigante, detrás de la figura */}
       <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.8] tracking-[-0.03em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.82]">
         <motion.span
-          initial="hidden"
+          initial={ini("hidden")}
           animate="show"
           variants={fromLeft}
           transition={{ duration: 0.75, ease, delay: 0.75 }}
-          className="block text-white/95"
+          className={`block ${t.h1a}`}
         >
           Tu negocio,
         </motion.span>
         <motion.span
-          initial="hidden"
+          initial={ini("hidden")}
           animate="show"
           variants={fromLeft}
           transition={{ duration: 0.75, ease, delay: 0.95 }}
-          className="block text-white/75"
+          className={`block ${t.h1b}`}
         >
           tu sistema.
         </motion.span>
@@ -73,7 +173,7 @@ export function Hero() {
           para que siempre se salga por el borde inferior; la cabeza queda a la derecha del texto. */}
       <motion.div
         aria-hidden="true"
-        initial={{ opacity: 0, y: "14%" }}
+        initial={instant ? false : { opacity: 0, y: "14%" }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.1, ease, delay: 0.1 }}
         className="pointer-events-none absolute right-[calc(28vw-var(--fw)/2)] top-[76vw] z-[2] w-[var(--fw)] [--fw:max(88vw,calc((100svh-76vw)/1.25))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]"
@@ -88,9 +188,9 @@ export function Hero() {
           alt=""
           width={1122}
           height={1402}
-          priority
+          priority={tone === "dark"}
           sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 112vw"
-          className="h-auto w-full [filter:brightness(1.35)_contrast(0.92)]"
+          className={`h-auto w-full ${t.img}`}
         />
         </div>
       </motion.div>
@@ -98,18 +198,18 @@ export function Hero() {
       {/* Texto y botones */}
       <div className="relative z-[3] mt-5 sm:mt-8 lg:mt-8">
         <motion.p
-          initial="hidden"
+          initial={ini("hidden")}
           animate="show"
           variants={fromBelow}
           transition={{ duration: 0.6, ease, delay: 1.35 }}
-          className="max-w-[44%] font-body text-[14px] leading-snug text-brand-ink-on-black-soft sm:max-w-md sm:text-lg sm:leading-relaxed lg:max-w-[32rem]"
+          className={`max-w-[44%] font-body text-[14px] leading-snug ${t.p} sm:max-w-md sm:text-lg sm:leading-relaxed lg:max-w-[32rem]`}
         >
-          <strong className="font-semibold text-brand-cream">Software a medida</strong>, páginas web,
+          <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
           automatización y agentes de WhatsApp.
         </motion.p>
 
         <motion.div
-          initial="hidden"
+          initial={ini("hidden")}
           animate="show"
           variants={fromBelow}
           transition={{ duration: 0.6, ease, delay: 1.5 }}
@@ -117,20 +217,20 @@ export function Hero() {
         >
           <a
             href="#hablemos"
-            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 ease-out hover:bg-white/85 active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm"
+            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-6 py-3 font-body text-xs font-bold uppercase tracking-wide transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm ${t.btn1}`}
           >
             Hablemos
             <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </a>
           <a
             href="#servicios"
-            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand-cream/40 px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition-[transform,border-color] duration-200 ease-out hover:border-brand-cream active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm"
+            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-6 py-3 font-body text-xs font-bold uppercase tracking-wide transition-[transform,border-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm ${t.btn2}`}
           >
             Ver servicios
             <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
           </a>
         </motion.div>
       </div>
-    </section>
+    </>
   );
 }

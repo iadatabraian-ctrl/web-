@@ -310,3 +310,14 @@
     translate: 0 calc(-7px * var(--amp));
   }
 }
+
+/* Menú sobre el hero cuando la ola lo vuelve claro (ver Hero.tsx): solo arriba de todo. */
+header .logo-d, header .logo-w, header .nav-link, header .nav-cta, header .nav-burger {
+  transition: color 0.5s, fill 0.5s, background-color 0.5s;
+}
+html[data-hero="light"] header[data-top="true"] .logo-d { fill: #0d0b08; }
+html[data-hero="light"] header[data-top="true"] .logo-w { color: #0d0b08; }
+html[data-hero="light"] header[data-top="true"] .nav-link { color: #5b5346; }
+html[data-hero="light"] header[data-top="true"] .nav-link:hover { color: #0d0b08; }
+html[data-hero="light"] header[data-top="true"] .nav-cta { background: #0d0b08; color: #f6f1e7; }
+html[data-hero="light"] header[data-top="true"] .nav-burger { background: #0d0b08; }
