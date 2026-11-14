@@ -19,10 +19,13 @@ type Kind = "software" | "web" | "automatizacion" | "agentes";
 
 const CARD_IMAGES: Partial<Record<Kind, string>> = {
   software: "/img/servicios/card-software.webp",
-  // web: "/img/servicios/card-web.webp",
-  // automatizacion: "/img/servicios/card-automatizacion.webp",
-  // agentes: "/img/servicios/card-agentes.webp",
+  web: "/img/servicios/card-web.webp",
+  automatizacion: "/img/servicios/card-automatizacion.webp",
+  agentes: "/img/servicios/card-agentes.webp",
 };
+
+/** Imágenes de fondo oscuro: el número de la tarjeta va en claro. */
+const DARK_IMAGE = new Set<Kind>(["automatizacion"]);
 
 const SERVICES: { kind: Kind; href: string; title: string; description: string }[] = [
   {
@@ -249,7 +252,7 @@ function Card({
         ) : (
           <Placeholder kind={service.kind} />
         )}
-        <span className={`absolute left-5 top-5 font-mono text-xs font-bold ${img ? "text-brand-ink-on-cream/60" : "text-brand-cream/70"}`}>
+        <span className={`absolute left-5 top-5 font-mono text-xs font-bold ${img && !DARK_IMAGE.has(service.kind) ? "text-brand-ink-on-cream/60" : "text-brand-cream/70"}`}>
           0{index + 1}
         </span>
       </div>
