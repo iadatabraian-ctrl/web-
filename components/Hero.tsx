@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="aura-ember relative min-h-[100svh] overflow-hidden px-5 pb-16 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
+      className="aura-ember relative min-h-[100svh] overflow-hidden px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
     >
       {/* Titular gigante, detrás de la figura */}
       <h1 className="relative z-[1] font-display uppercase leading-[0.88] tracking-[-0.01em] text-[16.5vw] sm:text-[15vw] lg:text-[10vw]">
@@ -54,10 +54,10 @@ export function Hero() {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease, delay: 0.3 }}
-        className="pointer-events-none relative z-[2] -mr-[10vw] -mt-[3vw] ml-auto w-[80vw] sm:-mr-[9vw] sm:-mt-[26vw] sm:w-[52vw] lg:absolute lg:right-[-3.8vw] lg:top-[4.5rem] lg:mr-0 lg:mt-0 lg:w-[50vw]"
+        className="pointer-events-none absolute right-[-16vw] top-[max(100vw,calc(100svh-140vw))] z-[2] w-[112vw] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:w-[70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:w-[50vw]"
         style={{
-          WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
         }}
       >
         <Image
@@ -66,31 +66,19 @@ export function Hero() {
           width={1122}
           height={1402}
           priority
-          sizes="(min-width: 1024px) 50vw, 78vw"
+          sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 112vw"
           className="h-auto w-full"
         />
       </motion.div>
 
       {/* Texto y botones */}
-      <div className="relative z-[3] -mt-[4vw] max-w-md sm:-mt-[6vw] lg:mt-10 lg:max-w-[28rem]">
-        <motion.p
-          initial="hidden"
-          animate="show"
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease, delay: 0.45 }}
-          className="font-body text-[15px] leading-relaxed text-brand-ink-on-black-soft sm:text-lg"
-        >
-          Diseñamos e implementamos los{" "}
-          <strong className="font-semibold text-brand-cream">sistemas</strong> que tu negocio
-          necesita para dejar atrás las tareas manuales y seguir creciendo sin fricción.
-        </motion.p>
-
+      <div className="relative z-[3] mt-6 max-w-md sm:mt-8 lg:mt-10 lg:max-w-[28rem]">
         <motion.div
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          transition={{ duration: 0.5, ease, delay: 0.55 }}
-          className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4"
+          transition={{ duration: 0.5, ease, delay: 0.45 }}
+          className="flex flex-wrap items-center gap-3 sm:gap-4"
         >
           <a
             href="#hablemos"
