@@ -8,12 +8,12 @@ export default function manifest(): MetadataRoute.Manifest {
       "Software a medida y páginas web para tu negocio. Automatización y agentes de IA como complemento.",
     start_url: "/",
     display: "standalone",
-    background_color: "#100e0b",
+    background_color: "#f6f1e7",
     theme_color: "#100e0b",
     lang: "es-UY",
     icons: [
       { src: "/icon.png", sizes: "512x512", type: "image/png", purpose: "any" },
-      // el slash ocupa el centro con margen de sobra, así que el mismo PNG sirve como maskable
+      // la D ocupa el centro con margen de sobra, así que el mismo PNG sirve como maskable
       { src: "/icon.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
       { src: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
