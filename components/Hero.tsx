@@ -10,8 +10,18 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
    de la figura y de las barras de fondo; los botones son blancos. Los tamaños van en vw para que el
    solapamiento sea parecido en cualquier ancho. */
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+/* Orden y dirección de la entrada (definidos por el fundador sobre la maqueta):
+   1. "Tu idea," entra de izquierda a derecha
+   2. "en producción." entra igual, justo después
+   3. texto y botones suben desde abajo
+   4. la figura sube desde abajo, al final */
+const fromLeft = {
+  hidden: { opacity: 0, x: "-14vw" },
+  show: { opacity: 1, x: 0 },
+};
+
+const fromBelow = {
+  hidden: { opacity: 0, y: 36 },
   show: { opacity: 1, y: 0 },
 };
 
@@ -80,8 +90,8 @@ export function Hero() {
         <motion.span
           initial="hidden"
           animate="show"
-          variants={fadeUp}
-          transition={{ duration: 0.6, ease, delay: 0.1 }}
+          variants={fromLeft}
+          transition={{ duration: 0.75, ease, delay: 0.1 }}
           className="block text-white/95"
         >
           Tu idea,
@@ -89,8 +99,8 @@ export function Hero() {
         <motion.span
           initial="hidden"
           animate="show"
-          variants={fadeUp}
-          transition={{ duration: 0.6, ease, delay: 0.22 }}
+          variants={fromLeft}
+          transition={{ duration: 0.75, ease, delay: 0.3 }}
           className="block text-white/75"
         >
           en
@@ -104,9 +114,9 @@ export function Hero() {
           para que siempre se salga por el borde inferior; la cabeza queda a la derecha del texto. */}
       <motion.div
         aria-hidden="true"
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9, ease, delay: 0.3 }}
+        initial={{ opacity: 0, y: "14%" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.1, ease, delay: 0.85 }}
         className="pointer-events-none absolute right-[calc(28vw-var(--fw)/2)] top-[76vw] z-[2] w-[var(--fw)] [--fw:max(88vw,calc((100svh-76vw)/1.25))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]"
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
@@ -129,8 +139,8 @@ export function Hero() {
         <motion.p
           initial="hidden"
           animate="show"
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease, delay: 0.45 }}
+          variants={fromBelow}
+          transition={{ duration: 0.6, ease, delay: 0.55 }}
           className="max-w-[44%] font-body text-[14px] leading-snug text-brand-ink-on-black-soft sm:max-w-md sm:text-lg sm:leading-relaxed lg:max-w-[32rem]"
         >
           Diseñamos e implementamos{" "}
@@ -141,8 +151,8 @@ export function Hero() {
         <motion.div
           initial="hidden"
           animate="show"
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease, delay: 0.55 }}
+          variants={fromBelow}
+          transition={{ duration: 0.6, ease, delay: 0.7 }}
           className="mt-6 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4"
         >
           <a
