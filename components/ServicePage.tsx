@@ -162,42 +162,42 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Valores y plazos (oscura) */}
-        <section className="bg-[#0d0b08] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
+        {/* Valores y plazos (clara) */}
+        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
               <h2 className={H2}>Valores y plazos</h2>
             </FadeIn>
             <FadeIn className="mt-8 sm:mt-14">
-              <div className="grid gap-10 border-y border-white/15 py-8 sm:py-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+              <div className="grid gap-10 border-y border-brand-ink-on-cream/20 py-8 sm:py-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
                 <div>
                   <div className="flex items-end justify-between gap-4 sm:gap-8">
                     <div>
-                      <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Desde</p>
+                      <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Desde</p>
                       <p className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[2.4rem] font-black uppercase not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.desde}</p>
                     </div>
                     {s.valores.hasta && (
                       <div className="text-right">
-                        <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Hasta</p>
+                        <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Hasta</p>
                         <p className="mt-2 origin-bottom-right -skew-x-[5deg] font-impact text-[2.4rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.hasta}</p>
                       </div>
                     )}
                   </div>
-                  <div aria-hidden="true" className="relative mt-5 h-[3px] bg-white/15 sm:mt-6">
+                  <div aria-hidden="true" className="relative mt-5 h-[3px] bg-brand-ink-on-cream/15 sm:mt-6">
                     <span className="absolute inset-y-0 left-0 right-0 bg-gradient-to-r from-brand-accent to-brand-accent/10" />
                     <span className="absolute -top-1.5 left-0 h-3 w-3 rounded-full bg-brand-accent" />
-                    {s.valores.hasta ? <span className="absolute -top-1.5 right-0 h-3 w-3 rounded-full bg-white" /> : <span className="absolute -top-2 right-0 font-mono text-xs text-brand-ink-on-black-soft">→</span>}
+                    {s.valores.hasta ? <span className="absolute -top-1.5 right-0 h-3 w-3 rounded-full bg-brand-ink-on-cream" /> : <span className="absolute -top-2 right-0 font-mono text-xs text-brand-ink-on-cream-soft">→</span>}
                   </div>
-                  <p className="mt-3 font-body text-sm text-brand-ink-on-black-soft sm:text-base">{s.valores.detalle}</p>
-                  <p className="mt-8 font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Qué hace subir el valor</p>
+                  <p className="mt-3 font-body text-sm text-brand-ink-on-cream-soft sm:text-base">{s.valores.detalle}</p>
+                  <p className="mt-8 font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Qué hace subir el valor</p>
                   <ul className="mt-3 flex flex-col gap-2 font-body text-sm sm:text-base">
                     {s.valores.factores.map((f) => (
                       <li key={f} className="flex gap-3"><span className="text-brand-accent">+</span>{f}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="lg:border-l lg:border-white/15 lg:pl-16">
-                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Plazo</p>
+                <div className="lg:border-l lg:border-brand-ink-on-cream/20 lg:pl-16">
+                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Plazo</p>
                   <p className="mt-2 font-impact text-4xl font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl">{s.valores.plazo}</p>
                   {(() => {
                     const m = s.valores.plazo.match(/(\d+)\s*a\s*(\d+)/);
@@ -206,10 +206,10 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                     const max = 30;
                     return (
                       <div className="mt-6 sm:mt-8" aria-hidden="true">
-                        <div className="relative h-3 rounded-full bg-white/10">
+                        <div className="relative h-3 rounded-full bg-brand-ink-on-cream/10">
                           <span className="absolute inset-y-0 rounded-full bg-brand-accent" style={{ left: `${(lo / max) * 100}%`, width: `${((hi - lo) / max) * 100}%` }} />
                         </div>
-                        <div className="mt-2 flex justify-between font-mono text-[10px] text-brand-ink-on-black-soft">
+                        <div className="mt-2 flex justify-between font-mono text-[10px] text-brand-ink-on-cream-soft">
                           <span>0</span><span>10</span><span>20</span><span>30 días</span>
                         </div>
                       </div>
@@ -219,7 +219,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                     href={wa}
                     target="_blank"
                     rel="noopener"
-                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-white/85 active:scale-[0.97] sm:mt-10 sm:text-sm"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-black px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition-[transform,background-color] duration-200 hover:bg-brand-black/85 active:scale-[0.97] sm:mt-10 sm:text-sm"
                   >
                     Cotizar mi proyecto
                     <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
@@ -227,7 +227,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                 </div>
               </div>
             </FadeIn>
-            <p className="mt-6 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{s.valores.nota}</p>
+            <p className="mt-6 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">{s.valores.nota}</p>
           </div>
         </section>
 
