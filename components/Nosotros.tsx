@@ -93,8 +93,7 @@ export function Nosotros() {
           >
             Braian González, desarrollador de soluciones digitales, autodidacta. Cada proyecto parte de entender el
             problema de fondo del negocio, con criterio real para adaptar el desarrollo a lo que busca cada cliente.
-            Este mismo sitio que estás viendo es un ejemplo de lo que construyo: hecho a medida, de punta a punta, sin
-            plantillas.
+           
           </motion.p>
         </div>
       </div>
