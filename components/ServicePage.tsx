@@ -6,6 +6,7 @@ import { CtaFooter } from "@/components/CtaFooter";
 import { FadeIn } from "@/components/FadeIn";
 import { Bar } from "@/components/Bar";
 import { CuandoConviene } from "@/components/servicios/CuandoConviene";
+import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
@@ -124,29 +125,8 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Qué incluye (clara) */}
-        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
-          <div className="mx-auto max-w-6xl">
-            <FadeIn>
-              <h2 className={H2}>Qué incluye</h2>
-            </FadeIn>
-            <ol className="mt-8 grid gap-x-16 sm:mt-14 md:grid-cols-2">
-              {s.incluye.map((item, i) => (
-                <li key={item.t} className={`border-t border-brand-ink-on-cream/20 ${i % 2 === 1 ? "md:mt-16" : ""}`}>
-                  <FadeIn delay={(i % 2) * 0.1} className="flex gap-4 py-6 sm:gap-6 sm:py-8">
-                    <span className="font-impact text-5xl font-black not-italic leading-[0.85] text-brand-accent [font-stretch:80%] sm:text-7xl">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h3 className="font-impact text-xl font-extrabold uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">{item.t}</h3>
-                      <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:mt-3 sm:text-base">{item.d}</p>
-                    </div>
-                  </FadeIn>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        {/* Qué incluye (pantalla partida con scroll) */}
+        <IncluyeSplit items={s.incluye} />
 
         {/* Cuándo conviene (oscura) */}
         <section className="bg-[#0d0b08] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
