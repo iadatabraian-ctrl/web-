@@ -36,7 +36,7 @@ type BarStyle = {
 
 function Bar({ className = "", style }: { className?: string; style: BarStyle }) {
   const { skew, origin, fill, edge, fadeTop, ...pos } = style;
-  const line = "1.5px solid rgba(255,92,26,0.55)";
+  const line = "1.5px solid rgba(255,92,26,0.88)";
   const mask = fadeTop ? "linear-gradient(to bottom, transparent 0%, #000 65%)" : undefined;
   return (
     <span
@@ -59,20 +59,20 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-[100svh] overflow-hidden bg-brand-black-deep px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
+      className="relative min-h-[100svh] overflow-hidden bg-brand-black px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
     >
       {/* Barras de luz de fondo (medidas sobre las maquetas): paralelogramos con borde duro,
           inicio y fin cortados y un degradé a lo ancho de la barra. Sin halos redondos. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Celular */}
-        <Bar className="lg:hidden" style={{ left: "80.4vw", top: 0, width: "10vw", height: "26vw", skew: 35, origin: "0 0", fill: "rgba(255,92,26,0.07)" }} />
-        <Bar className="lg:hidden" style={{ right: 0, top: "31.5vw", width: "24vw", height: "43vw", skew: 42, origin: "100% 0", fill: "linear-gradient(to left, rgba(255,92,26,0.17), rgba(255,92,26,0))", edge: "right" }} />
-        <Bar className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.30), rgba(255,92,26,0))", edge: "left", fadeTop: true }} />
+        <Bar className="lg:hidden" style={{ left: "80.4vw", top: 0, width: "10vw", height: "26vw", skew: 35, origin: "0 0", fill: "rgba(255,92,26,0.11)" }} />
+        <Bar className="lg:hidden" style={{ right: 0, top: "31.5vw", width: "24vw", height: "43vw", skew: 42, origin: "100% 0", fill: "linear-gradient(to left, rgba(255,92,26,0.27), rgba(255,92,26,0.00))", edge: "right" }} />
+        <Bar className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.48), rgba(255,92,26,0.00))", edge: "left", fadeTop: true }} />
         {/* Laptop */}
-        <Bar className="max-lg:hidden" style={{ left: "40.7vw", bottom: 0, width: "7.2vw", height: "15vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.27), rgba(255,92,26,0.25) 45%, rgba(255,92,26,0.06))" }} />
-        <Bar className="max-lg:hidden" style={{ left: "102.8vw", top: 0, width: "9vw", height: "18.7vw", skew: 38, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.19), rgba(255,92,26,0.02))", edge: "left" }} />
-        <Bar className="max-lg:hidden" style={{ left: "93.6vw", top: "18.7vw", width: "12vw", height: "35vw", skew: 38, origin: "0 0", fill: "rgba(255,92,26,0.07)" }} />
-        <Bar className="max-lg:hidden" style={{ left: "79.5vw", top: 0, width: "9vw", height: "28vw", skew: 36, origin: "0 0", fill: "rgba(255,92,26,0.06)" }} />
+        <Bar className="max-lg:hidden" style={{ left: "40.7vw", bottom: 0, width: "7.2vw", height: "15vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.43), rgba(255,92,26,0.40) 45%, rgba(255,92,26,0.10))" }} />
+        <Bar className="max-lg:hidden" style={{ left: "102.8vw", top: 0, width: "9vw", height: "18.7vw", skew: 38, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.30), rgba(255,92,26,0.03))", edge: "left" }} />
+        <Bar className="max-lg:hidden" style={{ left: "93.6vw", top: "18.7vw", width: "12vw", height: "35vw", skew: 38, origin: "0 0", fill: "rgba(255,92,26,0.11)" }} />
+        <Bar className="max-lg:hidden" style={{ left: "79.5vw", top: 0, width: "9vw", height: "28vw", skew: 36, origin: "0 0", fill: "rgba(255,92,26,0.10)" }} />
       </div>
 
       {/* Titular gigante, detrás de la figura */}
@@ -120,7 +120,7 @@ export function Hero() {
           height={1402}
           priority
           sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 112vw"
-          className="h-auto w-full"
+          className="h-auto w-full [filter:brightness(1.35)_contrast(0.92)]"
         />
       </motion.div>
 
