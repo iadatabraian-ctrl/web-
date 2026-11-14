@@ -56,7 +56,7 @@ export function Hero() {
           transition={{ duration: 0.75, ease, delay: 0.75 }}
           className="block text-white/95"
         >
-          Tu idea,
+          Tu negocio,
         </motion.span>
         <motion.span
           initial="hidden"
@@ -65,10 +65,7 @@ export function Hero() {
           transition={{ duration: 0.75, ease, delay: 0.95 }}
           className="block text-white/75"
         >
-          en
-          <br className="lg:hidden" />
-          <span className="hidden lg:inline"> </span>
-          producción.
+          tu sistema.
         </motion.span>
       </h1>
 
@@ -107,9 +104,8 @@ export function Hero() {
           transition={{ duration: 0.6, ease, delay: 1.35 }}
           className="max-w-[44%] font-body text-[14px] leading-snug text-brand-ink-on-black-soft sm:max-w-md sm:text-lg sm:leading-relaxed lg:max-w-[32rem]"
         >
-          Diseñamos e implementamos{" "}
-          <strong className="font-semibold text-brand-cream">sistemas</strong> digitales para hacer
-          crecer tu negocio.
+          <strong className="font-semibold text-brand-cream">Software a medida</strong>, páginas web,
+          automatización y agentes de WhatsApp.
         </motion.p>
 
         <motion.div
