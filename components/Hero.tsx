@@ -1,22 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ArrowDown } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { BrowserFrame } from "@/components/servicios/BrowserFrame";
+import { PhoneFrame } from "@/components/servicios/PhoneFrame";
 
-/* Hero futurista (sección oscura "noche"): palabra de marca gigante, un objeto de luz
-   al centro y etiquetas de vidrio con los 4 servicios reales.
-   Para usar una imagen propia en lugar del orbe de CSS: poner el archivo en
-   public/img/hero/hero-visual.png (PNG con fondo transparente, ~1600px) y
-   cambiar HERO_VISUAL a "/img/hero/hero-visual.png". */
-const HERO_VISUAL: string | null = null;
-
-const SERVICES = [
-  { n: "01", tag: "SOFTWARE", label: "Software a medida", pos: "left-[1%] bottom-[16%]" },
-  { n: "02", tag: "WEB", label: "Páginas web", pos: "right-[1%] bottom-[16%]" },
-  { n: "03", tag: "AUTOMATIZACIÓN", label: "Automatización", pos: "left-[19%] bottom-[2%]" },
-  { n: "04", tag: "AGENTES IA", label: "Agentes de IA", pos: "right-[19%] bottom-[2%]" },
-];
+/* Hero oscuro con luz naranja (ver PRODUCT.md). El visual es el producto real:
+   el panel y la app de Deploy Fit (demos con datos de ejemplo). */
+const SERVICES = ["Software a medida", "Páginas web", "Automatización", "Agentes de IA"];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 22 },
@@ -28,7 +21,6 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function Hero() {
   const [start, setStart] = useState(false);
   const [live, setLive] = useState(false);
-  const reduce = useReducedMotion();
 
   useEffect(() => {
     const onSplashDone = () => setStart(true);
@@ -39,114 +31,61 @@ export function Hero() {
   // "en producción." se enciende un instante después de que arranca el hero
   useEffect(() => {
     if (!start) return;
-    const t = setTimeout(() => setLive(true), reduce ? 0 : 700);
+    const t = setTimeout(() => setLive(true), 700);
     return () => clearTimeout(t);
-  }, [start, reduce]);
+  }, [start]);
 
   return (
     <section
       id="inicio"
-      className="aura-night relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-8 pt-24 text-ink-on-night sm:px-8 sm:pt-28 min-[900px]:px-12"
+      className="aura-ember relative overflow-hidden px-5 pb-14 pt-24 text-brand-cream sm:px-8 sm:pb-16 sm:pt-28 lg:flex lg:min-h-[100svh] lg:items-center min-[900px]:px-12"
     >
       <div className="grid-hud pointer-events-none absolute inset-0" aria-hidden="true" />
 
-      {/* Escenario: palabra gigante + objeto de luz + etiquetas de vidrio */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: start ? 1 : 0 }}
-        transition={{ duration: 0.8, ease }}
+      {/* Palabra de marca gigante, de fondo */}
+      <span
         aria-hidden="true"
-        className="relative mx-auto h-[40svh] min-h-[280px] w-full max-w-6xl sm:h-[42svh] lg:h-[38svh]"
+        className="pointer-events-none absolute inset-x-0 top-[6%] select-none text-center font-display text-[clamp(8rem,36vw,32rem)] uppercase leading-[0.85]"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(246,241,231,0.20) 0%, rgba(246,241,231,0.05) 60%, rgba(246,241,231,0) 100%)",
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          color: "transparent",
+        }}
       >
-        <span
-          className="absolute inset-x-0 top-0 select-none text-center font-display text-[clamp(6rem,25vw,20rem)] uppercase leading-[0.9]"
-          style={{
-            backgroundImage:
-              "linear-gradient(180deg, rgba(214,219,255,0.95) 0%, rgba(150,160,230,0.55) 55%, rgba(120,130,210,0.06) 100%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          Deploy
-        </span>
+        Deploy
+      </span>
 
-        {/* Objeto de luz */}
-        <motion.div
-          animate={reduce ? undefined : { y: [0, -10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 left-1/2 aspect-square h-[68%] -translate-x-1/2"
-        >
-          {HERO_VISUAL ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={HERO_VISUAL} alt="" className="h-full w-full object-contain" />
-          ) : (
-            <>
-              <div
-                className="absolute -inset-[18%] rounded-full blur-3xl"
-                style={{
-                  background:
-                    "radial-gradient(closest-side, rgba(124,58,237,0.55), rgba(47,107,255,0.28) 60%, transparent 100%)",
-                }}
-              />
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle at 32% 28%, #d6c8ff 0%, #8b5cf6 22%, #2f6bff 50%, #0d1030 80%)",
-                  boxShadow:
-                    "inset -24px -30px 70px rgba(7,8,22,0.85), 0 0 90px rgba(124,58,237,0.45)",
-                }}
-              />
-              <div
-                className="absolute inset-0 rounded-full opacity-60 mix-blend-screen"
-                style={{
-                  background:
-                    "radial-gradient(circle at 72% 78%, rgba(34,211,238,0.4), transparent 52%), radial-gradient(circle at 20% 80%, rgba(217,70,239,0.3), transparent 45%)",
-                }}
-              />
-            </>
-          )}
-        </motion.div>
+      {/* Estelas diagonales: la barra "/" del logo hecha luz */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <span className="slash-beam absolute -top-[10%] right-[18%] h-[130%] w-3 opacity-60" />
+        <span className="slash-beam absolute -top-[10%] right-[10%] h-[130%] w-1.5 opacity-40" />
+        <span className="slash-beam absolute -top-[10%] right-[3%] h-[130%] w-5 opacity-25" />
+      </div>
 
-        {/* Etiquetas de vidrio con los servicios (solo en pantallas anchas) */}
-        {SERVICES.map((s) => (
-          <div
-            key={s.n}
-            className={`absolute hidden min-[900px]:block ${s.pos}`}
-          >
-            <div className="glass-tag rounded-2xl border border-white/15 px-4 py-3">
-              <p className="hud-tag">
-                {s.n} · {s.tag}
-              </p>
-              <p className="mt-2 font-body text-sm font-semibold text-ink-on-night">{s.label}</p>
-            </div>
-          </div>
-        ))}
-      </motion.div>
-
-      {/* Contenido */}
-      <div className="relative z-[1] mx-auto mt-6 grid w-full max-w-6xl flex-1 gap-8 sm:mt-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
-        <div className="mx-auto max-w-3xl text-center sm:mx-0 sm:text-left">
+      <div className="relative z-[1] mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+        {/* Texto */}
+        <div className="mx-auto max-w-xl text-center sm:mx-0 sm:max-w-none sm:text-left">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: start ? 1 : 0 }}
             transition={{ duration: 0.3 }}
-            className="inline-flex items-center gap-2 rounded-full border border-line-on-night px-3 py-1.5 sm:px-4 sm:py-2"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-accent/50 px-3 py-1.5 sm:gap-2.5 sm:px-4 sm:py-2"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-neon-cyan" />
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-on-night-soft sm:text-xs">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-accent" />
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-cream sm:text-xs">
               Soluciones digitales
             </span>
           </motion.div>
 
-          <h1 className="mt-5 text-balance font-display text-[11vw] leading-[1.02] sm:text-6xl xl:text-[4.2rem]">
+          <h1 className="mt-5 text-balance font-display text-[11vw] leading-[1.02] sm:text-6xl lg:text-[3.6rem] xl:text-[4.4rem]">
             <motion.span
               initial="hidden"
               animate={start ? "show" : "hidden"}
               variants={fadeUp}
               transition={{ duration: 0.45, ease, delay: 0.1 }}
-              className="block text-ink-on-night"
+              className="block text-brand-cream"
             >
               Tu idea,
             </motion.span>
@@ -155,7 +94,7 @@ export function Hero() {
               animate={start ? "show" : "hidden"}
               variants={fadeUp}
               transition={{ duration: 0.45, ease, delay: 0.2 }}
-              className={`block transition-opacity duration-700 ${live ? "text-neon opacity-100" : "text-ink-on-night opacity-25"}`}
+              className={`block transition-colors duration-700 ${live ? "text-brand-accent" : "text-brand-cream/25"}`}
             >
               en producción.
             </motion.span>
@@ -165,11 +104,11 @@ export function Hero() {
             initial="hidden"
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
-            transition={{ duration: 0.5, ease, delay: 0.45 }}
-            className="mx-auto mt-4 max-w-xl font-body text-[15px] leading-relaxed text-ink-on-night-soft sm:mx-0 sm:mt-5 sm:text-lg"
+            transition={{ duration: 0.5, ease, delay: 0.4 }}
+            className="mx-auto mt-4 max-w-md font-body text-[15px] leading-relaxed text-brand-ink-on-black-soft sm:mx-0 sm:mt-5 sm:text-lg"
           >
             Diseñamos e implementamos los{" "}
-            <strong className="font-semibold text-ink-on-night">sistemas</strong> que tu negocio
+            <strong className="font-semibold text-brand-cream">sistemas</strong> que tu negocio
             necesita para dejar atrás las tareas manuales y seguir creciendo sin fricción.
           </motion.p>
 
@@ -177,7 +116,7 @@ export function Hero() {
             initial="hidden"
             animate={start ? "show" : "hidden"}
             variants={fadeUp}
-            transition={{ duration: 0.5, ease, delay: 0.55 }}
+            transition={{ duration: 0.5, ease, delay: 0.5 }}
             className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:justify-start sm:gap-4"
           >
             <a
@@ -189,43 +128,86 @@ export function Hero() {
             </a>
             <a
               href="#servicios"
-              className="edge-neon inline-flex items-center gap-2 rounded-full px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-ink-on-night transition-[transform,opacity] duration-200 ease-out hover:opacity-90 active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-brand-cream/40 px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition-[transform,border-color] duration-200 ease-out hover:border-brand-cream active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm"
             >
               Ver servicios
               <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
             </a>
           </motion.div>
-        </div>
 
-        <motion.div
-          initial="hidden"
-          animate={start ? "show" : "hidden"}
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease, delay: 0.65 }}
-          className="text-center lg:text-right"
-        >
-          <p className="hidden font-body text-sm font-semibold leading-snug text-ink-on-night sm:block">
-            Software a medida, web y automatización
-            <br />
-            para negocios en Uruguay
-          </p>
-          <ul className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-2 min-[900px]:hidden">
-            {SERVICES.map((s, i) => (
+          <motion.ul
+            initial="hidden"
+            animate={start ? "show" : "hidden"}
+            variants={fadeUp}
+            transition={{ duration: 0.5, ease, delay: 0.6 }}
+            className="mt-8 flex flex-wrap justify-center gap-x-3 gap-y-2 sm:justify-start"
+          >
+            {SERVICES.map((label, i) => (
               <li
-                key={s.n}
-                className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.15em] text-ink-on-night-soft sm:text-xs"
+                key={label}
+                className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.15em] text-brand-ink-on-black-soft sm:text-xs"
               >
-                {i > 0 && <span className="text-neon-cyan">/</span>}
-                {s.label}
+                {i > 0 && <span className="text-brand-accent">/</span>}
+                {label}
               </li>
             ))}
-          </ul>
-          <div className="mt-5 hidden items-center justify-end gap-2 lg:flex">
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-on-night-soft">
-              Explorar
-            </span>
-            <ArrowDown className="h-3 w-3 text-neon-cyan" />
-          </div>
+          </motion.ul>
+        </div>
+
+        {/* Producto real: panel + app, con etiquetas tipo consola */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: start ? 1 : 0, y: start ? 0 : 28 }}
+          transition={{ duration: 0.7, ease, delay: 0.25 }}
+          className="relative mx-auto w-full max-w-[640px]"
+        >
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="relative pb-10"
+          >
+            <BrowserFrame
+              url="panel.deployfit.com · administrador"
+              className="w-[94%] ring-1 ring-brand-accent/30"
+            >
+              <div className="relative aspect-[16/10] bg-[#eef2f6]">
+                <Image
+                  src="/img/demos/gimnasio/admin-dashboard.webp"
+                  alt="Panel de administración de un gimnasio, desarrollado por Deploy"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  className="object-cover object-top"
+                />
+              </div>
+            </BrowserFrame>
+
+            <div className="absolute bottom-0 right-0 w-[27%] max-w-[170px]">
+              <PhoneFrame className="w-full ring-brand-accent/30">
+                <Image
+                  src="/img/demos/gimnasio/socio-inicio.webp"
+                  alt="Aplicación para socios de un gimnasio, desarrollada por Deploy"
+                  fill
+                  sizes="170px"
+                  className="object-contain object-top"
+                />
+              </PhoneFrame>
+            </div>
+
+            <div className="glass-tag absolute -top-4 left-3 hidden rounded-xl border border-brand-cream/15 px-3 py-2 sm:block">
+              <p className="hud-tag">$ deploy --env production</p>
+            </div>
+            <div className="glass-tag absolute -left-2 bottom-3 hidden rounded-xl border border-brand-cream/15 px-3 py-2 min-[900px]:block">
+              <p className="hud-tag flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-accent" />
+                en producción
+              </p>
+            </div>
+          </motion.div>
+
+          <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.15em] text-brand-ink-on-black-soft sm:text-right">
+            Sistema desarrollado por Deploy · datos de ejemplo
+          </p>
         </motion.div>
       </div>
     </section>
