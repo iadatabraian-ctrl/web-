@@ -104,9 +104,9 @@ export function Nosotros() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={view}
           transition={{ duration: 0.7, ease }}
-          className="col-span-2 flex items-center gap-5 rounded-[1.25rem] bg-brand-black p-5 text-brand-cream sm:gap-10 sm:rounded-[1.75rem] sm:p-8 lg:col-span-2"
+          className="col-span-2 flex items-center gap-5 overflow-hidden rounded-[1.25rem] bg-[#0d0b08] p-5 text-brand-cream sm:gap-12 sm:rounded-[1.75rem] sm:p-10"
         >
-          <MapaUruguay className="h-28 w-auto shrink-0 sm:h-44" />
+          <MapaUruguay className="h-36 w-auto shrink-0 sm:h-64" />
           <div>
             <p className="font-impact text-2xl font-black uppercase not-italic leading-[1] [font-stretch:80%] sm:text-4xl">
               Desde Salto, a todo el país.
