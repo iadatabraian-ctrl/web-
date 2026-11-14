@@ -17,7 +17,7 @@ const archivo = Archivo({
 // Titulares de impacto (hero): condensada, cuadrada e inclinada. Variable con eje de ancho.
 const saira = Saira({
   variable: "--font-saira",
-  style: ["italic"],
+  style: ["normal", "italic"],
   axes: ["wdth"],
   subsets: ["latin"],
 });
