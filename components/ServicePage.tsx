@@ -7,6 +7,8 @@ import { FadeIn } from "@/components/FadeIn";
 import { Bar } from "@/components/Bar";
 import { CuandoConviene } from "@/components/servicios/CuandoConviene";
 import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
+import { OtrosServicios } from "@/components/servicios/OtrosServicios";
+import { NotasPaso } from "@/components/NotasPaso";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
@@ -147,19 +149,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Cómo se trabaja</h2>
             </FadeIn>
-            <ol className="relative mt-10 grid gap-8 sm:mt-16 lg:grid-cols-4 lg:gap-6">
-              <span aria-hidden="true" className="absolute bottom-2 left-[0.62rem] top-2 w-px bg-white/25 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[0.62rem] lg:h-px lg:w-auto" />
-              {s.proceso.map((p, i) => (
-                <li key={p.t} className="relative pl-10 lg:pl-0 lg:pt-10">
-                  <span aria-hidden="true" className="absolute left-0 top-1.5 h-[1.3rem] w-[1.3rem] rounded-full bg-brand-accent ring-4 ring-[#0d0b08] lg:top-0" />
-                  <FadeIn delay={i * 0.1}>
-                    <span className="font-mono text-xs font-bold text-brand-accent">0{i + 1}</span>
-                    <h3 className="mt-1 font-impact text-2xl font-extrabold uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">{p.t}</h3>
-                    <p className="mt-2 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{p.d}</p>
-                  </FadeIn>
-                </li>
-              ))}
-            </ol>
+            <NotasPaso pasos={s.proceso} />
           </div>
         </section>
 
@@ -253,21 +243,10 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         </section>
 
         {/* Otros servicios (oscura) */}
-        <section className="bg-[#0d0b08] px-5 py-12 text-brand-cream sm:px-8 sm:py-20">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
-            <ul className="mt-6 flex flex-wrap gap-3">
-              {otros.map((o) => (
-                <li key={o.slug}>
-                  <Link
-                    href={`/${o.slug}`}
-                    className="inline-flex rounded-full border border-white/20 px-5 py-2.5 font-body text-sm text-brand-cream transition-colors hover:border-brand-accent hover:text-brand-accent"
-                  >
-                    {o.nombre}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <section className="bg-[#0d0b08] px-5 pb-16 pt-6 text-brand-cream sm:px-8 sm:pb-24 sm:pt-10 lg:px-[6vw]">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="origin-bottom-left -skew-x-[5deg] font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
+            <OtrosServicios items={otros} />
           </div>
         </section>
       </main>
