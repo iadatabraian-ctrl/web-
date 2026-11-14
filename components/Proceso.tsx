@@ -62,12 +62,12 @@ export function Proceso() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={view}
               transition={{ duration: 0.6, ease, delay: i * 0.1 }}
-              className="group flex min-h-[11rem] flex-col rounded-[1.75rem] border border-white/10 bg-brand-black p-5 transition-colors duration-300 hover:border-brand-accent/60 sm:min-h-[15rem] sm:p-6"
+              className="group flex min-h-[10.5rem] flex-col rounded-[1.75rem] border border-white/10 bg-brand-black p-5 transition-colors duration-300 hover:border-brand-accent/60 sm:min-h-[14rem] sm:p-6"
             >
               <span className="font-impact text-5xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-6xl">
                 0{i + 1}
               </span>
-              <h3 className="mt-auto origin-bottom-left -skew-x-[5deg] pt-6 font-impact text-[1.45rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-[1.65rem]">
+              <h3 className="origin-bottom-left -skew-x-[5deg] pt-8 font-impact text-[1.45rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-[1.65rem]">
                 {s.title}
               </h3>
               <p className="mt-2 font-body text-[13px] leading-snug text-brand-ink-on-black-soft sm:text-sm">{s.desc}</p>

@@ -86,7 +86,6 @@ export function Servicios() {
       }}
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <Bar style={{ right: "-4vw", top: "12vw", width: "9vw", height: "46vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.14)", edge: "right" }} i={0} />
         <Bar className="max-sm:hidden" style={{ right: "14vw", top: "20vw", width: "4vw", height: "30vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={1} />
         <Bar className="max-lg:hidden" style={{ left: "-5vw", bottom: 0, width: "9vw", height: "20vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.14)", edge: "left" }} i={2} />
       </div>
