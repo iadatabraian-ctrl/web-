@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -19,14 +18,6 @@ const fadeUp = {
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
-  const [start, setStart] = useState(false);
-
-  useEffect(() => {
-    const onSplashDone = () => setStart(true);
-    window.addEventListener("splash-done", onSplashDone);
-    return () => window.removeEventListener("splash-done", onSplashDone);
-  }, []);
-
   return (
     <section
       id="inicio"
@@ -36,7 +27,7 @@ export function Hero() {
       <h1 className="relative z-[1] font-display uppercase leading-[0.88] tracking-[-0.01em] text-[16.5vw] sm:text-[15vw] lg:text-[10vw]">
         <motion.span
           initial="hidden"
-          animate={start ? "show" : "hidden"}
+          animate="show"
           variants={fadeUp}
           transition={{ duration: 0.6, ease, delay: 0.1 }}
           className="block text-white/95"
@@ -45,7 +36,7 @@ export function Hero() {
         </motion.span>
         <motion.span
           initial="hidden"
-          animate={start ? "show" : "hidden"}
+          animate="show"
           variants={fadeUp}
           transition={{ duration: 0.6, ease, delay: 0.22 }}
           className="block text-white/55"
@@ -61,7 +52,7 @@ export function Hero() {
       <motion.div
         aria-hidden="true"
         initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: start ? 1 : 0, x: start ? 0 : 40 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease, delay: 0.3 }}
         className="pointer-events-none relative z-[2] -mr-[10vw] -mt-[3vw] ml-auto w-[80vw] sm:-mr-[9vw] sm:-mt-[26vw] sm:w-[52vw] lg:absolute lg:right-[-3.8vw] lg:top-[4.5rem] lg:mr-0 lg:mt-0 lg:w-[50vw]"
         style={{
@@ -84,7 +75,7 @@ export function Hero() {
       <div className="relative z-[3] -mt-[4vw] max-w-md sm:-mt-[6vw] lg:mt-10 lg:max-w-[28rem]">
         <motion.p
           initial="hidden"
-          animate={start ? "show" : "hidden"}
+          animate="show"
           variants={fadeUp}
           transition={{ duration: 0.5, ease, delay: 0.45 }}
           className="font-body text-[15px] leading-relaxed text-brand-ink-on-black-soft sm:text-lg"
@@ -96,7 +87,7 @@ export function Hero() {
 
         <motion.div
           initial="hidden"
-          animate={start ? "show" : "hidden"}
+          animate="show"
           variants={fadeUp}
           transition={{ duration: 0.5, ease, delay: 0.55 }}
           className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4"

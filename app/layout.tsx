@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Anton, Archivo, JetBrains_Mono } from "next/font/google";
-import { SplashScreen } from "@/components/SplashScreen";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
@@ -83,7 +82,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <SplashScreen />
         {children}
         <WhatsAppFloat />
       </body>

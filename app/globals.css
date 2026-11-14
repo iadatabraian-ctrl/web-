@@ -224,16 +224,6 @@
   .animate-scroll-wheel {
     animation: scroll-wheel 1.6s ease-in-out infinite;
   }
-  /* splash screen: pulso de confirmación */
-  @keyframes splash-pulse {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.06);
-    }
-  }
   /* grano sutil de marca, no forma parte del experimento de animación descartado */
   body::after {
     content: "";
