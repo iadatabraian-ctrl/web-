@@ -11,10 +11,10 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
    solapamiento sea parecido en cualquier ancho. */
 
 /* Orden y dirección de la entrada (definidos por el fundador sobre la maqueta):
-   1. "Tu idea," entra de izquierda a derecha
-   2. "en producción." entra igual, justo después
-   3. texto y botones suben desde abajo
-   4. la figura sube desde abajo, al final */
+   1. la figura sube desde abajo
+   2. "Tu idea," entra de izquierda a derecha
+   3. "en producción." entra igual, justo después
+   4. texto y botones ("Hablemos") suben desde abajo, al final */
 const fromLeft = {
   hidden: { opacity: 0, x: "-14vw" },
   show: { opacity: 1, x: 0 },
@@ -91,7 +91,7 @@ export function Hero() {
           initial="hidden"
           animate="show"
           variants={fromLeft}
-          transition={{ duration: 0.75, ease, delay: 0.1 }}
+          transition={{ duration: 0.75, ease, delay: 0.75 }}
           className="block text-white/95"
         >
           Tu idea,
@@ -100,7 +100,7 @@ export function Hero() {
           initial="hidden"
           animate="show"
           variants={fromLeft}
-          transition={{ duration: 0.75, ease, delay: 0.3 }}
+          transition={{ duration: 0.75, ease, delay: 0.95 }}
           className="block text-white/75"
         >
           en
@@ -116,7 +116,7 @@ export function Hero() {
         aria-hidden="true"
         initial={{ opacity: 0, y: "14%" }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.1, ease, delay: 0.85 }}
+        transition={{ duration: 1.1, ease, delay: 0.1 }}
         className="pointer-events-none absolute right-[calc(28vw-var(--fw)/2)] top-[76vw] z-[2] w-[var(--fw)] [--fw:max(88vw,calc((100svh-76vw)/1.25))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]"
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
@@ -140,7 +140,7 @@ export function Hero() {
           initial="hidden"
           animate="show"
           variants={fromBelow}
-          transition={{ duration: 0.6, ease, delay: 0.55 }}
+          transition={{ duration: 0.6, ease, delay: 1.35 }}
           className="max-w-[44%] font-body text-[14px] leading-snug text-brand-ink-on-black-soft sm:max-w-md sm:text-lg sm:leading-relaxed lg:max-w-[32rem]"
         >
           Diseñamos e implementamos{" "}
@@ -152,7 +152,7 @@ export function Hero() {
           initial="hidden"
           animate="show"
           variants={fromBelow}
-          transition={{ duration: 0.6, ease, delay: 0.7 }}
+          transition={{ duration: 0.6, ease, delay: 1.5 }}
           className="mt-6 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4"
         >
           <a
