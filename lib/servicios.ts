@@ -13,7 +13,7 @@ export type Servicio = {
   metaDescription: string;
   h1: string;
   intro: string[];
-  incluye: { t: string; d: string }[];
+  incluye: { t: string; d: string; con?: string[] }[];
   cuandoConviene: string[];
   proceso: { t: string; d: string }[];
   valores: { precio: string; prefijo: string; cifra: string; detalle: string; desde: string; hasta?: string; factores: string[]; plazo: string; nota: string };
@@ -57,27 +57,28 @@ export const SERVICIOS: Servicio[] = [
     incluye: [
       {
         t: "Relevamiento del proceso actual",
-        d: "Se documenta cómo se trabaja hoy para definir qué debe resolver el sistema.",
+        d: "Antes de programar se documenta cómo se trabaja hoy: quién hace qué, con qué herramientas y dónde se pierde tiempo. Con eso se define qué debe resolver el sistema y qué queda afuera.",
       },
       {
         t: "Panel de gestión",
-        d: "Una vista centralizada con la información que se necesita para tomar decisiones.",
+        d: "Una pantalla central con lo que hace falta para decidir: ventas, stock, tareas pendientes, clientes. Se arma con los datos de tu operación, no con indicadores genéricos.",
       },
       {
         t: "Usuarios y permisos",
-        d: "Cada persona accede solo a lo que le corresponde según su rol.",
+        d: "Cada persona entra con su usuario y ve solo lo que le corresponde según su rol: dueño, administración, vendedores u operarios. Queda registro de quién hizo cada cambio.",
       },
       {
         t: "Integraciones",
-        d: "Conexión con las herramientas que ya se utilizan, como planillas, facturación o mensajería.",
+        d: "El sistema se conecta con las herramientas que ya usás, para que un dato no se cargue dos veces.",
+        con: ["Google Sheets y Excel", "Facturación electrónica (DGI)", "Mercado Pago", "WhatsApp Business", "Correo", "Sistemas o bases de datos existentes"],
       },
       {
         t: "Reportes e indicadores",
-        d: "Datos organizados para conocer el estado real de la operación.",
+        d: "Informes con el estado real del negocio, para ver en pantalla o exportar a Excel y PDF. Los números que hoy se arman a mano, ordenados en un solo lugar.",
       },
       {
         t: "Soporte posterior",
-        d: "Ajustes y acompañamiento luego de la entrega, con 30 días de garantía.",
+        d: "Ajustes, correcciones y acompañamiento al equipo durante los primeros días de uso. Incluye 30 días de garantía desde la entrega.",
       },
     ],
     cuandoConviene: [
@@ -143,27 +144,33 @@ export const SERVICIOS: Servicio[] = [
     incluye: [
       {
         t: "Diseño a medida",
-        d: "Una identidad visual propia, sin plantillas, alineada con la marca.",
+        d: "Cada sitio se diseña desde cero con tu marca: colores, tipografía e imágenes. Sin plantillas ni bloques repetidos de otros sitios.",
       },
       {
         t: "Estructura y textos orientados a la conversión",
-        d: "Contenido organizado para que el visitante comprenda la propuesta y tome contacto.",
+        d: "Se ordena el contenido para que quien llega entienda en pocos segundos qué ofrecés y tenga un camino claro para escribirte o comprar.",
+      },
+      {
+        t: "Tienda online (e-commerce)",
+        d: "Catálogo de productos, carrito y compra online con los medios de pago que uses. Control de stock y de pedidos, con aviso cuando entra una venta. Se desarrolla a medida o sobre la plataforma que mejor convenga a tu caso.",
+        con: ["Mercado Pago", "Transferencia bancaria", "Envíos y couriers", "WhatsApp para pedidos", "Facturación electrónica (DGI)"],
       },
       {
         t: "Velocidad y SEO on-page",
-        d: "Optimización técnica para una carga rápida y una correcta lectura por parte de los buscadores.",
+        d: "Carga rápida y estructura técnica para que Google lea bien el sitio: títulos, descripciones, datos estructurados y mapa del sitio, para aparecer cuando te buscan.",
       },
       {
         t: "Contacto directo",
-        d: "Formulario y botón de WhatsApp conectados para recibir consultas sin fricción.",
+        d: "Formulario y botón de WhatsApp conectados, para recibir consultas sin vueltas y que ninguna se pierda.",
+        con: ["WhatsApp", "Correo", "Instagram"],
       },
       {
         t: "Adaptación a celulares",
-        d: "El sitio se diseña para funcionar correctamente en cualquier tamaño de pantalla.",
+        d: "El sitio se prueba en celular, tablet y computadora. La mayoría de las visitas llegan desde el celular, y se diseña pensando en esa pantalla primero.",
       },
       {
         t: "Puesta en línea y soporte",
-        d: "Publicación del sitio y 30 días de garantía posteriores a la entrega.",
+        d: "Publicación del sitio, conexión del dominio y 30 días de garantía posteriores a la entrega.",
       },
     ],
     cuandoConviene: [
@@ -199,6 +206,10 @@ export const SERVICIOS: Servicio[] = [
         a: "No. Cada sitio se diseña y programa a medida, de modo que refleje la identidad de la marca y se diferencie de la competencia.",
       },
       {
+        q: "¿Hacen tiendas online?",
+        a: "Sí. Catálogo, carrito, medios de pago como Mercado Pago o transferencia, control de stock y pedidos. El valor depende de la cantidad de productos, los medios de pago y los envíos, y se cotiza según el alcance.",
+      },
+      {
         q: "¿La página aparecerá en Google?",
         a: "El sitio se entrega con la optimización técnica y de contenido necesaria para ser indexado correctamente. El posicionamiento depende además de otros factores, como la competencia y la antigüedad del dominio, y se construye con el tiempo.",
       },
@@ -229,23 +240,24 @@ export const SERVICIOS: Servicio[] = [
     incluye: [
       {
         t: "Relevamiento de tareas repetitivas",
-        d: "Se identifica qué actividades consumen más tiempo y cuáles conviene automatizar primero.",
+        d: "Se mapea el trabajo repetitivo: cargas de datos, avisos, seguimientos, copias entre planillas. Se ordena por tiempo perdido y se define qué automatizar primero.",
       },
       {
         t: "Conexión entre herramientas",
-        d: "Planillas, correo, formularios, mensajería y otros sistemas intercambian información de forma automática.",
+        d: "Los sistemas que ya usás intercambian datos entre sí, sin copiar y pegar de uno a otro.",
+        con: ["Google Sheets y Excel", "Gmail y Outlook", "Formularios", "WhatsApp", "Mercado Pago", "Facturación electrónica (DGI)", "Calendario", "Tiendas online y CRM"],
       },
       {
         t: "Flujos de trabajo",
-        d: "Avisos, cargas de datos, seguimientos y generación de documentos sin intervención manual.",
+        d: "Avisos al equipo, carga de datos, seguimiento de clientes y generación de documentos (presupuestos, facturas, informes) con reglas que se definen con vos.",
       },
       {
         t: "Pruebas y validación",
-        d: "Cada flujo se verifica antes de ponerse en producción.",
+        d: "Cada flujo se prueba con datos reales antes de ponerlo en uso, y se define qué pasa si algo falla: aviso, reintento o revisión manual.",
       },
       {
         t: "Soporte posterior",
-        d: "Ajustes y acompañamiento luego de la entrega, con 30 días de garantía.",
+        d: "Ajustes y acompañamiento después de la entrega. Incluye 30 días de garantía.",
       },
     ],
     cuandoConviene: [
@@ -310,27 +322,32 @@ export const SERVICIOS: Servicio[] = [
     incluye: [
       {
         t: "Respuesta a consultas frecuentes",
-        d: "El agente resuelve preguntas habituales sobre productos, servicios, horarios y precios.",
+        d: "Responde en WhatsApp e Instagram lo que más se pregunta: precios, horarios, productos, ubicación y formas de pago.",
       },
       {
         t: "Filtrado y calificación de contactos",
-        d: "Se identifica qué consultas corresponden a clientes con interés real.",
+        d: "Hace las preguntas necesarias para saber si hay interés real y deja los datos ordenados: nombre, qué busca y qué tan urgente es.",
       },
       {
         t: "Derivación a una persona",
-        d: "Cuando el caso lo requiere, la conversación se transfiere al equipo.",
+        d: "Cuando el caso lo requiere, o el cliente lo pide, la conversación pasa a una persona del equipo con todo el historial.",
+      },
+      {
+        t: "Conexión con tus herramientas",
+        d: "El agente consulta y carga datos en lo que ya usás: agenda, planillas, stock o CRM.",
+        con: ["Google Calendar", "Google Sheets", "CRM", "Tiendas online", "Correo"],
       },
       {
         t: "Disponibilidad continua",
-        d: "Las consultas se atienden fuera del horario laboral, incluidos los fines de semana.",
+        d: "Atiende consultas fuera del horario laboral, incluidos fines de semana y feriados.",
       },
       {
         t: "Configuración con información propia",
-        d: "El agente responde según los datos, el tono y las reglas definidas por la empresa.",
+        d: "Responde con los datos, el tono y las reglas que define la empresa. Lo que no sabe, lo deriva en lugar de inventarlo.",
       },
       {
         t: "Mantenimiento y soporte",
-        d: "Funcionamiento continuo, ajustes y 30 días de garantía posteriores a la puesta en marcha.",
+        d: "Seguimiento de las conversaciones, ajustes de respuestas y 30 días de garantía posteriores a la puesta en marcha.",
       },
     ],
     cuandoConviene: [

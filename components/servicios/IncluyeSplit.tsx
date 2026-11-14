@@ -12,7 +12,7 @@ const COLORS = [
   { bg: "#0d0b08", fg: "#FF5C1A" },
 ];
 
-export function IncluyeSplit({ items }: { items: { t: string; d: string }[] }) {
+export function IncluyeSplit({ items }: { items: { t: string; d: string; con?: string[] }[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const [i, setI] = useState(0);
   const n = items.length;
@@ -30,7 +30,7 @@ export function IncluyeSplit({ items }: { items: { t: string; d: string }[] }) {
             Qué incluye
           </p>
 
-          <div className="relative min-h-[11rem] md:min-h-[22rem]">
+          <div className="relative min-h-[11rem] md:min-h-[26rem]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={i}
@@ -42,9 +42,23 @@ export function IncluyeSplit({ items }: { items: { t: string; d: string }[] }) {
                 <h3 className="origin-bottom-left -skew-x-[5deg] text-balance font-impact text-[clamp(2.1rem,9vw,3.6rem)] font-black uppercase not-italic leading-[0.92] tracking-[-0.01em] [font-stretch:80%] md:text-[clamp(2.6rem,5.2vw,5.4rem)]">
                   {items[i].t}
                 </h3>
-                <p className="mt-3 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:mt-5 sm:text-lg">
+                <p className="mt-3 max-w-lg font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:mt-5 sm:text-lg">
                   {items[i].d}
                 </p>
+                {items[i].con && (
+                  <div className="mt-4 max-w-lg sm:mt-6">
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-brand-ink-on-cream-soft sm:text-xs">
+                      Se conecta con
+                    </p>
+                    <ul className="mt-2 flex flex-wrap gap-1.5 sm:gap-2">
+                      {items[i].con!.map((c) => (
+                        <li key={c} className="rounded-full border border-brand-ink-on-cream/25 px-3 py-1 font-body text-xs font-medium text-brand-ink-on-cream sm:text-sm">
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -84,7 +98,7 @@ export function IncluyeSplit({ items }: { items: { t: string; d: string }[] }) {
       <ul className="sr-only">
         {items.map((it) => (
           <li key={it.t}>
-            {it.t}. {it.d}
+            {it.t}. {it.d}{it.con ? ` Se conecta con: ${it.con.join(", ")}.` : ""}
           </li>
         ))}
       </ul>
