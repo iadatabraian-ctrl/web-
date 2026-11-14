@@ -246,7 +246,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         <section className="bg-[#0d0b08] px-5 pb-16 pt-6 text-brand-cream sm:px-8 sm:pb-24 sm:pt-10 lg:px-[6vw]">
           <div className="mx-auto max-w-5xl">
             <h2 className="origin-bottom-left -skew-x-[5deg] font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
-            <OtrosServicios items={otros} />
+            <OtrosServicios items={otros.map((o) => ({ slug: o.slug, nombre: o.nombre, img: CARD_IMG[o.visual] }))} />
           </div>
         </section>
       </main>

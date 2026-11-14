@@ -1,10 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
 
-/* Otros servicios como notas inclinadas con chinche (mismo estilo que "De la idea a la solución"). */
+/* Otros servicios: nombres gigantes de ancho completo, sin cajas. En laptop, al apoyar el mouse el
+   nombre se enciende en naranja y aparece la imagen del servicio detrás. En celular la imagen se
+   ve apagada de fondo, porque no hay hover. */
+
+const NOMBRE: Record<string, string> = {
+  "software-a-medida": "Software a medida",
+  "paginas-web": "Páginas web",
+  automatizacion: "Automatización",
+  "agentes-whatsapp": "Agentes de IA",
+};
 
 const DESC: Record<string, string> = {
   "software-a-medida": "Sistemas, paneles y herramientas internas hechas a la medida de tu operación.",
@@ -13,37 +22,32 @@ const DESC: Record<string, string> = {
   "agentes-whatsapp": "Agentes que atienden WhatsApp e Instagram y pasan el caso a una persona cuando hace falta.",
 };
 
-const ease = [0.16, 1, 0.3, 1] as const;
-const view = { once: true, margin: "-10% 0px" } as const;
-const TILT = [-2.5, 2, -1.5];
-
-export function OtrosServicios({ items }: { items: { slug: string; nombre: string }[] }) {
+export function OtrosServicios({ items }: { items: { slug: string; nombre: string; img: string }[] }) {
   return (
-    <ul className="mt-10 flex flex-col gap-7 sm:mt-14 sm:grid sm:grid-cols-3 sm:gap-6">
-      {items.map((o, i) => (
-        <li key={o.slug} className={`w-[78%] sm:w-auto ${i % 2 === 0 ? "self-start" : "self-end"}`}>
-          <motion.div
-            initial={{ opacity: 0, y: 40, rotate: 0 }}
-            whileInView={{ opacity: 1, y: 0, rotate: TILT[i % 3] }}
-            whileHover={{ rotate: 0, y: -4 }}
-            viewport={view}
-            transition={{ duration: 0.7, ease, delay: i * 0.1 }}
-            className="relative h-full rounded-[1.3rem] bg-brand-cream p-2 text-brand-ink-on-cream shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] sm:p-3"
-          >
-            <span aria-hidden="true" className="absolute -top-2.5 left-1/2 z-10 h-5 w-5 -translate-x-1/2 rounded-full border-b-[3px] border-[#c4430a] bg-brand-accent shadow-[0_6px_10px_rgba(0,0,0,0.45)] sm:-top-3 sm:h-6 sm:w-6" />
-            <Link
-              href={`/${o.slug}`}
-              className={`group flex h-full flex-col rounded-[1rem] px-3.5 pb-4 pt-5 sm:rounded-[1.2rem] sm:px-5 sm:pb-5 sm:pt-6 ${i % 2 === 0 ? "bg-[#ffe3d3]" : "bg-[#ebe3d2]"}`}
-            >
-              <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.15rem] font-semibold uppercase not-italic leading-[1.05] [font-stretch:85%] sm:text-[1.5rem]">
-                {o.nombre}
-              </h3>
-              <p className="mt-1.5 font-body text-[12.5px] leading-snug text-brand-ink-on-cream-soft sm:mt-2 sm:text-sm">{DESC[o.slug]}</p>
-              <span className="mt-3 flex h-8 w-8 items-center justify-center self-end rounded-full bg-brand-black text-brand-cream transition-colors duration-200 group-hover:bg-brand-accent group-hover:text-brand-black sm:mt-auto sm:h-9 sm:w-9">
-                <ArrowUpRight className="h-4 w-4" strokeWidth={2.25} />
+    <ul className="mt-8 sm:mt-12">
+      {items.map((o) => (
+        <li key={o.slug} className="border-t border-white/15 last:border-b">
+          <Link href={`/${o.slug}`} className="group relative block overflow-hidden py-7 sm:py-12">
+            <Image
+              src={o.img}
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover opacity-[0.3] transition-opacity duration-300 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-70"
+            />
+            <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-[#0d0b08]/90 via-[#0d0b08]/45 to-transparent" />
+            <span className="relative flex items-center justify-between gap-4 px-1 sm:px-2">
+              <span className="min-w-0">
+                <span className="block origin-bottom-left -skew-x-[5deg] font-impact text-[2.6rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] text-brand-cream transition-colors duration-200 [font-stretch:80%] group-hover:text-brand-accent sm:text-[5rem] lg:text-[6.5rem]">
+                  {NOMBRE[o.slug] ?? o.nombre}
+                </span>
+                <span className="mt-2 block max-w-md font-body text-[13px] leading-snug text-brand-ink-on-black-soft sm:mt-3 sm:text-base">
+                  {DESC[o.slug]}
+                </span>
               </span>
-            </Link>
-          </motion.div>
+              <ArrowUpRight aria-hidden="true" className="h-8 w-8 shrink-0 text-white transition-[transform,color] duration-300 group-hover:rotate-45 group-hover:text-brand-accent sm:h-14 sm:w-14" strokeWidth={1.5} />
+            </span>
+          </Link>
         </li>
       ))}
     </ul>
