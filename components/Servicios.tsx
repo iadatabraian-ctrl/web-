@@ -245,7 +245,7 @@ function Card({
 }) {
   const img = CARD_IMAGES[service.kind];
   return (
-    <div className="overflow-hidden rounded-[1.75rem] bg-brand-black text-brand-cream shadow-[0_30px_60px_-30px_rgba(26,23,18,0.55)]">
+    <div className="overflow-hidden rounded-[1.75rem] border border-brand-line-on-cream bg-white text-[#0d0b08] shadow-[0_30px_60px_-30px_rgba(26,23,18,0.45)]">
       <div className="relative aspect-[4/5] w-full bg-[#0b0a08]">
         {img ? (
           <Image src={img} alt={`Ilustración de ${service.title.toLowerCase()} con datos de ejemplo`} fill sizes="(min-width: 1024px) 28rem, 72vw" className="object-cover" />
@@ -256,16 +256,16 @@ function Card({
           0{index + 1}
         </span>
       </div>
-      <div className="min-h-[10.5rem] px-5 pb-6 pt-5 sm:min-h-[11.5rem] sm:px-6">
-        <h3 className="font-impact text-3xl font-black uppercase italic leading-[0.95] [font-stretch:50%] sm:text-4xl">
+      <div className="min-h-[9.75rem] px-5 pb-6 pt-5 sm:min-h-[10.5rem] sm:px-6">
+        <h3 className="font-impact text-[1.65rem] font-black uppercase italic leading-none [font-stretch:80%] sm:text-3xl">
           {service.title}
         </h3>
-        <p className="mt-3 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{service.description}</p>
+        <p className="mt-3 font-body text-sm leading-relaxed text-[#0d0b08]/80">{service.description}</p>
         <Link
           href={service.href}
           tabIndex={active ? 0 : -1}
           onClick={onLinkClick}
-          className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-bold uppercase tracking-wide text-brand-cream underline decoration-brand-accent decoration-2 underline-offset-4 transition-colors hover:text-brand-accent"
+          className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-bold uppercase tracking-wide text-[#0d0b08] underline decoration-brand-accent decoration-2 underline-offset-4 transition-colors hover:text-brand-accent-ink"
         >
           Ver el servicio
           <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />

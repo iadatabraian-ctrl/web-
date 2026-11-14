@@ -32,7 +32,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-[100svh] overflow-hidden bg-brand-black px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
+      className="relative min-h-[100svh] overflow-hidden bg-[#0d0b08] px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
     >
       {/* Barras de luz de fondo (medidas sobre las maquetas): paralelogramos con borde duro,
           inicio y fin cortados y un degradé a lo ancho de la barra. Sin halos redondos. */}
