@@ -18,7 +18,7 @@ import { Bar } from "@/components/Bar";
 type Kind = "software" | "web" | "automatizacion" | "agentes";
 
 const CARD_IMAGES: Partial<Record<Kind, string>> = {
-  software: "/img/servicios/card-software.webp",
+  software: "/img/servicios/card-software-2.webp",
   web: "/img/servicios/card-web.webp",
   automatizacion: "/img/servicios/card-automatizacion.webp",
   agentes: "/img/servicios/card-agentes.webp",

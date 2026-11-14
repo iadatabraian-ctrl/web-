@@ -14,7 +14,7 @@ import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 const SITE = "https://deployuy.com";
 
 const CARD_IMG = {
-  software: "/img/servicios/card-software.webp",
+  software: "/img/servicios/card-software-2.webp",
   web: "/img/servicios/card-web.webp",
   automatizacion: "/img/servicios/card-automatizacion.webp",
   agentes: "/img/servicios/card-agentes.webp",
