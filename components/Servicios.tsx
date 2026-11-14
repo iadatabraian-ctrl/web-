@@ -215,10 +215,6 @@ export function Servicios() {
           </div>
         </motion.div>
 
-        <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft sm:text-xs">
-          Imágenes ilustrativas · datos de ejemplo
-        </p>
-
         {/* Enlaces siempre disponibles para lectores de pantalla y buscadores */}
         <nav aria-label="Servicios" className="sr-only">
           {SERVICES.map((s) => (
@@ -256,8 +252,7 @@ function Card({
           0{index + 1}
         </span>
       </div>
-      <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3.5 pt-3.5 [--card-text-h:11.1rem] min-[380px]:[--card-text-h:10.9rem] sm:px-6 sm:pb-5 sm:pt-5 sm:[--card-text-h:13.5rem]">
-        <span aria-hidden="true" className="mb-2 block h-[3px] w-9 -skew-x-[37deg] bg-brand-accent sm:mb-3 sm:w-10" />
+      <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3.5 pt-3.5 [--card-text-h:10.7rem] min-[380px]:[--card-text-h:10.4rem] sm:px-6 sm:pb-5 sm:pt-5 sm:[--card-text-h:12.6rem]">
         <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.3rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">
           {service.title}
         </h3>
