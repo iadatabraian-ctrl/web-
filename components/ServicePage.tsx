@@ -78,21 +78,21 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
       <Nav />
       <main>
         {/* Cabecera (oscura) */}
-        <section className="relative overflow-hidden bg-[#0d0b08] px-5 pb-14 pt-24 text-brand-cream sm:px-8 sm:pb-24 sm:pt-36 lg:px-[6vw]">
+        <section className="relative overflow-hidden bg-[#0d0b08] px-5 pb-12 pt-0 text-brand-cream sm:px-8 sm:pb-24 sm:pt-36 lg:px-[6vw]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
             <Bar style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={0} />
-            <Bar style={{ right: "-3vw", top: "12vw", width: "0.5vw", height: "125vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.55)" }} i={1} />
+            <Bar className="max-sm:hidden" style={{ right: "-3vw", top: "12vw", width: "0.5vw", height: "125vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.55)" }} i={1} />
           </div>
-          <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
-            <div>
-              <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-black-soft">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-0 sm:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div className="max-sm:relative max-sm:z-10 max-sm:-mt-36">
+              <nav aria-label="Ruta" className="max-sm:hidden font-body text-xs text-brand-ink-on-black-soft">
                 <Link href="/" className="transition-colors hover:text-brand-cream">
                   Inicio
                 </Link>
                 <span className="mx-2">/</span>
                 <span className="text-brand-cream/80">{s.nombre}</span>
               </nav>
-              <h1 className="mt-6 origin-bottom-left -skew-x-[5deg] text-balance font-impact text-[2.4rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] [font-stretch:80%] sm:text-6xl lg:text-[4.4rem]">
+              <h1 className="mt-0 sm:mt-6 origin-bottom-left -skew-x-[5deg] text-balance font-impact text-[2.6rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] [font-stretch:80%] sm:text-6xl lg:text-[4.4rem]">
                 {s.h1}
               </h1>
               <div className="mt-5 flex max-w-xl flex-col gap-3 sm:mt-8 sm:gap-4">
@@ -112,7 +112,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                 <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </a>
             </div>
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[1.75rem] bg-brand-black lg:max-w-none">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[1.75rem] bg-brand-black max-sm:order-first max-sm:-mx-5 max-sm:aspect-[4/5.4] max-sm:w-[calc(100%+2.5rem)] max-sm:max-w-none max-sm:rounded-none max-sm:[mask-image:linear-gradient(to_bottom,#000_50%,transparent_96%)] lg:max-w-none">
               <Image
                 src={CARD_IMG[s.visual]}
                 alt={`Ilustración de ${s.nombre.toLowerCase()}`}
@@ -121,6 +121,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                 sizes="(min-width: 1024px) 40vw, 90vw"
                 className="object-cover"
               />
+              <div aria-hidden="true" className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#0d0b08]/90 to-transparent sm:hidden" />
             </div>
           </div>
         </section>
