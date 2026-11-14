@@ -4,26 +4,22 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { CtaFooter } from "@/components/CtaFooter";
 import { FadeIn } from "@/components/FadeIn";
-import { ShowcaseSoftware } from "@/components/servicios/ShowcaseSoftware";
-import { ShowcaseWeb } from "@/components/servicios/ShowcaseWeb";
-import { ShowcaseAutomation } from "@/components/servicios/ShowcaseAutomation";
-import { ShowcaseAgents } from "@/components/servicios/ShowcaseAgents";
+import { Bar } from "@/components/Bar";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
 
-const SHOWCASE = {
-  software: ShowcaseSoftware,
-  web: ShowcaseWeb,
-  automatizacion: ShowcaseAutomation,
-  agentes: ShowcaseAgents,
+const CARD_IMG = {
+  software: "/img/servicios/card-software.webp",
+  web: "/img/servicios/card-web.webp",
+  automatizacion: "/img/servicios/card-automatizacion.webp",
+  agentes: "/img/servicios/card-agentes.webp",
 } as const;
 
 export function ServicePage({ slug }: { slug: ServicioSlug }) {
   const s = getServicio(slug);
   const url = `${SITE}/${s.slug}`;
   const otros = SERVICIOS.filter((o) => o.slug !== s.slug);
-  const Showcase = SHOWCASE[s.visual];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -66,6 +62,10 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
 
   const wa = `https://wa.me/59898648853?text=${encodeURIComponent(s.whatsappTexto)}`;
 
+  const H2 =
+    "origin-bottom-left -skew-x-[5deg] font-impact text-[2.1rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] [font-stretch:80%] sm:text-6xl";
+  const CARD = "rounded-[1.25rem] border p-5 sm:rounded-[1.75rem] sm:p-6";
+
   return (
     <>
       <script
@@ -76,72 +76,68 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
       />
       <Nav />
       <main>
-        {/* Cabecera con fotograma del lanzamiento */}
-        <section className="relative isolate overflow-hidden px-5 pb-12 pt-24 sm:px-8 sm:pb-28 sm:pt-44">
-          <Image
-            src={`/img/servicios/header-${s.slug}.jpg`}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="-z-20 object-cover object-[50%_40%]"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(5,4,3,.9), rgba(5,4,3,.6) 45%, rgba(5,4,3,.2) 80%), linear-gradient(to bottom, transparent 70%, #050403)",
-            }}
-          />
-          <div className="mx-auto max-w-6xl">
-            <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-black-soft">
-              <Link href="/" className="transition-colors hover:text-brand-cream">
-                Inicio
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-brand-cream/80">{s.nombre}</span>
-            </nav>
-            <span className="mt-8 block font-mono text-xs tracking-[0.15em] text-brand-accent">{s.eyebrow}</span>
-            <h1 className="mt-3 max-w-3xl text-[1.7rem] leading-[1.1] text-brand-cream sm:text-6xl">{s.h1}</h1>
-            <div className="mt-5 flex max-w-xl flex-col gap-3 sm:mt-8 sm:gap-4">
-              {s.intro.map((p) => (
-                <p key={p} className="font-body text-sm leading-relaxed text-brand-cream/80 sm:text-lg">
-                  {p}
-                </p>
-              ))}
+        {/* Cabecera (oscura) */}
+        <section className="relative overflow-hidden bg-[#0d0b08] px-5 pb-14 pt-24 text-brand-cream sm:px-8 sm:pb-24 sm:pt-36 lg:px-[6vw]">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <Bar style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={0} />
+            <Bar style={{ right: "-3vw", top: "12vw", width: "0.5vw", height: "125vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.55)" }} i={1} />
+          </div>
+          <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div>
+              <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-black-soft">
+                <Link href="/" className="transition-colors hover:text-brand-cream">
+                  Inicio
+                </Link>
+                <span className="mx-2">/</span>
+                <span className="text-brand-cream/80">{s.nombre}</span>
+              </nav>
+              <h1 className="mt-6 origin-bottom-left -skew-x-[5deg] text-balance font-impact text-[2.4rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] [font-stretch:80%] sm:text-6xl lg:text-[4.4rem]">
+                {s.h1}
+              </h1>
+              <div className="mt-5 flex max-w-xl flex-col gap-3 sm:mt-8 sm:gap-4">
+                {s.intro.map((p) => (
+                  <p key={p} className="font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-lg">
+                    {p}
+                  </p>
+                ))}
+              </div>
+              <a
+                href={wa}
+                target="_blank"
+                rel="noopener"
+                className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-white/85 active:scale-[0.97] sm:mt-10 sm:px-8 sm:py-4 sm:text-sm"
+              >
+                Solicitar una cotización
+                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              </a>
             </div>
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-accent px-6 py-3 font-body text-xs sm:mt-10 sm:px-8 sm:py-4 sm:text-sm font-bold uppercase tracking-wide text-brand-black transition hover:scale-105 hover:opacity-90"
-            >
-              Solicitar una cotización
-              <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-            </a>
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[1.75rem] bg-brand-black lg:max-w-none">
+              <Image
+                src={CARD_IMG[s.visual]}
+                alt={`Ilustración de ${s.nombre.toLowerCase()}`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </section>
 
-        <Showcase />
-
-        {/* Qué incluye */}
-        <section className="px-5 py-12 sm:px-8 sm:py-28">
+        {/* Qué incluye (clara) */}
+        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
-              <p className="font-mono text-xs tracking-[0.15em] text-brand-accent">ALCANCE</p>
-              <h2 className="mt-3 text-2xl text-brand-cream sm:text-5xl">Qué incluye</h2>
+              <h2 className={H2}>Qué incluye</h2>
             </FadeIn>
             <ul className="mt-7 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               {s.incluye.map((item, i) => (
                 <li key={item.t}>
-                  <FadeIn delay={(i % 3) * 0.08} className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-brand-black-soft p-4 transition-colors sm:p-6 hover:border-brand-accent/40">
-                    <span className="font-display text-4xl leading-none text-white/[0.07] sm:text-6xl transition-colors group-hover:text-brand-accent/30">
+                  <FadeIn delay={(i % 3) * 0.08} className={`${CARD} h-full border-transparent bg-brand-black text-brand-cream`}>
+                    <span className="font-impact text-4xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-5xl">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="mt-2 font-body text-sm font-semibold normal-case tracking-normal text-brand-cream sm:mt-4 sm:text-base">
-                      {item.t}
-                    </h3>
+                    <h3 className="mt-3 font-body text-sm font-semibold normal-case tracking-normal sm:mt-4 sm:text-base">{item.t}</h3>
                     <p className="mt-2 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{item.d}</p>
                   </FadeIn>
                 </li>
@@ -150,33 +146,17 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Cuándo conviene, sobre la imagen del escritorio */}
-        <section className="relative isolate overflow-hidden px-5 py-12 sm:px-8 sm:py-28">
-          <Image
-            src="/img/diagnostico/desk-caos.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="-z-20 object-cover object-right"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(5,4,3,.96), rgba(5,4,3,.82) 55%, rgba(5,4,3,.5)), linear-gradient(to bottom, #050403, transparent 18%, transparent 82%, #050403)",
-            }}
-          />
-          <div className="mx-auto max-w-6xl">
+        {/* Cuándo conviene (oscura) */}
+        <section className="bg-[#0d0b08] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
+          <div className="mx-auto max-w-4xl">
             <FadeIn>
-              <p className="font-mono text-xs tracking-[0.15em] text-brand-accent">SEÑALES</p>
-              <h2 className="mt-3 text-2xl text-brand-cream sm:text-5xl">Cuándo conviene</h2>
+              <h2 className={H2}>Cuándo conviene</h2>
             </FadeIn>
-            <ul className="mt-6 flex max-w-xl flex-col gap-3 sm:mt-10 sm:gap-4">
+            <ul className="mt-7 flex flex-col gap-3 sm:mt-12">
               {s.cuandoConviene.map((item, i) => (
                 <li key={item}>
-                  <FadeIn delay={i * 0.07} className="flex gap-4 border-b border-white/10 pb-4 font-body text-sm leading-relaxed text-brand-cream/85 sm:text-base">
-                    <span className="font-mono text-xs text-brand-accent">{String(i + 1).padStart(2, "0")}</span>
+                  <FadeIn delay={i * 0.07} className="flex items-start gap-4 rounded-[1.25rem] border border-white/10 bg-brand-black px-5 py-4 font-body text-sm leading-relaxed sm:px-6 sm:py-5 sm:text-base">
+                    <span className="font-mono text-xs font-bold text-brand-accent">{String(i + 1).padStart(2, "0")}</span>
                     {item}
                   </FadeIn>
                 </li>
@@ -185,28 +165,21 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Cómo se trabaja */}
-        <section className="bg-brand-black-soft px-5 py-12 sm:px-8 sm:py-28">
+        {/* Cómo se trabaja (clara) */}
+        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
-              <p className="font-mono text-xs tracking-[0.15em] text-brand-accent">PROCESO</p>
-              <h2 className="mt-3 text-2xl text-brand-cream sm:text-5xl">Cómo se trabaja</h2>
+              <h2 className={H2}>Cómo se trabaja</h2>
             </FadeIn>
-            <ol className="relative mt-8 grid grid-cols-2 gap-x-5 gap-y-8 sm:mt-14 lg:grid-cols-4 lg:gap-6">
-              <span
-                aria-hidden="true"
-                className="absolute left-0 right-0 top-[1.6rem] hidden h-px bg-gradient-to-r from-brand-accent via-white/15 to-transparent lg:block"
-              />
+            <ol className="mt-7 grid grid-cols-2 gap-2.5 sm:mt-12 sm:gap-4 lg:grid-cols-4">
               {s.proceso.map((p, i) => (
-                <li key={p.t} className="relative">
-                  <FadeIn delay={i * 0.1}>
-                    <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-brand-accent bg-brand-black-soft font-display text-base sm:h-[3.2rem] sm:w-[3.2rem] sm:text-lg text-brand-accent">
+                <li key={p.t}>
+                  <FadeIn delay={i * 0.1} className="h-full rounded-[1.25rem] border-transparent bg-brand-black p-3.5 text-brand-cream sm:rounded-[1.75rem] sm:p-6">
+                    <span className="font-impact text-4xl font-black not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-5xl">
                       {i + 1}
                     </span>
-                    <h3 className="mt-5 font-body text-base font-semibold normal-case tracking-normal text-brand-cream">
-                      {p.t}
-                    </h3>
-                    <p className="mt-2 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{p.d}</p>
+                    <h3 className="mt-4 font-body text-[13px] font-semibold normal-case leading-tight tracking-normal sm:mt-5 sm:text-base">{p.t}</h3>
+                    <p className="mt-1.5 font-body text-[11.5px] leading-snug text-brand-ink-on-black-soft sm:mt-2 sm:text-sm">{p.d}</p>
                   </FadeIn>
                 </li>
               ))}
@@ -214,69 +187,60 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Valores y plazos */}
-        <section className="px-5 py-12 sm:px-8 sm:py-28">
+        {/* Valores y plazos (oscura) */}
+        <section className="bg-[#0d0b08] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
-              <p className="font-mono text-xs tracking-[0.15em] text-brand-accent">INVERSIÓN</p>
-              <h2 className="mt-3 text-2xl text-brand-cream sm:text-5xl">Valores y plazos</h2>
+              <h2 className={H2}>Valores y plazos</h2>
             </FadeIn>
             <div className="mt-7 grid gap-3 sm:mt-12 sm:grid-cols-[1.5fr_1fr] sm:gap-4">
               <FadeIn>
-                <div className="h-full rounded-2xl border border-brand-accent/40 bg-brand-accent/[0.05] p-5 sm:p-8">
-                  <p className="font-mono text-xs tracking-[0.15em] text-brand-ink-on-black-soft">VALOR</p>
-                  <p className="mt-3 font-display text-xl leading-[1.15] text-brand-cream sm:mt-4 sm:text-4xl">
-                    {s.valores.precio}
-                  </p>
+                <div className={`${CARD} h-full border-brand-accent/50 bg-brand-black sm:p-8`}>
+                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Valor</p>
+                  <p className="mt-3 font-body text-lg font-semibold leading-snug sm:mt-4 sm:text-3xl">{s.valores.precio}</p>
                 </div>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <div className="h-full rounded-2xl border border-white/10 bg-brand-black-soft p-5 sm:p-8">
-                  <p className="font-mono text-xs tracking-[0.15em] text-brand-ink-on-black-soft">PLAZO</p>
-                  <p className="mt-3 font-display text-xl leading-[1.15] text-brand-cream sm:mt-4 sm:text-4xl">
-                    {s.valores.plazo}
-                  </p>
+                <div className={`${CARD} h-full border-white/10 bg-brand-black sm:p-8`}>
+                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Plazo</p>
+                  <p className="mt-3 font-body text-lg font-semibold leading-snug sm:mt-4 sm:text-3xl">{s.valores.plazo}</p>
                 </div>
               </FadeIn>
             </div>
-            <p className="mt-6 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
-              {s.valores.nota}
-            </p>
+            <p className="mt-6 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{s.valores.nota}</p>
           </div>
         </section>
 
-        {/* Preguntas frecuentes */}
-        <section className="bg-brand-black-soft px-5 py-12 sm:px-8 sm:py-28">
+        {/* Preguntas frecuentes (clara) */}
+        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-4xl">
             <FadeIn>
-              <p className="font-mono text-xs tracking-[0.15em] text-brand-accent">DUDAS</p>
-              <h2 className="mt-3 text-2xl text-brand-cream sm:text-5xl">Preguntas frecuentes</h2>
+              <h2 className={H2}>Preguntas frecuentes</h2>
             </FadeIn>
-            <div className="mt-6 border-b border-white/10 sm:mt-10">
+            <div className="mt-7 flex flex-col gap-2 sm:mt-12 sm:gap-3">
               {s.faq.map((f) => (
-                <details key={f.q} className="group border-t border-white/10 py-4 sm:py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-body text-sm sm:text-base font-semibold text-brand-cream">
+                <details key={f.q} className="group rounded-[1.1rem] bg-brand-black px-4 py-3.5 text-brand-cream open:border-brand-accent sm:rounded-[1.25rem] sm:px-6 sm:py-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-body text-[13px] font-semibold sm:text-base">
                     {f.q}
                     <ChevronDown className="h-4 w-4 shrink-0 text-brand-accent transition-transform group-open:rotate-180" />
                   </summary>
-                  <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
-                    {f.a}
-                  </p>
+                  <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{f.a}</p>
                 </details>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="px-5 py-10 sm:px-8 sm:py-20">
+        {/* Otros servicios (oscura) */}
+        <section className="bg-[#0d0b08] px-5 py-12 text-brand-cream sm:px-8 sm:py-20">
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-xl text-brand-cream sm:text-2xl">Otros servicios</h2>
+            <h2 className="font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
             <ul className="mt-6 flex flex-wrap gap-3">
               {otros.map((o) => (
                 <li key={o.slug}>
                   <Link
                     href={`/${o.slug}`}
-                    className="inline-flex rounded-full border border-white/15 px-5 py-2.5 font-body text-sm text-brand-cream/90 transition-colors hover:border-brand-accent/60 hover:text-brand-accent"
+                    className="inline-flex rounded-full border border-white/20 px-5 py-2.5 font-body text-sm text-brand-cream transition-colors hover:border-brand-accent hover:text-brand-accent"
                   >
                     {o.nombre}
                   </Link>
