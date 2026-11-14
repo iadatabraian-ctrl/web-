@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, JetBrains_Mono } from "next/font/google";
+import { Anton, Archivo, JetBrains_Mono, Saira } from "next/font/google";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
@@ -11,6 +11,14 @@ const anton = Anton({
 
 const archivo = Archivo({
   variable: "--font-body",
+  subsets: ["latin"],
+});
+
+// Titulares de impacto (hero): condensada, cuadrada e inclinada. Variable con eje de ancho.
+const saira = Saira({
+  variable: "--font-saira",
+  style: ["italic"],
+  axes: ["wdth"],
   subsets: ["latin"],
 });
 
@@ -75,7 +83,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${saira.variable} antialiased`}
     >
       <body>
         <script

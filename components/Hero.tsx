@@ -24,7 +24,7 @@ export function Hero() {
       className="aura-ember relative min-h-[100svh] overflow-hidden px-5 pb-10 pt-24 text-brand-cream sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28"
     >
       {/* Titular gigante, detrás de la figura */}
-      <h1 className="relative z-[1] font-display uppercase leading-[0.88] tracking-[-0.01em] text-[16.5vw] sm:text-[15vw] lg:text-[10vw]">
+      <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.86] tracking-[-0.005em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.88]">
         <motion.span
           initial="hidden"
           animate="show"
