@@ -67,8 +67,8 @@ export function Hero() {
 
       <div className="relative z-[1] -mt-16 px-5 pb-14 sm:px-8 lg:mt-0 lg:w-full lg:px-12 lg:py-28">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="mx-auto max-w-xl text-center sm:mx-0 sm:text-left lg:max-w-[34rem]">
-            <h1 className="text-balance font-display text-[12vw] leading-[1.02] sm:text-6xl lg:text-[4.2rem] xl:text-[5rem]">
+          <div className="mx-auto max-w-xl text-center sm:mx-0 sm:text-left lg:max-w-[42rem]">
+            <h1 className="text-balance font-display text-[14vw] leading-[0.92] tracking-[-0.01em] sm:text-[5.5rem] lg:text-[6.4rem] lg:leading-[0.9] xl:text-[8rem]">
               <motion.span
                 initial="hidden"
                 animate={start ? "show" : "hidden"}
