@@ -106,7 +106,7 @@ export function Faq() {
             return (
               <div
                 key={q}
-                className={`rounded-[1.1rem] border bg-brand-black sm:rounded-[1.25rem] transition-colors duration-300 ${isOpen ? "border-brand-accent/60" : "border-white/10"}`}
+                className={`rounded-[1.1rem] border bg-brand-black sm:rounded-[1.25rem] transition-colors duration-300 ${isOpen ? "border-white/50" : "border-white/10"}`}
               >
                 <button
                   type="button"
@@ -115,11 +115,11 @@ export function Faq() {
                   className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left sm:gap-4 sm:px-6 sm:py-5"
                 >
                   <span className="flex items-center gap-3 sm:gap-4">
-                    <span className="font-mono text-xs font-bold text-brand-accent">0{i + 1}</span>
+                    <span className="font-mono text-xs font-bold text-white/70">0{i + 1}</span>
                     <span className="font-body text-[13px] font-semibold leading-snug text-brand-cream sm:text-base">{q}</span>
                   </span>
                   <ChevronDown
-                    className={`h-4 w-4 flex-shrink-0 text-brand-accent transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    className={`h-4 w-4 flex-shrink-0 text-white transition-transform ${isOpen ? "rotate-180" : ""}`}
                   />
                 </button>
 
