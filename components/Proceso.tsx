@@ -69,10 +69,10 @@ export function Proceso() {
                 >
                   <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-6 -translate-x-1/2 rounded-full border-b-[3px] border-[#c4430a] bg-brand-accent shadow-[0_6px_10px_rgba(0,0,0,0.45)]" />
                   <div className={`rounded-[1.2rem] px-4 pb-5 pt-6 sm:px-5 sm:pb-6 ${i % 2 === 0 ? "bg-[#ffe3d3]" : "bg-[#ebe3d2]"}`}>
-                    <span className="block -rotate-3 font-hand text-[3.4rem] font-normal not-italic leading-none text-brand-accent sm:text-[4.2rem]">
+                    <span className="block font-impact text-[3.2rem] font-light not-italic leading-none text-brand-accent [font-stretch:90%] sm:text-[4rem]">
                       0{i + 1}
                     </span>
-                    <h3 className="mt-3 origin-bottom-left -skew-x-[5deg] font-impact text-[1.6rem] font-black uppercase not-italic leading-[1.02] [font-stretch:80%] sm:text-3xl">
+                    <h3 className="mt-3 origin-bottom-left -skew-x-[5deg] font-impact text-[1.5rem] font-semibold uppercase not-italic leading-[1.05] [font-stretch:85%] sm:text-[1.75rem]">
                       {st.title}
                     </h3>
                     <p className="mt-2 font-body text-sm leading-snug text-brand-ink-on-cream-soft sm:text-base">{st.desc}</p>

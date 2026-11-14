@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Indie_Flower, JetBrains_Mono, Saira } from "next/font/google";
+import { Anton, Archivo, JetBrains_Mono, Saira } from "next/font/google";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
@@ -19,13 +19,6 @@ const saira = Saira({
   variable: "--font-saira",
   style: ["normal", "italic"],
   axes: ["wdth"],
-  subsets: ["latin"],
-});
-
-// Números a mano de la sección "De la idea a la solución" (notas con chinche).
-const indie = Indie_Flower({
-  variable: "--font-hand",
-  weight: "400",
   subsets: ["latin"],
 });
 
@@ -90,7 +83,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${saira.variable} ${indie.variable} antialiased`}
+      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${saira.variable} antialiased`}
     >
       <body>
         <script
