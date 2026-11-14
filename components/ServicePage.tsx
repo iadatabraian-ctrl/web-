@@ -171,11 +171,30 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn className="mt-8 sm:mt-14">
               <div className="grid gap-10 border-y border-white/15 py-8 sm:py-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
                 <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">{s.valores.prefijo}</p>
-                  <p className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[2.6rem] font-black uppercase not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-7xl lg:text-[5.2rem]">
-                    {s.valores.cifra}
-                  </p>
-                  <p className="mt-3 font-body text-sm text-brand-ink-on-black-soft sm:text-lg">{s.valores.detalle}</p>
+                  <div className="flex items-end justify-between gap-4 sm:gap-8">
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Desde</p>
+                      <p className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[2.4rem] font-black uppercase not-italic leading-none text-brand-accent [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.desde}</p>
+                    </div>
+                    {s.valores.hasta && (
+                      <div className="text-right">
+                        <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Hasta</p>
+                        <p className="mt-2 origin-bottom-right -skew-x-[5deg] font-impact text-[2.4rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-6xl lg:text-[4.2rem]">{s.valores.hasta}</p>
+                      </div>
+                    )}
+                  </div>
+                  <div aria-hidden="true" className="relative mt-5 h-[3px] bg-white/15 sm:mt-6">
+                    <span className="absolute inset-y-0 left-0 right-0 bg-gradient-to-r from-brand-accent to-brand-accent/10" />
+                    <span className="absolute -top-1.5 left-0 h-3 w-3 rounded-full bg-brand-accent" />
+                    {s.valores.hasta ? <span className="absolute -top-1.5 right-0 h-3 w-3 rounded-full bg-white" /> : <span className="absolute -top-2 right-0 font-mono text-xs text-brand-ink-on-black-soft">→</span>}
+                  </div>
+                  <p className="mt-3 font-body text-sm text-brand-ink-on-black-soft sm:text-base">{s.valores.detalle}</p>
+                  <p className="mt-8 font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Qué hace subir el valor</p>
+                  <ul className="mt-3 flex flex-col gap-2 font-body text-sm sm:text-base">
+                    {s.valores.factores.map((f) => (
+                      <li key={f} className="flex gap-3"><span className="text-brand-accent">+</span>{f}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="lg:border-l lg:border-white/15 lg:pl-16">
                   <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Plazo</p>
@@ -188,10 +207,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                     return (
                       <div className="mt-6 sm:mt-8" aria-hidden="true">
                         <div className="relative h-3 rounded-full bg-white/10">
-                          <span
-                            className="absolute inset-y-0 rounded-full bg-brand-accent"
-                            style={{ left: `${(lo / max) * 100}%`, width: `${((hi - lo) / max) * 100}%` }}
-                          />
+                          <span className="absolute inset-y-0 rounded-full bg-brand-accent" style={{ left: `${(lo / max) * 100}%`, width: `${((hi - lo) / max) * 100}%` }} />
                         </div>
                         <div className="mt-2 flex justify-between font-mono text-[10px] text-brand-ink-on-black-soft">
                           <span>0</span><span>10</span><span>20</span><span>30 días</span>
@@ -199,6 +215,15 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                       </div>
                     );
                   })()}
+                  <a
+                    href={wa}
+                    target="_blank"
+                    rel="noopener"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-white/85 active:scale-[0.97] sm:mt-10 sm:text-sm"
+                  >
+                    Cotizar mi proyecto
+                    <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                  </a>
                 </div>
               </div>
             </FadeIn>

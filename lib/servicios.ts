@@ -16,7 +16,7 @@ export type Servicio = {
   incluye: { t: string; d: string }[];
   cuandoConviene: string[];
   proceso: { t: string; d: string }[];
-  valores: { precio: string; prefijo: string; cifra: string; detalle: string; plazo: string; nota: string };
+  valores: { precio: string; prefijo: string; cifra: string; detalle: string; desde: string; hasta?: string; factores: string[]; plazo: string; nota: string };
   faq: { q: string; a: string }[];
   whatsappTexto: string;
 };
@@ -81,11 +81,11 @@ export const SERVICIOS: Servicio[] = [
       },
     ],
     cuandoConviene: [
-      "La operación depende de planillas, papeles o mensajes sueltos.",
-      "Cada área utiliza herramientas distintas que no se comunican entre sí.",
-      "La información está dispersa y no existe una visión completa del negocio.",
-      "Se repiten tareas manuales que generan errores y consumen tiempo.",
-      "El software disponible en el mercado no se ajusta a cómo trabaja la empresa.",
+      "Te piden precios por Instagram, WhatsApp y mensajes, y los pedidos quedan perdidos entre chats.",
+      "Llevás las ventas en una libreta o una planilla, y a veces no sabés qué te falta entregar.",
+      "Cada vez que alguien pregunta \"¿tenés stock?\", tenés que ir a mirar.",
+      "Pasás más tiempo anotando y coordinando que vendiendo.",
+      "Los programas que existen no se adaptan a cómo vendés vos.",
     ],
     proceso: PROCESO_BASE,
     valores: {
@@ -93,6 +93,9 @@ export const SERVICIOS: Servicio[] = [
       prefijo: "Desde",
       cifra: "USD 800–1.200",
       detalle: "Más USD 40–80 por mes de mantenimiento",
+      desde: "USD 800",
+      hasta: "USD 1.200",
+      factores: ["Cuántas funciones necesita el sistema", "Cuántas personas lo usan y con qué permisos", "Qué herramientas hay que conectar"],
       plazo: "20 a 30 días",
       nota: "El valor final depende del alcance. Cada proyecto se cotiza de forma individual, sin paquetes cerrados.",
     },
@@ -164,11 +167,11 @@ export const SERVICIOS: Servicio[] = [
       },
     ],
     cuandoConviene: [
-      "El negocio solo tiene presencia en redes sociales y necesita un sitio propio.",
-      "La página actual es antigua, lenta o no se visualiza bien en el celular.",
-      "El sitio fue armado con una plantilla y no refleja la calidad de la empresa.",
-      "Se desea aparecer en los resultados de búsqueda de Google.",
-      "La web actual no genera consultas ni contactos.",
+      "Vendés solo por Instagram y cuando alguien busca tu negocio en Google, no te encuentra.",
+      "Tu página es vieja, lenta o se ve mal en el celular, que es desde donde te miran.",
+      "Armaste el sitio con una plantilla y no se parece en nada a tu negocio.",
+      "Los clientes te preguntan lo mismo por mensaje, otra vez, porque no está en ningún lado.",
+      "Tenés visitas pero nadie te escribe.",
     ],
     proceso: PROCESO_BASE,
     valores: {
@@ -176,6 +179,9 @@ export const SERVICIOS: Servicio[] = [
       prefijo: "Desde",
       cifra: "$8.000 – $25.000 UYU",
       detalle: "Según la complejidad",
+      desde: "$8.000",
+      hasta: "$25.000",
+      factores: ["Cantidad de secciones y páginas", "Si vendés online o solo mostrás tu negocio", "Si necesita textos, fotos o diseño nuevo"],
       plazo: "7 a 20 días",
       nota: "El valor final depende del alcance. Cada proyecto se cotiza de forma individual, sin paquetes cerrados.",
     },
@@ -243,11 +249,11 @@ export const SERVICIOS: Servicio[] = [
       },
     ],
     cuandoConviene: [
-      "Se copian datos de una herramienta a otra de forma manual.",
-      "Hay consultas, avisos o seguimientos que dependen de que alguien los recuerde.",
-      "Se generan reportes o documentos repetitivos a mano.",
-      "Los errores de carga son frecuentes y generan retrabajo.",
-      "El equipo dedica tiempo operativo que podría destinarse a la atención de clientes.",
+      "Copiás los pedidos de Instagram o WhatsApp a una planilla, uno por uno, a mano.",
+      "Te olvidás de avisarle a un cliente que su pedido ya salió, o de cobrarle un pago pendiente.",
+      "Todos los días armás el mismo reporte o el mismo comprobante a mano.",
+      "Te equivocás al cargar un dato y después hay que arreglarlo.",
+      "Perdés horas en tareas repetitivas que no te traen ventas.",
     ],
     proceso: PROCESO_BASE,
     valores: {
@@ -255,6 +261,8 @@ export const SERVICIOS: Servicio[] = [
       prefijo: "Desde",
       cifra: "$10.000 UYU",
       detalle: "Según la cantidad y complejidad de los flujos",
+      desde: "$10.000",
+      factores: ["Cuántos procesos querés automatizar", "Cuántas herramientas hay que conectar", "Qué tan seguido cambian tus reglas"],
       plazo: "10 a 15 días",
       nota: "El valor final depende de la cantidad y complejidad de los flujos. Cada proyecto se cotiza de forma individual.",
     },
@@ -326,11 +334,11 @@ export const SERVICIOS: Servicio[] = [
       },
     ],
     cuandoConviene: [
-      "Se recibe un volumen alto de consultas repetitivas por WhatsApp o Instagram.",
-      "Hay mensajes que quedan sin responder fuera del horario de atención.",
-      "El equipo pierde tiempo filtrando consultas que no se convierten en ventas.",
-      "Se desea atender a más clientes sin aumentar la estructura.",
-      "La velocidad de respuesta incide en el cierre de ventas.",
+      "Todo el día te preguntan precio, talle, envío y disponibilidad por Instagram y WhatsApp, siempre lo mismo.",
+      "Te escriben de noche o el fin de semana y la consulta queda sin contestar hasta el otro día.",
+      "Perdés tiempo con gente que solo pregunta y no compra.",
+      "Querés atender a más clientes sin contratar a nadie.",
+      "El que contesta primero se queda con la venta.",
     ],
     proceso: PROCESO_BASE,
     valores: {
@@ -338,6 +346,8 @@ export const SERVICIOS: Servicio[] = [
       prefijo: "Mensualidad desde",
       cifra: "$3.000 UYU",
       detalle: "Cubre el funcionamiento del agente",
+      desde: "$3.000 por mes",
+      factores: ["Cuántas consultas distintas tiene que resolver", "Por cuántos canales atiende (WhatsApp, Instagram)", "Si deriva a una persona o toma pedidos"],
       plazo: "10 a 15 días",
       nota: "La mensualidad cubre el funcionamiento del agente: API de WhatsApp Business, mantenimiento y el servicio de IA.",
     },
