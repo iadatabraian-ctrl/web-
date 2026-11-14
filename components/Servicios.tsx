@@ -93,7 +93,7 @@ export function Servicios() {
 
       <div className="relative mx-auto max-w-6xl">
         {/* Titular */}
-        <h2 className="font-impact text-[14vw] font-black uppercase italic leading-[0.88] tracking-[-0.005em] [font-stretch:50%] sm:text-[9.5vw] lg:text-[7.4rem]">
+        <h2 className="origin-bottom -skew-x-[5deg] text-balance text-center font-impact text-[11.5vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[7.6vw] lg:text-[6.2rem]">
           <motion.span
             initial={{ opacity: 0, x: "-12vw" }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -118,7 +118,7 @@ export function Servicios() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={view}
           transition={{ duration: 0.6, ease, delay: 0.4 }}
-          className="mt-6 max-w-md font-body text-base leading-relaxed text-brand-ink-on-cream-soft sm:mt-8 sm:text-lg"
+          className="mx-auto mt-6 max-w-md text-center font-body text-base leading-relaxed text-brand-ink-on-cream-soft sm:mt-8 sm:text-lg"
         >
           Cuatro formas de que el sistema crezca al ritmo del negocio.
         </motion.p>
