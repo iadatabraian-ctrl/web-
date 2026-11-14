@@ -55,7 +55,7 @@ export function Proceso() {
           </motion.span>
         </h2>
 
-        <ol className="mx-auto mt-12 max-w-4xl sm:mt-20">
+        <ol className="mx-auto mt-8 max-w-4xl sm:mt-20">
           {STEPS.map((st, i) => (
             <li key={st.title}>
               {i > 0 && <Camino from={i % 2 === 0 ? "right" : "left"} />}
@@ -65,17 +65,17 @@ export function Proceso() {
                   whileInView={{ opacity: 1, y: 0, rotate: i % 2 === 0 ? -2.5 : 2.5 }}
                   viewport={view}
                   transition={{ duration: 0.8, ease }}
-                  className="relative w-[80%] max-w-[26rem] rounded-[1.6rem] bg-brand-cream p-2.5 text-brand-ink-on-cream shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] sm:w-[60%] sm:p-3"
+                  className="relative w-[68%] max-w-[26rem] rounded-[1.3rem] bg-brand-cream p-2 text-brand-ink-on-cream shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] sm:w-[60%] sm:p-3"
                 >
-                  <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-6 -translate-x-1/2 rounded-full border-b-[3px] border-[#c4430a] bg-brand-accent shadow-[0_6px_10px_rgba(0,0,0,0.45)]" />
-                  <div className={`rounded-[1.2rem] px-4 pb-5 pt-6 sm:px-5 sm:pb-6 ${i % 2 === 0 ? "bg-[#ffe3d3]" : "bg-[#ebe3d2]"}`}>
-                    <span className="block font-impact text-[2.2rem] font-light not-italic leading-none text-brand-accent [font-stretch:90%] sm:text-[2.6rem]">
+                  <span aria-hidden="true" className="absolute -top-2.5 left-1/2 z-10 h-5 w-5 sm:-top-3 sm:h-6 sm:w-6 -translate-x-1/2 rounded-full border-b-[3px] border-[#c4430a] bg-brand-accent shadow-[0_6px_10px_rgba(0,0,0,0.45)]" />
+                  <div className={`rounded-[1rem] px-3.5 pb-4 pt-5 sm:rounded-[1.2rem] sm:px-5 sm:pb-6 sm:pt-6 ${i % 2 === 0 ? "bg-[#ffe3d3]" : "bg-[#ebe3d2]"}`}>
+                    <span className="block font-impact text-[1.8rem] font-light not-italic leading-none text-brand-accent [font-stretch:90%] sm:text-[2.6rem]">
                       0{i + 1}
                     </span>
-                    <h3 className="mt-3 origin-bottom-left -skew-x-[5deg] font-impact text-[1.5rem] font-semibold uppercase not-italic leading-[1.05] [font-stretch:85%] sm:text-[1.75rem]">
+                    <h3 className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[1.15rem] font-semibold uppercase not-italic leading-[1.05] [font-stretch:85%] sm:text-[1.75rem]">
                       {st.title}
                     </h3>
-                    <p className="mt-2 font-body text-sm leading-snug text-brand-ink-on-cream-soft sm:text-base">{st.desc}</p>
+                    <p className="mt-1.5 font-body text-[12.5px] leading-snug text-brand-ink-on-cream-soft sm:mt-2 sm:text-base">{st.desc}</p>
                   </div>
                 </motion.div>
               </div>
@@ -91,8 +91,8 @@ export function Proceso() {
 function Camino({ from }: { from: "left" | "right" }) {
   const id = useId().replace(/:/g, "");
   return (
-    <div aria-hidden="true" className="relative mx-auto h-16 w-full sm:h-24">
-      <CaminoSvg id={`${id}m`} from={from} xs={[40, 60]} className="sm:hidden" />
+    <div aria-hidden="true" className="relative mx-auto h-9 w-full sm:h-24">
+      <CaminoSvg id={`${id}m`} from={from} xs={[34, 66]} className="sm:hidden" />
       <CaminoSvg id={`${id}d`} from={from} xs={[23, 77]} className="max-sm:hidden" />
     </div>
   );
