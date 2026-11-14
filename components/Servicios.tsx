@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Bar } from "@/components/Bar";
 
-/* Servicios (sección oscura, ver PRODUCT.md): abre con la frase que antes era la sección
+/* Servicios (sección clara, ver PRODUCT.md: colores planos, sin degradados): abre con la frase que antes era la sección
    Diagnóstico y lista los 4 servicios como filas grandes. Cada fila se enciende con una barra
    diagonal de borde duro. Sin imágenes: las capturas anteriores tenían cifras inventadas. */
 
@@ -43,7 +43,7 @@ export function Servicios() {
   return (
     <section
       id="servicios"
-      className="relative overflow-hidden bg-brand-black-deep px-5 pb-20 pt-[calc(2.5rem+4rem)] text-brand-cream sm:px-8 sm:pb-28 sm:pt-[calc(8vw+5rem)] lg:px-[6vw]"
+      className="relative overflow-hidden bg-brand-cream px-5 pb-20 pt-[calc(2.5rem+4rem)] text-brand-ink-on-cream sm:px-8 sm:pb-28 sm:pt-[calc(8vw+5rem)] lg:px-[6vw]"
       // corte diagonal arriba: separa esta sección oscura del hero, también oscuro
       style={{
         clipPath: "polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%)",
@@ -52,9 +52,9 @@ export function Servicios() {
       }}
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <Bar style={{ right: "-4vw", top: "12vw", width: "9vw", height: "46vw", skew: 37, origin: "100% 0", fill: "linear-gradient(to left, rgba(255,92,26,0.30), rgba(255,92,26,0))", edge: "right" }} i={0} />
-        <Bar className="max-sm:hidden" style={{ right: "14vw", top: "20vw", width: "4vw", height: "30vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.10)" }} i={1} />
-        <Bar className="max-lg:hidden" style={{ left: "-5vw", bottom: 0, width: "9vw", height: "20vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.28), rgba(255,92,26,0))", edge: "left" }} i={2} />
+        <Bar style={{ right: "-4vw", top: "12vw", width: "9vw", height: "46vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.14)", edge: "right" }} i={0} />
+        <Bar className="max-sm:hidden" style={{ right: "14vw", top: "20vw", width: "4vw", height: "30vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={1} />
+        <Bar className="max-lg:hidden" style={{ left: "-5vw", bottom: 0, width: "9vw", height: "20vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.14)", edge: "left" }} i={2} />
       </div>
 
       <div className="relative mx-auto max-w-6xl">
@@ -65,7 +65,7 @@ export function Servicios() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={view}
             transition={{ duration: 0.75, ease }}
-            className="block text-white/95"
+            className="block"
           >
             El negocio creció.
           </motion.span>
@@ -74,7 +74,7 @@ export function Servicios() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={view}
             transition={{ duration: 0.75, ease, delay: 0.18 }}
-            className="block text-white/75"
+            className="block text-brand-ink-on-cream-soft"
           >
             El sistema no.
           </motion.span>
@@ -84,13 +84,13 @@ export function Servicios() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={view}
           transition={{ duration: 0.6, ease, delay: 0.4 }}
-          className="mt-6 max-w-md font-body text-base leading-relaxed text-brand-ink-on-black-soft sm:mt-8 sm:text-lg"
+          className="mt-6 max-w-md font-body text-base leading-relaxed text-brand-ink-on-cream-soft sm:mt-8 sm:text-lg"
         >
           Cuatro formas de que el sistema crezca al ritmo del negocio.
         </motion.p>
 
         {/* Servicios */}
-        <ol className="mt-14 border-t border-brand-line-on-black sm:mt-20">
+        <ol className="mt-14 border-t border-brand-line-on-cream sm:mt-20">
           {SERVICES.map((s, i) => (
             <motion.li
               key={s.title}
@@ -98,7 +98,7 @@ export function Servicios() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={view}
               transition={{ duration: 0.6, ease, delay: i * 0.08 }}
-              className="border-b border-brand-line-on-black"
+              className="border-b border-brand-line-on-cream"
             >
               <Link
                 href={s.href}
@@ -107,22 +107,22 @@ export function Servicios() {
                 {/* barra diagonal que se enciende */}
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-y-0 left-[-6%] w-0 -skew-x-[37deg] bg-brand-accent/[0.13] transition-[width] duration-500 ease-out group-hover:w-[112%] group-focus-visible:w-[112%]"
+                  className="pointer-events-none absolute inset-y-0 left-[-6%] w-0 -skew-x-[37deg] bg-brand-accent/[0.16] transition-[width] duration-500 ease-out group-hover:w-[112%] group-focus-visible:w-[112%]"
                 />
-                <span className="relative font-impact text-3xl font-black italic leading-none text-brand-cream/35 [font-stretch:50%] sm:text-6xl">
+                <span className="relative font-impact text-3xl font-black italic leading-none text-brand-ink-on-cream/30 [font-stretch:50%] sm:text-6xl">
                   0{i + 1}
                 </span>
                 <span className="relative">
                   <span className="block font-impact text-[2.6rem] font-black uppercase italic leading-[0.95] [font-stretch:50%] sm:text-7xl lg:text-[5.4rem]">
                     {s.title}
                   </span>
-                  <span className="mt-3 block max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-black-soft sm:text-base">
+                  <span className="mt-3 block max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:text-base">
                     {s.description}
                   </span>
                 </span>
                 <span
                   aria-hidden="true"
-                  className="relative flex h-11 w-11 items-center justify-center rounded-full border border-brand-cream/30 transition-colors duration-300 group-hover:border-brand-accent group-hover:bg-brand-accent group-hover:text-brand-black sm:h-14 sm:w-14"
+                  className="relative flex h-11 w-11 items-center justify-center rounded-full border border-brand-ink-on-cream/30 transition-colors duration-300 group-hover:border-brand-accent group-hover:bg-brand-accent group-hover:text-brand-black sm:h-14 sm:w-14"
                 >
                   <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.25} />
                 </span>
