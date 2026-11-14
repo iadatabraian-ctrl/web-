@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { Bar } from "@/components/Bar";
+import { MapaUruguay } from "@/components/MapaUruguay";
 
 /* Nosotros (sección clara, ver PRODUCT.md): foto grande en tarjeta redondeada con nombre,
    titular en Saira y el texto de Braian. */
@@ -96,6 +97,25 @@ export function Nosotros() {
            
           </motion.p>
         </div>
+
+        {/* Alcance: mapa de Uruguay con Salto */}
+        <motion.div
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={view}
+          transition={{ duration: 0.7, ease }}
+          className="col-span-2 flex items-center gap-5 rounded-[1.25rem] bg-brand-black p-5 text-brand-cream sm:gap-10 sm:rounded-[1.75rem] sm:p-8 lg:col-span-2"
+        >
+          <MapaUruguay className="h-28 w-auto shrink-0 sm:h-44" />
+          <div>
+            <p className="font-impact text-2xl font-black uppercase not-italic leading-[1] [font-stretch:80%] sm:text-4xl">
+              Desde Salto, a todo el país.
+            </p>
+            <p className="mt-2 font-body text-[13px] leading-snug text-brand-ink-on-black-soft sm:mt-3 sm:text-base">
+              Atendemos proyectos en cualquier departamento de Uruguay, con contacto directo.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
