@@ -1,6 +1,5 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { Diagnostico } from "@/components/Diagnostico";
 import { Servicios } from "@/components/Servicios";
 import { Proceso } from "@/components/Proceso";
 import { AccesoDirecto } from "@/components/AccesoDirecto";
@@ -16,7 +15,6 @@ export default function Home() {
       <div className="relative">
         <main>
           <Hero />
-          <Diagnostico />
           <Servicios />
           <Proceso />
           <AccesoDirecto />
