@@ -18,7 +18,7 @@ import { Bar } from "@/components/Bar";
 type Kind = "software" | "web" | "automatizacion" | "agentes";
 
 const CARD_IMAGES: Partial<Record<Kind, string>> = {
-  // software: "/img/servicios/card-software.webp",
+  software: "/img/servicios/card-software.webp",
   // web: "/img/servicios/card-web.webp",
   // automatizacion: "/img/servicios/card-automatizacion.webp",
   // agentes: "/img/servicios/card-agentes.webp",
@@ -212,6 +212,10 @@ export function Servicios() {
           </div>
         </motion.div>
 
+        <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft sm:text-xs">
+          Imágenes ilustrativas · datos de ejemplo
+        </p>
+
         {/* Enlaces siempre disponibles para lectores de pantalla y buscadores */}
         <nav aria-label="Servicios" className="sr-only">
           {SERVICES.map((s) => (
@@ -239,13 +243,15 @@ function Card({
   const img = CARD_IMAGES[service.kind];
   return (
     <div className="overflow-hidden rounded-[1.75rem] bg-brand-black text-brand-cream shadow-[0_30px_60px_-30px_rgba(26,23,18,0.55)]">
-      <div className="relative aspect-square w-full bg-[#0b0a08]">
+      <div className="relative aspect-[4/5] w-full bg-[#0b0a08]">
         {img ? (
-          <Image src={img} alt="" fill sizes="(min-width: 1024px) 28rem, 72vw" className="object-cover [filter:brightness(1.2)]" />
+          <Image src={img} alt={`Ilustración de ${service.title.toLowerCase()} con datos de ejemplo`} fill sizes="(min-width: 1024px) 28rem, 72vw" className="object-cover" />
         ) : (
           <Placeholder kind={service.kind} />
         )}
-        <span className="absolute left-5 top-5 font-mono text-xs font-bold text-brand-cream/70">0{index + 1}</span>
+        <span className={`absolute left-5 top-5 font-mono text-xs font-bold ${img ? "text-brand-ink-on-cream/60" : "text-brand-cream/70"}`}>
+          0{index + 1}
+        </span>
       </div>
       <div className="min-h-[10.5rem] px-5 pb-6 pt-5 sm:min-h-[11.5rem] sm:px-6">
         <h3 className="font-impact text-3xl font-black uppercase italic leading-[0.95] [font-stretch:50%] sm:text-4xl">
@@ -270,7 +276,7 @@ function Card({
 function Placeholder({ kind }: { kind: Kind }) {
   const o = "#FF5C1A";
   return (
-    <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" aria-hidden="true">
+    <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full" aria-hidden="true">
       <rect width="400" height="400" fill="#14110d" />
       <g transform="skewX(-20) translate(90 0)" opacity="0.18" fill={o}>
         <rect x="270" y="-20" width="40" height="460" />
