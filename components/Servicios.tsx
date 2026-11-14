@@ -256,20 +256,22 @@ function Card({
           0{index + 1}
         </span>
       </div>
-      <div className="min-h-[9.75rem] px-5 pb-6 pt-5 sm:min-h-[10.5rem] sm:px-6">
-        <span aria-hidden="true" className="mb-3 block h-[3px] w-10 -skew-x-[37deg] bg-brand-accent" />
-        <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.65rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">
+      <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3.5 pt-3.5 [--card-text-h:11.1rem] min-[380px]:[--card-text-h:10.9rem] sm:px-6 sm:pb-5 sm:pt-5 sm:[--card-text-h:13.5rem]">
+        <span aria-hidden="true" className="mb-2 block h-[3px] w-9 -skew-x-[37deg] bg-brand-accent sm:mb-3 sm:w-10" />
+        <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.3rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">
           {service.title}
         </h3>
-        <p className="mt-3 font-body text-sm leading-relaxed text-brand-ink-on-black-soft">{service.description}</p>
+        <p className="mt-1.5 font-body text-[12.5px] leading-[1.35] text-brand-ink-on-black-soft sm:mt-3 sm:text-sm sm:leading-relaxed">
+          {service.description}
+        </p>
         <Link
           href={service.href}
           tabIndex={active ? 0 : -1}
           onClick={onLinkClick}
-          className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-bold uppercase tracking-wide text-brand-cream underline decoration-brand-accent decoration-2 underline-offset-4 transition-colors hover:text-brand-accent"
+          className="mt-3 inline-flex w-fit sm:mt-auto items-center gap-2 self-start rounded-[4px] bg-brand-accent px-3.5 py-2 font-body text-[10.5px] font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-white active:scale-[0.97] sm:text-xs"
         >
-          Ver el servicio
-          <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+          Ver el servicio completo
+          <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.75} />
         </Link>
       </div>
     </div>
