@@ -12,7 +12,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const view = { once: true, margin: "-10% 0px" } as const;
 
 const SOCIAL =
-  "flex h-11 w-11 items-center justify-center rounded-full border border-brand-ink-on-cream/25 text-brand-ink-on-cream transition-[transform,background-color,color] duration-200 hover:bg-brand-black hover:text-brand-cream active:scale-[0.95]";
+  "flex h-9 w-9 items-center justify-center rounded-full border border-brand-ink-on-cream/25 text-brand-ink-on-cream transition-[transform,background-color,color] duration-200 hover:bg-brand-black hover:text-brand-cream active:scale-[0.95]";
 
 export function Nosotros() {
   return (
@@ -25,30 +25,30 @@ export function Nosotros() {
         <Bar style={{ left: "-6vw", bottom: 0, width: "10vw", height: "26vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.10)", edge: "left" }} i={1} />
       </div>
 
-      <div className="relative mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
+      <div className="relative mx-auto grid max-w-6xl gap-10 lg:grid-cols-[19rem_1fr] lg:items-center lg:gap-16">
         {/* Foto */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={view}
           transition={{ duration: 0.8, ease }}
-          className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[1.75rem] bg-brand-black lg:max-w-none"
+          className="relative w-full max-w-[17rem] overflow-hidden rounded-[1.75rem] bg-brand-black max-lg:mx-auto lg:max-w-none"
         >
-          <div className="relative aspect-[4/5] w-full">
+          <div className="relative aspect-square w-full">
             <Image
               src="/img/team/braian.jpg"
               alt="Braian González, fundador de Deploy"
               fill
-              sizes="(min-width: 1024px) 40vw, 90vw"
-              className="object-cover object-[50%_20%]"
+              sizes="(min-width: 1024px) 19rem, 17rem"
+              className="object-cover object-[50%_30%]"
             />
           </div>
-          <div className="flex items-center justify-between gap-3 px-5 py-4 text-brand-cream">
+          <div className="flex items-center justify-between gap-3 px-4 py-3 text-brand-cream">
             <div>
-              <p className="font-body text-base font-semibold">Braian González</p>
+              <p className="whitespace-nowrap font-body text-[15px] font-semibold">Braian González</p>
               <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Fundador</p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-1.5">
               <a href="https://wa.me/59898648853" target="_blank" rel="noopener" aria-label="WhatsApp" className={`${SOCIAL} !border-white/20 !text-brand-cream hover:!bg-white hover:!text-brand-black`}>
                 <WhatsAppIcon className="h-4 w-4" />
               </a>
