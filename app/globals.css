@@ -315,10 +315,10 @@
 header .logo-d, header .logo-s, header .logo-w, header .nav-link, header .nav-cta, header .nav-burger {
   transition: color 0.5s, fill 0.5s, background-color 0.5s;
 }
-html[data-hero="light"] header[data-top="true"] .logo-d { fill: #0d0b08; }
-html[data-hero="light"] header[data-top="true"] .logo-w { color: #0d0b08; }
-html[data-hero="light"] header[data-top="true"] .logo-s { fill: #f6f1e7; }
-html[data-hero="light"] header[data-top="true"] .nav-link { color: rgba(13, 11, 8, 0.8); }
-html[data-hero="light"] header[data-top="true"] .nav-link:hover { color: #0d0b08; }
-html[data-hero="light"] header[data-top="true"] .nav-cta { background: #0d0b08; color: #f6f1e7; }
-html[data-hero="light"] header[data-top="true"] .nav-burger { background: #0d0b08; }
+html[data-hero="light"] header[data-top="true"] .logo-d { fill: #fff; }
+html[data-hero="light"] header[data-top="true"] .logo-w { color: #fff; }
+html[data-hero="light"] header[data-top="true"] .logo-s { fill: #0d0b08; }
+html[data-hero="light"] header[data-top="true"] .nav-link { color: rgba(255, 255, 255, 0.95); font-weight: 600; }
+html[data-hero="light"] header[data-top="true"] .nav-link:hover { color: #fff; }
+html[data-hero="light"] header[data-top="true"] .nav-cta { background: #fff; color: #0d0b08; }
+html[data-hero="light"] header[data-top="true"] .nav-burger { background: #fff; }

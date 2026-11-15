@@ -38,18 +38,22 @@ const TONE = {
     h1b: "text-white/75",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
     p: "text-brand-ink-on-black-soft",
+    pz: "text-[14px] sm:text-lg",
+    bz: "text-xs sm:text-sm",
     strong: "text-brand-cream",
     btn1: "bg-white text-brand-black hover:bg-white/85",
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
   light: {
-    h1a: "text-[#0d0b08]",
-    h1b: "text-[#0d0b08]/60",
+    h1a: "text-white",
+    h1b: "text-white/80",
     img: "",
-    p: "text-[#0d0b08]/80",
-    strong: "text-[#0d0b08]",
-    btn1: "bg-[#0d0b08] text-[#f6f1e7] hover:bg-[#0d0b08]/85",
-    btn2: "border-[#0d0b08]/50 text-[#0d0b08] hover:border-[#0d0b08]",
+    p: "text-white",
+    pz: "text-[15.5px] font-medium sm:text-xl",
+    bz: "text-[13px] sm:text-[15px]",
+    strong: "text-white",
+    btn1: "bg-white text-[#0d0b08] hover:bg-white/90",
+    btn2: "border-white/70 text-white hover:border-white",
   },
 } as const;
 
@@ -111,7 +115,7 @@ export function Hero() {
         <motion.div
           aria-hidden="true"
           inert
-          className={`pointer-events-none absolute inset-0 z-[4] overflow-hidden bg-[#FF5C1A] text-[#0d0b08] ${PAD}`}
+          className={`pointer-events-none absolute inset-0 z-[4] overflow-hidden bg-[#FF5C1A] text-white ${PAD}`}
           style={{
             WebkitMaskImage: WAVE,
             maskImage: WAVE,
@@ -206,7 +210,7 @@ function Scene({ tone, instant = false }: { tone: "dark" | "light"; instant?: bo
           animate="show"
           variants={fromBelow}
           transition={{ duration: 0.6, ease, delay: 1.35 }}
-          className={`max-w-[44%] font-body text-[14px] leading-snug ${t.p} sm:max-w-md sm:text-lg sm:leading-relaxed lg:max-w-[32rem]`}
+          className={`max-w-[44%] font-body ${t.pz} leading-snug ${t.p} sm:max-w-md sm:leading-relaxed lg:max-w-[32rem]`}
         >
           <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
           automatización y agentes de WhatsApp.
@@ -221,14 +225,14 @@ function Scene({ tone, instant = false }: { tone: "dark" | "light"; instant?: bo
         >
           <a
             href="#hablemos"
-            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-6 py-3 font-body text-xs font-bold uppercase tracking-wide transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm ${t.btn1}`}
+            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-6 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn1}`}
           >
             Hablemos
             <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </a>
           <a
             href="#servicios"
-            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-6 py-3 font-body text-xs font-bold uppercase tracking-wide transition-[transform,border-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 sm:text-sm ${t.btn2}`}
+            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-6 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,border-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn2}`}
           >
             Ver servicios
             <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
