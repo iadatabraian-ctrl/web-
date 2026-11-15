@@ -241,7 +241,7 @@ function Card({
   const img = CARD_IMAGES[service.kind];
   return (
     <div className="overflow-hidden rounded-[1.75rem] bg-brand-black text-brand-cream shadow-[0_24px_40px_-28px_rgba(26,23,18,0.6)]">
-      <div className="relative aspect-[4/5] w-full bg-[#0b0a08]">
+      <div className="relative aspect-square w-full bg-[#0b0a08]">
         {img ? (
           <Image src={img} alt={`Ilustración de ${service.title.toLowerCase()} con datos de ejemplo`} fill sizes="(min-width: 1024px) 28rem, 72vw" className="object-cover" />
         ) : (
