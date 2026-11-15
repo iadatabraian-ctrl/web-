@@ -53,7 +53,7 @@ const TONE = {
     pz: "text-[15.5px] font-medium sm:text-xl",
     bz: "text-[13px] sm:text-[15px]",
     strong: "text-white",
-    btn1: "bg-white text-[#0d0b08] hover:bg-white/90",
+    btn1: "bg-white text-[#0a0a0a] hover:bg-white/90",
     btn2: "border-white/70 text-white hover:border-white",
   },
   blue: {
@@ -64,7 +64,7 @@ const TONE = {
     pz: "text-[15px] font-medium sm:text-xl",
     bz: "text-[13px] sm:text-[15px]",
     strong: "text-white",
-    btn1: "bg-white text-[#0d0b08] hover:bg-white/90",
+    btn1: "bg-white text-[#0a0a0a] hover:bg-white/90",
     btn2: "border-white/70 text-white hover:border-white",
   },
 } as const;
@@ -82,7 +82,7 @@ const waveEase = [0.65, 0, 0.35, 1] as const;
 const LAYERS: { tone: Tone; bg: string }[] = [
   { tone: "orange", bg: "bg-[#FF5C1A]" },
   { tone: "blue", bg: "bg-[linear-gradient(100deg,#19a0dc_0%,#0e66b3_38%,#0a4a8e_100%)]" },
-  { tone: "dark", bg: "bg-[#0d0b08]" },
+  { tone: "dark", bg: "bg-[#0a0a0a]" },
 ];
 
 export function Hero() {
@@ -139,7 +139,7 @@ export function Hero() {
       id="inicio"
       onPointerEnter={() => (paused.current = true)}
       onPointerLeave={() => (paused.current = false)}
-      className={`relative isolate min-h-[100svh] overflow-hidden bg-[#0d0b08] text-brand-cream ${PAD}`}
+      className={`relative isolate min-h-[100svh] overflow-hidden bg-[#0a0a0a] text-brand-cream ${PAD}`}
     >
       <Scene tone="dark" />
       {!reduce && LAYERS.map((l, i) => <WaveLayer key={l.tone + i} p={ps[i]} z={4 + i} bg={l.bg} tone={l.tone} />)}
@@ -184,13 +184,13 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
         className={`pointer-events-none absolute inset-0 overflow-hidden ${tone === "orange" ? "[&>span]:[background:rgba(13,11,8,0.1)]! [&>span]:[border-color:rgba(13,11,8,0.25)]!" : tone === "blue" ? "[&>span]:[background:rgba(255,255,255,0.07)]! [&>span]:[border-color:rgba(255,255,255,0.25)]!" : ""}`}
       >
         {/* Celular */}
-        <Bar className="lg:hidden" style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.04)" }} i={0} />
-        <Bar className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.26), rgba(255,92,26,0))", edge: "left", edgeAlpha: 0.5, fadeTop: true }}  i={2} />
+        <Bar gray className="lg:hidden" style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.04)" }} i={0} />
+        <Bar gray className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.26), rgba(255,92,26,0))", edge: "left", edgeAlpha: 0.5, fadeTop: true }}  i={2} />
         {/* Laptop */}
-        <Bar className="max-lg:hidden" style={{ left: "40.7vw", bottom: 0, width: "7.2vw", height: "15vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.24), rgba(255,92,26,0.22) 45%, rgba(255,92,26,0.06))" }}  i={3} />
-        <Bar className="max-lg:hidden" style={{ left: "102.8vw", top: 0, width: "9vw", height: "18.7vw", skew: 38, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.17), rgba(255,92,26,0.02))", edge: "left", edgeAlpha: 0.5 }}  i={4} />
-        <Bar className="max-lg:hidden" style={{ left: "93.6vw", top: "18.7vw", width: "12vw", height: "35vw", skew: 38, origin: "0 0", fill: "rgba(255,92,26,0.06)" }}  i={5} />
-        <Bar className="max-lg:hidden" style={{ left: "79.5vw", top: 0, width: "9vw", height: "28vw", skew: 36, origin: "0 0", fill: "rgba(255,92,26,0.06)" }}  i={6} />
+        <Bar gray className="max-lg:hidden" style={{ left: "40.7vw", bottom: 0, width: "7.2vw", height: "15vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.24), rgba(255,92,26,0.22) 45%, rgba(255,92,26,0.06))" }}  i={3} />
+        <Bar gray className="max-lg:hidden" style={{ left: "102.8vw", top: 0, width: "9vw", height: "18.7vw", skew: 38, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.17), rgba(255,92,26,0.02))", edge: "left", edgeAlpha: 0.5 }}  i={4} />
+        <Bar gray className="max-lg:hidden" style={{ left: "93.6vw", top: "18.7vw", width: "12vw", height: "35vw", skew: 38, origin: "0 0", fill: "rgba(255,92,26,0.06)" }}  i={5} />
+        <Bar gray className="max-lg:hidden" style={{ left: "79.5vw", top: 0, width: "9vw", height: "28vw", skew: 36, origin: "0 0", fill: "rgba(255,92,26,0.06)" }}  i={6} />
       </div>
 
       {/* Titular gigante, detrás de la figura */}

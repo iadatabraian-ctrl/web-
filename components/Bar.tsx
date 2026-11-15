@@ -21,16 +21,20 @@ export type BarStyle = {
   fadeTop?: boolean;
 };
 
-export function Bar({ className = "", style, i = 0 }: { className?: string; style: BarStyle; i?: number }) {
+/* Reflejo gris (secciones negras): mismo trazado, en blanco con la opacidad reducida. */
+const toGray = (v: string, k: number) =>
+  v.replace(/rgba\(255,\s*92,\s*26,\s*([0-9.]+)\)/g, (_, a) => `rgba(255,255,255,${(parseFloat(a) * k).toFixed(3)})`);
+
+export function Bar({ className = "", style, i = 0, gray = false }: { className?: string; style: BarStyle; i?: number; gray?: boolean }) {
   const { skew, origin, fill, edge, edgeAlpha = 0.88, fadeTop, ...pos } = style;
-  const line = `1.5px solid rgba(255,92,26,${edgeAlpha})`;
+  const line = gray ? `1.5px solid rgba(255,255,255,${(edgeAlpha * 0.4).toFixed(2)})` : `1.5px solid rgba(255,92,26,${edgeAlpha})`;
   const mask = fadeTop ? "linear-gradient(to bottom, transparent 0%, #000 65%)" : undefined;
   return (
     <span
       className={`absolute ${className}`}
       style={{
         ...pos,
-        background: fill,
+        background: gray ? toGray(fill, 0.5) : fill,
         transform: `skewX(-${skew}deg)`,
         transformOrigin: origin,
         borderLeft: edge === "left" ? line : undefined,

@@ -31,8 +31,8 @@ export function CtaFooter() {
         className="relative overflow-hidden bg-brand-cream px-5 py-20 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <Bar className="max-sm:hidden" style={{ right: "-4vw", top: 0, width: "9vw", height: "46vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.12)", edge: "right" }} i={0} />
-          <Bar style={{ left: "-6vw", bottom: 0, width: "10vw", height: "26vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.10)", edge: "left" }} i={1} />
+          <Bar gray className="max-sm:hidden" style={{ right: "-4vw", top: 0, width: "9vw", height: "46vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.12)", edge: "right" }} i={0} />
+          <Bar gray style={{ left: "-6vw", bottom: 0, width: "10vw", height: "26vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.10)", edge: "left" }} i={1} />
         </div>
         <FadeIn className="relative mx-auto max-w-4xl text-center">
           <h2 className="origin-bottom -skew-x-[5deg] text-balance font-impact text-[9.5vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[5.4vw] lg:text-[3.9rem]">

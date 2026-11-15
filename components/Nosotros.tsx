@@ -104,7 +104,7 @@ export function Nosotros() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={view}
           transition={{ duration: 0.7, ease }}
-          className="col-span-2 flex items-center gap-5 overflow-hidden rounded-[1.25rem] bg-[#0d0b08] p-5 text-brand-cream sm:gap-12 sm:rounded-[1.75rem] sm:p-10"
+          className="col-span-2 flex items-center gap-5 overflow-hidden rounded-[1.25rem] bg-[#0a0a0a] p-5 text-brand-cream sm:gap-12 sm:rounded-[1.75rem] sm:p-10"
         >
           <MapaUruguay className="h-36 w-auto shrink-0 sm:h-64" />
           <div>

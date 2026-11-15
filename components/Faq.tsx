@@ -85,14 +85,14 @@ export function Faq() {
   return (
     <section
       id="preguntas"
-      className="relative overflow-hidden bg-[#0d0b08] px-5 py-20 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]"
+      className="relative overflow-hidden bg-[#0a0a0a] px-5 py-20 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]"
     >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <Bar className="max-sm:hidden" style={{ left: "-4vw", top: "6vw", width: "9vw", height: "36vw", skew: 37, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.24), rgba(255,92,26,0))", edge: "left" }} i={1} />
+        <Bar gray className="max-sm:hidden" style={{ left: "-4vw", top: "6vw", width: "9vw", height: "36vw", skew: 37, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.24), rgba(255,92,26,0))", edge: "left" }} i={1} />
       </div>
       <div className="relative mx-auto max-w-3xl">
         <h2 className="origin-bottom -skew-x-[5deg] text-balance text-center font-impact text-[9vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[6.2vw] lg:text-[5rem]">

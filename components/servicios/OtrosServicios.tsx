@@ -35,7 +35,7 @@ export function OtrosServicios({ items }: { items: { slug: string; nombre: strin
               sizes="100vw"
               className="object-cover opacity-[0.3] transition-opacity duration-300 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-70"
             />
-            <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-[#0d0b08]/90 via-[#0d0b08]/45 to-transparent" />
+            <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/45 to-transparent" />
             <span className="relative flex items-center justify-between gap-4 px-1 sm:px-2">
               <span className="min-w-0">
                 <span className="block origin-bottom-left -skew-x-[5deg] font-impact text-[2.6rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] text-brand-cream transition-colors duration-200 [font-stretch:80%] group-hover:text-brand-accent sm:text-[5rem] lg:text-[6.5rem]">

@@ -80,10 +80,10 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
       <Nav />
       <main>
         {/* Cabecera (oscura) */}
-        <section className="relative overflow-hidden bg-[#0d0b08] px-5 pb-12 pt-0 text-brand-cream sm:px-8 sm:pb-24 sm:pt-36 lg:px-[6vw]">
+        <section className="relative overflow-hidden bg-[#0a0a0a] px-5 pb-12 pt-0 text-brand-cream sm:px-8 sm:pb-24 sm:pt-36 lg:px-[6vw]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-            <Bar style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={0} />
-            <Bar className="max-sm:hidden" style={{ right: "-3vw", top: "12vw", width: "0.5vw", height: "125vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.55)" }} i={1} />
+            <Bar gray style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.08)" }} i={0} />
+            <Bar gray className="max-sm:hidden" style={{ right: "-3vw", top: "12vw", width: "0.5vw", height: "125vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.55)" }} i={1} />
           </div>
           <div className="relative mx-auto grid max-w-6xl items-center gap-0 sm:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
             <div className="max-sm:relative max-sm:z-10 max-sm:-mt-36">
@@ -123,7 +123,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                 sizes="(min-width: 1024px) 40vw, 90vw"
                 className="object-cover"
               />
-              <div aria-hidden="true" className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#0d0b08]/90 to-transparent sm:hidden" />
+              <div aria-hidden="true" className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#0a0a0a]/90 to-transparent sm:hidden" />
             </div>
           </div>
         </section>
@@ -132,7 +132,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         <IncluyeSplit items={s.incluye} />
 
         {/* Cuándo conviene (oscura) */}
-        <section className="bg-[#0d0b08] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
+        <section className="bg-[#0a0a0a] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-4xl">
             <FadeIn>
               <h2 className={H2}>Cuándo conviene</h2>
@@ -144,7 +144,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         </section>
 
         {/* Cómo se trabaja (oscura) */}
-        <section className="bg-[#0d0b08] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
+        <section className="bg-[#0a0a0a] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
               <h2 className={H2}>Cómo se trabaja</h2>
@@ -243,7 +243,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         </section>
 
         {/* Otros servicios (oscura) */}
-        <section className="bg-[#0d0b08] px-5 pb-16 pt-6 text-brand-cream sm:px-8 sm:pb-24 sm:pt-10 lg:px-[6vw]">
+        <section className="bg-[#0a0a0a] px-5 pb-16 pt-6 text-brand-cream sm:px-8 sm:pb-24 sm:pt-10 lg:px-[6vw]">
           <div className="mx-auto max-w-5xl">
             <h2 className="origin-bottom-left -skew-x-[5deg] font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
             <OtrosServicios items={otros.map((o) => ({ slug: o.slug, nombre: o.nombre, img: CARD_IMG[o.visual] }))} />

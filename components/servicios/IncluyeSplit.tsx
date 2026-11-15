@@ -8,8 +8,8 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-
    bloque de color plano con el número. 5-6 ítems: un tramo de scroll por ítem. */
 
 const COLORS = [
-  { bg: "#FF5C1A", fg: "#0d0b08" },
-  { bg: "#0d0b08", fg: "#FF5C1A" },
+  { bg: "#FF5C1A", fg: "#0a0a0a" },
+  { bg: "#0a0a0a", fg: "#FF5C1A" },
 ];
 
 export function IncluyeSplit({ items }: { items: { t: string; d: string; con?: string[] }[] }) {

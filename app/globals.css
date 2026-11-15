@@ -13,17 +13,17 @@
    Secciones OSCURAS (carbón): se permite luz de ambiente NARANJA, como un despegue
    (barras diagonales y bordes encendidos), definida abajo: `edge-ember`, etc. */
 :root {
-  --brand-black: #1a1712;
-  --brand-black-deep: #050403;
-  --brand-black-soft: #241f18;
+  --brand-black: #151515;
+  --brand-black-deep: #050505;
+  --brand-black-soft: #1e1e1e;
   --brand-cream: #f6f1e7;
   --brand-cream-2: #e4dcc9;
   --brand-accent: #FF5C1A;
   --brand-accent-ink: #B8400F;
-  --brand-ink-on-black-soft: #a89e8f;
+  --brand-ink-on-black-soft: #a3a3a3;
   --brand-ink-on-cream: #1a1712;
   --brand-ink-on-cream-soft: #5c5142;
-  --brand-line-on-black: rgba(246, 241, 231, 0.14);
+  --brand-line-on-black: rgba(255, 255, 255, 0.14);
   --brand-line-on-cream: rgba(26, 23, 18, 0.14);
 
 }
@@ -317,10 +317,10 @@ header .logo-d, header .logo-s, header .logo-w, header .nav-link, header .nav-ct
 }
 html[data-hero="orange"] header[data-top="true"] .logo-d { fill: #fff; }
 html[data-hero="orange"] header[data-top="true"] .logo-w { color: #fff; }
-html[data-hero="orange"] header[data-top="true"] .logo-s { fill: #0d0b08; }
+html[data-hero="orange"] header[data-top="true"] .logo-s { fill: #0a0a0a; }
 html[data-hero="orange"] header[data-top="true"] .nav-link { color: rgba(255, 255, 255, 0.95); font-weight: 600; }
 html[data-hero="orange"] header[data-top="true"] .nav-link:hover { color: #fff; }
-html[data-hero="orange"] header[data-top="true"] .nav-cta { background: #fff; color: #0d0b08; }
+html[data-hero="orange"] header[data-top="true"] .nav-cta { background: #fff; color: #0a0a0a; }
 html[data-hero="orange"] header[data-top="true"] .nav-burger { background: #fff; }
 html[data-hero="blue"] header[data-top="true"] .nav-link { color: rgba(255, 255, 255, 0.92); font-weight: 600; }
 html[data-hero="blue"] header[data-top="true"] .nav-link:hover { color: #fff; }
