@@ -2,16 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion, useTransform } from "framer-motion";
+import { animate, motion, useMotionValue, type MotionValue, useMotionValueEvent, useReducedMotion, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Bar } from "@/components/Bar";
 
-/* Hero (ver PRODUCT.md). Base oscura; una segunda copia en naranja puro (aria-hidden, sin clics) se revela con
-   una ola que sube y baja cada ~11 s (oscuro y naranja). Con "reducir movimiento" queda fijo en oscuro. Hero oscuro: titular gigante en blanco semitransparente, detrás de una
-   figura recortada (public/img/hero/hero-recorte.webp, generada con IA, PNG con alfa) que lo
-   tapa apenas en el final de la última línea para dar profundidad. El naranja queda en la luz
-   de la figura y de las barras de fondo; los botones son blancos. Los tamaños van en vw para que el
-   solapamiento sea parecido en cualquier ancho. */
+/* Hero (ver PRODUCT.md). Base oscura; tres copias (naranja, azul y otra vez oscura; aria-hidden, sin clics)
+   se revelan una tras otra con una ola que sube, y el ciclo es oscuro, naranja, azul, oscuro. Con
+   "reducir movimiento" queda fijo en oscuro. Hero oscuro: titular gigante en blanco semitransparente,
+   detrás de una figura recortada (public/img/hero/hero-recorte.webp, generada con IA, PNG con alfa) que lo
+   tapa apenas en el final de la última línea para dar profundidad. El naranja queda en la luz de la figura
+   y de las barras de fondo; los botones son blancos. Los tamaños van en vw para que el solapamiento sea
+   parecido en cualquier ancho. */
 
 /* Orden y dirección de la entrada (definidos por el fundador sobre la maqueta):
    1. la figura sube desde abajo
@@ -44,7 +45,7 @@ const TONE = {
     btn1: "bg-white text-brand-black hover:bg-white/85",
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
-  light: {
+  orange: {
     h1a: "text-white",
     h1b: "text-white/80",
     img: "",
@@ -55,27 +56,51 @@ const TONE = {
     btn1: "bg-white text-[#0d0b08] hover:bg-white/90",
     btn2: "border-white/70 text-white hover:border-white",
   },
+  blue: {
+    h1a: "text-white",
+    h1b: "text-white/80",
+    img: "[filter:brightness(1.35)_contrast(0.92)]",
+    p: "text-white",
+    pz: "text-[15px] font-medium sm:text-xl",
+    bz: "text-[13px] sm:text-[15px]",
+    strong: "text-white",
+    btn1: "bg-white text-[#0d0b08] hover:bg-white/90",
+    btn2: "border-white/70 text-white hover:border-white",
+  },
 } as const;
+
+type Tone = keyof typeof TONE;
 
 // Máscara de la ola: borde ondulado e inclinado; se desplaza en vertical (300% del alto de la capa).
 const WAVE =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 300' preserveAspectRatio='none'%3E%3Cpath d='M0 138 C16 120 28 152 46 114 S82 94 100 64 V300 H0 Z'/%3E%3C/svg%3E\")";
 
-const HOLD_MS = 9000;
+const HOLD_MS = 6500;
 const WAVE_S = 2;
 const waveEase = [0.65, 0, 0.35, 1] as const;
 
+const LAYERS: { tone: Tone; bg: string }[] = [
+  { tone: "orange", bg: "bg-[#FF5C1A]" },
+  { tone: "blue", bg: "bg-[linear-gradient(100deg,#19a0dc_0%,#0e66b3_38%,#0a4a8e_100%)]" },
+  { tone: "dark", bg: "bg-[#0d0b08]" },
+];
+
 export function Hero() {
   const reduce = useReducedMotion();
-  const p = useMotionValue(0); // 0 = oscuro, 1 = claro
-  // De -20% (la capa clara queda toda por debajo del hero) a 100% (la ola ya pasó por arriba).
-  const pos = useTransform(p, (v) => `0% ${-20 + v * 120}%`);
+  const p0 = useMotionValue(0); // naranja
+  const p1 = useMotionValue(0); // azul
+  const p2 = useMotionValue(0); // oscuro de nuevo
+  const ps = [p0, p1, p2];
   const paused = useRef(false);
 
-  // El menú se adapta cuando la ola ya pasó por arriba (ver globals.css).
-  useMotionValueEvent(p, "change", (v) => {
-    document.documentElement.dataset.hero = v > 0.7 ? "light" : "dark";
-  });
+  // El menú se adapta al color que quedó arriba (ver globals.css).
+  const sync = () => {
+    const [a, b, c] = ps.map((m) => m.get());
+    document.documentElement.dataset.hero = c > 0.7 ? "dark" : b > 0.7 ? "blue" : a > 0.7 ? "orange" : "dark";
+  };
+  useMotionValueEvent(p0, "change", sync);
+  useMotionValueEvent(p1, "change", sync);
+  useMotionValueEvent(p2, "change", sync);
 
   useEffect(() => {
     if (reduce) return;
@@ -90,18 +115,24 @@ export function Hero() {
     (async () => {
       await hold(HOLD_MS - 2000);
       while (alive) {
-        await animate(p, 1, { duration: WAVE_S, ease: waveEase });
-        await hold(HOLD_MS);
-        if (!alive) break;
-        await animate(p, 0, { duration: WAVE_S, ease: waveEase });
-        await hold(HOLD_MS);
+        for (const m of [p0, p1, p2]) {
+          await animate(m, 1, { duration: WAVE_S, ease: waveEase });
+          if (m === p2) {
+            // la capa oscura ya cubre todo: se reinician las tres, sin que se note
+            p0.set(0);
+            p1.set(0);
+            p2.set(0);
+          }
+          await hold(HOLD_MS);
+          if (!alive) return;
+        }
       }
     })();
     return () => {
       alive = false;
       delete document.documentElement.dataset.hero;
     };
-  }, [reduce, p]);
+  }, [reduce, p0, p1, p2]);
 
   return (
     <section
@@ -111,30 +142,37 @@ export function Hero() {
       className={`relative isolate min-h-[100svh] overflow-hidden bg-[#0d0b08] text-brand-cream ${PAD}`}
     >
       <Scene tone="dark" />
-      {!reduce && (
-        <motion.div
-          aria-hidden="true"
-          inert
-          className={`pointer-events-none absolute inset-0 z-[4] overflow-hidden bg-[#FF5C1A] text-white ${PAD}`}
-          style={{
-            WebkitMaskImage: WAVE,
-            maskImage: WAVE,
-            WebkitMaskSize: "100% 300%",
-            maskSize: "100% 300%",
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            WebkitMaskPosition: pos,
-            maskPosition: pos,
-          }}
-        >
-          <Scene tone="light" instant />
-        </motion.div>
-      )}
+      {!reduce && LAYERS.map((l, i) => <WaveLayer key={l.tone + i} p={ps[i]} z={4 + i} bg={l.bg} tone={l.tone} />)}
     </section>
   );
 }
 
-function Scene({ tone, instant = false }: { tone: "dark" | "light"; instant?: boolean }) {
+// Capa que se revela con la ola: de -20% (queda toda por debajo del hero) a 100% (la ola ya pasó por arriba).
+function WaveLayer({ p, z, bg, tone }: { p: MotionValue<number>; z: number; bg: string; tone: Tone }) {
+  const pos = useTransform(p, (v) => `0% ${-20 + v * 120}%`);
+  return (
+    <motion.div
+      aria-hidden="true"
+      inert
+      className={`pointer-events-none absolute inset-0 overflow-hidden text-white ${bg} ${PAD}`}
+      style={{
+        zIndex: z,
+        WebkitMaskImage: WAVE,
+        maskImage: WAVE,
+        WebkitMaskSize: "100% 300%",
+        maskSize: "100% 300%",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskPosition: pos,
+        maskPosition: pos,
+      }}
+    >
+      <Scene tone={tone} instant />
+    </motion.div>
+  );
+}
+
+function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
   const t = TONE[tone];
   const ini = (v: string) => (instant ? false : v);
   return (
@@ -143,7 +181,7 @@ function Scene({ tone, instant = false }: { tone: "dark" | "light"; instant?: bo
           inicio y fin cortados y un degradé a lo ancho de la barra. Sin halos redondos. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 overflow-hidden ${tone === "light" ? "[&>span]:[background:rgba(13,11,8,0.1)]! [&>span]:[border-color:rgba(13,11,8,0.25)]!" : ""}`}
+        className={`pointer-events-none absolute inset-0 overflow-hidden ${tone === "orange" ? "[&>span]:[background:rgba(13,11,8,0.1)]! [&>span]:[border-color:rgba(13,11,8,0.25)]!" : tone === "blue" ? "[&>span]:[background:rgba(255,255,255,0.07)]! [&>span]:[border-color:rgba(255,255,255,0.25)]!" : ""}`}
       >
         {/* Celular */}
         <Bar className="lg:hidden" style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.04)" }} i={0} />
