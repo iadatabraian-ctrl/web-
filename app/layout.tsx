@@ -29,7 +29,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deployuy.com"),
-  title: "Deploy · Software a medida, web y automatización en Uruguay",
+  title: "Deploy · Software a medida, web y automatización",
   description:
     "Desarrollamos software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram. Soluciones digitales para negocios en Uruguay.",
   alternates: { canonical: "https://deployuy.com/" },

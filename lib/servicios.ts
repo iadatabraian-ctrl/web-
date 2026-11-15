@@ -46,7 +46,7 @@ export const SERVICIOS: Servicio[] = [
     visual: "software",
     nombre: "Software a medida",
     eyebrow: "SOFTWARE A MEDIDA",
-    metaTitle: "Software a medida en Uruguay | Deploy · Salto",
+    metaTitle: "Software a medida | Deploy · Salto",
     metaDescription:
       "Desarrollo de software a medida para empresas en Uruguay: sistemas de gestión, paneles e integraciones diseñados para su operación. Desde Salto, con atención directa.",
     h1: "Software a medida para empresas en Uruguay",
@@ -133,7 +133,7 @@ export const SERVICIOS: Servicio[] = [
     visual: "web",
     nombre: "Páginas web",
     eyebrow: "PÁGINAS WEB",
-    metaTitle: "Diseño de páginas web en Uruguay | Deploy · Salto",
+    metaTitle: "Diseño de páginas web | Deploy · Salto",
     metaDescription:
       "Diseño y desarrollo de páginas web profesionales en Uruguay. Sitios a medida, rápidos y orientados a generar contactos. Desde Salto, con atención directa.",
     h1: "Diseño de páginas web en Uruguay",
@@ -229,7 +229,7 @@ export const SERVICIOS: Servicio[] = [
     visual: "automatizacion",
     nombre: "Automatización de procesos",
     eyebrow: "AUTOMATIZACIÓN",
-    metaTitle: "Automatización de procesos para empresas en Uruguay | Deploy",
+    metaTitle: "Automatización de procesos para empresas | Deploy",
     metaDescription:
       "Automatización de procesos empresariales en Uruguay: conectamos sus herramientas y eliminamos tareas manuales repetitivas. Desde Salto, con atención directa.",
     h1: "Automatización de procesos para empresas en Uruguay",
@@ -311,7 +311,7 @@ export const SERVICIOS: Servicio[] = [
     visual: "agentes",
     nombre: "Agentes de IA para WhatsApp e Instagram",
     eyebrow: "AGENTES DE IA",
-    metaTitle: "Agentes de IA para WhatsApp e Instagram en Uruguay | Deploy",
+    metaTitle: "Agentes de IA para WhatsApp e Instagram | Deploy",
     metaDescription:
       "Agentes de inteligencia artificial para WhatsApp e Instagram: atienden consultas, califican contactos y están disponibles todo el día. Desde Salto, Uruguay.",
     h1: "Agentes de IA para WhatsApp e Instagram",
