@@ -241,7 +241,7 @@ function Card({
   const img = CARD_IMAGES[service.kind];
   return (
     <div className="overflow-hidden rounded-[1.75rem] bg-brand-black text-brand-cream shadow-[0_24px_40px_-28px_rgba(26,23,18,0.6)]">
-      <div className="relative aspect-square w-full bg-[#0b0a08]">
+      <div className="relative aspect-[4/5] w-full bg-[#0b0a08]">
         {img ? (
           <Image src={img} alt={`Ilustración de ${service.title.toLowerCase()} con datos de ejemplo`} fill sizes="(min-width: 1024px) 28rem, 72vw" className="object-cover" />
         ) : (
@@ -251,18 +251,18 @@ function Card({
           0{index + 1}
         </span>
       </div>
-      <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3.5 pt-3.5 [--card-text-h:10.7rem] min-[380px]:[--card-text-h:10.4rem] sm:px-6 sm:pb-5 sm:pt-5 sm:[--card-text-h:12.6rem]">
-        <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.3rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-3xl">
+      <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3 pt-3 [--card-text-h:8.1rem] min-[380px]:[--card-text-h:7.9rem] sm:px-5 sm:pb-4 sm:pt-4 sm:[--card-text-h:9.6rem]">
+        <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.2rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-[1.7rem]">
           {service.title}
         </h3>
-        <p className="mt-1.5 font-body text-[12.5px] leading-[1.35] text-brand-ink-on-black-soft sm:mt-3 sm:text-sm sm:leading-relaxed">
+        <p className="mt-1 font-body text-[12px] leading-[1.3] text-brand-ink-on-black-soft sm:mt-2 sm:text-[13px] sm:leading-snug">
           {service.description}
         </p>
         <Link
           href={service.href}
           tabIndex={active ? 0 : -1}
           onClick={onLinkClick}
-          className="mt-3 inline-flex w-fit sm:mt-auto items-center gap-2 self-start rounded-full bg-white px-3.5 py-2 font-body text-[10.5px] font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-brand-accent active:scale-[0.97] sm:text-xs"
+          className="mt-2 inline-flex w-fit sm:mt-auto items-center gap-2 self-start rounded-full bg-white px-3 py-1.5 sm:py-2 font-body text-[10.5px] font-bold uppercase tracking-wide text-brand-black transition-[transform,background-color] duration-200 hover:bg-brand-accent active:scale-[0.97] sm:text-xs"
         >
           Ver el servicio completo
           <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.75} />
