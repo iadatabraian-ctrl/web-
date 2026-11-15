@@ -6,8 +6,8 @@ import { animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion,
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Bar } from "@/components/Bar";
 
-/* Hero (ver PRODUCT.md). Base oscura; una segunda copia clara (aria-hidden, sin clics) se revela con
-   una ola que sube y baja cada ~11 s. Con "reducir movimiento" queda fijo en oscuro. Hero oscuro: titular gigante en blanco semitransparente, detrás de una
+/* Hero (ver PRODUCT.md). Base oscura; una segunda copia en naranja puro (aria-hidden, sin clics) se revela con
+   una ola que sube y baja cada ~11 s (oscuro y naranja). Con "reducir movimiento" queda fijo en oscuro. Hero oscuro: titular gigante en blanco semitransparente, detrás de una
    figura recortada (public/img/hero/hero-recorte.webp, generada con IA, PNG con alfa) que lo
    tapa apenas en el final de la última línea para dar profundidad. El naranja queda en la luz
    de la figura y de las barras de fondo; los botones son blancos. Los tamaños van en vw para que el
@@ -43,13 +43,13 @@ const TONE = {
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
   light: {
-    h1a: "text-[#1a1712]",
-    h1b: "text-[#1a1712]/60",
+    h1a: "text-[#0d0b08]",
+    h1b: "text-[#0d0b08]/60",
     img: "",
-    p: "text-[#5b5346]",
-    strong: "text-[#1a1712]",
+    p: "text-[#0d0b08]/80",
+    strong: "text-[#0d0b08]",
     btn1: "bg-[#0d0b08] text-[#f6f1e7] hover:bg-[#0d0b08]/85",
-    btn2: "border-[#1a1712]/35 text-[#1a1712] hover:border-[#1a1712]",
+    btn2: "border-[#0d0b08]/50 text-[#0d0b08] hover:border-[#0d0b08]",
   },
 } as const;
 
@@ -111,7 +111,7 @@ export function Hero() {
         <motion.div
           aria-hidden="true"
           inert
-          className={`pointer-events-none absolute inset-0 z-[4] overflow-hidden bg-[#f6f1e7] text-[#1a1712] ${PAD}`}
+          className={`pointer-events-none absolute inset-0 z-[4] overflow-hidden bg-[#FF5C1A] text-[#0d0b08] ${PAD}`}
           style={{
             WebkitMaskImage: WAVE,
             maskImage: WAVE,
@@ -137,7 +137,10 @@ function Scene({ tone, instant = false }: { tone: "dark" | "light"; instant?: bo
     <>
       {/* Barras de luz de fondo (medidas sobre las maquetas): paralelogramos con borde duro,
           inicio y fin cortados y un degradé a lo ancho de la barra. Sin halos redondos. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 overflow-hidden ${tone === "light" ? "[&>span]:[background:rgba(13,11,8,0.1)]! [&>span]:[border-color:rgba(13,11,8,0.25)]!" : ""}`}
+      >
         {/* Celular */}
         <Bar className="lg:hidden" style={{ right: "4vw", top: "-8vw", width: "13vw", height: "150vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.04)" }} i={0} />
         <Bar className="lg:hidden" style={{ left: "-5.3vw", bottom: 0, width: "21vw", height: "52vw", skew: 37, origin: "0 100%", fill: "linear-gradient(to right, rgba(255,92,26,0.26), rgba(255,92,26,0))", edge: "left", edgeAlpha: 0.5, fadeTop: true }}  i={2} />
