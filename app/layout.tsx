@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     siteName: "Deploy",
     url: "https://deployuy.com/",
     locale: "es_UY",
-    title: "Deploy · Software a medida y automatización en Uruguay",
+    title: "Deploy · Software a medida y automatización",
     description:
       "Software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram.",
     images: [{ url: "/img/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deploy · Software a medida y automatización en Uruguay",
+    title: "Deploy · Software a medida y automatización",
     description:
       "Software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram.",
     images: ["/img/og-image.jpg"],
