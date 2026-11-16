@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     title: "Deploy · Software a medida y automatización",
     description:
       "Software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram.",
-    images: [{ url: "/img/og-image.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/img/og-deploy.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Deploy · Software a medida y automatización",
     description:
       "Software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram.",
-    images: ["/img/og-image.jpg"],
+    images: ["/img/og-deploy.jpg"],
   },
   other: { "theme-color": "#050403" },
 };
@@ -60,7 +60,7 @@ const jsonLd = {
   name: "Deploy",
   url: "https://deployuy.com/",
   logo: "https://deployuy.com/img/deploy-logo.png",
-  image: "https://deployuy.com/img/og-image.jpg",
+  image: "https://deployuy.com/img/og-deploy.jpg",
   description:
     "Desarrollo de software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram, para negocios en Uruguay.",
   email: "deploy.uy@gmail.com",
