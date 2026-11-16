@@ -33,6 +33,7 @@ const PAD = "px-5 pb-10 pt-24 sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28";
 
 const TONE = {
   dark: {
+    mark: "text-white/[0.07]",
     h1a: "text-white/95",
     h1b: "text-white/75",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
@@ -44,6 +45,7 @@ const TONE = {
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
   orange: {
+    mark: "text-white/[0.16]",
     h1a: "text-white",
     h1b: "text-white/80",
     img: "",
@@ -55,6 +57,7 @@ const TONE = {
     btn2: "border-white/70 text-white hover:border-white",
   },
   blue: {
+    mark: "text-white/[0.12]",
     h1a: "text-white",
     h1b: "text-white/80",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
@@ -190,6 +193,14 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
         <Bar gray className="max-lg:hidden" style={{ left: "93.6vw", top: "18.7vw", width: "12vw", height: "35vw", skew: 38, origin: "0 0", fill: "rgba(255,92,26,0.06)" }}  i={5} />
         <Bar gray className="max-lg:hidden" style={{ left: "79.5vw", top: 0, width: "9vw", height: "28vw", skew: 36, origin: "0 0", fill: "rgba(255,92,26,0.06)" }}  i={6} />
       </div>
+
+      {/* Marca gigante y muy tenue, detrás de la figura (decorativa) */}
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none absolute left-[-6vw] top-[188vw] z-0 origin-top-left -rotate-90 select-none whitespace-nowrap font-impact font-black uppercase italic leading-none tracking-[-0.03em] [font-stretch:50%] text-[52vw] sm:left-[-4vw] sm:top-[118vw] sm:text-[34vw] lg:left-[7vw] lg:top-[44.5vw] lg:rotate-0 lg:text-[20vw] ${t.mark}`}
+      >
+        Deploy
+      </span>
 
       {/* Titular gigante, detrás de la figura */}
       <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.8] tracking-[-0.03em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.82]">
