@@ -33,7 +33,6 @@ const PAD = "px-5 pb-10 pt-24 sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28";
 
 const TONE = {
   dark: {
-    sh: "[text-shadow:5px_6px_0_rgba(255,255,255,0.14),8px_10px_18px_rgba(255,255,255,0.22)]",
     h1a: "text-white/95",
     h1b: "text-white/75",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
@@ -45,7 +44,6 @@ const TONE = {
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
   orange: {
-    sh: "[text-shadow:5px_6px_0_rgba(0,0,0,0.28),8px_10px_18px_rgba(0,0,0,0.5)]",
     h1a: "text-white",
     h1b: "text-white/80",
     img: "",
@@ -57,7 +55,6 @@ const TONE = {
     btn2: "border-white/70 text-white hover:border-white",
   },
   blue: {
-    sh: "[text-shadow:5px_6px_0_rgba(0,0,0,0.28),8px_10px_18px_rgba(0,0,0,0.5)]",
     h1a: "text-white",
     h1b: "text-white/80",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
@@ -195,7 +192,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
       </div>
 
       {/* Titular gigante, detrás de la figura */}
-      <h1 className={`relative z-[1] ${t.sh} font-impact font-black uppercase italic leading-[0.8] tracking-[-0.03em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.82]`}>
+      <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.8] tracking-[-0.03em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.82]">
         <motion.span
           initial={ini("hidden")}
           animate="show"
