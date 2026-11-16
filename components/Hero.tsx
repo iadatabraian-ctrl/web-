@@ -16,18 +16,9 @@ import { Bar } from "@/components/Bar";
 
 /* Entrada en dos tiempos (decidido por el fundador, 16/11/2026):
    1. a la vez: la figura sube desde abajo y el titular entra de izquierda a derecha, línea por línea
-   2. después: la bajada y los botones ("Hablemos") suben desde abajo */
-const fromLeft = {
-  hidden: { opacity: 0, x: "-14vw" },
-  show: { opacity: 1, x: 0 },
-};
-
-const fromBelow = {
-  hidden: { opacity: 0, y: 36 },
-  show: { opacity: 1, y: 0 },
-};
-
-const ease = [0.16, 1, 0.3, 1] as const;
+   2. después: la bajada y los botones ("Hablemos") suben desde abajo
+   Es CSS puro (clases hero-in-* en globals.css) para que arranque en el primer pintado y no espere
+   a que cargue y se ejecute el JavaScript. */
 
 const PAD = "px-5 pb-10 pt-24 sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28";
 
@@ -172,7 +163,7 @@ function WaveLayer({ p, z, bg, tone }: { p: MotionValue<number>; z: number; bg: 
 
 function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
   const t = TONE[tone];
-  const ini = (v: string) => (instant ? false : v);
+  const anim = (c: string) => (instant ? "" : c);
   return (
     <>
       {/* Barras de luz de fondo (medidas sobre las maquetas): paralelogramos con borde duro,
@@ -193,34 +184,19 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
 
       {/* Titular gigante, detrás de la figura */}
       <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.8] tracking-[-0.03em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.82]">
-        <motion.span
-          initial={ini("hidden")}
-          animate="show"
-          variants={fromLeft}
-          transition={{ duration: 0.7, ease, delay: 0.05 }}
-          className={`block ${t.h1a}`}
-        >
+        <span className={`block ${anim("hero-in-left")} ${t.h1a}`} style={{ animationDelay: "0.05s" }}>
           Tu negocio,
-        </motion.span>
-        <motion.span
-          initial={ini("hidden")}
-          animate="show"
-          variants={fromLeft}
-          transition={{ duration: 0.7, ease, delay: 0.2 }}
-          className={`block ${t.h1b}`}
-        >
+        </span>
+        <span className={`block ${anim("hero-in-left")} ${t.h1b}`} style={{ animationDelay: "0.2s" }}>
           tu sistema.
-        </motion.span>
+        </span>
       </h1>
 
       {/* Figura: delante del titular. En celular la altura de la pantalla define su tamaño
           para que siempre se salga por el borde inferior; la cabeza queda a la derecha del texto. */}
-      <motion.div
+      <div
         aria-hidden="true"
-        initial={instant ? false : { opacity: 0, y: "14%" }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.9, ease: [0.22, 1, 0.36, 1], delay: 0 }}
-        className="pointer-events-none absolute right-[calc(25vw-var(--fw)/2)] top-[72vw] z-[2] w-[var(--fw)] [--fw:max(97vw,calc((100svh-72vw)/1.15))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]"
+        className={`${anim("hero-in-fig")} pointer-events-none absolute right-[calc(25vw-var(--fw)/2)] top-[72vw] z-[2] w-[var(--fw)] [--fw:max(97vw,calc((100svh-72vw)/1.15))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]`}
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
           maskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
@@ -233,31 +209,25 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
           width={1122}
           height={1402}
           priority={tone === "dark"}
-          sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 112vw"
+          sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 100vw"
           className={`h-auto w-full ${t.img}`}
         />
         </div>
-      </motion.div>
+      </div>
 
       {/* Texto y botones */}
       <div className="relative z-[3] mt-5 sm:mt-8 lg:mt-8">
-        <motion.p
-          initial={ini("hidden")}
-          animate="show"
-          variants={fromBelow}
-          transition={{ duration: 0.6, ease, delay: 0.8 }}
-          className={`max-w-[44%] font-body ${t.pz} leading-snug ${t.p} sm:max-w-md sm:leading-relaxed lg:max-w-[32rem]`}
+        <p
+          style={{ animationDelay: "0.8s" }}
+          className={`${anim("hero-in-below")} max-w-[44%] font-body ${t.pz} leading-snug ${t.p} sm:max-w-md sm:leading-relaxed lg:max-w-[32rem]`}
         >
           <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
           automatización y agentes de WhatsApp.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={ini("hidden")}
-          animate="show"
-          variants={fromBelow}
-          transition={{ duration: 0.6, ease, delay: 0.95 }}
-          className="mt-6 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4"
+        <div
+          style={{ animationDelay: "0.95s" }}
+          className={`${anim("hero-in-below")} mt-6 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4`}
         >
           <a
             href="#hablemos"
@@ -273,7 +243,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
             Ver servicios
             <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
           </a>
-        </motion.div>
+        </div>
       </div>
     </>
   );

@@ -24,6 +24,7 @@ const saira = Saira({
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
+  preload: false, // solo se usa en etiquetas debajo del primer pantallazo
   subsets: ["latin"],
 });
 
