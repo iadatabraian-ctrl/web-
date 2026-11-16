@@ -33,7 +33,7 @@ const PAD = "px-5 pb-10 pt-24 sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28";
 
 const TONE = {
   dark: {
-    sh: "[text-shadow:5px_6px_0_rgba(255,255,255,0.14),8px_10px_18px_rgba(255,255,255,0.22)]",
+    sh: "[text-shadow:0_0_1.5px_rgba(255,255,255,0.55),0_0_3px_rgba(255,255,255,0.4),0_0_14px_rgba(255,255,255,0.3)]",
     h1a: "text-white/95",
     h1b: "text-white/75",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
@@ -45,7 +45,7 @@ const TONE = {
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
   orange: {
-    sh: "[text-shadow:5px_6px_0_rgba(0,0,0,0.28),8px_10px_18px_rgba(0,0,0,0.5)]",
+    sh: "[text-shadow:0_0_1.5px_rgba(0,0,0,0.65),0_0_3px_rgba(0,0,0,0.5),0_0_14px_rgba(0,0,0,0.45)]",
     h1a: "text-white",
     h1b: "text-white/80",
     img: "",
@@ -57,7 +57,7 @@ const TONE = {
     btn2: "border-white/70 text-white hover:border-white",
   },
   blue: {
-    sh: "[text-shadow:5px_6px_0_rgba(0,0,0,0.28),8px_10px_18px_rgba(0,0,0,0.5)]",
+    sh: "[text-shadow:0_0_1.5px_rgba(0,0,0,0.65),0_0_3px_rgba(0,0,0,0.5),0_0_14px_rgba(0,0,0,0.45)]",
     h1a: "text-white",
     h1b: "text-white/80",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
