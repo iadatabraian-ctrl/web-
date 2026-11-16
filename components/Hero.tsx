@@ -14,11 +14,9 @@ import { Bar } from "@/components/Bar";
    y de las barras de fondo; los botones son blancos. Los tamaños van en vw para que el solapamiento sea
    parecido en cualquier ancho. */
 
-/* Orden y dirección de la entrada (definidos por el fundador sobre la maqueta):
-   1. la figura sube desde abajo
-   2. "Tu idea," entra de izquierda a derecha
-   3. "en producción." entra igual, justo después
-   4. texto y botones ("Hablemos") suben desde abajo, al final */
+/* Entrada en dos tiempos (decidido por el fundador, 16/11/2026):
+   1. a la vez: la figura sube desde abajo y el titular entra de izquierda a derecha, línea por línea
+   2. después: la bajada y los botones ("Hablemos") suben desde abajo */
 const fromLeft = {
   hidden: { opacity: 0, x: "-14vw" },
   show: { opacity: 1, x: 0 },
@@ -199,7 +197,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
           initial={ini("hidden")}
           animate="show"
           variants={fromLeft}
-          transition={{ duration: 0.75, ease, delay: 0.75 }}
+          transition={{ duration: 0.7, ease, delay: 0.05 }}
           className={`block ${t.h1a}`}
         >
           Tu negocio,
@@ -208,7 +206,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
           initial={ini("hidden")}
           animate="show"
           variants={fromLeft}
-          transition={{ duration: 0.75, ease, delay: 0.95 }}
+          transition={{ duration: 0.7, ease, delay: 0.2 }}
           className={`block ${t.h1b}`}
         >
           tu sistema.
@@ -221,7 +219,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
         aria-hidden="true"
         initial={instant ? false : { opacity: 0, y: "14%" }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.1, ease, delay: 0.1 }}
+        transition={{ duration: 1.0, ease, delay: 0 }}
         className="pointer-events-none absolute right-[calc(28vw-var(--fw)/2)] top-[76vw] z-[2] w-[var(--fw)] [--fw:max(88vw,calc((100svh-76vw)/1.25))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]"
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
@@ -247,7 +245,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
           initial={ini("hidden")}
           animate="show"
           variants={fromBelow}
-          transition={{ duration: 0.6, ease, delay: 1.35 }}
+          transition={{ duration: 0.6, ease, delay: 0.8 }}
           className={`max-w-[44%] font-body ${t.pz} leading-snug ${t.p} sm:max-w-md sm:leading-relaxed lg:max-w-[32rem]`}
         >
           <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
@@ -258,7 +256,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
           initial={ini("hidden")}
           animate="show"
           variants={fromBelow}
-          transition={{ duration: 0.6, ease, delay: 1.5 }}
+          transition={{ duration: 0.6, ease, delay: 0.95 }}
           className="mt-6 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4"
         >
           <a
