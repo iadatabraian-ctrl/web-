@@ -219,7 +219,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
         aria-hidden="true"
         initial={instant ? false : { opacity: 0, y: "14%" }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.0, ease, delay: 0 }}
+        transition={{ duration: 1.9, ease: [0.22, 1, 0.36, 1], delay: 0 }}
         className="pointer-events-none absolute right-[calc(28vw-var(--fw)/2)] top-[76vw] z-[2] w-[var(--fw)] [--fw:max(88vw,calc((100svh-76vw)/1.25))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]"
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
