@@ -100,7 +100,7 @@ export function Servicios() {
             transition={{ duration: 0.75, ease }}
             className="block"
           >
-            El negocio creció.
+            Elegí por
           </motion.span>
           <motion.span
             initial={{ opacity: 0, x: "-12vw" }}
@@ -109,7 +109,7 @@ export function Servicios() {
             transition={{ duration: 0.75, ease, delay: 0.18 }}
             className="block text-brand-ink-on-cream-soft"
           >
-            El sistema no.
+            dónde empezar.
           </motion.span>
         </h2>
         <motion.p
@@ -119,7 +119,7 @@ export function Servicios() {
           transition={{ duration: 0.6, ease, delay: 0.4 }}
           className="mx-auto mt-6 max-w-md text-center font-body text-base leading-relaxed text-brand-ink-on-cream-soft sm:mt-8 sm:text-lg"
         >
-          Cuatro formas de que el sistema crezca al ritmo del negocio.
+          Software a medida, páginas web, automatización y agentes de WhatsApp.
         </motion.p>
 
         {/* Abanico de tarjetas */}
