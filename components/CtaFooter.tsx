@@ -83,10 +83,10 @@ export function CtaFooter() {
         </p>
       </section>
 
-      <footer className="relative overflow-x-clip bg-[#0a0a0a]">
-        {/* Toda la información del pie, en una sola tarjeta */}
-        <div className="relative z-10 px-5 pt-8 sm:px-8 sm:pt-12 lg:px-[6vw]">
-          <div className="mx-auto max-w-6xl rounded-[1.6rem] bg-brand-cream px-6 py-6 text-brand-ink-on-cream shadow-[0_24px_50px_-18px_rgba(0,0,0,0.8)] sm:rounded-[2rem] sm:px-10 sm:py-7">
+      <footer className="bg-[#0a0a0a] px-5 py-8 sm:px-8 sm:py-12 lg:px-[6vw]">
+        {/* Un solo bloque: arriba la información, abajo el camino. Mismo ancho y mismas esquinas. */}
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-[1.6rem] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.9)] sm:rounded-[2rem]">
+          <div className="bg-brand-cream px-6 py-6 text-brand-ink-on-cream sm:px-10 sm:py-7">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <Link href="/" className="inline-flex" aria-label="Deploy, inicio">
                 <Logo dark />
@@ -128,16 +128,15 @@ export function CtaFooter() {
               </nav>
             </div>
           </div>
-        </div>
 
-        {/* Camino al final: la ruta sale de debajo de la tarjeta y la página termina en ella */}
-        <div className="relative -mt-24 h-[62vw] sm:-mt-28 sm:h-[30vw] lg:h-[20rem]">
-          <Image src="/img/footer-camino.webp" alt="" fill sizes="100vw" className="object-cover object-[50%_100%]" />
-          <div aria-hidden="true" className="absolute inset-0 bg-black/10" />
-          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-3/5 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent" />
-          <div className="absolute inset-x-5 bottom-4 z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:bottom-6 sm:text-[11px] lg:inset-x-[6vw]">
-            <span>Software · Web<br />Automatización · Agentes</span>
-            <span className="text-right max-sm:hidden">Tu negocio<br />Tu sistema</span>
+          <div className="relative h-[56vw] bg-[#0a0a0a] sm:h-[24vw] lg:h-[18rem]">
+            <Image src="/img/footer-camino.webp" alt="" fill sizes="(min-width: 1024px) 72rem, 100vw" className="object-cover object-[50%_100%]" />
+            <div aria-hidden="true" className="absolute inset-0 bg-black/10" />
+            <div aria-hidden="true" className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-[#0a0a0a]/80 to-transparent" />
+            <div className="absolute inset-x-5 bottom-4 z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:bottom-6 sm:text-[11px]">
+              <span>Software · Web<br />Automatización · Agentes</span>
+              <span className="text-right max-sm:hidden">Tu negocio<br />Tu sistema</span>
+            </div>
           </div>
         </div>
       </footer>
