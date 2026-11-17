@@ -1,3 +1,4 @@
+import { SoundToggle } from "@/components/SoundToggle";
 import type { Metadata } from "next";
 import { Anton, Bodoni_Moda, JetBrains_Mono, Montserrat, Saira } from "next/font/google";
 import "./globals.css";
@@ -100,6 +101,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <SoundToggle />
       </body>
     </html>
   );
