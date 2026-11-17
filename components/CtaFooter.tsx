@@ -24,7 +24,7 @@ const SERVICE_LINKS = [
 ];
 
 const ICON =
-  "flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-brand-cream transition hover:scale-110 hover:border-brand-accent hover:text-brand-accent";
+  "flex h-9 w-9 items-center justify-center rounded-full border border-brand-ink-on-cream/20 text-brand-ink-on-cream transition hover:scale-110 hover:border-brand-accent hover:text-brand-accent";
 
 export function CtaFooter() {
   return (
@@ -83,15 +83,20 @@ export function CtaFooter() {
         </p>
       </section>
 
-      <footer className="relative overflow-x-clip bg-[#0a0a0a]">
-        {/* Solo texto sobre el negro; el camino viene debajo y es lo último de la página */}
-        <div className="relative z-10 mx-auto max-w-6xl px-5 pt-14 sm:px-8 sm:pt-20 lg:px-0">
+      <footer className="relative bg-[#0a0a0a] [--cut:clamp(2.5rem,7vw,6rem)]">
+        {/* Información sobre fondo claro: continúa el color de Contacto y baja en diagonal hacia el camino */}
+        <div
+          className="relative z-10 bg-brand-cream px-5 pb-[calc(var(--cut)+1.5rem)] pt-4 text-brand-ink-on-cream sm:px-8 lg:px-[6vw]"
+          style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%)" }}
+        >
+          <div className="mx-auto max-w-6xl border-t border-brand-ink-on-cream/15 pt-8 sm:pt-10">
+
 
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <Link href="/" className="inline-flex" aria-label="Deploy, inicio">
-              <Logo />
+              <Logo dark />
             </Link>
-            <nav aria-label="Pie de página" className="flex flex-wrap gap-x-7 gap-y-2 font-body text-sm font-semibold text-brand-cream">
+            <nav aria-label="Pie de página" className="flex flex-wrap gap-x-7 gap-y-2 font-body text-sm font-semibold">
               {NAV_LINKS.map((l) => (
                 <a key={l.href} href={l.href} className="transition-colors hover:text-brand-accent">
                   {l.label}
@@ -111,7 +116,7 @@ export function CtaFooter() {
             </div>
           </div>
 
-          <div className="mt-5 flex flex-col gap-3 border-t border-white/15 pt-4 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-black-soft lg:flex-row lg:items-center lg:justify-between">
+          <div className="mt-5 flex flex-col gap-3 border-t border-brand-ink-on-cream/15 pt-4 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-cream-soft lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
               <span>© 2026 Deploy</span>
               <span className="inline-flex items-center gap-1.5">
@@ -127,12 +132,13 @@ export function CtaFooter() {
               ))}
             </nav>
           </div>
+          </div>
         </div>
 
-        <div className="relative -mt-10 h-[64vw] sm:-mt-12 sm:h-[30vw] lg:h-[22rem]">
+        <div className="relative -mt-[calc(var(--cut)+0.5rem)] h-[70vw] sm:h-[34vw] lg:h-[26rem]">
           <Image src="/img/footer-camino.webp" alt="" fill sizes="100vw" className="object-cover object-[50%_100%]" />
           <div aria-hidden="true" className="absolute inset-0 bg-black/10" />
-          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-3/5 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent" />
+          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#0a0a0a]/70 to-transparent" />
           <div className="absolute inset-x-5 bottom-4 z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:bottom-6 sm:text-[11px] lg:inset-x-[6vw]">
             <span>Software · Web<br />Automatización · Agentes</span>
             <span className="text-right max-sm:hidden">Tu negocio<br />Tu sistema</span>
