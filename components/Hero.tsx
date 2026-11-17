@@ -75,7 +75,7 @@ function Content() {
           sizes="(min-width: 1024px) 30vw, 60vw"
           loading="lazy"
           fetchPriority="low"
-          className="h-auto w-full opacity-[0.38] [filter:grayscale(1)_blur(7px)_brightness(1.5)_contrast(0.9)]"
+          className="h-auto w-full opacity-[0.2] [filter:grayscale(1)_blur(7px)_brightness(1.5)_contrast(0.9)]"
         />
       </div>
 
