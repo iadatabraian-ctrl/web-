@@ -5,14 +5,16 @@ import type { Nivel } from "@/lib/servicios";
 
 export function Niveles({ niveles, servicio }: { niveles: Nivel[]; servicio: string }) {
   return (
-    <div className="grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-6">
+    <div className="flex flex-col lg:grid lg:grid-cols-3 lg:items-stretch lg:gap-6">
       {niveles.map((n, i) => {
         const dest = i === 1;
         const wa = `https://wa.me/59898648853?text=${encodeURIComponent(`Hola, quiero cotizar ${servicio}. Me interesa el alcance ${n.nombre.toLowerCase()}.`)}`;
         return (
           <article
             key={n.nombre}
-            className={`relative flex flex-col rounded-[1.6rem] p-6 sm:p-8 ${
+            className={`relative flex flex-col rounded-[1.3rem] p-5 max-lg:w-[84%] sm:rounded-[1.6rem] sm:p-8 ${
+              i === 1 ? "z-10 max-lg:-mt-5 max-lg:self-end" : i === 2 ? "max-lg:-mt-5 max-lg:self-start" : "max-lg:self-start"
+            } ${
               dest
                 ? "bg-[#0a0a0a] text-brand-cream shadow-[0_40px_60px_-30px_rgba(0,0,0,0.6)] lg:-my-4 lg:py-12"
                 : "border border-brand-ink-on-cream/15 bg-[#fffdf9] text-brand-ink-on-cream"
@@ -22,18 +24,18 @@ export function Niveles({ niveles, servicio }: { niveles: Nivel[]; servicio: str
               <h3 className="font-body text-lg font-extrabold uppercase tracking-wide">{n.nombre}</h3>
               {dest && <span className="rounded-full bg-brand-accent px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-white">Más elegido</span>}
             </div>
-            <p className={`mt-2 min-h-[2.6em] font-body text-sm ${dest ? "text-brand-ink-on-black-soft" : "text-brand-ink-on-cream-soft"}`}>{n.resumen}</p>
+            <p className={`mt-1.5 font-body text-[13px] sm:mt-2 sm:min-h-[2.6em] sm:text-sm ${dest ? "text-brand-ink-on-black-soft" : "text-brand-ink-on-cream-soft"}`}>{n.resumen}</p>
 
-            <div className="mt-6">
+            <div className="mt-4 sm:mt-6">
               <p className={`h-4 font-mono text-[11px] uppercase tracking-[0.15em] ${dest ? "text-brand-ink-on-black-soft" : "text-brand-ink-on-cream-soft"}`}>{n.etiqueta}</p>
-              <p className="mt-1 font-body text-[2.4rem] font-extrabold leading-none tracking-[-0.02em] sm:text-5xl">
+              <p className="mt-1 font-body text-[2rem] font-extrabold leading-none tracking-[-0.02em] sm:text-5xl">
                 {n.precio}
                 {n.sufijo && <span className={`ml-2 text-xs font-semibold uppercase tracking-wide ${dest ? "text-brand-ink-on-black-soft" : "text-brand-ink-on-cream-soft"}`}>{n.sufijo}</span>}
               </p>
               <p className={`mt-3 font-mono text-xs uppercase tracking-wide ${dest ? "text-brand-accent" : "text-brand-accent"}`}>Plazo {n.plazo}</p>
             </div>
 
-            <ul className={`mt-6 flex flex-1 flex-col gap-3 border-t pt-6 font-body text-sm sm:text-[15px] ${dest ? "border-white/15" : "border-brand-ink-on-cream/15"}`}>
+            <ul className={`mt-4 flex flex-1 flex-col gap-2 border-t pt-4 font-body text-[13px] sm:mt-6 sm:gap-3 sm:pt-6 sm:text-[15px] ${dest ? "border-white/15" : "border-brand-ink-on-cream/15"}`}>
               {n.incluye.map((x) => (
                 <li key={x} className="flex gap-3">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" strokeWidth={3} />
@@ -46,7 +48,7 @@ export function Niveles({ niveles, servicio }: { niveles: Nivel[]; servicio: str
               href={wa}
               target="_blank"
               rel="noopener"
-              className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-body text-xs font-bold uppercase tracking-wide transition-[transform,background-color,color] duration-200 active:scale-[0.97] sm:text-sm ${
+              className={`mt-5 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:mt-8 sm:px-6 sm:py-3 font-body text-xs font-bold uppercase tracking-wide transition-[transform,background-color,color] duration-200 active:scale-[0.97] sm:text-sm ${
                 dest ? "bg-white text-black hover:bg-brand-accent hover:text-white" : "bg-brand-black text-brand-cream hover:bg-brand-accent"
               }`}
             >
