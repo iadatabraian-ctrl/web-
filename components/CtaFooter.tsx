@@ -84,20 +84,8 @@ export function CtaFooter() {
       </section>
 
       <footer className="relative overflow-x-clip bg-[#0a0a0a]">
-        {/* Ciudad: el borde superior se funde con el negro y el inferior con el pie */}
-        <div className="relative h-[92vw] sm:h-[50vw] lg:h-[36rem]">
-          <Image src="/img/footer-ciudad.webp" alt="" fill sizes="100vw" className="object-cover object-[46%_62%]" />
-          <div aria-hidden="true" className="absolute inset-0 bg-black/20" />
-          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-[#0a0a0a] to-transparent" />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
-          <div className="absolute inset-x-5 bottom-[9.5rem] z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:bottom-[8.5rem] sm:text-[11px] lg:inset-x-[6vw]">
-            <span>Software · Web<br />Automatización · Agentes</span>
-            <span className="text-right">Tu negocio<br />Tu sistema</span>
-          </div>
-        </div>
-
         {/* Toda la información del pie, en una sola tarjeta */}
-        <div className="relative z-10 -mt-[8.5rem] px-5 pb-6 sm:-mt-28 sm:px-8 lg:px-[6vw]">
+        <div className="relative z-10 px-5 pt-8 sm:px-8 sm:pt-12 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl rounded-[1.6rem] bg-brand-cream px-6 py-6 text-brand-ink-on-cream shadow-[0_24px_50px_-18px_rgba(0,0,0,0.8)] sm:rounded-[2rem] sm:px-10 sm:py-7">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <Link href="/" className="inline-flex" aria-label="Deploy, inicio">
@@ -139,6 +127,17 @@ export function CtaFooter() {
                 ))}
               </nav>
             </div>
+          </div>
+        </div>
+
+        {/* La ciudad es lo último: el borde superior se funde con el negro y la página termina en ella */}
+        <div className="relative -mt-6 h-[88vw] sm:h-[50vw] lg:h-[36rem]">
+          <Image src="/img/footer-ciudad.webp" alt="" fill sizes="100vw" className="object-cover object-[46%_62%]" />
+          <div aria-hidden="true" className="absolute inset-0 bg-black/15" />
+          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent" />
+          <div className="absolute inset-x-5 top-12 z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:top-16 sm:text-[11px] lg:inset-x-[6vw]">
+            <span>Software · Web<br />Automatización · Agentes</span>
+            <span className="text-right">Tu negocio<br />Tu sistema</span>
           </div>
         </div>
       </footer>
