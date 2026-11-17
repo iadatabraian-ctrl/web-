@@ -83,13 +83,11 @@ export function CtaFooter() {
         </p>
       </section>
 
-      <footer className="relative bg-[#0a0a0a] [--cut:clamp(2.5rem,7vw,6rem)]">
-        {/* Información sobre fondo claro: continúa el color de Contacto y baja en diagonal hacia el camino */}
-        <div
-          className="relative z-10 bg-brand-cream px-5 pb-[calc(var(--cut)+1.5rem)] pt-4 text-brand-ink-on-cream sm:px-8 lg:px-[6vw]"
-          style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%)" }}
-        >
+      <footer className="relative overflow-x-clip bg-brand-cream text-brand-ink-on-cream">
+        {/* Información sobre fondo claro: continúa el color de Contacto */}
+        <div className="relative z-10 px-5 pt-4 sm:px-8 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl border-t border-brand-ink-on-cream/15 pt-8 sm:pt-10">
+
 
 
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
@@ -135,14 +133,16 @@ export function CtaFooter() {
           </div>
         </div>
 
-        <div className="relative -mt-[calc(var(--cut)+0.5rem)] h-[70vw] sm:h-[34vw] lg:h-[26rem]">
-          <Image src="/img/footer-camino.webp" alt="" fill sizes="100vw" className="object-cover object-[50%_100%]" />
-          <div aria-hidden="true" className="absolute inset-0 bg-black/10" />
-          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#0a0a0a]/70 to-transparent" />
-          <div className="absolute inset-x-5 bottom-4 z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:bottom-6 sm:text-[11px] lg:inset-x-[6vw]">
-            <span>Software · Web<br />Automatización · Agentes</span>
-            <span className="text-right max-sm:hidden">Tu negocio<br />Tu sistema</span>
-          </div>
+        {/* La ciudad (PNG con transparencia) se levanta desde el pie y la ruta cierra la página */}
+        <div aria-hidden="true" className="relative mt-6 h-[46vw] overflow-hidden sm:mt-10 sm:h-auto">
+          <Image
+            src="/img/footer-skyline.webp"
+            alt=""
+            width={2172}
+            height={691}
+            sizes="100vw"
+            className="absolute bottom-0 right-[-38%] h-full w-auto max-w-none sm:static sm:h-auto sm:w-full"
+          />
         </div>
       </footer>
     </>
