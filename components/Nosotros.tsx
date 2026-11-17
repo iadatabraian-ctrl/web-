@@ -21,7 +21,7 @@ export function Nosotros() {
       id="nosotros"
       className="relative overflow-hidden bg-brand-cream px-5 py-20 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]"
     >
-      <LineasFondo uid="ln" />
+      <LineasFondo kind="nosotros" />
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-[7.5rem_1fr] items-center gap-4 sm:grid-cols-[13rem_1fr] sm:gap-8 lg:grid-cols-[19rem_1fr] lg:gap-16">
         {/* Foto */}

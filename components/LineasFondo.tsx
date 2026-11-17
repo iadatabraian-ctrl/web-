@@ -1,48 +1,73 @@
-/* Líneas curvas finas de fondo (referencia del fundador): entran por los bordes, van adelgazando hasta
-   terminar en una punta afilada, sin desvanecido ni resplandor, y pasan por detrás del contenido.
-   Cada curva se dibuja como tramos cortos cuyo grosor baja de a poco; el grosor es en píxeles y no se
-   deforma con el tamaño de la sección. Solo decoración. */
+/* Líneas finas de fondo, copiadas de la referencia del fundador: grosor parejo (unos 2 px), casi rectas
+   (el arco de la izquierda es suave), un poco más claras hacia el borde de la pantalla y más fuertes hacia
+   adentro. No se afinan ni se desvanecen: salen del borde y terminan escondidas detrás de la persona, del
+   formulario o de las tarjetas. Las coordenadas son % de la sección y se midieron sobre cada diseño, por
+   eso hay un juego para pantallas grandes y otro para celular y tablet. Solo decoración. */
 
-const LINES = [
-  { d: [100, 4, 90, 12, 82, 20, 74, 32], w: 2.4, o: 0.95 },
-  { d: [100, 18, 90, 20, 78, 26, 66, 38], w: 2, o: 0.85 },
-  { d: [100, 30, 94, 32, 88, 36, 82, 42], w: 1.6, o: 0.75 },
-  { d: [100, 62, 94, 64, 90, 68, 86, 74], w: 2, o: 0.85 },
-  { d: [100, 78, 92, 80, 86, 84, 78, 90], w: 1.6, o: 0.75 },
-  { d: [0, 70, 6, 62, 10, 58, 14, 56], w: 2.6, o: 0.95 },
-  { d: [0, 90, 8, 88, 14, 84, 24, 80], w: 1.8, o: 0.8 },
-  { d: [0, 22, 6, 18, 10, 14, 16, 8], w: 1.6, o: 0.7 },
-];
+type Line = readonly number[]; // [x1,y1,x2,y2] recta, o [x0,y0,c1x,c1y,c2x,c2y,x3,y3] curva
 
-const STEPS = 28;
+const SETS: Record<"contacto" | "nosotros", { lg: Line[]; sm: Line[] }> = {
+  contacto: {
+    lg: [
+      [100, 3, 75, 31],
+      [100, 27, 80, 36],
+      [100, 60, 79, 69],
+      [100, 76, 79, 83.5],
+      [0, 74, 6, 68, 12, 62, 19.8, 57],
+      [0, 93, 19.8, 82],
+    ],
+    sm: [
+      [100, 22, 76, 36],
+      [100, 47, 93, 51],
+      [100, 70, 93, 74],
+      [0, 76, 3, 73, 5, 71, 6.5, 69],
+    ],
+  },
+  nosotros: {
+    lg: [
+      [0, 27, 10.8, 20],
+      [0, 72, 4, 68, 7, 65, 10.8, 62],
+      [0, 92, 10.8, 86],
+      [100, 50, 89, 56.5],
+      [100, 66, 89, 71.5],
+      [100, 82, 89, 87],
+    ],
+    sm: [
+      [0, 40, 10, 54],
+      [0, 24, 6, 20],
+      [100, 40, 90, 54],
+      [100, 70, 93, 74],
+    ],
+  },
+};
 
-function bezier(p: number[], t: number): [number, number] {
-  const u = 1 - t;
-  const x = u * u * u * p[0] + 3 * u * u * t * p[2] + 3 * u * t * t * p[4] + t * t * t * p[6];
-  const y = u * u * u * p[1] + 3 * u * u * t * p[3] + 3 * u * t * t * p[5] + t * t * t * p[7];
-  return [x, y];
+function path(l: Line) {
+  return l.length === 4 ? `M${l[0]} ${l[1]} L${l[2]} ${l[3]}` : `M${l[0]} ${l[1]} C${l[2]} ${l[3]}, ${l[4]} ${l[5]}, ${l[6]} ${l[7]}`;
 }
 
-const SEGMENTS = LINES.flatMap((l, li) =>
-  Array.from({ length: STEPS }, (_, i) => {
-    const a = bezier(l.d, i / STEPS);
-    const b = bezier(l.d, (i + 1) / STEPS);
-    const k = Math.pow(1 - (i + 0.5) / STEPS, 1.15); // 1 en el borde, 0 en la punta
-    return { key: `${li}-${i}`, d: `M${a[0].toFixed(2)} ${a[1].toFixed(2)} L${b[0].toFixed(2)} ${b[1].toFixed(2)}`, w: Math.max(0.35, l.w * k), o: l.o };
-  }),
-);
-
-export function LineasFondo({ className = "" }: { uid?: string; className?: string }) {
+function Set({ lines, id, className }: { lines: Line[]; id: string; className: string }) {
   return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      className={`pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible ${className}`}
-    >
-      {SEGMENTS.map((s) => (
-        <path key={s.key} d={s.d} fill="none" stroke="#FF5C1A" strokeWidth={s.w} strokeOpacity={s.o} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+    <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" className={`pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible ${className}`}>
+      <defs>
+        {lines.map((l, i) => (
+          <linearGradient key={i} id={`${id}-${i}`} gradientUnits="userSpaceOnUse" x1={l[0]} y1={l[1]} x2={l[l.length - 2]} y2={l[l.length - 1]}>
+            <stop offset="0" stopColor="#FFA878" />
+            <stop offset="1" stopColor="#FF6A1F" />
+          </linearGradient>
+        ))}
+      </defs>
+      {lines.map((l, i) => (
+        <path key={i} d={path(l)} fill="none" stroke={`url(#${id}-${i})`} strokeWidth="1.8" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
       ))}
     </svg>
+  );
+}
+
+export function LineasFondo({ kind }: { kind: keyof typeof SETS }) {
+  return (
+    <>
+      <Set lines={SETS[kind].lg} id={`lf-${kind}-lg`} className="max-lg:hidden" />
+      <Set lines={SETS[kind].sm} id={`lf-${kind}-sm`} className="lg:hidden" />
+    </>
   );
 }

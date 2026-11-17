@@ -31,7 +31,7 @@ export function CtaFooter() {
         id="hablemos"
         className="relative overflow-hidden bg-brand-cream px-5 pb-20 pt-20 text-[#0a0a0a] [--pw:62vw] sm:px-8 sm:pb-28 sm:pt-28 sm:[--pw:38vw] lg:px-[6vw] lg:[--pw:24rem]"
       >
-        <LineasFondo uid="lc" />
+        <LineasFondo kind="contacto" />
 
         <div className="relative z-[2] mx-auto max-w-4xl">
           {/* Texto de siempre; en celular el botón queda al lado de la cabeza */}
