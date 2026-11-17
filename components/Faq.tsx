@@ -95,7 +95,7 @@ export function Faq() {
         <Bar gray className="max-sm:hidden" style={{ left: "-4vw", top: "6vw", width: "9vw", height: "36vw", skew: 37, origin: "0 0", fill: "linear-gradient(to right, rgba(255,92,26,0.24), rgba(255,92,26,0))", edge: "left" }} i={1} />
       </div>
       <div className="relative mx-auto max-w-3xl">
-        <h2 className="origin-bottom -skew-x-[5deg] text-balance text-center font-impact text-[9vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[6.2vw] lg:text-[5rem]">
+        <h2 className="text-balance text-center font-body text-[6vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[4.2vw] lg:text-[3.6rem]">
           <span className="block text-white/95">¿Qué querés saber</span>
           <span className="block text-white/75">antes de arrancar?</span>
         </h2>

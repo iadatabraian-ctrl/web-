@@ -34,7 +34,7 @@ export function Proceso() {
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        <h2 className="origin-bottom -skew-x-[5deg] text-balance text-center font-impact text-[11.5vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[7.6vw] lg:text-[6.2rem]">
+        <h2 className="text-balance text-center font-body text-[7.4vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[5vw] lg:text-[4.4rem]">
           <motion.span
             initial={{ opacity: 0, x: "-12vw" }}
             whileInView={{ opacity: 1, x: 0 }}

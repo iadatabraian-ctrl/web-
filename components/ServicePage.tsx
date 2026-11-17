@@ -67,7 +67,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
   const wa = `https://wa.me/59898648853?text=${encodeURIComponent(s.whatsappTexto)}`;
 
   const H2 =
-    "origin-bottom-left -skew-x-[5deg] font-impact text-[2.1rem] font-black uppercase not-italic leading-[0.95] tracking-[-0.005em] [font-stretch:80%] sm:text-6xl";
+    "font-body text-[1.65rem] font-extrabold uppercase leading-[1.05] tracking-[-0.02em] sm:text-[3.2rem]";
 
   return (
     <>
@@ -245,7 +245,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         {/* Otros servicios (oscura) */}
         <section className="bg-[#0a0a0a] px-5 pb-16 pt-6 text-brand-cream sm:px-8 sm:pb-24 sm:pt-10 lg:px-[6vw]">
           <div className="mx-auto max-w-5xl">
-            <h2 className="origin-bottom-left -skew-x-[5deg] font-impact text-2xl font-black uppercase not-italic [font-stretch:80%] sm:text-3xl">Otros servicios</h2>
+            <h2 className="font-body text-xl font-extrabold uppercase tracking-[-0.02em] sm:text-3xl">Otros servicios</h2>
             <OtrosServicios items={otros.map((o) => ({ slug: o.slug, nombre: o.nombre, img: CARD_IMG[o.visual] }))} />
           </div>
         </section>

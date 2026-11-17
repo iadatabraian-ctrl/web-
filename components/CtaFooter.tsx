@@ -43,7 +43,7 @@ export function CtaFooter() {
           {/* Texto de siempre; en celular el botón queda al lado de la cabeza */}
           <div className="sm:mb-8 sm:min-h-[calc(var(--pw)*0.84)] sm:max-w-[50%] lg:max-w-[34rem]">
             <FadeIn>
-              <h2 className="origin-bottom-left -skew-x-[5deg] text-balance font-impact text-[8.4vw] font-black uppercase not-italic leading-[0.94] tracking-[-0.005em] [font-stretch:80%] sm:text-[4.2vw] lg:text-[3.4rem]">
+              <h2 className="text-balance font-body text-[5.6vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[3vw] lg:text-[2.6rem]">
                 <span className="block">¿Tenés una idea o un</span>
                 <span className="block text-brand-accent">problema para resolver?</span>
               </h2>

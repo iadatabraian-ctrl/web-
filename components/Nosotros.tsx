@@ -65,7 +65,7 @@ export function Nosotros() {
 
         {/* Texto */}
         <div>
-          <h2 className="origin-bottom-left -skew-x-[5deg] font-impact text-[9vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[6vw] lg:text-[6.2rem]">
+          <h2 className="font-body text-[5.4vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[3.6vw] lg:text-[3.8rem]">
             <motion.span
               initial={{ opacity: 0, x: "-10vw" }}
               whileInView={{ opacity: 1, x: 0 }}
