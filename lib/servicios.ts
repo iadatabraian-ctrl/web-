@@ -4,6 +4,8 @@ export type ServicioSlug =
   | "automatizacion"
   | "agentes-whatsapp";
 
+export type Nivel = { nombre: string; etiqueta: string; precio: string; sufijo?: string; plazo: string; resumen: string; incluye: string[] };
+
 export type Servicio = {
   slug: ServicioSlug;
   visual: "software" | "web" | "automatizacion" | "agentes";
@@ -17,6 +19,7 @@ export type Servicio = {
   cuandoConviene: string[];
   proceso: { t: string; d: string }[];
   valores: { precio: string; prefijo: string; cifra: string; detalle: string; desde: string; hasta?: string; factores: string[]; plazo: string; nota: string };
+  niveles: Nivel[];
   faq: { q: string; a: string }[];
   whatsappTexto: string;
 };
@@ -100,6 +103,11 @@ export const SERVICIOS: Servicio[] = [
       plazo: "20 a 30 días",
       nota: "El valor final depende del alcance. Cada proyecto se cotiza de forma individual, sin paquetes cerrados.",
     },
+    niveles: [
+      { nombre: "Básico", etiqueta: "Desde", precio: "USD 800", plazo: "20 días", resumen: "Un proceso resuelto de punta a punta.", incluye: ["Panel de gestión simple", "Hasta 2 usuarios con permisos", "Una función principal bien resuelta", "30 días de garantía"] },
+      { nombre: "Medio", etiqueta: "Aprox.", precio: "USD 1.000", plazo: "25 días", resumen: "Varias áreas del negocio en un mismo sistema.", incluye: ["Varios módulos conectados", "Usuarios y permisos por rol", "Una o dos integraciones", "Reportes e indicadores"] },
+      { nombre: "Amplio", etiqueta: "Hasta", precio: "USD 1.200", plazo: "30 días", resumen: "El sistema completo de tu operación.", incluye: ["Sistema completo a medida", "Más usuarios y más roles", "Varias integraciones", "Reportes avanzados"] },
+    ],
     faq: [
       {
         q: "¿Qué es el software a medida?",
@@ -192,6 +200,11 @@ export const SERVICIOS: Servicio[] = [
       plazo: "7 a 20 días",
       nota: "El valor final depende del alcance. Cada proyecto se cotiza de forma individual, sin paquetes cerrados.",
     },
+    niveles: [
+      { nombre: "Básico", etiqueta: "Desde", precio: "$8.000", sufijo: "UYU", plazo: "7 días", resumen: "Presencia clara y profesional.", incluye: ["Hasta 5 secciones", "Diseño a medida con tu marca", "Adaptada a celulares", "Botón de WhatsApp y formulario"] },
+      { nombre: "Medio", etiqueta: "Aprox.", precio: "$16.500", sufijo: "UYU", plazo: "14 días", resumen: "Pensada para generar contactos.", incluye: ["Hasta 10 secciones o páginas", "Textos orientados a la conversión", "Velocidad y SEO on-page", "Redes, mapa y reservas"] },
+      { nombre: "Amplio", etiqueta: "Hasta", precio: "$25.000", sufijo: "UYU", plazo: "20 días", resumen: "Para vender online.", incluye: ["Tienda online completa", "Medios de pago", "Todas las páginas necesarias", "Capacitación para cargar productos"] },
+    ],
     faq: [
       {
         q: "¿Cuánto cuesta una página web en Uruguay?",
@@ -278,6 +291,11 @@ export const SERVICIOS: Servicio[] = [
       plazo: "10 a 15 días",
       nota: "El valor final depende de la cantidad y complejidad de los flujos. Cada proyecto se cotiza de forma individual.",
     },
+    niveles: [
+      { nombre: "Básico", etiqueta: "Desde", precio: "$10.000", sufijo: "UYU", plazo: "10 días", resumen: "Una tarea repetitiva resuelta.", incluye: ["Un proceso automatizado", "Hasta 2 herramientas conectadas", "Pruebas y validación", "30 días de soporte"] },
+      { nombre: "Medio", etiqueta: "", precio: "A cotizar", plazo: "13 días", resumen: "Varios procesos que se pasan datos entre sí.", incluye: ["Varios procesos automatizados", "Más herramientas conectadas", "Flujos con reglas propias", "Pruebas y validación"] },
+      { nombre: "Amplio", etiqueta: "", precio: "A cotizar", plazo: "15 días", resumen: "La operación conectada de punta a punta.", incluye: ["Procesos de varias áreas", "Integraciones múltiples", "Reglas que cambian seguido", "Soporte posterior ampliado"] },
+    ],
     faq: [
       {
         q: "¿Qué es la automatización de procesos?",
@@ -368,6 +386,11 @@ export const SERVICIOS: Servicio[] = [
       plazo: "10 a 15 días",
       nota: "La mensualidad cubre el funcionamiento del agente: API de WhatsApp Business, mantenimiento y el servicio de IA.",
     },
+    niveles: [
+      { nombre: "Básico", etiqueta: "Desde", precio: "$3.000", sufijo: "por mes", plazo: "10 días", resumen: "Responde lo que más te preguntan.", incluye: ["Preguntas frecuentes respondidas", "WhatsApp Business", "Tono y reglas de tu empresa", "Mantenimiento incluido"] },
+      { nombre: "Medio", etiqueta: "", precio: "A cotizar", plazo: "13 días", resumen: "Atiende y califica contactos.", incluye: ["WhatsApp e Instagram", "Filtra y califica contactos", "Deriva a una persona", "Mantenimiento incluido"] },
+      { nombre: "Amplio", etiqueta: "", precio: "A cotizar", plazo: "15 días", resumen: "Atiende, toma pedidos y se conecta.", incluye: ["Toma de pedidos", "Conexión con tus herramientas", "Varios canales", "Mantenimiento incluido"] },
+    ],
     faq: [
       {
         q: "¿Qué es un agente de IA para WhatsApp?",

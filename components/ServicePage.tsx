@@ -9,7 +9,7 @@ import { CuandoConviene } from "@/components/servicios/CuandoConviene";
 import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
 import { OtrosServicios } from "@/components/servicios/OtrosServicios";
 import { NotasPaso } from "@/components/NotasPaso";
-import { Estimador } from "@/components/servicios/Estimador";
+import { Niveles } from "@/components/servicios/Niveles";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
@@ -154,14 +154,27 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Valores y plazos (oscura, estimador) */}
-        <section className="bg-[#0a0a0a] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
+        {/* Valores y plazos (clara, tres alcances) */}
+        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
               <h2 className={H2}>Valores y plazos</h2>
+              <p className="mt-4 max-w-2xl font-body text-sm text-brand-ink-on-cream-soft sm:text-base">Tres alcances de referencia. {s.valores.nota}</p>
             </FadeIn>
             <FadeIn className="mt-10 sm:mt-16">
-              <Estimador nombre={s.nombre} valores={s.valores} mensaje={s.whatsappTexto} heading="Qué influye en el valor" />
+              <Niveles niveles={s.niveles} servicio={s.nombre.toLowerCase()} />
+            </FadeIn>
+            <FadeIn className="mt-12 sm:mt-20">
+              <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Qué influye en el valor</p>
+              <ul className="mt-4 grid gap-x-10 border-y border-brand-ink-on-cream/15 font-body text-[15px] font-semibold sm:text-base lg:grid-cols-3">
+                {s.valores.factores.map((f, i) => (
+                  <li key={f} className="flex items-baseline gap-3 border-brand-ink-on-cream/15 py-3.5 max-lg:border-b max-lg:last:border-b-0 sm:py-4">
+                    <span className="font-mono text-xs font-normal text-brand-accent">0{i + 1}</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 font-body text-sm text-brand-ink-on-cream-soft">{s.valores.detalle}</p>
             </FadeIn>
           </div>
         </section>
