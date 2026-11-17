@@ -246,7 +246,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
             Tu negocio,
           </span>
           <span
-            className={`${anim("hero-in-left")} block font-didone text-[12vw] font-semibold italic leading-[0.95] sm:text-[8.5vw] lg:text-[6vw] ${t.h1b}`}
+            className={`${anim("hero-in-left")} block font-didone text-[12vw] font-extrabold [font-optical-sizing:none] [font-variation-settings:"opsz"_10] italic leading-[0.95] sm:text-[8.5vw] lg:text-[6vw] ${t.h1b}`}
             style={{ animationDelay: "0.45s" }}
           >
             tu sistema.
