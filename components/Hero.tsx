@@ -91,7 +91,7 @@ function Content() {
       {/* Figura: centrada, delante de la palabra. Solo asoma desde abajo, para que "DEPLOY" se lea entero. */}
       <div
         aria-hidden="true"
-        className={`hero-in-fig pointer-events-none absolute inset-x-0 top-[46vw] z-[2] mx-auto w-[min(105vw,62svh)] lg:inset-x-auto lg:left-[30.5vw] lg:top-[22vw] lg:mx-0 lg:w-[44vw]`}
+        className={`hero-in-fig pointer-events-none absolute inset-x-0 top-[46vw] z-[2] mx-auto w-[min(105vw,62svh)] lg:inset-x-auto lg:left-[30.5vw] lg:top-[15.5vw] lg:mx-0 lg:w-[44vw]`}
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, #000 66%, transparent 97%)",
           maskImage: "linear-gradient(to bottom, #000 66%, transparent 97%)",
