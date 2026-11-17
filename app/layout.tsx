@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Bodoni_Moda, JetBrains_Mono, Saira } from "next/font/google";
+import { Anton, Archivo, Bodoni_Moda, JetBrains_Mono, Montserrat, Saira } from "next/font/google";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
@@ -27,6 +27,12 @@ const bodoni = Bodoni_Moda({
   variable: "--font-bodoni",
   style: ["italic"],
   axes: ["opsz"],
+  subsets: ["latin"],
+});
+
+// Texto del hero (titular, bajada y botones): una sola tipografía, como en la referencia.
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -92,7 +98,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${saira.variable} ${bodoni.variable} antialiased`}
+      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${saira.variable} ${bodoni.variable} ${montserrat.variable} antialiased`}
     >
       <body>
         <script

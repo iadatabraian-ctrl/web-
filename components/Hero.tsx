@@ -243,7 +243,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
       <div className="absolute inset-x-0 bottom-0 z-[3] flex flex-col items-center px-5 pb-[calc(clamp(2.5rem,8vw,7rem)+1.25rem)] sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-[5vw]">
         <h1 className="text-center lg:text-left">
           <span
-            className={`${anim("hero-in-left")} block font-body text-[8.2vw] font-extrabold uppercase leading-none tracking-[-0.02em] sm:text-[6vw] lg:text-[4.3vw] ${t.h1a}`}
+            className={`${anim("hero-in-left")} block font-mont text-[8.2vw] font-extrabold uppercase leading-none tracking-[-0.02em] sm:text-[6vw] lg:text-[4.3vw] ${t.h1a}`}
             style={{ animationDelay: "0.3s" }}
           >
             Tu negocio,
@@ -259,7 +259,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
         <div className="mt-3 flex flex-col items-center lg:mt-0 lg:items-start lg:pb-[0.6vw]">
           <p
             style={{ animationDelay: "0.85s" }}
-            className={`${anim("hero-in-below")} max-w-[22rem] text-center font-body ${t.pz} leading-snug ${t.p} lg:max-w-[24rem] lg:text-left`}
+            className={`${anim("hero-in-below")} max-w-[22rem] text-center font-mont ${t.pz} leading-snug ${t.p} lg:max-w-[24rem] lg:text-left`}
           >
             <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
             automatización y agentes de WhatsApp.
@@ -270,14 +270,14 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
           >
             <a
               href="#hablemos"
-              className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn1}`}
+              className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 font-mont ${t.bz} font-bold uppercase tracking-wide transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn1}`}
             >
               Hablemos
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </a>
             <a
               href="#servicios"
-              className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-5 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,border-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn2}`}
+              className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-5 py-3 font-mont ${t.bz} font-bold uppercase tracking-wide transition-[transform,border-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn2}`}
             >
               Ver servicios
               <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
