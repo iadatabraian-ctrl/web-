@@ -336,16 +336,3 @@
   }
 }
 
-/* Menú sobre el hero cuando la ola lo vuelve claro (ver Hero.tsx): solo arriba de todo. */
-header .logo-d, header .logo-s, header .logo-w, header .nav-link, header .nav-cta, header .nav-burger {
-  transition: color 0.5s, fill 0.5s, background-color 0.5s;
-}
-html[data-hero="orange"] header[data-top="true"] .logo-d { fill: #fff; }
-html[data-hero="orange"] header[data-top="true"] .logo-w { color: #fff; }
-html[data-hero="orange"] header[data-top="true"] .logo-s { fill: #0a0a0a; }
-html[data-hero="orange"] header[data-top="true"] .nav-link { color: rgba(255, 255, 255, 0.95); font-weight: 600; }
-html[data-hero="orange"] header[data-top="true"] .nav-link:hover { color: #fff; }
-html[data-hero="orange"] header[data-top="true"] .nav-cta { background: #fff; color: #0a0a0a; }
-html[data-hero="orange"] header[data-top="true"] .nav-burger { background: #fff; }
-html[data-hero="blue"] header[data-top="true"] .nav-link { color: rgba(255, 255, 255, 0.92); font-weight: 600; }
-html[data-hero="blue"] header[data-top="true"] .nav-link:hover { color: #fff; }
