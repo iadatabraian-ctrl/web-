@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { MapaUruguay } from "@/components/MapaUruguay";
+import { LineasFondo } from "@/components/LineasFondo";
 
 /* Nosotros (sección clara, ver PRODUCT.md): foto grande en tarjeta redondeada con nombre,
    titular en Saira y el texto de Braian. */
@@ -20,11 +21,7 @@ export function Nosotros() {
       id="nosotros"
       className="relative overflow-hidden bg-brand-cream px-5 py-20 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]"
     >
-      {/* Círculos naranjas planos: la foto asoma por delante del mayor */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <span className="absolute -left-[26vw] top-[6%] h-[62vw] w-[62vw] rounded-full bg-brand-accent sm:-left-[14vw] sm:top-[10%] sm:h-[42vw] sm:w-[42vw] lg:-left-[9vw] lg:h-[36vw] lg:w-[36vw]" />
-        <span className="absolute -right-[12vw] bottom-[-14vw] h-[40vw] w-[40vw] rounded-full border-[3.4vw] border-brand-accent/35 sm:h-[24vw] sm:w-[24vw] sm:border-[2vw] lg:-right-[6vw] lg:h-[20vw] lg:w-[20vw]" />
-      </div>
+      <LineasFondo uid="ln" />
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-[7.5rem_1fr] items-center gap-4 sm:grid-cols-[13rem_1fr] sm:gap-8 lg:grid-cols-[19rem_1fr] lg:gap-16">
         {/* Foto */}

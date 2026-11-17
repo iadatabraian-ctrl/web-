@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
-import { Bar } from "@/components/Bar";
+import { LineasFondo } from "@/components/LineasFondo";
 import { motion } from "framer-motion";
 
 const NAV_LINKS = [
@@ -31,13 +31,7 @@ export function CtaFooter() {
         id="hablemos"
         className="relative overflow-hidden bg-brand-cream px-5 pb-20 pt-20 text-[#0a0a0a] [--pw:62vw] sm:px-8 sm:pb-28 sm:pt-28 sm:[--pw:38vw] lg:px-[6vw] lg:[--pw:24rem]"
       >
-        {/* Líneas y barra diagonales a 37°, planas (referencia del fundador) */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <Bar className="max-sm:hidden" style={{ right: "-3vw", top: "14%", width: "8vw", height: "30vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.16)", edge: "left", edgeAlpha: 0.7 }} i={0} />
-          <span className="absolute right-[6vw] top-[2%] h-[44vw] w-px origin-top rotate-[37deg] bg-brand-accent/45 max-sm:hidden" />
-          <span className="absolute -left-[4vw] bottom-[18%] h-[26vw] w-px origin-bottom -rotate-[37deg] bg-brand-accent/45" />
-          <span className="absolute -left-[2vw] bottom-[12%] h-[20vw] w-px origin-bottom -rotate-[37deg] bg-brand-accent/25" />
-        </div>
+        <LineasFondo uid="lc" />
 
         <div className="relative z-[2] mx-auto max-w-4xl">
           {/* Texto de siempre; en celular el botón queda al lado de la cabeza */}
