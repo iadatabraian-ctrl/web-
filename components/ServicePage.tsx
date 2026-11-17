@@ -9,6 +9,7 @@ import { CuandoConviene } from "@/components/servicios/CuandoConviene";
 import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
 import { OtrosServicios } from "@/components/servicios/OtrosServicios";
 import { NotasPaso } from "@/components/NotasPaso";
+import { Presupuesto } from "@/components/servicios/Presupuesto";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
@@ -159,10 +160,8 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             <FadeIn>
               <h2 className={H2}>Valores y plazos</h2>
             </FadeIn>
-            <FadeIn className="mt-10 sm:mt-16">
-              <Precio v={s.valores} />
-            </FadeIn>
-            <FadeIn className="mt-12 grid gap-12 sm:mt-20 lg:grid-cols-2 lg:gap-20">
+            <FadeIn className="mt-10 grid items-center gap-12 sm:mt-16 lg:grid-cols-[1fr_1fr] lg:gap-20">
+              <Presupuesto nombre={s.nombre} v={s.valores} />
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Qué hace subir el valor</p>
                 <ul className="mt-4 divide-y divide-brand-ink-on-cream/15 border-y border-brand-ink-on-cream/15 font-body text-[15px] font-semibold sm:text-lg">
@@ -173,21 +172,18 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
                     </li>
                   ))}
                 </ul>
+                <p className="mt-6 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">{s.valores.nota}</p>
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noopener"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-black px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition-[transform,background-color] duration-200 hover:bg-brand-black/85 active:scale-[0.97] sm:text-sm"
+                >
+                  Cotizar mi proyecto
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </a>
               </div>
-              <Plazo plazo={s.valores.plazo} />
             </FadeIn>
-            <div className="mt-12 flex flex-col gap-6 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">{s.valores.nota}</p>
-              <a
-                href={wa}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-brand-black px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition-[transform,background-color] duration-200 hover:bg-brand-black/85 active:scale-[0.97] sm:text-sm"
-              >
-                Cotizar mi proyecto
-                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-              </a>
-            </div>
           </div>
         </section>
 
@@ -224,74 +220,3 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
   );
 }
 
-
-/* Cifra gigante: "Desde" en naranja, "Hasta" en negro, unidos por una línea fina. */
-const CIFRA = "font-body font-extrabold uppercase leading-[0.9] tracking-[-0.02em]";
-
-function Cifra({ texto, className }: { texto: string; className: string }) {
-  const [num, sufijo] = texto.split(" por mes");
-  return (
-    <p className={`${CIFRA} text-[2.6rem] sm:text-7xl lg:text-[6.5rem] ${className}`}>
-      {num}
-      {texto.includes(" por mes") && <span className="ml-2 text-[0.3em] tracking-normal">por mes{sufijo}</span>}
-    </p>
-  );
-}
-
-function Precio({ v }: { v: { desde: string; hasta?: string; detalle: string } }) {
-  return (
-    <div>
-      <div className="flex items-end gap-4 sm:gap-8">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Desde</p>
-          <Cifra texto={v.desde} className="mt-3 text-brand-accent" />
-        </div>
-        {v.hasta && (
-          <>
-            <span aria-hidden="true" className="mb-[0.9rem] h-[2px] min-w-6 flex-1 bg-brand-accent sm:mb-5 lg:mb-8" />
-            <div className="text-right">
-              <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Hasta</p>
-              <Cifra texto={v.hasta} className="mt-3" />
-            </div>
-          </>
-        )}
-      </div>
-      <p className="mt-5 max-w-xl font-body text-sm text-brand-ink-on-cream-soft sm:mt-6 sm:text-base">{v.detalle}</p>
-    </div>
-  );
-}
-
-/* Plazo sobre una línea de tiempo: inicio, tramo de entrega y 30 días de garantía. */
-function Plazo({ plazo }: { plazo: string }) {
-  const m = plazo.match(/(\d+)\s*a\s*(\d+)/);
-  const lo = m ? Number(m[1]) : 0;
-  const hi = m ? Number(m[2]) : 0;
-  const max = hi + 30;
-  const pct = (n: number) => `${(n / max) * 100}%`;
-  return (
-    <div>
-      <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Plazo de entrega</p>
-      <p className={`${CIFRA} mt-3 text-[2.6rem] sm:text-7xl`}>
-        {m ? `${lo}–${hi}` : plazo}
-        {m && <span className="ml-2 text-[0.3em] tracking-normal">días</span>}
-      </p>
-      {m && (
-        <div className="mt-8 sm:mt-10" aria-hidden="true">
-          <div className="relative h-4">
-            <span className="absolute inset-x-0 top-1/2 border-t-2 border-dashed border-brand-ink-on-cream/30" />
-            <span className="absolute left-0 top-1/2 h-[2px] -translate-y-1/2 bg-brand-accent" style={{ width: pct(hi) }} />
-            <span className="absolute top-1/2 h-[7px] -translate-y-1/2 rounded-full bg-brand-accent" style={{ left: pct(lo), width: `calc(${pct(hi)} - ${pct(lo)})` }} />
-            <span className="absolute left-0 top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full bg-brand-ink-on-cream" />
-            <span className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-brand-cream bg-brand-accent shadow" style={{ left: pct(hi) }} />
-            <span className="absolute right-0 top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-brand-ink-on-cream/40 bg-brand-cream" />
-          </div>
-          <div className="relative mt-3 h-9 font-mono text-[10px] uppercase leading-tight tracking-wide text-brand-ink-on-cream-soft sm:text-xs">
-            <span className="absolute left-0">Día 0<br />Relevamiento</span>
-            <span className="absolute -translate-x-1/2 text-center text-brand-ink-on-cream" style={{ left: pct(hi) }}>Día {hi}<br />Entrega</span>
-            <span className="absolute right-0 text-right">+30 días<br />Garantía</span>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
