@@ -130,14 +130,14 @@ export function CtaFooter() {
           </div>
         </div>
 
-        {/* La ciudad es lo último: el borde superior se funde con el negro y la página termina en ella */}
-        <div className="relative -mt-6 h-[88vw] sm:h-[50vw] lg:h-[36rem]">
-          <Image src="/img/footer-ciudad.webp" alt="" fill sizes="100vw" className="object-cover object-[46%_62%]" />
-          <div aria-hidden="true" className="absolute inset-0 bg-black/15" />
-          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent" />
-          <div className="absolute inset-x-5 top-12 z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:top-16 sm:text-[11px] lg:inset-x-[6vw]">
+        {/* Camino al final: la ruta sale de debajo de la tarjeta y la página termina en ella */}
+        <div className="relative -mt-24 h-[62vw] sm:-mt-28 sm:h-[30vw] lg:h-[20rem]">
+          <Image src="/img/footer-camino.webp" alt="" fill sizes="100vw" className="object-cover object-[50%_100%]" />
+          <div aria-hidden="true" className="absolute inset-0 bg-black/10" />
+          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-3/5 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent" />
+          <div className="absolute inset-x-5 bottom-4 z-[2] flex justify-between font-mono text-[9px] uppercase leading-snug tracking-[0.18em] text-white/70 sm:inset-x-8 sm:bottom-6 sm:text-[11px] lg:inset-x-[6vw]">
             <span>Software · Web<br />Automatización · Agentes</span>
-            <span className="text-right">Tu negocio<br />Tu sistema</span>
+            <span className="text-right max-sm:hidden">Tu negocio<br />Tu sistema</span>
           </div>
         </div>
       </footer>
