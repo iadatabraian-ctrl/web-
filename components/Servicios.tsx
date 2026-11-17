@@ -123,7 +123,7 @@ export function Servicios() {
           transition={{ duration: 0.6, ease, delay: 0.4 }}
           className="mx-auto mt-6 max-w-md text-center font-body text-base leading-relaxed text-brand-ink-on-cream-soft sm:mt-8 sm:text-lg"
         >
-          ¿Qué estás buscando resolver?
+          ¿Qué necesitás resolver?
         </motion.p>
 
         {/* Abanico de tarjetas */}
