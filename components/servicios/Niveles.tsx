@@ -1,20 +1,50 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import type { Nivel } from "@/lib/servicios";
 
 /* Tres alcances de referencia. El del medio va destacado en negro. */
 
 export function Niveles({ niveles, servicio }: { niveles: Nivel[]; servicio: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [act, setAct] = useState(1);
+
+  // En celular arranca centrada en la tarjeta del medio.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || el.scrollWidth <= el.clientWidth) return;
+    const c = el.children[1] as HTMLElement;
+    el.scrollLeft = c.offsetLeft - (el.clientWidth - c.offsetWidth) / 2;
+  }, []);
+
+  const onScroll = () => {
+    const el = ref.current;
+    if (!el) return;
+    const mid = el.scrollLeft + el.clientWidth / 2;
+    let best = 0;
+    let d = Infinity;
+    Array.from(el.children).forEach((c, i) => {
+      const h = c as HTMLElement;
+      const dd = Math.abs(h.offsetLeft + h.offsetWidth / 2 - mid);
+      if (dd < d) { d = dd; best = i; }
+    });
+    setAct(best);
+  };
+
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-3 lg:items-stretch lg:gap-6">
+    <>
+    <div
+      ref={ref}
+      onScroll={onScroll}
+      className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 py-8 [scrollbar-width:none] sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-3 lg:items-stretch lg:gap-6 lg:overflow-visible lg:p-0 [&::-webkit-scrollbar]:hidden">
       {niveles.map((n, i) => {
         const dest = i === 1;
         const wa = `https://wa.me/59898648853?text=${encodeURIComponent(`Hola, quiero cotizar ${servicio}. Me interesa el alcance ${n.nombre.toLowerCase()}.`)}`;
         return (
           <article
             key={n.nombre}
-            className={`relative flex flex-col rounded-[1.3rem] p-5 max-lg:w-[84%] sm:rounded-[1.6rem] sm:p-8 ${
-              i === 1 ? "z-10 max-lg:-mt-5 max-lg:self-end" : i === 2 ? "max-lg:-mt-5 max-lg:self-start" : "max-lg:self-start"
-            } ${
+            className={`relative flex flex-col rounded-[1.3rem] p-5 max-lg:w-[78%] max-lg:shrink-0 max-lg:snap-center max-sm:max-w-[19rem] sm:rounded-[1.6rem] sm:p-8 max-lg:sm:w-[24rem] ${
               dest
                 ? "bg-[#0a0a0a] text-brand-cream shadow-[0_40px_60px_-30px_rgba(0,0,0,0.6)] lg:-my-4 lg:py-12"
                 : "border border-brand-ink-on-cream/15 bg-[#fffdf9] text-brand-ink-on-cream"
@@ -59,5 +89,11 @@ export function Niveles({ niveles, servicio }: { niveles: Nivel[]; servicio: str
         );
       })}
     </div>
+    <div aria-hidden="true" className="mt-1 flex justify-center gap-2 lg:hidden">
+      {niveles.map((n, i) => (
+        <span key={n.nombre} className={`h-1.5 rounded-full transition-all duration-300 ${i === act ? "w-6 bg-brand-accent" : "w-1.5 bg-brand-ink-on-cream/25"}`} />
+      ))}
+    </div>
+    </>
   );
 }
