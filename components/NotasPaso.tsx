@@ -21,17 +21,24 @@ export function NotasPaso({ pasos }: { pasos: { t: string; d: string }[] }) {
                   whileInView={{ opacity: 1, y: 0, rotate: i % 2 === 0 ? -2.5 : 2.5 }}
                   viewport={view}
                   transition={{ duration: 0.8, ease }}
-                  className="relative w-[68%] max-w-[26rem] rounded-[1.3rem] bg-brand-cream p-2 text-brand-ink-on-cream shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] sm:w-[60%] sm:p-3"
+                  className={`relative w-[68%] max-w-[26rem] rounded-[1.4rem] shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] sm:w-[60%] sm:rounded-[1.8rem] ${
+                    i % 2 === 0 ? "bg-brand-cream text-[#0a0a0a]" : "bg-brand-accent text-[#0a0a0a]"
+                  }`}
                 >
-                  <span aria-hidden="true" className="absolute -top-2.5 left-1/2 z-10 h-5 w-5 sm:-top-3 sm:h-6 sm:w-6 -translate-x-1/2 rounded-full border-b-[3px] border-[#c4430a] bg-brand-accent shadow-[0_6px_10px_rgba(0,0,0,0.45)]" />
-                  <div className={`rounded-[1rem] px-3.5 pb-4 pt-5 sm:rounded-[1.2rem] sm:px-5 sm:pb-6 sm:pt-6 ${i % 2 === 0 ? "bg-[#ffe3d3]" : "bg-[#ebe3d2]"}`}>
-                    <span className="block font-impact text-[1.8rem] font-light not-italic leading-none text-brand-accent [font-stretch:90%] sm:text-[2.6rem]">
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -top-2.5 left-1/2 z-10 h-5 w-5 -translate-x-1/2 rounded-full border-b-[3px] shadow-[0_6px_10px_rgba(0,0,0,0.45)] sm:-top-3 sm:h-6 sm:w-6 ${
+                      i % 2 === 0 ? "border-[#c4430a] bg-brand-accent" : "border-black bg-[#0a0a0a]"
+                    }`}
+                  />
+                  <div className="px-5 pb-5 pt-7 sm:px-7 sm:pb-7 sm:pt-9">
+                    <span className={`block font-body text-[2.1rem] font-extrabold leading-none tracking-[-0.02em] sm:text-5xl ${i % 2 === 0 ? "text-brand-accent" : "text-[#0a0a0a]/85"}`}>
                       0{i + 1}
                     </span>
-                    <h3 className="mt-2 origin-bottom-left -skew-x-[5deg] font-impact text-[1.15rem] font-semibold uppercase not-italic leading-[1.05] [font-stretch:85%] sm:text-[1.75rem]">
+                    <h3 className="mt-3 font-body text-[1.05rem] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] sm:text-[1.6rem]">
                       {st.t}
                     </h3>
-                    <p className="mt-1.5 font-body text-[12.5px] leading-snug text-brand-ink-on-cream-soft sm:mt-2 sm:text-base">{st.d}</p>
+                    <p className={`mt-2 font-body text-[12.5px] leading-snug sm:mt-3 sm:text-base ${i % 2 === 0 ? "text-brand-ink-on-cream-soft" : "text-[#0a0a0a]/80"}`}>{st.d}</p>
                   </div>
                 </motion.div>
               </div>
