@@ -48,8 +48,7 @@ export function CtaFooter() {
                 <span className="block text-brand-accent">problema para resolver?</span>
               </h2>
               <p className="mt-4 max-w-md font-body text-[12.5px] leading-snug text-brand-ink-on-cream-soft sm:mt-5 sm:text-base">
-                Contanos qué necesita tu negocio. Vemos juntos si conviene un sistema a medida, un sitio web o algo más
-                simple.
+                Entendemos tu negocio. Te asesoramos con alcance, precio y plazo.
               </p>
             </FadeIn>
             <FadeIn className="mt-4 min-h-[calc(var(--pw)*0.84)] max-w-[40%] sm:mt-6 sm:min-h-0 sm:max-w-none">
