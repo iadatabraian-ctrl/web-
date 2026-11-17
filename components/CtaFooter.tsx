@@ -57,7 +57,7 @@ export function CtaFooter() {
                 href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hacer%20una%20consulta"
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-5 py-3 font-body text-[11px] font-bold uppercase tracking-wide text-[#0a0a0a] shadow-[0_12px_22px_-10px_rgba(255,92,26,0.8)] transition-[transform,opacity] duration-200 hover:opacity-90 active:scale-[0.97] sm:px-8 sm:py-4 sm:text-sm"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-5 py-3 font-body text-[11px] font-bold uppercase tracking-wide text-[#0a0a0a] transition-[transform,opacity] duration-200 hover:opacity-90 active:scale-[0.97] sm:px-8 sm:py-4 sm:text-sm"
               >
                 Hablemos
                 <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
@@ -69,14 +69,12 @@ export function CtaFooter() {
           <motion.div
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] px-5 py-8 text-white shadow-[0_2px_3px_rgba(10,10,10,0.3),0_26px_44px_-18px_rgba(10,10,10,0.65),0_50px_80px_-34px_rgba(255,92,26,0.55)] sm:px-8 sm:py-10"
+            className="relative rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] px-5 py-8 text-white shadow-[0_2px_3px_rgba(10,10,10,0.3),0_26px_44px_-18px_rgba(10,10,10,0.65)]  sm:px-8 sm:py-10"
           >
-            {/* Fondo del formulario: luz gris desde arriba, cuadrícula fina y una barra naranja a 37° */}
+            {/* Fondo del formulario: luz gris desde arriba y cuadrícula fina */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
               <span className="absolute inset-0 bg-[radial-gradient(90%_70%_at_82%_0%,#2f2f2f_0%,rgba(10,10,10,0)_70%)]" />
               <span className="grid-hud absolute inset-0 opacity-[0.12] [mask-image:linear-gradient(to_bottom,#000,transparent_75%)]" />
-              <Bar gray={false} className="max-lg:hidden" style={{ right: "2%", top: "-4%", width: "9%", height: "34%", skew: 37, origin: "100% 0", fill: "linear-gradient(to right, rgba(255,92,26,0.30), rgba(255,92,26,0.03))", edge: "left", edgeAlpha: 0.55 }} i={0} />
-              <span className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-brand-accent/70 to-transparent" />
             </div>
             <div
               aria-hidden="true"

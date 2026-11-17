@@ -80,7 +80,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-body text-sm font-bold uppercase tracking-wide text-brand-black shadow-[0_14px_26px_-10px_rgba(255,92,26,0.75)] transition-[opacity,transform] duration-200 hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
+        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition-[opacity,transform] duration-200 hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
       >
         {isSubmitting ? "Enviando..." : "Enviar"}
         {!isSubmitting && <ArrowRight className="h-4 w-4" strokeWidth={2.5} />}
