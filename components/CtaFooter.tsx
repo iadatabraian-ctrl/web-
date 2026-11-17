@@ -134,14 +134,16 @@ export function CtaFooter() {
         </div>
 
         {/* La ciudad (PNG con transparencia) se levanta desde el pie y la ruta cierra la página */}
-        <div aria-hidden="true" className="relative mt-6 h-[46vw] overflow-hidden sm:mt-10 sm:h-auto">
+        <div aria-hidden="true" className="relative mt-2 h-[46vw] overflow-hidden sm:mt-10 sm:h-auto">
           <Image
             src="/img/footer-skyline.webp"
             alt=""
             width={2172}
             height={691}
-            sizes="100vw"
-            className="absolute bottom-0 right-[-38%] h-full w-auto max-w-none sm:static sm:h-auto sm:w-full"
+            sizes="(min-width: 640px) 100vw, 150vw"
+            quality={92}
+            unoptimized
+            className="absolute bottom-0 right-[-20%] h-full w-auto max-w-none translate-y-[5%] sm:static sm:h-auto sm:w-full"
           />
         </div>
       </footer>
