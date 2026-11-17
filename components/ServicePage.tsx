@@ -9,7 +9,7 @@ import { CuandoConviene } from "@/components/servicios/CuandoConviene";
 import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
 import { OtrosServicios } from "@/components/servicios/OtrosServicios";
 import { NotasPaso } from "@/components/NotasPaso";
-import { Presupuesto } from "@/components/servicios/Presupuesto";
+import { Estimador } from "@/components/servicios/Estimador";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
 const SITE = "https://deployuy.com";
@@ -154,35 +154,14 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {/* Valores y plazos (clara) */}
-        <section className="bg-brand-cream px-5 py-14 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]">
+        {/* Valores y plazos (oscura, estimador) */}
+        <section className="bg-[#0a0a0a] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
             <FadeIn>
               <h2 className={H2}>Valores y plazos</h2>
             </FadeIn>
-            <FadeIn className="mt-10 grid items-center gap-12 sm:mt-16 lg:grid-cols-[1fr_1fr] lg:gap-20">
-              <Presupuesto nombre={s.nombre} v={s.valores} />
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Qué hace subir el valor</p>
-                <ul className="mt-4 divide-y divide-brand-ink-on-cream/15 border-y border-brand-ink-on-cream/15 font-body text-[15px] font-semibold sm:text-lg">
-                  {s.valores.factores.map((f, i) => (
-                    <li key={f} className="flex items-baseline gap-4 py-3.5 sm:py-4">
-                      <span className="font-mono text-xs font-normal text-brand-accent">0{i + 1}</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 max-w-md font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">{s.valores.nota}</p>
-                <a
-                  href={wa}
-                  target="_blank"
-                  rel="noopener"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-black px-6 py-3 font-body text-xs font-bold uppercase tracking-wide text-brand-cream transition-[transform,background-color] duration-200 hover:bg-brand-black/85 active:scale-[0.97] sm:text-sm"
-                >
-                  Cotizar mi proyecto
-                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-                </a>
-              </div>
+            <FadeIn className="mt-10 sm:mt-16">
+              <Estimador nombre={s.nombre} valores={s.valores} mensaje={s.whatsappTexto} heading="Qué influye en el valor" />
             </FadeIn>
           </div>
         </section>
