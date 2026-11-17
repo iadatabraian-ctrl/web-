@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Bar } from "@/components/Bar";
 
-/* Hero (ver PRODUCT.md): fondo negro fijo, estilo póster. "DEPLOY" gigante detrás de una figura
+/* Hero (ver PRODUCT.md): fondo negro fijo, estilo póster. "DEPLOY" gigante (con desvanecido hacia abajo) detrás de una figura
    recortada (public/img/hero/hero-recorte.webp, generada con IA, PNG con alfa) que asoma desde abajo,
    una copia gris y difuminada de la figura al fondo, y el titular abajo. El naranja queda en la luz de la
    figura. Los tamaños van en vw para que el solapamiento sea parecido en cualquier ancho. Es un componente
@@ -82,7 +82,7 @@ function Content() {
       {/* Palabra gigante, detrás de la figura (decorativa; el titular real va abajo) */}
       <span
         aria-hidden="true"
-        className={`hero-in-left pointer-events-none absolute inset-x-0 top-[24vw] z-[1] block select-none whitespace-nowrap text-center font-impact text-[38.5vw] font-black uppercase italic leading-[0.8] tracking-[-0.02em] text-white/[0.97] [font-stretch:56%] lg:top-[6.5vw] lg:text-[32.6vw] lg:[font-stretch:60%]`}
+        className={`hero-in-left pointer-events-none absolute inset-x-0 top-[21vw] z-[1] block select-none whitespace-nowrap text-center font-impact text-[46vw] font-black uppercase italic leading-[0.8] tracking-[-0.02em] bg-[linear-gradient(to_bottom,#fff_30%,rgba(255,255,255,0.12)_100%)] bg-clip-text text-transparent [font-stretch:50%] lg:top-[6.5vw] lg:text-[32.6vw] lg:[font-stretch:60%]`}
         style={{ animationDelay: "0.05s" }}
       >
         Deploy
@@ -91,7 +91,7 @@ function Content() {
       {/* Figura: centrada, delante de la palabra. Solo asoma desde abajo, para que "DEPLOY" se lea entero. */}
       <div
         aria-hidden="true"
-        className={`hero-in-fig pointer-events-none absolute inset-x-0 top-[56vw] z-[2] mx-auto w-[min(105vw,62svh)] lg:inset-x-auto lg:left-[30.5vw] lg:top-[22vw] lg:mx-0 lg:w-[44vw]`}
+        className={`hero-in-fig pointer-events-none absolute inset-x-0 top-[46vw] z-[2] mx-auto w-[min(105vw,62svh)] lg:inset-x-auto lg:left-[30.5vw] lg:top-[22vw] lg:mx-0 lg:w-[44vw]`}
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, #000 66%, transparent 97%)",
           maskImage: "linear-gradient(to bottom, #000 66%, transparent 97%)",
