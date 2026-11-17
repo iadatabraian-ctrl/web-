@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Anton, Bodoni_Moda, JetBrains_Mono, Montserrat, Saira } from "next/font/google";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
 const anton = Anton({
@@ -101,7 +100,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
-        <WhatsAppFloat />
       </body>
     </html>
   );
