@@ -30,7 +30,6 @@ const TONE = {
     p: "text-brand-ink-on-black-soft",
     pz: "text-[14px] sm:text-lg",
     bz: "text-xs sm:text-sm",
-    strong: "text-brand-cream",
     btn1: "bg-white text-brand-black hover:bg-white/85",
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
@@ -42,7 +41,6 @@ const TONE = {
     p: "text-white",
     pz: "text-[15.5px] font-medium sm:text-xl",
     bz: "text-[13px] sm:text-[15px]",
-    strong: "text-white",
     btn1: "bg-white text-[#0a0a0a] hover:bg-white/90",
     btn2: "border-white/70 text-white hover:border-white",
   },
@@ -54,7 +52,6 @@ const TONE = {
     p: "text-white",
     pz: "text-[15px] font-medium sm:text-xl",
     bz: "text-[13px] sm:text-[15px]",
-    strong: "text-white",
     btn1: "bg-white text-[#0a0a0a] hover:bg-white/90",
     btn2: "border-white/70 text-white hover:border-white",
   },
@@ -261,8 +258,7 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
             style={{ animationDelay: "0.85s" }}
             className={`${anim("hero-in-below")} max-w-[22rem] text-center font-mont ${t.pz} leading-snug ${t.p} lg:max-w-[24rem] lg:text-left`}
           >
-            <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
-            automatización y agentes de WhatsApp.
+            Software a medida, páginas web, automatización y agentes de WhatsApp.
           </p>
           <div
             style={{ animationDelay: "1s" }}
