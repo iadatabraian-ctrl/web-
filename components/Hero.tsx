@@ -20,12 +20,12 @@ import { Bar } from "@/components/Bar";
    Es CSS puro (clases hero-in-* en globals.css) para que arranque en el primer pintado y no espere
    a que cargue y se ejecute el JavaScript. */
 
-const PAD = "px-5 pb-10 pt-24 sm:px-8 lg:px-[10vw] lg:pb-20 lg:pt-28";
 
 const TONE = {
   dark: {
-    h1a: "text-white/95",
-    h1b: "text-white/75",
+    fade: "from-[#0a0a0a]/90 via-[#0a0a0a]/55",
+    h1a: "text-white",
+    h1b: "text-white",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
     p: "text-brand-ink-on-black-soft",
     pz: "text-[14px] sm:text-lg",
@@ -35,8 +35,9 @@ const TONE = {
     btn2: "border-brand-cream/40 text-brand-cream hover:border-brand-cream",
   },
   orange: {
+    fade: "from-[#FF5C1A]/90 via-[#FF5C1A]/55",
     h1a: "text-white",
-    h1b: "text-white/80",
+    h1b: "text-white",
     img: "",
     p: "text-white",
     pz: "text-[15.5px] font-medium sm:text-xl",
@@ -46,8 +47,9 @@ const TONE = {
     btn2: "border-white/70 text-white hover:border-white",
   },
   blue: {
+    fade: "from-[#0a4a8e]/90 via-[#0d5aa8]/50",
     h1a: "text-white",
-    h1b: "text-white/80",
+    h1b: "text-white",
     img: "[filter:brightness(1.35)_contrast(0.92)]",
     p: "text-white",
     pz: "text-[15px] font-medium sm:text-xl",
@@ -71,7 +73,7 @@ const waveEase = [0.65, 0, 0.35, 1] as const;
 const LAYERS: { tone: Tone; bg: string }[] = [
   { tone: "orange", bg: "bg-[#FF5C1A]" },
   { tone: "blue", bg: "bg-[linear-gradient(100deg,#19a0dc_0%,#0e66b3_38%,#0a4a8e_100%)]" },
-  { tone: "dark", bg: "bg-[#0a0a0a]" },
+  { tone: "dark", bg: "bg-[radial-gradient(120%_70%_at_50%_18%,#2a2a2a_0%,#0a0a0a_62%)]" },
 ];
 
 export function Hero() {
@@ -128,7 +130,7 @@ export function Hero() {
       id="inicio"
       onPointerEnter={() => (paused.current = true)}
       onPointerLeave={() => (paused.current = false)}
-      className={`relative isolate min-h-[100svh] overflow-hidden bg-[#0a0a0a] text-brand-cream ${PAD}`}
+      className="relative isolate min-h-[100svh] overflow-hidden bg-[radial-gradient(120%_70%_at_50%_18%,#2a2a2a_0%,#0a0a0a_62%)] text-brand-cream"
     >
       <Scene tone="dark" />
       {!reduce && LAYERS.map((l, i) => <WaveLayer key={l.tone + i} p={ps[i]} z={4 + i} bg={l.bg} tone={l.tone} />)}
@@ -143,7 +145,7 @@ function WaveLayer({ p, z, bg, tone }: { p: MotionValue<number>; z: number; bg: 
     <motion.div
       aria-hidden="true"
       inert
-      className={`pointer-events-none absolute inset-0 overflow-hidden text-white ${bg} ${PAD}`}
+      className={`pointer-events-none absolute inset-0 overflow-hidden text-white ${bg}`}
       style={{
         zIndex: z,
         WebkitMaskImage: WAVE,
@@ -182,67 +184,105 @@ function Scene({ tone, instant = false }: { tone: Tone; instant?: boolean }) {
         <Bar gray className="max-lg:hidden" style={{ left: "79.5vw", top: 0, width: "9vw", height: "28vw", skew: 36, origin: "0 0", fill: "rgba(255,92,26,0.06)" }}  i={6} />
       </div>
 
-      {/* Titular gigante, detrás de la figura */}
-      <h1 className="relative z-[1] font-impact font-black uppercase italic leading-[0.8] tracking-[-0.03em] [font-stretch:50%] text-[23.5vw] sm:text-[16vw] lg:text-[14.2vw] lg:leading-[0.82]">
-        <span className={`block ${anim("hero-in-left")} ${t.h1a}`} style={{ animationDelay: "0.05s" }}>
-          Tu negocio,
-        </span>
-        <span className={`block ${anim("hero-in-left")} ${t.h1b}`} style={{ animationDelay: "0.2s" }}>
-          tu sistema.
-        </span>
-      </h1>
-
-      {/* Figura: delante del titular. En celular la altura de la pantalla define su tamaño
-          para que siempre se salga por el borde inferior; la cabeza queda a la derecha del texto. */}
+      {/* Copia grande, gris y difuminada de la figura, al fondo (como en la referencia) */}
       <div
         aria-hidden="true"
-        className={`${anim("hero-in-fig")} pointer-events-none absolute right-[calc(25vw-var(--fw)/2)] top-[72vw] z-[2] w-[var(--fw)] [--fw:max(97vw,calc((100svh-72vw)/1.15))] sm:right-[-9vw] sm:top-[max(40vw,calc(100svh-90vw))] sm:[--fw:70vw] lg:right-[-3.8vw] lg:top-[4.5rem] lg:[--fw:50vw]`}
+        className={`${anim("hero-in-fade")} pointer-events-none absolute left-[-30vw] top-[38vw] z-0 w-[160vw] lg:left-[10vw] lg:top-[-8vw] lg:w-[80vw]`}
         style={{
-          WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, #000 50%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, #000 50%, transparent 100%)",
         }}
       >
-        <div style={{ animation: "hero-float 7s ease-in-out 1.6s infinite" }}>
         <Image
           src="/img/hero/hero-recorte.webp"
           alt=""
           width={1122}
           height={1402}
-          priority={tone === "dark"}
-          sizes="(min-width: 1024px) 50vw, (min-width: 640px) 70vw, 100vw"
-          className={`h-auto w-full ${t.img}`}
+          sizes="(min-width: 1024px) 30vw, 60vw"
+          loading="lazy"
+          fetchPriority="low"
+          className="h-auto w-full opacity-[0.2] [filter:grayscale(1)_blur(7px)_brightness(1.5)_contrast(0.9)]"
         />
+      </div>
+
+      {/* Palabra gigante, detrás de la figura (decorativa; el titular real va abajo) */}
+      <span
+        aria-hidden="true"
+        className={`${anim("hero-in-left")} pointer-events-none absolute inset-x-0 top-[24vw] z-[1] block select-none whitespace-nowrap text-center font-impact text-[38.5vw] font-black uppercase italic leading-[0.8] tracking-[-0.02em] text-white/[0.97] [font-stretch:56%] lg:top-[6.5vw] lg:text-[32.6vw] lg:[font-stretch:60%]`}
+        style={{ animationDelay: "0.05s" }}
+      >
+        Deploy
+      </span>
+
+      {/* Figura: centrada, delante de la palabra. Solo asoma desde abajo, para que "DEPLOY" se lea entero. */}
+      <div
+        aria-hidden="true"
+        className={`${anim("hero-in-fig")} pointer-events-none absolute inset-x-0 top-[56vw] z-[2] mx-auto w-[min(105vw,62svh)] lg:inset-x-auto lg:left-[30.5vw] lg:top-[22vw] lg:mx-0 lg:w-[44vw]`}
+        style={{
+          WebkitMaskImage: "linear-gradient(to bottom, #000 66%, transparent 97%)",
+          maskImage: "linear-gradient(to bottom, #000 66%, transparent 97%)",
+        }}
+      >
+        <div style={{ animation: "hero-float 7s ease-in-out 1.6s infinite" }}>
+          <Image
+            src="/img/hero/hero-recorte.webp"
+            alt=""
+            width={1122}
+            height={1402}
+            priority={tone === "dark"}
+            sizes="(min-width: 1024px) 44vw, 105vw"
+            className={`h-auto w-full ${t.img}`}
+          />
         </div>
       </div>
 
-      {/* Texto y botones */}
-      <div className="relative z-[3] mt-5 sm:mt-8 lg:mt-8">
-        <p
-          style={{ animationDelay: "0.8s" }}
-          className={`${anim("hero-in-below")} max-w-[44%] font-body ${t.pz} leading-snug ${t.p} sm:max-w-md sm:leading-relaxed lg:max-w-[32rem]`}
-        >
-          <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
-          automatización y agentes de WhatsApp.
-        </p>
+      {/* Fundido al color del fondo, para que el texto se lea sobre el pie de la figura */}
+      <div aria-hidden="true" className={`pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[40svh] bg-gradient-to-t to-transparent lg:h-[30svh] ${t.fade}`} />
 
-        <div
-          style={{ animationDelay: "0.95s" }}
-          className={`${anim("hero-in-below")} mt-6 flex flex-col items-start gap-3 sm:mt-7 sm:flex-row sm:items-center sm:gap-4`}
-        >
-          <a
-            href="#hablemos"
-            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-6 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn1}`}
+      {/* Titular, bajada y botones: abajo, sobre el pie difuminado de la figura */}
+      <div className="absolute inset-x-0 bottom-0 z-[3] flex flex-col items-center px-5 pb-[calc(clamp(2.5rem,8vw,7rem)+1.25rem)] sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-[5vw]">
+        <h1 className="text-center lg:text-left">
+          <span
+            className={`${anim("hero-in-left")} block font-body text-[8.2vw] font-extrabold uppercase leading-none tracking-[-0.02em] sm:text-[6vw] lg:text-[4.3vw] ${t.h1a}`}
+            style={{ animationDelay: "0.3s" }}
           >
-            Hablemos
-            <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-          </a>
-          <a
-            href="#servicios"
-            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-6 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,border-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn2}`}
+            Tu negocio,
+          </span>
+          <span
+            className={`${anim("hero-in-left")} block font-didone text-[12vw] font-semibold italic leading-[0.95] sm:text-[8.5vw] lg:text-[6vw] ${t.h1b}`}
+            style={{ animationDelay: "0.45s" }}
           >
-            Ver servicios
-            <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
-          </a>
+            tu sistema.
+          </span>
+        </h1>
+
+        <div className="mt-3 flex flex-col items-center lg:mt-0 lg:items-start lg:pb-[0.6vw]">
+          <p
+            style={{ animationDelay: "0.85s" }}
+            className={`${anim("hero-in-below")} max-w-[22rem] text-center font-body ${t.pz} leading-snug ${t.p} lg:max-w-[24rem] lg:text-left`}
+          >
+            <strong className={`font-semibold ${t.strong}`}>Software a medida</strong>, páginas web,
+            automatización y agentes de WhatsApp.
+          </p>
+          <div
+            style={{ animationDelay: "1s" }}
+            className={`${anim("hero-in-below")} mt-4 flex items-center justify-center gap-2.5 lg:mt-5 lg:justify-start lg:gap-3`}
+          >
+            <a
+              href="#hablemos"
+              className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn1}`}
+            >
+              Hablemos
+              <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+            </a>
+            <a
+              href="#servicios"
+              className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-5 py-3 font-body ${t.bz} font-bold uppercase tracking-wide transition-[transform,border-color] duration-200 ease-out active:scale-[0.97] sm:px-7 sm:py-3.5 ${t.btn2}`}
+            >
+              Ver servicios
+              <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
+            </a>
+          </div>
         </div>
       </div>
     </>

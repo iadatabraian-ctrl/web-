@@ -44,6 +44,7 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-impact: var(--font-saira);
+  --font-didone: var(--font-bodoni);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -309,15 +310,20 @@
   from { opacity: 0; transform: translateY(36px); }
   to { opacity: 1; transform: none; }
 }
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 @keyframes hero-fig {
   from { opacity: 0; transform: translateY(14%); }
   to { opacity: 1; transform: none; }
 }
 .hero-in-left { animation: hero-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .hero-in-below { animation: hero-below 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-in-fade { animation: hero-fade 1.8s ease both; }
 .hero-in-fig { animation: hero-fig 1.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @media (prefers-reduced-motion: reduce) {
-  .hero-in-left, .hero-in-below, .hero-in-fig { animation: none; }
+  .hero-in-left, .hero-in-below, .hero-in-fig, .hero-in-fade { animation: none; }
 }
 @keyframes hero-float {
   0%,

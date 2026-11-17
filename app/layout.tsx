@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, JetBrains_Mono, Saira } from "next/font/google";
+import { Anton, Archivo, Bodoni_Moda, JetBrains_Mono, Saira } from "next/font/google";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
@@ -19,6 +19,14 @@ const saira = Saira({
   variable: "--font-saira",
   style: ["normal", "italic"],
   axes: ["wdth"],
+  subsets: ["latin"],
+});
+
+// "tu sistema." del hero: Bodoni itálica, solo en el estilo itálico para no cargar de más.
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
+  style: ["italic"],
+  axes: ["opsz"],
   subsets: ["latin"],
 });
 
@@ -84,7 +92,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${saira.variable} antialiased`}
+      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${saira.variable} ${bodoni.variable} antialiased`}
     >
       <body>
         <script
