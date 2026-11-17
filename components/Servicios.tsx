@@ -27,33 +27,29 @@ const CARD_IMAGES: Partial<Record<Kind, string>> = {
 /** Imágenes de fondo oscuro: el número de la tarjeta va en claro. */
 const DARK_IMAGE = new Set<Kind>(["automatizacion"]);
 
-const SERVICES: { kind: Kind; href: string; title: string; problem: string; description: string }[] = [
+const SERVICES: { kind: Kind; href: string; title: string; description: string }[] = [
   {
     kind: "software",
     href: "/software-a-medida",
     title: "Software a medida",
-    problem: "Trabajás con planillas y mensajes sueltos.",
     description: "Un sistema con panel, usuarios y permisos hecho para tu operación: la información queda en un solo lugar.",
   },
   {
     kind: "web",
     href: "/paginas-web",
     title: "Páginas web",
-    problem: "Tu web es lenta o no te trae consultas.",
     description: "Un sitio rápido, pensado primero para celular, con contacto directo a tu WhatsApp.",
   },
   {
     kind: "automatizacion",
     href: "/automatizacion",
     title: "Automatizaciones",
-    problem: "Tu equipo repite las mismas tareas a mano.",
     description: "Conexión entre tus herramientas y flujos propios: esas tareas dejan de hacerse a mano.",
   },
   {
     kind: "agentes",
     href: "/agentes-whatsapp",
     title: "Agentes de IA",
-    problem: "Todo el día te preguntan precio y disponibilidad.",
     description: "Un agente en WhatsApp e Instagram que responde con la información de tu negocio.",
   },
 ];
@@ -255,8 +251,7 @@ function Card({
           0{index + 1}
         </span>
       </div>
-      <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3 pt-3 [--card-text-h:9.6rem] min-[380px]:[--card-text-h:9.4rem] sm:px-5 sm:pb-4 sm:pt-4 sm:[--card-text-h:11.4rem]">
-        <p className="mb-1 font-mono text-[9.5px] uppercase leading-tight tracking-wide text-brand-accent sm:mb-1.5 sm:text-[11px]">{service.problem}</p>
+      <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3 pt-3 [--card-text-h:8.1rem] min-[380px]:[--card-text-h:7.9rem] sm:px-5 sm:pb-4 sm:pt-4 sm:[--card-text-h:9.6rem]">
         <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.2rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-[1.7rem]">
           {service.title}
         </h3>
