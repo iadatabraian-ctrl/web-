@@ -6,7 +6,6 @@ import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
-import { Bar } from "@/components/Bar";
 import { motion } from "framer-motion";
 
 const NAV_LINKS = [
@@ -28,18 +27,27 @@ export function CtaFooter() {
     <>
       <section
         id="hablemos"
-        className="relative overflow-hidden bg-brand-cream px-5 py-20 text-brand-ink-on-cream sm:px-8 sm:py-28 lg:px-[6vw]"
+        className="relative overflow-hidden bg-brand-accent px-5 pb-20 pt-32 text-[#0a0a0a] sm:px-8 sm:pb-28 sm:pt-32 lg:px-[6vw]"
       >
+        {/* Círculos planos de fondo (referencia: piezas con formas naranjas grandes) */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <Bar gray className="max-sm:hidden" style={{ right: "-4vw", top: 0, width: "9vw", height: "46vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.12)", edge: "right" }} i={0} />
-          <Bar gray style={{ left: "-6vw", bottom: 0, width: "10vw", height: "26vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.10)", edge: "left" }} i={1} />
+          <span className="absolute -left-[22vw] bottom-[-16vw] h-[60vw] w-[60vw] rounded-full bg-[#ff7a3d] sm:-left-[12vw] sm:h-[38vw] sm:w-[38vw]" />
+          <span className="absolute -right-[10vw] top-[34%] h-[26vw] w-[26vw] rounded-full border-[3vw] border-[#ff7a3d] sm:h-[16vw] sm:w-[16vw] sm:border-[1.8vw]" />
+        </div>
+
+        {/* Esquina de papel plegada: el papel naranja deja ver el reverso crema */}
+        <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-[min(34vw,15rem)] w-[min(34vw,15rem)] max-sm:h-[30vw] max-sm:w-[30vw]">
+          <span className="absolute inset-0 bg-brand-cream [clip-path:polygon(0_0,100%_0,100%_100%)]" />
+          <span className="absolute inset-0 [filter:drop-shadow(-7px_9px_9px_rgba(0,0,0,0.28))]">
+            <span className="absolute inset-0 bg-[linear-gradient(135deg,#ffffff_0%,#ebe3d1_100%)] [clip-path:polygon(0_0,100%_100%,0_100%)]" />
+          </span>
         </div>
         <FadeIn className="relative mx-auto max-w-4xl text-center">
           <h2 className="origin-bottom -skew-x-[5deg] text-balance font-impact text-[9.5vw] font-black uppercase not-italic leading-[0.92] tracking-[-0.005em] [font-stretch:80%] sm:text-[5.4vw] lg:text-[3.9rem]">
             <span className="block">¿Tenés una idea o un</span>
-            <span className="block text-brand-ink-on-cream-soft">problema para resolver?</span>
+            <span className="block text-white">problema para resolver?</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl font-body text-sm leading-relaxed text-brand-ink-on-cream-soft sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl font-body text-sm font-medium leading-relaxed text-[#0a0a0a]/85 sm:text-lg">
             Contanos qué necesita tu negocio. Vemos juntos si conviene un sistema a medida, un sitio web o algo más
             simple.
           </p>
@@ -47,12 +55,12 @@ export function CtaFooter() {
             href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hacer%20una%20consulta"
             target="_blank"
             rel="noopener"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition-[transform,opacity] duration-200 hover:opacity-90 active:scale-[0.97]"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#0a0a0a] px-8 py-4 font-body text-sm font-bold uppercase tracking-wide text-white transition-[transform,opacity] duration-200 hover:opacity-90 active:scale-[0.97]"
           >
             Hablemos
             <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </a>
-          <p className="mt-5 font-body text-xs text-brand-ink-on-cream-soft">
+          <p className="mt-5 font-body text-xs font-medium text-[#0a0a0a]/75">
             Cotizamos según el alcance de cada proyecto: no vendemos paquetes cerrados.
           </p>
 
