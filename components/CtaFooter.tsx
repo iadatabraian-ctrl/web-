@@ -58,17 +58,12 @@ export function CtaFooter() {
             </FadeIn>
           </div>
 
-          {/* Formulario oscuro con relieve: la persona se apoya en su borde y deja caer la mano adentro */}
+          {/* Formulario claro: la persona se apoya en su borde y deja caer la mano adentro */}
           <motion.div
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] px-5 py-8 text-white shadow-[0_2px_3px_rgba(10,10,10,0.3),0_26px_44px_-18px_rgba(10,10,10,0.65)]  sm:px-8 sm:py-10"
+            className="relative rounded-[1.75rem] border border-white/80 bg-[#fffdf9] px-5 py-8 text-brand-ink-on-cream shadow-[0_2px_4px_rgba(26,23,18,0.05),0_14px_28px_-8px_rgba(26,23,18,0.14),0_44px_70px_-24px_rgba(26,23,18,0.30)] sm:px-8 sm:py-10"
           >
-            {/* Fondo del formulario: luz gris desde arriba y cuadrícula fina */}
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
-              <span className="absolute inset-0 bg-[radial-gradient(90%_70%_at_82%_0%,#2f2f2f_0%,rgba(10,10,10,0)_70%)]" />
-              <span className="grid-hud absolute inset-0 opacity-[0.12] [mask-image:linear-gradient(to_bottom,#000,transparent_75%)]" />
-            </div>
             <div
               aria-hidden="true"
               className="pointer-events-none absolute right-0 z-[3] lg:right-[-5%]"
@@ -76,9 +71,7 @@ export function CtaFooter() {
             >
               <Image src="/img/contacto-persona-2.png" alt="" width={1199} height={1312} sizes="(min-width: 1024px) 24rem, 62vw" className="h-auto w-full [filter:drop-shadow(0_16px_14px_rgba(10,10,10,0.35))]" />
             </div>
-            <div className="relative z-[2]">
-              <ContactForm />
-            </div>
+            <ContactForm />
           </motion.div>
 
           <p className="mt-6 text-center font-body text-xs text-brand-ink-on-cream-soft">

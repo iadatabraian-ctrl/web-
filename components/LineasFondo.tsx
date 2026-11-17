@@ -1,5 +1,5 @@
-/* Líneas curvas finas de fondo (referencia del fundador): entran por los bordes, se desvanecen hacia
-   adentro y pasan por detrás del contenido. Solo decoración; el trazo no se deforma con el tamaño. */
+/* Líneas curvas finas de fondo (referencia del fundador): entran por los bordes, son lisas (sin
+   desvanecido) y pasan por detrás del contenido. Solo decoración; el trazo no se deforma con el tamaño. */
 
 const LINES = [
   { d: "M100 4 C 90 12, 82 20, 74 32", w: 1.5, o: 0.85 },
@@ -21,21 +21,12 @@ export function LineasFondo({ uid = "lf", className = "" }: { uid?: string; clas
       className={`pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible ${className}`}
     >
       <defs>
-        <linearGradient id={`${uid}-r`} x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FF5C1A" stopOpacity="1" />
-          <stop offset="1" stopColor="#FF5C1A" stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id={`${uid}-l`} x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stopColor="#FF5C1A" stopOpacity="1" />
-          <stop offset="1" stopColor="#FF5C1A" stopOpacity="0" />
-        </linearGradient>
         <filter id={`${uid}-g`} x="-30%" y="-30%" width="160%" height="160%">
           <feGaussianBlur stdDeviation="3" />
         </filter>
       </defs>
       {LINES.map((l, i) => {
-        const left = l.d.startsWith("M0");
-        const stroke = `url(#${uid}-${left ? "l" : "r"})`;
+        const stroke = "#FF5C1A";
         return (
           <g key={i}>
             {l.glow && (

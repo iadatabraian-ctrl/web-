@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 const inputClass =
-  "w-full rounded-xl border border-white/12 bg-white/[0.06] px-4 py-3 font-body text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.07),inset_0_-8px_14px_-10px_rgba(0,0,0,0.6)] placeholder:text-white/45 outline-none transition-[border-color,background-color,box-shadow] duration-200 focus:border-brand-accent focus:bg-white/[0.1] focus:shadow-[0_0_0_3px_rgba(255,92,26,0.22)]";
+  "w-full rounded-xl border border-brand-ink-on-cream/20 bg-white px-4 py-3 font-body text-sm text-brand-ink-on-cream placeholder:text-brand-ink-on-cream-soft/70 outline-none transition-colors focus:border-brand-accent";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
