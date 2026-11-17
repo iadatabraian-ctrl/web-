@@ -86,50 +86,66 @@ export function CtaFooter() {
       <footer className="relative overflow-x-clip bg-brand-cream text-brand-ink-on-cream">
         {/* Información sobre fondo claro: continúa el color de Contacto */}
         <div className="relative z-10 px-5 pt-4 sm:px-8 lg:px-[6vw]">
-          <div className="mx-auto max-w-6xl border-t border-brand-ink-on-cream/15 pt-8 sm:pt-10">
+          <div className="mx-auto max-w-6xl border-t border-brand-ink-on-cream/15 pt-8 sm:pt-12">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-9 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-x-10">
+              <div className="col-span-2 lg:col-span-1">
+                <Link href="/" className="inline-flex" aria-label="Deploy, inicio">
+                  <Logo dark />
+                </Link>
+                <p className="mt-4 max-w-[16rem] font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">
+                  Tu negocio, tu sistema. Desde Salto, para todo el país.
+                </p>
+              </div>
 
+              <nav aria-label="Pie de página">
+                <h4 className="font-mono text-[11px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Navegación</h4>
+                <ul className="mt-4 flex flex-col gap-2.5 font-body text-sm font-semibold">
+                  {NAV_LINKS.map((l) => (
+                    <li key={l.href}>
+                      <a href={l.href} className="transition-colors hover:text-brand-accent">
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
+              <nav aria-label="Servicios">
+                <h4 className="font-mono text-[11px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Servicios</h4>
+                <ul className="mt-4 flex flex-col gap-2.5 font-body text-sm font-semibold">
+                  {SERVICE_LINKS.map((l) => (
+                    <li key={l.href}>
+                      <a href={l.href} className="transition-colors hover:text-brand-accent">
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <Link href="/" className="inline-flex" aria-label="Deploy, inicio">
-              <Logo dark />
-            </Link>
-            <nav aria-label="Pie de página" className="flex flex-wrap gap-x-7 gap-y-2 font-body text-sm font-semibold">
-              {NAV_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="transition-colors hover:text-brand-accent">
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-            <div className="flex items-center gap-2.5">
-              <a href="https://wa.me/59898648853" target="_blank" rel="noopener" aria-label="WhatsApp" className={ICON}>
-                <WhatsAppIcon className="h-4 w-4" />
-              </a>
-              <a href="https://instagram.com/deploy.uy" target="_blank" rel="noopener" aria-label="Instagram" className={ICON}>
-                <InstagramIcon className="h-4 w-4" />
-              </a>
-              <a href="mailto:deploy.uy@gmail.com" aria-label="Email" className={ICON}>
-                <GmailIcon className="h-4 w-4" />
-              </a>
+              <div className="col-span-2 lg:col-span-1">
+                <h4 className="font-mono text-[11px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Contacto</h4>
+                <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 lg:block">
+                  <div className="flex items-center gap-2.5">
+                    <a href="https://wa.me/59898648853" target="_blank" rel="noopener" aria-label="WhatsApp" className={ICON}>
+                      <WhatsAppIcon className="h-4 w-4" />
+                    </a>
+                    <a href="https://instagram.com/deploy.uy" target="_blank" rel="noopener" aria-label="Instagram" className={ICON}>
+                      <InstagramIcon className="h-4 w-4" />
+                    </a>
+                    <a href="mailto:deploy.uy@gmail.com" aria-label="Email" className={ICON}>
+                      <GmailIcon className="h-4 w-4" />
+                    </a>
+                  </div>
+                  <p className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-cream-soft lg:mt-4">
+                    <Globe className="h-3.5 w-3.5" strokeWidth={2} />
+                    Salto, Uruguay
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className="mt-5 flex flex-col gap-3 border-t border-brand-ink-on-cream/15 pt-4 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-cream-soft lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-              <span>© 2026 Deploy</span>
-              <span className="inline-flex items-center gap-1.5">
-                <Globe className="h-3.5 w-3.5" strokeWidth={2} />
-                Salto, Uruguay
-              </span>
-            </div>
-            <nav aria-label="Servicios" className="flex flex-wrap gap-x-5 gap-y-1">
-              {SERVICE_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="transition-colors hover:text-brand-accent">
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-          </div>
+            <p className="mt-9 border-t border-brand-ink-on-cream/15 pt-4 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-cream-soft">© 2026 Deploy</p>
           </div>
         </div>
 
