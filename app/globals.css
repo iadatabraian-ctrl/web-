@@ -326,11 +326,6 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-in-left, .hero-in-below, .hero-in-fig, .hero-in-fade { animation: none; }
 }
-@keyframes hang-swing {
-  0%, 100% { transform: rotate(calc(-3deg * var(--amp, 1))); }
-  50% { transform: rotate(calc(3deg * var(--amp, 1))); }
-}
-.hang-swing { transform-origin: 87.7% 1.6%; animation: hang-swing 5.5s ease-in-out infinite; }
 @keyframes hero-float {
   0%,
   100% {

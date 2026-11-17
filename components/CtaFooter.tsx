@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
+import { Bar } from "@/components/Bar";
 import { motion } from "framer-motion";
 
 const NAV_LINKS = [
@@ -28,66 +29,57 @@ export function CtaFooter() {
     <>
       <section
         id="hablemos"
-        className="relative overflow-hidden bg-brand-accent px-5 pb-20 pt-24 text-[#0a0a0a] [--cw:76vw] [--fw:30vw] sm:px-8 sm:pb-28 sm:pt-32 sm:[--cw:50vw] sm:[--fw:17vw] lg:px-[6vw] lg:[--cw:min(38vw,38rem)] lg:[--fw:min(11.5vw,11.5rem)] lg:[--gap:-5rem]"
+        className="relative overflow-hidden bg-brand-cream px-5 pb-20 pt-20 text-[#0a0a0a] [--pw:62vw] sm:px-8 sm:pb-28 sm:pt-28 sm:[--pw:38vw] lg:px-[6vw] lg:[--pw:24rem]"
       >
-        {/* Papel que se despega en la esquina, con la figura colgada de la punta (referencia del fundador) */}
-        <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 z-[1] aspect-square w-[var(--cw)]">
-          <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible">
-            <defs>
-              <linearGradient id="flapBack" x1="0" y1="0" x2="1" y2="0.6">
-                <stop offset="0" stopColor="#e2d2bd" />
-                <stop offset="0.35" stopColor="#ffffff" />
-                <stop offset="1" stopColor="#f1e9db" />
-              </linearGradient>
-              <filter id="flapShadow" x="-20%" y="-20%" width="150%" height="150%">
-                <feDropShadow dx="-1.2" dy="1.8" stdDeviation="1.6" floodColor="#7a1f00" floodOpacity="0.45" />
-              </filter>
-              <filter id="foldBlur" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="1.1" />
-              </filter>
-            </defs>
-            {/* sombra del doblez sobre el papel naranja */}
-            <path d="M40 0 C52 14 62 34 66 55" fill="none" stroke="#a52f00" strokeOpacity="0.5" strokeWidth="2.6" filter="url(#foldBlur)" />
-            {/* reverso del papel */}
-            <path d="M40 0 L100 0 L100 38 C90 40 76 44 66 55 C62 34 52 14 40 0 Z" fill="url(#flapBack)" filter="url(#flapShadow)" />
-          </svg>
-          <div
-            className="hang-swing absolute z-[2]"
-            style={{ width: "var(--fw)", left: "calc(66% - var(--fw) * 0.877)", top: "calc(55% - var(--fw) * 0.055)" }}
-          >
-            <Image src="/img/contacto-figura.webp" alt="" width={437} height={1500} sizes="(min-width: 1024px) 15rem, 40vw" className="h-auto w-full [transform:scaleX(-1)] [filter:drop-shadow(0_14px_14px_rgba(90,20,0,0.35))]" />
-          </div>
+        {/* Líneas y barra diagonales a 37°, planas (referencia del fundador) */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <Bar className="max-sm:hidden" style={{ right: "-3vw", top: "14%", width: "8vw", height: "30vw", skew: 37, origin: "100% 0", fill: "rgba(255,92,26,0.16)", edge: "left", edgeAlpha: 0.7 }} i={0} />
+          <span className="absolute right-[6vw] top-[2%] h-[44vw] w-px origin-top rotate-[37deg] bg-brand-accent/45" />
+          <span className="absolute -left-[4vw] bottom-[18%] h-[26vw] w-px origin-bottom -rotate-[37deg] bg-brand-accent/45" />
+          <span className="absolute -left-[2vw] bottom-[12%] h-[20vw] w-px origin-bottom -rotate-[37deg] bg-brand-accent/25" />
         </div>
 
-        <div className="relative z-[2] mx-auto max-w-6xl">
-          <div className="min-h-[calc(var(--cw)*0.55_+_var(--fw)*3.43_-_6rem)] sm:min-h-[calc(var(--cw)*0.55_+_var(--fw)*3.43_-_8rem)] lg:min-h-[calc(var(--cw)*0.55_+_var(--fw)*3.43_-_14rem)]">
-          <FadeIn className="max-w-[56%] sm:max-w-[46%] lg:max-w-[34rem]">
-            <p className="font-didone text-[13vw] font-extrabold italic leading-none text-white [font-optical-sizing:none] [font-variation-settings:'opsz'_10] sm:text-[7vw] lg:text-[4.6rem]">
-              Hola,
-            </p>
-            <h2 className="mt-3 origin-bottom-left -skew-x-[5deg] text-balance font-impact text-[8.4vw] font-black uppercase not-italic leading-[0.94] tracking-[-0.005em] [font-stretch:80%] sm:text-[4.6vw] lg:text-[3.6rem]">
-              <span className="block">¿Tenés una idea o un</span>
-              <span className="block text-white">problema para resolver?</span>
+        <div className="relative z-[2] mx-auto max-w-4xl">
+          {/* Texto: ocupa el costado izquierdo, y la persona asoma a la derecha */}
+          <FadeIn className="min-h-[calc(var(--pw)*0.84)] max-w-[54%] sm:max-w-[50%]">
+            <h2 className="text-balance font-body text-[5.8vw] font-medium leading-[1.12] tracking-[-0.02em] sm:text-[3.4vw] lg:text-[2.7rem]">
+              Contanos qué necesita <span className="font-extrabold text-brand-accent">tu negocio.</span>
             </h2>
-            <p className="mt-5 max-w-md font-body text-[13px] font-medium leading-relaxed text-[#0a0a0a]/85 sm:text-lg">
-              Contanos qué necesita tu negocio. Vemos juntos si conviene un sistema a medida, un sitio web o algo más
-              simple.
+            <p className="mt-3 font-body text-[12.5px] leading-snug text-brand-ink-on-cream-soft sm:mt-4 sm:text-base">
+              Vemos juntos si conviene un sistema a medida, un sitio web o algo más simple.
             </p>
             <a
               href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hacer%20una%20consulta"
               target="_blank"
               rel="noopener"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0a0a0a] px-6 py-3.5 font-body text-xs font-bold uppercase tracking-wide text-white transition-[transform,opacity] duration-200 hover:opacity-90 active:scale-[0.97] sm:px-8 sm:py-4 sm:text-sm"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-accent px-5 py-3 font-body text-[11px] font-bold uppercase tracking-wide text-[#0a0a0a] transition-[transform,opacity] duration-200 hover:opacity-90 active:scale-[0.97] sm:mt-6 sm:px-8 sm:py-4 sm:text-sm"
             >
               Hablemos
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </a>
+            <p className="mt-3 font-body text-[10px] leading-snug text-brand-ink-on-cream-soft sm:text-xs">
+              Cotizamos según el alcance de cada proyecto: no vendemos paquetes cerrados.
+            </p>
           </FadeIn>
-          </div>
 
-          {/* Barra de contacto (referencia: barra inferior en píldora) */}
-          <FadeIn className="relative mx-auto mt-6 max-w-3xl">
-            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 rounded-[1.75rem] bg-white px-5 py-4 font-body text-[12.5px] font-semibold shadow-[0_18px_30px_-16px_rgba(90,20,0,0.5)] sm:rounded-full sm:px-8 sm:text-sm">
+          {/* Formulario: la persona se apoya en su borde y deja caer la mano adentro */}
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="relative rounded-[1.75rem] border border-white/80 bg-[#fffdf9] px-5 py-8 text-brand-ink-on-cream shadow-[0_2px_4px_rgba(26,23,18,0.05),0_14px_28px_-8px_rgba(26,23,18,0.14),0_44px_70px_-24px_rgba(26,23,18,0.30)] sm:px-8 sm:py-10"
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute right-[-5%] z-[3]"
+              style={{ width: "var(--pw)", bottom: "calc(100% - var(--pw) * 0.22)" }}
+            >
+              <Image src="/img/contacto-persona.webp" alt="" width={900} height={945} sizes="(min-width: 1024px) 24rem, 62vw" className="h-auto w-full" />
+            </div>
+            <ContactForm />
+          </motion.div>
+
+          <FadeIn className="relative mx-auto mt-8 max-w-3xl">
+            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 rounded-[1.75rem] border border-brand-ink-on-cream/10 bg-white px-5 py-4 font-body text-[12.5px] font-semibold shadow-[0_14px_26px_-18px_rgba(26,23,18,0.35)] sm:rounded-full sm:px-8 sm:text-sm">
               <li>
                 <a href="https://wa.me/59898648853" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:opacity-70">
                   <WhatsAppIcon className="h-4 w-4" /> +598 98 648 853
@@ -104,18 +96,7 @@ export function CtaFooter() {
                 </a>
               </li>
             </ul>
-            <p className="mt-4 text-center font-body text-xs font-medium text-[#0a0a0a]/75">
-              Cotizamos según el alcance de cada proyecto: no vendemos paquetes cerrados.
-            </p>
           </FadeIn>
-
-          <motion.div
-            animate={{ y: [0, -7, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="mx-auto mt-10 max-w-4xl rounded-[1.75rem] border border-white/80 bg-[#fffdf9] px-5 py-8 text-brand-ink-on-cream shadow-[0_2px_4px_rgba(26,23,18,0.05),0_14px_28px_-8px_rgba(26,23,18,0.14),0_44px_70px_-24px_rgba(26,23,18,0.30)] sm:px-8 sm:py-10"
-          >
-            <ContactForm />
-          </motion.div>
         </div>
       </section>
 
