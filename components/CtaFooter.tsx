@@ -80,74 +80,44 @@ export function CtaFooter() {
         </div>
       </section>
 
-      <footer className="border-t border-brand-line-on-black px-5 pt-16 sm:px-8">
-        <div className="mx-auto grid max-w-6xl gap-12 pb-14 sm:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
-            <Link href="/" className="inline-flex">
-              <Logo />
+      <footer className="relative overflow-x-clip bg-[#0a0a0a] px-5 pt-px sm:px-8">
+        {/* Barra flotante clara, apoyada sobre el corte entre Contacto y el pie */}
+        <div className="relative z-10 mx-auto -mt-7 max-w-6xl rounded-[1.6rem] bg-brand-cream px-6 py-5 text-brand-ink-on-cream shadow-[0_24px_40px_-18px_rgba(0,0,0,0.7)] sm:-mt-9 sm:rounded-full sm:px-10 sm:py-3.5">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <Link href="/" className="inline-flex" aria-label="Deploy, inicio">
+              <Logo dark />
             </Link>
-            <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-brand-ink-on-black-soft">
-              Software a medida, páginas web, automatización de procesos y
-              agentes de IA para WhatsApp e Instagram.
-            </p>
-            <div className="mt-5 flex items-center gap-3">
-              <a
-                href="https://wa.me/59898648853"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
-              >
+            <nav aria-label="Pie de página" className="flex flex-wrap gap-x-6 gap-y-2 font-body text-sm font-semibold">
+              {NAV_LINKS.map((link) => (
+                <a key={link.href} href={link.href} className="transition-colors hover:text-brand-accent">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <div className="flex items-center gap-2.5">
+              <a href="https://wa.me/59898648853" target="_blank" rel="noopener" aria-label="WhatsApp" className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-ink-on-cream/20 text-brand-ink-on-cream transition hover:scale-110 hover:border-brand-accent hover:text-brand-accent">
                 <WhatsAppIcon className="h-4 w-4" />
               </a>
-              <a
-                href="https://instagram.com/deploy.uy"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
-              >
+              <a href="https://instagram.com/deploy.uy" target="_blank" rel="noopener" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-ink-on-cream/20 text-brand-ink-on-cream transition hover:scale-110 hover:border-brand-accent hover:text-brand-accent">
                 <InstagramIcon className="h-4 w-4" />
               </a>
-              <a
-                href="mailto:deploy.uy@gmail.com"
-                aria-label="Email"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-on-black text-brand-ink-on-black-soft transition hover:scale-110 hover:border-brand-accent/50 hover:text-brand-accent"
-              >
+              <a href="mailto:deploy.uy@gmail.com" aria-label="Email" className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-ink-on-cream/20 text-brand-ink-on-cream transition hover:scale-110 hover:border-brand-accent hover:text-brand-accent">
                 <GmailIcon className="h-4 w-4" />
               </a>
             </div>
           </div>
+        </div>
 
+        <div className="mx-auto grid max-w-6xl gap-10 pb-10 pt-14 sm:grid-cols-[1.4fr_1fr] sm:pt-20">
+          <p className="max-w-md font-body text-base leading-relaxed text-brand-ink-on-black-soft sm:text-lg">
+            Software a medida, páginas web, automatización de procesos y agentes de IA para WhatsApp e Instagram.
+          </p>
           <div>
-            <h4 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
-              NAVEGACIÓN
-            </h4>
-            <ul className="mt-4 flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="font-body text-sm text-brand-cream/80 transition-colors hover:text-brand-cream"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-body text-xs font-semibold tracking-[0.15em] text-brand-ink-on-black-soft">
-              SERVICIOS
-            </h4>
-            <ul className="mt-4 flex flex-col gap-3">
+            <h4 className="font-mono text-xs uppercase tracking-[0.15em] text-brand-ink-on-black-soft">Servicios</h4>
+            <ul className="mt-4 flex flex-col gap-2.5">
               {SERVICE_LINKS.map(({ href, label }) => (
                 <li key={href}>
-                  <a
-                    href={href}
-                    className="font-body text-sm text-brand-cream/80 transition-colors hover:text-brand-cream"
-                  >
+                  <a href={href} className="font-body text-sm font-semibold text-brand-cream transition-colors hover:text-brand-accent">
                     {label}
                   </a>
                 </li>
@@ -156,9 +126,19 @@ export function CtaFooter() {
           </div>
         </div>
 
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 border-t border-brand-line-on-black py-6 font-body text-xs text-brand-ink-on-black-soft sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-1 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-black-soft sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 Deploy</span>
           <span>Salto, Uruguay</span>
+        </div>
+
+        {/* Palabra gigante cortada por el borde inferior, cruzada por una línea fina naranja */}
+        <div aria-hidden="true" className="pointer-events-none relative -mx-5 mt-6 h-[19vw] select-none overflow-hidden sm:-mx-8 sm:mt-8 sm:h-[15vw]">
+          <span className="absolute inset-x-0 top-0 block whitespace-nowrap bg-[linear-gradient(to_bottom,rgba(255,255,255,0.9)_10%,rgba(255,255,255,0.04)_85%)] bg-clip-text text-center font-impact text-[34vw] font-black uppercase italic leading-[0.8] tracking-[-0.02em] text-transparent [font-stretch:50%] sm:text-[24vw] sm:[font-stretch:60%]">
+            Deploy
+          </span>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
+            <path d="M0 62 C 30 58, 70 52, 100 46" fill="none" stroke="#FF6A1F" strokeWidth="1.8" vectorEffect="non-scaling-stroke" />
+          </svg>
         </div>
       </footer>
     </>
