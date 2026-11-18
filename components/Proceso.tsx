@@ -21,7 +21,7 @@ export function Proceso() {
   return (
     <section
       id="proceso"
-      className="relative overflow-hidden bg-[#0a0a0a] px-5 pb-20 pt-[calc(2.5rem+4rem)] text-brand-cream sm:px-8 sm:pb-28 sm:pt-[calc(8vw+5rem)] lg:px-[6vw]"
+      className="relative overflow-hidden bg-[#0a0a0a] px-5 pb-12 pt-[calc(2.5rem+1.75rem)] text-brand-cream sm:px-8 sm:pb-28 sm:pt-[calc(8vw+5rem)] lg:px-[6vw]"
       style={{
         clipPath: "polygon(0 0, 100% var(--cut), 100% 100%, 0 100%)",
         marginTop: "calc(-1 * var(--cut))",
