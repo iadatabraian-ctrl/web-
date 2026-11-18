@@ -3,7 +3,7 @@
 import { Logo } from "@/components/Logo";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Globe } from "lucide-react";
+import { ArrowRight, ChevronRight, MapPin } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, GmailIcon } from "@/components/BrandIcons";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
@@ -86,66 +86,89 @@ export function CtaFooter() {
       <footer className="relative overflow-x-clip bg-brand-cream text-brand-ink-on-cream">
         {/* Información sobre fondo claro: continúa el color de Contacto */}
         <div className="relative z-10 px-5 pt-4 sm:px-8 lg:px-[6vw]">
-          <div className="mx-auto max-w-6xl border-t border-brand-ink-on-cream/15 pt-8 sm:pt-12">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-9 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-x-10">
-              <div className="col-span-2 lg:col-span-1">
-                <Link href="/" className="inline-flex" aria-label="Deploy, inicio">
+          <div className="mx-auto max-w-6xl border-t border-brand-ink-on-cream/15 pt-9 sm:pt-12">
+            <div className="lg:grid lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-14">
+              <div>
+                <Link href="/" className="inline-flex [&_.logo-w]:text-[34px] [&_svg]:h-10 sm:[&_.logo-w]:text-[40px] sm:[&_svg]:h-12" aria-label="Deploy, inicio">
                   <Logo dark />
                 </Link>
-                <p className="mt-4 max-w-[16rem] font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">
-                  Tu negocio, tu sistema. Desde Salto, para todo el país.
+                <p className="mt-6 font-body text-2xl font-medium leading-tight tracking-[-0.01em] sm:text-3xl">Tu negocio, tu sistema.</p>
+                <p className="mt-3 max-w-sm font-body text-[15px] leading-snug text-brand-ink-on-cream-soft sm:text-base">
+                  Desarrollamos soluciones digitales a medida para empresas de todo el país.
+                </p>
+                <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-accent px-4 py-2 font-mono text-[11px] uppercase tracking-wide">
+                  <MapPin className="h-3.5 w-3.5 text-brand-accent" strokeWidth={2.25} />
+                  Desarrollo digital · Salto, Uruguay
                 </p>
               </div>
 
-              <nav aria-label="Pie de página">
-                <h4 className="font-mono text-[11px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Navegación</h4>
-                <ul className="mt-4 flex flex-col gap-2.5 font-body text-sm font-semibold">
-                  {NAV_LINKS.map((l) => (
-                    <li key={l.href}>
-                      <a href={l.href} className="transition-colors hover:text-brand-accent">
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-
-              <nav aria-label="Servicios">
-                <h4 className="font-mono text-[11px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Servicios</h4>
-                <ul className="mt-4 flex flex-col gap-2.5 font-body text-sm font-semibold">
-                  {SERVICE_LINKS.map((l) => (
-                    <li key={l.href}>
-                      <a href={l.href} className="transition-colors hover:text-brand-accent">
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-
-              <div className="col-span-2 lg:col-span-1">
-                <h4 className="font-mono text-[11px] uppercase tracking-[0.15em] text-brand-ink-on-cream-soft">Contacto</h4>
-                <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 lg:block">
-                  <div className="flex items-center gap-2.5">
-                    <a href="https://wa.me/59898648853" target="_blank" rel="noopener" aria-label="WhatsApp" className={ICON}>
-                      <WhatsAppIcon className="h-4 w-4" />
-                    </a>
-                    <a href="https://instagram.com/deploy.uy" target="_blank" rel="noopener" aria-label="Instagram" className={ICON}>
-                      <InstagramIcon className="h-4 w-4" />
-                    </a>
-                    <a href="mailto:deploy.uy@gmail.com" aria-label="Email" className={ICON}>
-                      <GmailIcon className="h-4 w-4" />
-                    </a>
-                  </div>
-                  <p className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-cream-soft lg:mt-4">
-                    <Globe className="h-3.5 w-3.5" strokeWidth={2} />
-                    Salto, Uruguay
-                  </p>
-                </div>
+              <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-9 border-t border-brand-ink-on-cream/15 pt-9 lg:col-span-2 lg:mt-0 lg:gap-x-14 lg:border-t-0 lg:pt-0">
+                <nav aria-label="Pie de página">
+                  <h4 className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-ink-on-cream-soft">Navegación</h4>
+                  <span aria-hidden="true" className="mt-2 block h-[2px] w-10 bg-brand-accent" />
+                  <ul className="mt-5 flex flex-col font-body text-[15px] sm:text-base">
+                    {NAV_LINKS.map((l) => (
+                      <li key={l.href}>
+                        <a href={l.href} className="group flex items-center justify-between py-2 transition-colors hover:text-brand-accent">
+                          {l.label}
+                          <ChevronRight className="h-4 w-4 text-brand-accent transition-transform duration-200 group-hover:translate-x-0.5" strokeWidth={2.25} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+                <nav aria-label="Soluciones">
+                  <h4 className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-ink-on-cream-soft">Soluciones</h4>
+                  <span aria-hidden="true" className="mt-2 block h-[2px] w-10 bg-brand-accent" />
+                  <ul className="mt-5 flex flex-col font-body text-[15px] sm:text-base">
+                    {SERVICE_LINKS.map((l) => (
+                      <li key={l.href}>
+                        <a href={l.href} className="group flex items-center justify-between py-2 transition-colors hover:text-brand-accent">
+                          {l.label}
+                          <ChevronRight className="h-4 w-4 text-brand-accent transition-transform duration-200 group-hover:translate-x-0.5" strokeWidth={2.25} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
               </div>
             </div>
 
-            <p className="mt-9 border-t border-brand-ink-on-cream/15 pt-4 font-mono text-[11px] uppercase tracking-wide text-brand-ink-on-cream-soft">© 2026 Deploy</p>
+            <div className="mt-9 border-t border-brand-ink-on-cream/15 pt-9">
+              <h4 className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-ink-on-cream-soft">Conectemos</h4>
+              <span aria-hidden="true" className="mt-2 block h-[2px] w-10 bg-brand-accent" />
+              <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-0">
+                <div className="flex items-center gap-2.5 sm:pr-8">
+                  <a href="https://wa.me/59898648853" target="_blank" rel="noopener" aria-label="WhatsApp" className={ICON}>
+                    <WhatsAppIcon className="h-4 w-4" />
+                  </a>
+                  <a href="https://instagram.com/deploy.uy" target="_blank" rel="noopener" aria-label="Instagram" className={ICON}>
+                    <InstagramIcon className="h-4 w-4" />
+                  </a>
+                  <a href="mailto:deploy.uy@gmail.com" aria-label="Email" className={ICON}>
+                    <GmailIcon className="h-4 w-4" />
+                  </a>
+                </div>
+                <p className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wide sm:border-l sm:border-brand-ink-on-cream/20 sm:px-8">
+                  <MapPin className="h-4 w-4 text-brand-accent" strokeWidth={2.25} />
+                  Salto, Uruguay
+                </p>
+                <a
+                  href="https://wa.me/59898648853?text=Hola%2C%20quiero%20hablar%20de%20mi%20proyecto"
+                  target="_blank"
+                  rel="noopener"
+                  className="group inline-flex items-center justify-between gap-4 font-body text-[15px] leading-snug transition-colors hover:text-brand-accent sm:border-l sm:border-brand-ink-on-cream/20 sm:pl-8"
+                >
+                  Hablemos de tu próximo proyecto.
+                  <ArrowRight className="h-5 w-5 shrink-0 text-brand-accent transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2} />
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-9 flex flex-col gap-2 border-t border-brand-ink-on-cream/15 pt-5 font-mono text-[10.5px] uppercase tracking-wide text-brand-ink-on-cream-soft sm:flex-row sm:items-center sm:justify-between">
+              <span>© 2026 Deploy — Todos los derechos reservados.</span>
+              <span>Desde Salto, para todo el país.</span>
+            </div>
           </div>
         </div>
 
