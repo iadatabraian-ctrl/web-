@@ -9,6 +9,7 @@ import { CuandoConviene } from "@/components/servicios/CuandoConviene";
 import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
 import { OtrosServicios } from "@/components/servicios/OtrosServicios";
 import { NotasPaso } from "@/components/NotasPaso";
+import { CasoCard } from "@/components/casos/CasoCard";
 import { Niveles } from "@/components/servicios/Niveles";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
@@ -198,6 +199,8 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             </div>
           </div>
         </section>
+
+        {s.slug === "paginas-web" && <CasoCard />}
 
         {/* Otros servicios (oscura) */}
         <section className="bg-[#0a0a0a] px-5 pb-16 pt-6 text-brand-cream sm:px-8 sm:pb-24 sm:pt-10 lg:px-[6vw]">

@@ -8,6 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: "https://deployuy.com/casos/emy",
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    },
     ...["software-a-medida", "paginas-web", "automatizacion", "agentes-whatsapp"].map(
       (slug) => ({
         url: `https://deployuy.com/${slug}`,
