@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Bar } from "@/components/Bar";
+import { LineasFondo } from "@/components/LineasFondo";
 
 /* Servicios (sección clara, ver PRODUCT.md: colores planos fuera de las tarjetas).
    Abre con la frase de la ex sección Diagnóstico y muestra los 4 servicios como un abanico de
@@ -90,7 +91,18 @@ export function Servicios() {
         <Bar className="max-lg:hidden" style={{ left: "-5vw", bottom: 0, width: "9vw", height: "20vw", skew: 37, origin: "0 100%", fill: "rgba(255,92,26,0.14)", edge: "left" }} i={2} />
       </div>
 
+      <LineasFondo kind="servicios" />
+
       <div className="relative mx-auto max-w-6xl">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={view}
+          transition={{ duration: 0.5, ease }}
+          className="mx-auto mb-5 w-fit rounded-full border border-brand-ink-on-cream/25 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] sm:mb-7 sm:text-xs"
+        >
+          01 — Servicios
+        </motion.p>
         {/* Titular */}
         <h2 className="text-balance text-center font-body text-[7.4vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[5vw] lg:text-[4.4rem]">
           <motion.span
@@ -252,10 +264,10 @@ function Card({
         </span>
       </div>
       <div className="flex min-h-[var(--card-text-h)] flex-col px-4 pb-3 pt-3 [--card-text-h:8.1rem] min-[380px]:[--card-text-h:7.9rem] sm:px-5 sm:pb-4 sm:pt-4 sm:[--card-text-h:9.6rem]">
-        <h3 className="origin-bottom-left -skew-x-[5deg] font-impact text-[1.2rem] font-black uppercase not-italic leading-none [font-stretch:80%] sm:text-[1.7rem]">
+        <h3 className="font-body text-[1.2rem] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] sm:text-[1.9rem]">
           {service.title}
         </h3>
-        <p className="mt-1 font-body text-[12px] leading-[1.3] text-brand-ink-on-black-soft sm:mt-2 sm:text-[13px] sm:leading-snug">
+        <p className="mt-1 line-clamp-3 font-body text-[12px] leading-[1.3] text-brand-ink-on-black-soft sm:mt-2 sm:text-[13px] sm:leading-snug">
           {service.description}
         </p>
         <Link
