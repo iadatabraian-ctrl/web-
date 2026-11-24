@@ -17,7 +17,7 @@ export function EjemploReal() {
             Una tienda online, <span className="text-brand-accent">hecha de punta a punta.</span>
           </h2>
           <p className="mt-5 max-w-md font-body text-[15px] leading-relaxed text-brand-ink-on-black-soft sm:text-base">
-            EMY Indumentaria, de Salto: catálogo con variantes por color, carrito, pedidos y un panel para que la dueña cargue stock y fotos. Funciona en celular y tiene dominio propio.
+            EMY Indumentaria, de Salto: catálogo con variantes por color, carrito, pedidos y un panel para que la dueña cargue stock y fotos.
           </p>
           <ul className="mt-6 flex flex-col gap-2.5 font-body text-sm sm:text-[15px]">
             {["Catálogo con filtros y búsqueda", "Carrito y pedido en pocos pasos", "Panel de administración protegido", "Mercado Pago: se conecta en la próxima etapa"].map((t) => (
