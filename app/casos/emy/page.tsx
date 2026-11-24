@@ -92,9 +92,6 @@ export default function Page() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 max-w-2xl font-body text-sm leading-relaxed text-brand-ink-on-cream-soft">
-                Hoy los pedidos se coordinan por transferencia. La conexión con Mercado Pago, para cobrar online, es la próxima etapa.
-              </p>
             </FadeIn>
           </div>
         </section>
