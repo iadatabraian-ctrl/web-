@@ -9,7 +9,7 @@ import { PantallasRiofit } from "@/components/casos/PantallasRiofit";
 const SITE = "https://deployuy.com";
 const url = `${SITE}/casos/riofit`;
 const titulo = "Demostración: sistema de gestión para gimnasios | Deploy";
-const descripcion = "Río Fit: sistema de gestión para gimnasios con panel de administrador y panel de socio. Socios, cuotas, rutinas por socio y constancia. Demostración con datos de prueba, desarrollo propio de Deploy.";
+const descripcion = "Río Fit: sistema de gestión para gimnasios con panel de administrador y panel de socio. Socios, cuotas, rutinas por socio y constancia. Desarrollo propio de Deploy.";
 
 export const metadata: Metadata = {
   title: titulo,
@@ -57,7 +57,7 @@ export default function Page() {
                 Un sistema para gimnasios, <span className="text-brand-accent">de punta a punta.</span>
               </h1>
               <p className="mt-3 max-w-md font-body text-sm leading-snug text-brand-ink-on-black-soft sm:mt-5 sm:text-base">
-                Río Fit: panel de administrador para gestionar socios, cuotas y rutinas, y un panel para cada socio en el celular. Lo que se ve usa datos de prueba.
+                Río Fit: panel de administrador para gestionar socios, cuotas y rutinas, y un panel para cada socio en el celular.
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-8">
                 <a href={wa} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 font-body text-xs font-bold uppercase tracking-wide transition-colors duration-200 hover:border-white sm:text-sm">
