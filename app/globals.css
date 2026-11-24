@@ -337,20 +337,3 @@
 }
 
 
-
-/* Flecha de "Servicios": se dibuja hacia la derecha, queda un momento y se apaga; en bucle. */
-.flecha-linea { stroke-dasharray: 1; animation: flecha-linea 3s ease-in-out infinite; }
-.flecha-punta { animation: flecha-punta 3s ease-in-out infinite; }
-@keyframes flecha-linea {
-  0% { stroke-dashoffset: 1; opacity: 1; }
-  40%, 78% { stroke-dashoffset: 0; opacity: 1; }
-  92%, 100% { stroke-dashoffset: 0; opacity: 0; }
-}
-@keyframes flecha-punta {
-  0%, 34% { opacity: 0; }
-  42%, 78% { opacity: 1; }
-  92%, 100% { opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .flecha-linea, .flecha-punta { animation: none; stroke-dashoffset: 0; opacity: 1; }
-}

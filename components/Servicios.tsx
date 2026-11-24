@@ -99,13 +99,9 @@ export function Servicios() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={view}
           transition={{ duration: 0.5, ease }}
-          className="mx-auto mb-5 flex w-fit items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] sm:mb-7 sm:text-xs"
+          className="mb-5 text-center font-mono text-[11px] uppercase tracking-[0.18em] sm:mb-7 sm:text-xs"
         >
           Servicios
-          <svg aria-hidden="true" viewBox="0 0 48 12" className="h-3 w-12 overflow-visible text-brand-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path className="flecha-linea" d="M1 6H44" pathLength={1} />
-            <path className="flecha-punta" d="M39 1.5L45 6L39 10.5" />
-          </svg>
         </motion.p>
         {/* Titular */}
         <h2 className="text-balance text-center font-body text-[7.4vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[5vw] lg:text-[4.4rem]">
