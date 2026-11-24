@@ -214,7 +214,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         {s.slug === "software-a-medida" && (
           <CasoCard
             href="/casos/riofit"
-            etiqueta="Demostración"
+            etiqueta="Fitness app"
             titulo="Río Fit,"
             destacado="sistema para gimnasios."
             texto="Panel de administrador y panel de socio, de punta a punta."

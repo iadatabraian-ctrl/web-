@@ -17,7 +17,7 @@ const SERVICIOS = [
 ];
 const CASOS = [
   { href: "/casos/emy", label: "Caso real: EMY" },
-  { href: "/casos/riofit", label: "Demostración: Río Fit" },
+  { href: "/casos/riofit", label: "Fitness app: Río Fit" },
 ];
 
 const LINKS = [
