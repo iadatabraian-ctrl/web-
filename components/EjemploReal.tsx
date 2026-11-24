@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 
-/* Ejemplo real: la tienda de EMY Indumentaria (emy.deployuy.com). Capturas propias de la tienda
+/* Caso real: la tienda de EMY Indumentaria (emy.deployuy.com). Capturas propias de la tienda
    (catálogo con los productos y precios reales; el stock cargado es provisorio). */
 
 const URL_TIENDA = "https://emy.deployuy.com";
@@ -10,9 +10,9 @@ const URL_TIENDA = "https://emy.deployuy.com";
 export function EjemploReal() {
   return (
     <section id="ejemplo" className="relative overflow-hidden bg-[#0a0a0a] px-5 py-14 text-brand-cream sm:px-8 sm:py-28 lg:px-[6vw]">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
         <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-black-soft">Ejemplo real</p>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-black-soft">Caso real</p>
           <h2 className="mt-4 text-balance font-body text-[7vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[4vw] lg:text-[3.2rem]">
             Una tienda online, <span className="text-brand-accent">hecha de punta a punta.</span>
           </h2>
@@ -39,20 +39,22 @@ export function EjemploReal() {
         </FadeIn>
 
         <FadeIn>
-          <div className="relative pb-10 pr-[18%] sm:pb-14">
-            {/* Laptop */}
-            <div className="overflow-hidden rounded-xl border border-white/15 bg-[#161616] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.9)]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-3 py-2">
-                <span className="h-2 w-2 rounded-full bg-white/25" />
-                <span className="h-2 w-2 rounded-full bg-white/25" />
-                <span className="h-2 w-2 rounded-full bg-white/25" />
-                <span className="ml-2 truncate rounded-full bg-white/10 px-3 py-0.5 font-mono text-[10px] text-brand-ink-on-black-soft sm:text-[11px]">emy.deployuy.com</span>
-              </div>
-              <Image src="/img/emy-laptop.webp" alt="Portada de la tienda online de EMY Indumentaria en computadora" width={1440} height={900} sizes="(min-width: 1024px) 40rem, 90vw" className="h-auto w-full" />
+          {/* Dos pantallas de celular en diagonal, con "EMY" gigante detrás (como el hero) y una línea fina que las cruza */}
+          <div className="relative mx-auto h-[128vw] max-w-[28rem] sm:h-[36rem] lg:h-[40rem]">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-[-2%] select-none text-center font-impact text-[52vw] font-black uppercase italic leading-[0.8] tracking-[-0.02em] bg-[linear-gradient(to_bottom,rgba(255,255,255,0.9)_20%,rgba(255,255,255,0.06)_100%)] bg-clip-text text-transparent [font-stretch:50%] sm:text-[13rem] lg:text-[15rem]"
+            >
+              EMY
+            </span>
+            <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full overflow-visible">
+              <path d="M-30 78 L130 40" fill="none" stroke="#FF6A1F" strokeWidth="1.8" vectorEffect="non-scaling-stroke" />
+            </svg>
+            <div className="absolute left-[5%] top-[24%] w-[46%] -rotate-[5deg] overflow-hidden rounded-[1.5rem] border-[3px] border-[#2a2a2a] bg-[#161616] shadow-[0_30px_50px_-16px_rgba(0,0,0,0.95)] sm:rounded-[1.8rem]">
+              <Image src="/img/emy-movil-home.webp" alt="Portada de la tienda online de EMY Indumentaria en celular" width={780} height={1688} sizes="(min-width: 1024px) 15rem, 50vw" className="h-auto w-full" />
             </div>
-            {/* Celular, apoyado abajo a la derecha */}
-            <div className="absolute bottom-0 right-0 w-[34%] overflow-hidden rounded-[1.3rem] border-[3px] border-[#2a2a2a] bg-[#161616] shadow-[0_24px_40px_-14px_rgba(0,0,0,0.95)] sm:rounded-[1.6rem]">
-              <Image src="/img/emy-movil.webp" alt="Página de producto de la tienda de EMY Indumentaria en celular" width={780} height={1688} sizes="(min-width: 1024px) 14rem, 34vw" className="h-auto w-full" />
+            <div className="absolute right-[3%] top-[34%] w-[46%] rotate-[4deg] overflow-hidden rounded-[1.5rem] border-[3px] border-[#2a2a2a] bg-[#161616] shadow-[0_30px_50px_-16px_rgba(0,0,0,0.95)] sm:rounded-[1.8rem]">
+              <Image src="/img/emy-movil.webp" alt="Página de producto de la tienda de EMY Indumentaria en celular" width={780} height={1688} sizes="(min-width: 1024px) 15rem, 50vw" className="h-auto w-full" />
             </div>
           </div>
         </FadeIn>
