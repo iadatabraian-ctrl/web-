@@ -8,7 +8,7 @@ import { PantallasRiofit } from "@/components/casos/PantallasRiofit";
 
 const SITE = "https://deployuy.com";
 const url = `${SITE}/casos/riofit`;
-const titulo = "Demostración: sistema de gestión para gimnasios | Deploy";
+const titulo = "Fitness app: sistema de gestión para gimnasios | Deploy";
 const descripcion = "Río Fit: sistema de gestión para gimnasios con panel de administrador y panel de socio. Socios, cuotas, rutinas por socio y constancia. Desarrollo propio de Deploy.";
 
 export const metadata: Metadata = {
@@ -52,7 +52,7 @@ export default function Page() {
                 <span className="mx-2">/</span>
                 <span className="text-brand-cream/80">Río Fit</span>
               </nav>
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-black-soft">Demostración · desarrollo propio</p>
+              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-black-soft">Fitness app</p>
               <h1 className="mt-2 text-balance font-body text-[7vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[4.2vw] lg:text-[3.4rem]">
                 Un sistema para gimnasios, <span className="text-brand-accent">de punta a punta.</span>
               </h1>
