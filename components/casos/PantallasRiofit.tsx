@@ -18,7 +18,7 @@ export function PantallasRiofit() {
         <Image src="/img/riofit-admin.webp" alt="Panel de administrador de Río Fit: asignar una rutina a un socio" width={1280} height={720} sizes="(min-width: 1024px) 30rem, 86vw" className="h-auto w-full" priority />
       </div>
       <div className="absolute bottom-0 right-[1%] w-[36%] rotate-[4deg] overflow-hidden rounded-[1.4rem] border-[3px] border-[#2a2a2a] bg-[#161616] shadow-[0_30px_50px_-16px_rgba(0,0,0,0.95)] sm:rounded-[1.8rem]">
-        <Image src="/img/riofit-socio.webp" alt="Panel del socio de Río Fit en celular: rutina del día" width={780} height={1688} sizes="(min-width: 1024px) 12rem, 36vw" className="h-auto w-full" />
+        <Image src="/img/riofit-socio-2.webp" alt="Panel del socio de Río Fit en celular: rutina del día" width={780} height={1629} sizes="(min-width: 1024px) 12rem, 36vw" className="h-auto w-full" />
       </div>
     </div>
   );

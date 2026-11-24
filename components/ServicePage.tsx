@@ -218,7 +218,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             titulo="Río Fit,"
             destacado="sistema para gimnasios."
             texto="Panel de administrador y panel de socio, con datos de prueba."
-            imagen="/img/riofit-socio.webp"
+            imagen="/img/riofit-socio-2.webp"
             alt="Panel del socio de Río Fit en celular"
           />
         )}
