@@ -10,6 +10,7 @@ import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
 import { OtrosServicios } from "@/components/servicios/OtrosServicios";
 import { NotasPaso } from "@/components/NotasPaso";
 import { CasoCard } from "@/components/casos/CasoCard";
+import { CASOS, casosDe } from "@/lib/casos";
 import { Niveles } from "@/components/servicios/Niveles";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
@@ -200,27 +201,18 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
           </div>
         </section>
 
-        {s.slug === "paginas-web" && (
-          <CasoCard
-            href="/casos/emy"
-            etiqueta="Caso real"
-            titulo="EMY Indumentaria,"
-            destacado="tienda online."
-            texto="Catálogo, carrito, pedidos y panel para cargar stock y fotos."
-            imagen="/img/emy-movil-home.webp"
-            alt="Tienda online de EMY Indumentaria en celular"
-          />
-        )}
-        {s.slug === "software-a-medida" && (
-          <CasoCard
-            href="/casos/riofit"
-            etiqueta="Fitness app"
-            titulo="Río Fit,"
-            destacado="sistema para gimnasios."
-            texto="Panel de administrador y panel de socio, de punta a punta."
-            imagen="/img/riofit-socio-2.webp"
-            alt="Panel del socio de Río Fit en celular"
-          />
+        {casosDe(s.slug).map((c) => (
+          <CasoCard key={c.slug} href={`/casos/${c.slug}`} etiqueta={c.etiqueta} titulo={c.titulo} destacado={c.destacado} texto={c.texto} imagen={c.imagen} alt={c.alt} />
+        ))}
+        {casosDe(s.slug).length > 0 && CASOS.length > casosDe(s.slug).length && (
+          <div className="bg-[#0a0a0a] px-5 pt-4 text-brand-cream sm:px-8 lg:px-[6vw]">
+            <div className="mx-auto max-w-5xl">
+              <Link href="/casos" className="inline-flex items-center gap-2 font-body text-xs font-bold uppercase tracking-wide text-brand-ink-on-black-soft transition-colors hover:text-brand-cream">
+                Ver todos los casos
+                <ArrowRight className="h-4 w-4 text-brand-accent" strokeWidth={2.5} />
+              </Link>
+            </div>
+          </div>
         )}
 
         {/* Otros servicios (oscura) */}
