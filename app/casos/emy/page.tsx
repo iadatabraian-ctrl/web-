@@ -8,7 +8,7 @@ import { TelefonosEmy } from "@/components/casos/TelefonosEmy";
 
 const SITE = "https://deployuy.com";
 const url = `${SITE}/casos/emy`;
-const TIENDA = "https://emy.deployuy.com";
+const TIENDA = "https://emyindumentaria.com";
 const titulo = "Caso real: tienda online de EMY Indumentaria | Deploy";
 const descripcion = "Tienda online de EMY Indumentaria, de Salto: catálogo con variantes por color, carrito, pedidos y panel para cargar stock y fotos. Desarrollada por Deploy.";
 
@@ -24,7 +24,7 @@ const INCLUYE = [
   { t: "Catálogo con variantes", d: "Colores, fotos y stock por color, con filtros y búsqueda." },
   { t: "Carrito y pedido", d: "Se arma el carrito y se hace el pedido en pocos pasos." },
   { t: "Panel de administración", d: "La dueña carga productos, fotos y stock, y ve los pedidos." },
-  { t: "Envíos y avisos", d: "Envío por departamento y avisos por correo." },
+  { t: "Envíos, retiro y avisos", d: "Envío por DAC a agencia o domicilio, retiro en persona y avisos por correo." },
 ];
 
 export default function Page() {
