@@ -15,11 +15,6 @@ const SERVICIOS = [
   { href: "/automatizacion", label: "Automatizaciones" },
   { href: "/agentes-whatsapp", label: "Agentes de IA" },
 ];
-const CASOS = [
-  { href: "/casos/emy", label: "Caso real: EMY" },
-  { href: "/casos/riofit", label: "Fitness app: Río Fit" },
-];
-
 const LINKS = [
   { id: "proceso", href: "/#proceso", label: "Proceso" },
   { id: "nosotros", href: "/#nosotros", label: "Nosotros" },
@@ -76,7 +71,7 @@ export function Nav() {
   // En el inicio, resalta el enlace de la sección que se está viendo.
   useEffect(() => {
     if (pathname !== "/") {
-      setActivo(pathname.startsWith("/casos") || SERVICIOS.some((s) => s.href === pathname) ? "servicios" : null);
+      setActivo(SERVICIOS.some((s) => s.href === pathname) ? "servicios" : null);
       return;
     }
     const ids = ["servicios", "proceso", "nosotros", "preguntas"];
@@ -138,13 +133,6 @@ export function Nav() {
                       <li key={s.href}>
                         <Link href={s.href} onClick={() => setOpen(false)} className="block py-1.5 font-body text-[15px] text-brand-ink-on-black-soft transition-colors hover:text-brand-accent">
                           {s.label}
-                        </Link>
-                      </li>
-                    ))}
-                    {CASOS.map((c) => (
-                      <li key={c.href}>
-                        <Link href={c.href} onClick={() => setOpen(false)} className="block py-1.5 font-body text-[15px] text-brand-accent">
-                          {c.label} →
                         </Link>
                       </li>
                     ))}
@@ -232,12 +220,6 @@ export function Nav() {
                     {SERVICIOS.map((s) => (
                       <Link key={s.href} href={s.href} onClick={() => setMenuServicios(false)} className="block rounded-xl px-3 py-2.5 font-body text-sm text-brand-cream transition-colors hover:bg-white/10">
                         {s.label}
-                      </Link>
-                    ))}
-                    <div className="my-1 h-px bg-white/10" />
-{CASOS.map((c) => (
-                      <Link key={c.href} href={c.href} onClick={() => setMenuServicios(false)} className="block rounded-xl px-3 py-2.5 font-body text-sm text-brand-accent transition-colors hover:bg-white/10">
-                        {c.label} →
                       </Link>
                     ))}
                     <a href="/#servicios" onClick={() => setMenuServicios(false)} className="block rounded-xl px-3 py-2 font-body text-xs text-brand-ink-on-black-soft transition-colors hover:text-brand-cream">
