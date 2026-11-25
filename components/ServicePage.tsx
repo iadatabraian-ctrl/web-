@@ -9,6 +9,7 @@ import { CuandoConviene } from "@/components/servicios/CuandoConviene";
 import { IncluyeSplit } from "@/components/servicios/IncluyeSplit";
 import { OtrosServicios } from "@/components/servicios/OtrosServicios";
 import { NotasPaso } from "@/components/NotasPaso";
+import { CasoCard } from "@/components/casos/CasoCard";
 import { Niveles } from "@/components/servicios/Niveles";
 import { SERVICIOS, getServicio, type ServicioSlug } from "@/lib/servicios";
 
@@ -198,6 +199,29 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
             </div>
           </div>
         </section>
+
+        {s.slug === "paginas-web" && (
+          <CasoCard
+            href="/casos/emy"
+            etiqueta="Caso real"
+            titulo="EMY Indumentaria,"
+            destacado="tienda online."
+            texto="Catálogo, carrito, pedidos y panel para cargar stock y fotos."
+            imagen="/img/emy-movil-home.webp"
+            alt="Tienda online de EMY Indumentaria en celular"
+          />
+        )}
+        {s.slug === "software-a-medida" && (
+          <CasoCard
+            href="/casos/riofit"
+            etiqueta="Fitness app"
+            titulo="Río Fit,"
+            destacado="sistema para gimnasios."
+            texto="Panel de administrador y panel de socio, de punta a punta."
+            imagen="/img/riofit-socio-2.webp"
+            alt="Panel del socio de Río Fit en celular"
+          />
+        )}
 
         {/* Otros servicios (oscura) */}
         <section className="bg-[#0a0a0a] px-5 pb-16 pt-6 text-brand-cream sm:px-8 sm:pb-24 sm:pt-10 lg:px-[6vw]">

@@ -6,7 +6,7 @@
 
 type Line = readonly number[]; // [x1,y1,x2,y2] recta, o [x0,y0,c1x,c1y,c2x,c2y,x3,y3] curva
 
-const SETS: Record<"contacto" | "nosotros", { lg: Line[]; sm: Line[] }> = {
+const SETS: Record<"contacto" | "nosotros" | "servicios", { lg: Line[]; sm: Line[] }> = {
   contacto: {
     lg: [
       [100, 3, 75, 31],
@@ -22,6 +22,10 @@ const SETS: Record<"contacto" | "nosotros", { lg: Line[]; sm: Line[] }> = {
       [100, 70, 93, 74],
       [0, 76, 3, 73, 5, 71, 6.5, 69],
     ],
+  },
+  servicios: {
+    lg: [[100, 16, 78, 46]],
+    sm: [[100, 27, 78, 40]],
   },
   nosotros: {
     lg: [

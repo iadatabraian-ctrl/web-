@@ -11,7 +11,7 @@ const view = { once: true, margin: "-10% 0px" } as const;
 
 export function NotasPaso({ pasos }: { pasos: { t: string; d: string }[] }) {
   return (
-    <ol className="mx-auto mt-8 max-w-4xl sm:mt-20">
+    <ol className="mx-auto mt-5 max-w-4xl sm:mt-20">
           {pasos.map((st, i) => (
             <li key={st.t}>
               {i > 0 && <Camino from={i % 2 === 0 ? "right" : "left"} />}
@@ -21,7 +21,7 @@ export function NotasPaso({ pasos }: { pasos: { t: string; d: string }[] }) {
                   whileInView={{ opacity: 1, y: 0, rotate: i % 2 === 0 ? -2.5 : 2.5 }}
                   viewport={view}
                   transition={{ duration: 0.8, ease }}
-                  className={`relative w-[68%] max-w-[26rem] rounded-[1.4rem] shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] sm:w-[60%] sm:rounded-[1.8rem] ${
+                  className={`relative w-[72%] max-w-[26rem] rounded-[1.4rem] shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] sm:w-[60%] sm:rounded-[1.8rem] ${
                     i % 2 === 0 ? "bg-brand-cream text-[#0a0a0a]" : "bg-brand-accent text-[#0a0a0a]"
                   }`}
                 >
@@ -31,14 +31,14 @@ export function NotasPaso({ pasos }: { pasos: { t: string; d: string }[] }) {
                       i % 2 === 0 ? "border-[#c4430a] bg-brand-accent" : "border-black bg-[#0a0a0a]"
                     }`}
                   />
-                  <div className="px-5 pb-5 pt-7 sm:px-7 sm:pb-7 sm:pt-9">
-                    <span className={`block font-body text-[2.1rem] font-extrabold leading-none tracking-[-0.02em] sm:text-5xl ${i % 2 === 0 ? "text-brand-accent" : "text-[#0a0a0a]/85"}`}>
+                  <div className="px-4 pb-3.5 pt-5 sm:px-7 sm:pb-7 sm:pt-9">
+                    <span className={`block font-body text-[1.7rem] font-extrabold leading-none tracking-[-0.02em] sm:text-5xl ${i % 2 === 0 ? "text-brand-accent" : "text-[#0a0a0a]/85"}`}>
                       0{i + 1}
                     </span>
-                    <h3 className="mt-3 font-body text-[1.05rem] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] sm:text-[1.6rem]">
+                    <h3 className="mt-1.5 font-body text-[0.95rem] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] sm:text-[1.6rem]">
                       {st.t}
                     </h3>
-                    <p className={`mt-2 font-body text-[12.5px] leading-snug sm:mt-3 sm:text-base ${i % 2 === 0 ? "text-brand-ink-on-cream-soft" : "text-[#0a0a0a]/80"}`}>{st.d}</p>
+                    <p className={`mt-1 font-body text-[12px] leading-snug sm:mt-3 sm:text-base ${i % 2 === 0 ? "text-brand-ink-on-cream-soft" : "text-[#0a0a0a]/80"}`}>{st.d}</p>
                   </div>
                 </motion.div>
               </div>
@@ -52,7 +52,7 @@ export function NotasPaso({ pasos }: { pasos: { t: string; d: string }[] }) {
 function Camino({ from }: { from: "left" | "right" }) {
   const id = useId().replace(/:/g, "");
   return (
-    <div aria-hidden="true" className="relative mx-auto h-9 w-full sm:h-24">
+    <div aria-hidden="true" className="relative mx-auto h-6 w-full sm:h-24">
       <CaminoSvg id={`${id}m`} from={from} xs={[34, 66]} className="sm:hidden" />
       <CaminoSvg id={`${id}d`} from={from} xs={[23, 77]} className="max-sm:hidden" />
     </div>

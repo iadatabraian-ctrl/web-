@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 const inputClass =
-  "w-full rounded-xl border border-brand-ink-on-cream/20 bg-white px-4 py-3 font-body text-sm text-brand-ink-on-cream placeholder:text-brand-ink-on-cream-soft/70 outline-none transition-colors focus:border-brand-accent";
+  "w-full rounded-xl border border-brand-ink-on-cream/20 bg-white px-4 py-2.5 font-body text-sm sm:py-3 text-brand-ink-on-cream placeholder:text-brand-ink-on-cream-soft/70 outline-none transition-colors focus:border-brand-accent";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,7 +14,7 @@ export function ContactForm() {
       action="https://formsubmit.co/deploy.uy@gmail.com"
       method="POST"
       onSubmit={() => setIsSubmitting(true)}
-      className="mx-auto flex max-w-md flex-col gap-4 text-left"
+      className="mx-auto flex max-w-md flex-col gap-3 text-left sm:gap-4"
     >
       <input type="hidden" name="_subject" value="Nueva consulta — Deploy" />
       <input type="hidden" name="_template" value="table" />
@@ -71,7 +71,7 @@ export function ContactForm() {
           id="mensaje"
           name="mensaje"
           required
-          rows={4}
+          rows={3}
           placeholder="Contanos qué necesita tu negocio"
           className={`${inputClass} resize-none`}
         />
@@ -80,7 +80,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition-[opacity,transform] duration-200 hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
+        className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-3.5 sm:mt-2 sm:py-4 font-body text-sm font-bold uppercase tracking-wide text-brand-black transition-[opacity,transform] duration-200 hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
       >
         {isSubmitting ? "Enviando..." : "Enviar"}
         {!isSubmitting && <ArrowRight className="h-4 w-4" strokeWidth={2.5} />}
