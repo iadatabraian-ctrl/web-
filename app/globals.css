@@ -387,3 +387,7 @@ html.no-splash .seccion-indice { animation-delay: 0.4s; }
 }
 .home-suave p.font-impact { font-size: 1.15rem; }
 @media (min-width: 640px) { .home-suave p.font-impact { font-size: 1.75rem; } }
+
+/* Palabra DEPLOY de la portada: Barlow es más baja que la Saira anterior, se estira un poco a lo alto */
+:root { --alto-deploy: 1.4; }
+@media (min-width: 1024px) { :root { --alto-deploy: 1.22; } }
