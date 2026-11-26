@@ -35,24 +35,24 @@ export function Proceso() {
 
       <div className="relative mx-auto max-w-6xl">
         <h2 className="text-balance text-center font-body text-[7.4vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[5vw] lg:text-[4.4rem]">
-          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]"><motion.span
-            initial={{ y: "108%" }}
-            whileInView={{ y: 0 }}
+          <motion.span
+            initial={{ opacity: 0, x: "-12vw" }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={view}
             transition={{ duration: 0.75, ease }}
             className="block text-white/95"
           >
             De la idea
-          </motion.span></span>
-          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]"><motion.span
-            initial={{ y: "108%" }}
-            whileInView={{ y: 0 }}
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, x: "-12vw" }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={view}
             transition={{ duration: 0.75, ease, delay: 0.18 }}
             className="block text-white/75"
           >
             a la solución.
-          </motion.span></span>
+          </motion.span>
         </h2>
 
         <NotasPaso pasos={STEPS.map((s) => ({ t: s.title, d: s.desc }))} />

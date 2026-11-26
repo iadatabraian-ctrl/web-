@@ -63,24 +63,24 @@ export function Nosotros() {
         {/* Texto */}
         <div>
           <h2 className="font-body text-[5.4vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[3.6vw] lg:text-[3.8rem]">
-            <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]"><motion.span
-              initial={{ y: "108%" }}
-              whileInView={{ y: 0 }}
+            <motion.span
+              initial={{ opacity: 0, x: "-10vw" }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={view}
               transition={{ duration: 0.75, ease }}
               className="block"
             >
               Quién está
-            </motion.span></span>
-            <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]"><motion.span
-              initial={{ y: "108%" }}
-              whileInView={{ y: 0 }}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: "-10vw" }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={view}
               transition={{ duration: 0.75, ease, delay: 0.15 }}
               className="block text-brand-ink-on-cream-soft"
             >
               detrás.
-            </motion.span></span>
+            </motion.span>
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 28 }}

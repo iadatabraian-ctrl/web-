@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Splash />
       <Nav />
-      <div className="home-suave relative">
+      <div className="relative">
         <main>
           <Hero />
           <Servicios />

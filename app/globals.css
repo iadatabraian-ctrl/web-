@@ -338,45 +338,6 @@
 
 
 
-/* ---- Home más suave: títulos livianos, en minúscula y más chicos; el resto no cambia ---- */
-.home-suave main > section h2,
-.home-suave footer h2,
-.home-suave section h2 {
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: -0.025em;
-  line-height: 1.12;
-  font-size: clamp(1.7rem, 6vw, 1.9rem);
-}
-@media (min-width: 640px) {
-  .home-suave main > section h2,
-  .home-suave footer h2,
-  .home-suave section h2 { font-size: clamp(2rem, 3.6vw, 2.6rem); }
-}
-@media (min-width: 1024px) {
-  .home-suave main > section h2,
-  .home-suave footer h2,
-  .home-suave section h2 { font-size: 2.75rem; }
-}
-.home-suave h3 {
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: -0.015em;
-  font-size: 1.15rem;
-}
-@media (min-width: 640px) { .home-suave h3 { font-size: 1.45rem; } }
-/* Portada: el titular se aliviana (la palabra gigante se queda) */
-.home-suave h1 span {
-  font-family: var(--font-body), sans-serif;
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: -0.025em;
-  font-size: clamp(1.9rem, 7.2vw, 2.4rem);
-  line-height: 1.12;
-}
-@media (min-width: 640px) { .home-suave h1 span { font-size: clamp(2.4rem, 4.2vw, 3.2rem); } }
-.home-suave h1 span + span { font-style: italic; }
-
 /* Splash corto: Hola → Somos Deploy, una vez por visita (ver components/Splash.tsx) */
 .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: #0a0a0a; color: #f4efe4; pointer-events: none; animation: splash-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 1.55s forwards; }
 html.no-splash .splash { display: none; }
@@ -390,12 +351,3 @@ html.no-splash .splash { display: none; }
 @media (prefers-reduced-motion: reduce) { .splash { display: none; } }
 /* La entrada de la portada espera a que termine el splash */
 html.splash-on [class*="hero-in-"] { animation-play-state: paused; }
-.home-suave p.font-impact {
-  font-family: var(--font-body), sans-serif;
-  font-weight: 500;
-  text-transform: none;
-  font-stretch: 100%;
-  letter-spacing: -0.015em;
-  font-size: 1.35rem;
-}
-@media (min-width: 640px) { .home-suave p.font-impact { font-size: 1.7rem; } }
