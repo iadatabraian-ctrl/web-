@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Bodoni_Moda, JetBrains_Mono, Montserrat, Saira } from "next/font/google";
+import { Anton, Chakra_Petch, JetBrains_Mono, Montserrat, Saira } from "next/font/google";
 import "./globals.css";
 
 const anton = Anton({
@@ -22,11 +22,11 @@ const saira = Saira({
   subsets: ["latin"],
 });
 
-// "tu sistema." del hero: Bodoni itálica, solo en el estilo itálico para no cargar de más.
-const bodoni = Bodoni_Moda({
-  variable: "--font-bodoni",
+// Titular del hero («Tu negocio, tu sistema.»): Chakra Petch itálica negrita, solo ese estilo para no cargar de más.
+const chakra = Chakra_Petch({
+  variable: "--font-chakra",
+  weight: "700",
   style: ["italic"],
-  axes: ["opsz"],
   subsets: ["latin"],
 });
 
@@ -92,7 +92,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${anton.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${saira.variable} ${bodoni.variable} antialiased`}
+      className={`${anton.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${saira.variable} ${chakra.variable} antialiased`}
     >
       <body>
         <script

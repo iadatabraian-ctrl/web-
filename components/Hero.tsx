@@ -117,13 +117,13 @@ function Content() {
       <div className="absolute inset-x-0 bottom-0 z-[3] flex flex-col items-center px-5 pb-[calc(clamp(2.5rem,8vw,7rem)+1.25rem)] sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-[5vw]">
         <h1 className="text-center lg:text-left">
           <span
-            className={`hero-in-left block font-mont text-[8.2vw] font-extrabold uppercase leading-none tracking-[-0.02em] sm:text-[6vw] lg:text-[4.3vw] ${t.h1a}`}
+            className={`hero-in-left block [font-family:var(--font-chakra),sans-serif] text-[8.2vw] font-bold italic uppercase leading-none tracking-[-0.01em] sm:text-[6vw] lg:text-[4.3vw] ${t.h1a}`}
             style={{ animationDelay: "0.3s" }}
           >
             Tu negocio,
           </span>
           <span
-            className={`hero-in-left block font-didone text-[12vw] font-extrabold [font-optical-sizing:none] [font-variation-settings:"opsz"_10] italic leading-[0.95] sm:text-[8.5vw] lg:text-[6vw] ${t.h1b}`}
+            className={`hero-in-left block [font-family:var(--font-chakra),sans-serif] text-[12vw] font-bold italic uppercase leading-[0.98] tracking-[-0.01em] sm:text-[8.5vw] lg:text-[6vw] ${t.h1b}`}
             style={{ animationDelay: "0.45s" }}
           >
             tu sistema.
