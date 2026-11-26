@@ -1,5 +1,8 @@
 import { Nav } from "@/components/Nav";
 import { Splash } from "@/components/Splash";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { SeccionesIndice } from "@/components/SeccionesIndice";
+import { CintaHablemos } from "@/components/CintaHablemos";
 import { Hero } from "@/components/Hero";
 import { Servicios } from "@/components/Servicios";
 import { Proceso } from "@/components/Proceso";
@@ -11,6 +14,8 @@ export default function Home() {
   return (
     <>
       <Splash />
+      <SmoothScroll />
+      <SeccionesIndice />
       <Nav />
       <div className="relative">
         <main>
@@ -20,6 +25,7 @@ export default function Home() {
           <Nosotros />
           <Faq />
         </main>
+        <CintaHablemos />
         <CtaFooter />
       </div>
     </>
