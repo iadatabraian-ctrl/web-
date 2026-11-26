@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Chakra_Petch, JetBrains_Mono, Montserrat, Saira } from "next/font/google";
+import { Anton, Barlow_Condensed, Chakra_Petch, JetBrains_Mono, Montserrat, Saira } from "next/font/google";
 import "./globals.css";
 
 const anton = Anton({
@@ -19,6 +19,14 @@ const saira = Saira({
   variable: "--font-saira",
   style: ["normal", "italic"],
   axes: ["wdth"],
+  subsets: ["latin"],
+});
+
+// Palabra gigante «DEPLOY» de la portada: Barlow Condensed Black itálica (solo ese estilo).
+const barlow = Barlow_Condensed({
+  variable: "--font-barlow",
+  weight: "900",
+  style: ["italic"],
   subsets: ["latin"],
 });
 
@@ -92,7 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${anton.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${saira.variable} ${chakra.variable} antialiased`}
+      className={`${anton.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${saira.variable} ${chakra.variable} ${barlow.variable} antialiased`}
     >
       <body>
         <script

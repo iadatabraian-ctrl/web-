@@ -82,7 +82,7 @@ function Content() {
       {/* Palabra gigante, detrás de la figura (decorativa; el titular real va abajo) */}
       <span
         aria-hidden="true"
-        className={`hero-in-left pointer-events-none absolute inset-x-0 top-[21vw] z-[1] block select-none whitespace-nowrap text-center font-impact text-[46vw] font-black uppercase italic leading-[0.8] tracking-[-0.02em] bg-[linear-gradient(to_bottom,#fff_30%,rgba(255,255,255,0.12)_100%)] bg-clip-text text-transparent [font-stretch:50%] lg:top-[6.5vw] lg:text-[32.6vw] lg:[font-stretch:60%]`}
+        className={`hero-in-left pointer-events-none absolute inset-x-0 top-[21vw] z-[1] block select-none whitespace-nowrap text-center [font-family:var(--font-barlow),sans-serif] text-[34vw] font-black uppercase italic leading-[0.8] tracking-[-0.02em] bg-[linear-gradient(to_bottom,#fff_30%,rgba(255,255,255,0.12)_100%)] bg-clip-text text-transparent lg:top-[8vw] lg:text-[27vw]`}
         style={{ animationDelay: "0.05s" }}
       >
         Deploy
