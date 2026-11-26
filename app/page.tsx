@@ -1,4 +1,5 @@
 import { Nav } from "@/components/Nav";
+import { Splash } from "@/components/Splash";
 import { Hero } from "@/components/Hero";
 import { Servicios } from "@/components/Servicios";
 import { Proceso } from "@/components/Proceso";
@@ -9,8 +10,9 @@ import { CtaFooter } from "@/components/CtaFooter";
 export default function Home() {
   return (
     <>
+      <Splash />
       <Nav />
-      <div className="relative">
+      <div className="home-suave relative">
         <main>
           <Hero />
           <Servicios />
