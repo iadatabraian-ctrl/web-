@@ -17,7 +17,7 @@ export default function Home() {
       <SmoothScroll />
       <SeccionesIndice />
       <Nav />
-      <div className="relative">
+      <div className="home-suave relative">
         <main>
           <Hero />
           <Servicios />

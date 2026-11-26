@@ -368,3 +368,29 @@ html.lenis, html.lenis body { height: auto; }
 .seccion-indice { animation: indice-in 0.8s ease 2.2s both; }
 html.no-splash .seccion-indice { animation-delay: 0.4s; }
 @keyframes indice-in { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: none; } }
+
+/* ---- Home: mismos tipos de letra, peso y mayúsculas de siempre, pero títulos más chicos (solo tamaño) ---- */
+.home-suave section h2,
+.home-suave footer h2 { font-size: clamp(1.5rem, 5.4vw, 1.8rem); }
+@media (min-width: 640px) {
+  .home-suave section h2,
+  .home-suave footer h2 { font-size: clamp(1.9rem, 3.5vw, 2.5rem); }
+}
+@media (min-width: 1024px) {
+  .home-suave section h2,
+  .home-suave footer h2 { font-size: 2.9rem; }
+}
+.home-suave h3 { font-size: 1.05rem; }
+@media (min-width: 640px) { .home-suave h3 { font-size: 1.4rem; } }
+.home-suave h1 > span:first-child { font-size: clamp(1.5rem, 6.2vw, 1.9rem); }
+.home-suave h1 > span:last-child { font-size: clamp(2.3rem, 9.4vw, 2.9rem); }
+@media (min-width: 640px) {
+  .home-suave h1 > span:first-child { font-size: 4.4vw; }
+  .home-suave h1 > span:last-child { font-size: 6.2vw; }
+}
+@media (min-width: 1024px) {
+  .home-suave h1 > span:first-child { font-size: 3.1vw; }
+  .home-suave h1 > span:last-child { font-size: 4.4vw; }
+}
+.home-suave p.font-impact { font-size: 1.15rem; }
+@media (min-width: 640px) { .home-suave p.font-impact { font-size: 1.75rem; } }
