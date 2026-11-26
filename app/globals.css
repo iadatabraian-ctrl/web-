@@ -358,12 +358,6 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 
-/* ---- Cinta «Hablemos» ---- */
-.cinta-pista { animation: cinta-mover 38s linear infinite; }
-.cinta:hover .cinta-pista { animation-play-state: paused; }
-@keyframes cinta-mover { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .cinta-pista { animation: none; } }
-
 /* ---- Índice de secciones: aparece cuando termina el splash ---- */
 .seccion-indice { animation: indice-in 0.8s ease 2.2s both; }
 html.no-splash .seccion-indice { animation-delay: 0.4s; }
