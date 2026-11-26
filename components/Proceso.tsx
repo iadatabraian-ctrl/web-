@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Bar } from "@/components/Bar";
-import { NotasPaso } from "@/components/NotasPaso";
+import { ProcesoCamino } from "@/components/ProcesoCamino";
 
-/* Proceso (sección oscura, ver PRODUCT.md): 4 notas inclinadas con chinche en zigzag, unidas por un
-   camino punteado que se dibuja al entrar en pantalla. Corte diagonal arriba contra Servicios (clara). */
+/* Proceso (sección oscura, ver PRODUCT.md): 4 pasos sobre un camino en S naranja con círculos crema (ProcesoCamino).
+   Corte diagonal arriba contra Servicios (clara). Las páginas de servicio siguen usando NotasPaso. */
 
 const STEPS = [
   { title: "Relevamiento del negocio", desc: "Análisis de cómo opera hoy y qué lo está frenando." },
@@ -55,7 +55,7 @@ export function Proceso() {
           </motion.span></span>
         </h2>
 
-        <NotasPaso pasos={STEPS.map((s) => ({ t: s.title, d: s.desc }))} />
+        <ProcesoCamino pasos={STEPS.map((s) => ({ t: s.title, d: s.desc }))} />
       </div>
     </section>
   );
