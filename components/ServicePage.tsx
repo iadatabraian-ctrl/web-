@@ -202,7 +202,7 @@ export function ServicePage({ slug }: { slug: ServicioSlug }) {
         </section>
 
         {casosDe(s.slug).map((c) => (
-          <CasoCard key={c.slug} href={`/casos/${c.slug}`} etiqueta={c.etiqueta} titulo={c.titulo} destacado={c.destacado} texto={c.texto} imagen={c.imagen} alt={c.alt} />
+          <CasoCard key={c.slug} href={`/casos/${c.slug}`} etiqueta={c.etiqueta} titulo={c.titulo} destacado={c.destacado} texto={c.texto} imagen={c.imagen} alt={c.alt} tema={c.tema} />
         ))}
         {casosDe(s.slug).length > 0 && CASOS.length > casosDe(s.slug).length && (
           <div className="bg-[#0a0a0a] px-5 pt-4 text-brand-cream sm:px-8 lg:px-[6vw]">
