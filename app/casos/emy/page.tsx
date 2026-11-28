@@ -24,7 +24,7 @@ const INCLUYE = [
   { t: "Catálogo con variantes", d: "Colores, fotos y stock por color, con filtros y búsqueda." },
   { t: "Carrito y pedido", d: "Se arma el carrito y se hace el pedido en pocos pasos." },
   { t: "Panel de administración", d: "La dueña carga productos, fotos y stock, y ve los pedidos." },
-  { t: "Envíos, retiro y avisos", d: "Envío por DAC a agencia o domicilio, retiro en persona y avisos por correo." },
+  { t: "Pago, envíos y avisos", d: "Cobro con Mercado Pago, envío por DAC a domicilio, envío en Salto a coordinar por Instagram y correos de aviso con el diseño de la marca." },
 ];
 
 export default function Page() {
@@ -41,31 +41,31 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Nav />
+      <Nav claro />
       <main>
-        <section className="relative overflow-hidden bg-[#0a0a0a] px-5 pb-8 pt-20 text-brand-cream sm:px-8 sm:pb-20 sm:pt-32 lg:px-[6vw]">
+        <section className="relative overflow-hidden bg-brand-cream px-5 pb-8 pt-20 text-brand-ink-on-cream sm:px-8 sm:pb-20 sm:pt-32 lg:px-[6vw]">
           <div className="mx-auto grid max-w-6xl items-center gap-5 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
             <div>
-              <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-black-soft">
-                <Link href="/" className="transition-colors hover:text-brand-cream">Inicio</Link>
+              <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-cream-soft">
+                <Link href="/" className="transition-colors hover:text-brand-ink-on-cream">Inicio</Link>
                 <span className="mx-2">/</span>
-                <Link href="/paginas-web" className="transition-colors hover:text-brand-cream">Páginas web</Link>
+                <Link href="/paginas-web" className="transition-colors hover:text-brand-ink-on-cream">Páginas web</Link>
                 <span className="mx-2">/</span>
-                <span className="text-brand-cream/80">EMY</span>
+                <span className="text-brand-ink-on-cream/80">EMY</span>
               </nav>
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-black-soft">Caso real</p>
+              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-cream-soft">Caso real</p>
               <h1 className="mt-2 text-balance font-body text-[7vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[4.2vw] lg:text-[3.4rem]">
-                Una tienda online, <span className="text-brand-accent">hecha de punta a punta.</span>
+                Una tienda online, hecha de punta a punta.
               </h1>
-              <p className="mt-3 max-w-md font-body text-sm leading-snug text-brand-ink-on-black-soft sm:mt-5 sm:text-base">
-                EMY Indumentaria, de Salto: catálogo con variantes por color, carrito, pedidos y un panel para que la dueña cargue stock y fotos.
+              <p className="mt-3 max-w-md font-body text-sm leading-snug text-brand-ink-on-cream-soft sm:mt-5 sm:text-base">
+                EMY Indumentaria, de Salto: catálogo con variantes por color, carrito, pago con Mercado Pago y un panel para que la dueña cargue stock, fotos y pedidos.
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-8">
-                <a href={TIENDA} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-black sm:px-6 sm:py-3 transition-[transform,background-color,color] duration-200 hover:bg-brand-accent hover:text-white active:scale-[0.97] sm:text-sm">
+                <a href={TIENDA} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full bg-brand-black px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-brand-cream sm:px-6 sm:py-3 transition-[transform,background-color,color] duration-200 hover:bg-brand-accent hover:text-white active:scale-[0.97] sm:text-sm">
                   Ver la tienda
                   <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
                 </a>
-                <a href={wa} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 font-body text-xs font-bold uppercase tracking-wide transition-colors duration-200 hover:border-white sm:text-sm">
+                <a href={wa} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-brand-ink-on-cream/30 px-5 py-2.5 sm:px-6 sm:py-3 font-body text-xs font-bold uppercase tracking-wide transition-colors duration-200 hover:border-brand-ink-on-cream sm:text-sm">
                   Quiero una así
                   <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                 </a>
@@ -75,7 +75,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="bg-brand-cream px-5 py-9 text-brand-ink-on-cream sm:px-8 sm:py-24 lg:px-[6vw]">
+        <section className="bg-white px-5 py-9 text-brand-ink-on-cream sm:px-8 sm:py-24 lg:px-[6vw]">
           <div className="mx-auto max-w-5xl">
             <FadeIn>
               <h2 className="font-body text-[1.4rem] font-extrabold uppercase leading-[1.05] tracking-[-0.02em] sm:text-[3.2rem]">Qué incluye</h2>
