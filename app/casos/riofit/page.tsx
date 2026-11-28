@@ -40,27 +40,27 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Nav />
+      <Nav claro />
       <main>
-        <section className="relative overflow-hidden bg-[#0a0a0a] px-5 pb-8 pt-20 text-brand-cream sm:px-8 sm:pb-20 sm:pt-32 lg:px-[6vw]">
+        <section className="relative overflow-hidden bg-brand-cream px-5 pb-8 pt-20 text-brand-ink-on-cream sm:px-8 sm:pb-20 sm:pt-32 lg:px-[6vw]">
           <div className="mx-auto grid max-w-6xl items-center gap-5 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
             <div>
-              <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-black-soft">
-                <Link href="/" className="transition-colors hover:text-brand-cream">Inicio</Link>
+              <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-cream-soft">
+                <Link href="/" className="transition-colors hover:text-brand-ink-on-cream">Inicio</Link>
                 <span className="mx-2">/</span>
-                <Link href="/software-a-medida" className="transition-colors hover:text-brand-cream">Software a medida</Link>
+                <Link href="/software-a-medida" className="transition-colors hover:text-brand-ink-on-cream">Software a medida</Link>
                 <span className="mx-2">/</span>
-                <span className="text-brand-cream/80">Río Fit</span>
+                <span className="text-brand-ink-on-cream/80">Río Fit</span>
               </nav>
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-black-soft">Fitness app</p>
+              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-brand-ink-on-cream-soft">Fitness app</p>
               <h1 className="mt-2 text-balance font-body text-[7vw] font-extrabold uppercase leading-[1.04] tracking-[-0.02em] sm:text-[4.2vw] lg:text-[3.4rem]">
-                Un sistema para gimnasios, <span className="text-brand-accent">de punta a punta.</span>
+                Un sistema para gimnasios, de punta a punta.
               </h1>
-              <p className="mt-3 max-w-md font-body text-sm leading-snug text-brand-ink-on-black-soft sm:mt-5 sm:text-base">
+              <p className="mt-3 max-w-md font-body text-sm leading-snug text-brand-ink-on-cream-soft sm:mt-5 sm:text-base">
                 Río Fit: panel de administrador para gestionar socios, cuotas y rutinas, y un panel para cada socio en el celular.
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-8">
-                <a href={wa} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 font-body text-xs font-bold uppercase tracking-wide transition-colors duration-200 hover:border-white sm:text-sm">
+                <a href={wa} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-brand-ink-on-cream/30 px-5 py-2.5 sm:px-6 sm:py-3 font-body text-xs font-bold uppercase tracking-wide transition-colors duration-200 hover:border-brand-ink-on-cream sm:text-sm">
                   Quiero algo así
                   <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                 </a>
@@ -70,7 +70,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="bg-brand-cream px-5 py-9 text-brand-ink-on-cream sm:px-8 sm:py-24 lg:px-[6vw]">
+        <section className="bg-white px-5 py-9 text-brand-ink-on-cream sm:px-8 sm:py-24 lg:px-[6vw]">
           <div className="mx-auto max-w-5xl">
             <FadeIn>
               <h2 className="font-body text-[1.4rem] font-extrabold uppercase leading-[1.05] tracking-[-0.02em] sm:text-[3.2rem]">Qué incluye</h2>
