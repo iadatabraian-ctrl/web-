@@ -18,6 +18,7 @@ const SERVICIOS = [
 const LINKS = [
   { id: "proceso", href: "/#proceso", label: "Proceso" },
   { id: "nosotros", href: "/#nosotros", label: "Nosotros" },
+  { id: "casos", href: "/casos", label: "Casos" },
   { id: "preguntas", href: "/#preguntas", label: "Preguntas" },
 ];
 
@@ -71,7 +72,7 @@ export function Nav() {
   // En el inicio, resalta el enlace de la sección que se está viendo.
   useEffect(() => {
     if (pathname !== "/") {
-      setActivo(SERVICIOS.some((s) => s.href === pathname) ? "servicios" : null);
+      setActivo(SERVICIOS.some((s) => s.href === pathname) ? "servicios" : pathname.startsWith("/casos") ? "casos" : null);
       return;
     }
     const ids = ["servicios", "proceso", "nosotros", "preguntas"];
