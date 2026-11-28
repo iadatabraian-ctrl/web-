@@ -32,14 +32,14 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Nav />
+      <Nav claro />
       <main>
-        <section className="relative overflow-hidden bg-[#0a0a0a] px-5 pb-14 pt-24 text-brand-cream sm:px-8 sm:pb-24 sm:pt-36 lg:px-[6vw]">
+        <section className="relative overflow-hidden bg-brand-cream px-5 pb-14 pt-24 text-brand-ink-on-cream sm:px-8 sm:pb-24 sm:pt-36 lg:px-[6vw]">
           <div className="mx-auto max-w-6xl">
-            <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-black-soft">
-              <Link href="/" className="transition-colors hover:text-brand-cream">Inicio</Link>
+            <nav aria-label="Ruta" className="font-body text-xs text-brand-ink-on-cream-soft">
+              <Link href="/" className="transition-colors hover:text-brand-ink-on-cream">Inicio</Link>
               <span className="mx-2">/</span>
-              <span className="text-brand-cream/80">Casos</span>
+              <span className="text-brand-ink-on-cream/80">Casos</span>
             </nav>
             <h1 className="mt-5 text-balance font-display text-[13vw] uppercase leading-[0.98] tracking-[0.01em] sm:text-[6.4vw] lg:text-[5.6rem]">
               Lo que construimos.

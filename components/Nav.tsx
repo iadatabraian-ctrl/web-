@@ -26,7 +26,8 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const ICONO =
   "flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-brand-cream transition-colors hover:border-brand-accent";
 
-export function Nav() {
+/** claro: para páginas con fondo crema; la barra pasa a tinta oscura y el menú de celular sigue oscuro. */
+export function Nav({ claro = false }: { claro?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -101,8 +102,9 @@ export function Nav() {
 
   const claseLink = (id: string) =>
     cn(
-      "nav-link font-body text-sm transition-colors hover:text-brand-cream",
-      activo === id ? "text-brand-cream" : "text-brand-ink-on-black-soft",
+      "nav-link font-body text-sm transition-colors",
+      claro && !open ? "hover:text-brand-ink-on-cream" : "hover:text-brand-cream",
+      claro && !open ? (activo === id ? "text-brand-ink-on-cream" : "text-brand-ink-on-cream-soft") : activo === id ? "text-brand-cream" : "text-brand-ink-on-black-soft",
     );
 
   return (
@@ -184,7 +186,7 @@ export function Nav() {
       <div
         className={cn(
           "relative border-b border-transparent transition-[height,background-color,border-color] duration-300",
-          (scrolled || open) && "border-brand-line-on-black bg-brand-black-deep/85 backdrop-blur",
+          (scrolled || open) && (claro && !open ? "border-brand-line-on-cream bg-brand-cream/90 backdrop-blur" : "border-brand-line-on-black bg-brand-black-deep/85 backdrop-blur"),
         )}
       >
         <div
@@ -194,7 +196,7 @@ export function Nav() {
           )}
         >
           <Link href="/" aria-label="Deploy, inicio" className="relative z-[61] flex items-center">
-            <Logo />
+            <Logo dark={claro && !open} />
           </Link>
 
           <nav aria-label="Principal" className="hidden items-center gap-8 sm:flex">
@@ -237,7 +239,7 @@ export function Nav() {
             ))}
             <a
               href="/#hablemos"
-              className="nav-cta rounded-full bg-white px-5 py-2 font-body text-sm font-semibold text-brand-black transition-colors hover:bg-white/85"
+              className={cn("nav-cta rounded-full px-5 py-2 font-body text-sm font-semibold transition-colors", claro ? "bg-brand-black text-brand-cream hover:bg-brand-black/85" : "bg-white text-brand-black hover:bg-white/85")}
             >
               Hablemos
             </a>
@@ -250,9 +252,9 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             className="relative z-[61] flex h-8 w-8 flex-col items-center justify-center gap-[5px] sm:hidden"
           >
-            <span className={cn("nav-burger h-[1.5px] w-[18px] bg-brand-cream transition-transform", open && "translate-y-[6.5px] rotate-45")} />
-            <span className={cn("nav-burger h-[1.5px] w-[18px] bg-brand-cream transition-opacity", open && "opacity-0")} />
-            <span className={cn("nav-burger h-[1.5px] w-[18px] bg-brand-cream transition-transform", open && "-translate-y-[6.5px] -rotate-45")} />
+            <span className={cn("nav-burger h-[1.5px] w-[18px] transition-transform", claro && !open ? "bg-brand-ink-on-cream" : "bg-brand-cream", open && "translate-y-[6.5px] rotate-45")} />
+            <span className={cn("nav-burger h-[1.5px] w-[18px] transition-opacity", claro && !open ? "bg-brand-ink-on-cream" : "bg-brand-cream", open && "opacity-0")} />
+            <span className={cn("nav-burger h-[1.5px] w-[18px] transition-transform", claro && !open ? "bg-brand-ink-on-cream" : "bg-brand-cream", open && "-translate-y-[6.5px] -rotate-45")} />
           </button>
         </div>
       </div>
